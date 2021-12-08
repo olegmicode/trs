@@ -81,7 +81,7 @@ module.exports = {
         queries,
         chunkSize: 10000, // default: 1000
         enablePartialUpdates: true,
-        matchFields: ["mlsid", "updated"],
+        matchFields: ["mlsid", "changed", "acreage"],
       },
     },
     "gatsby-plugin-theme-ui",

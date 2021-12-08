@@ -9,6 +9,7 @@ const postQuery = `{
       description: propertyDescription
       price: price
       updated: _updatedAt
+      changed: dateChanged
       city: city
       state: state
       zip: zip
@@ -37,6 +38,7 @@ const postQuery = `{
       strapline: strapline
       description: propertySummary
       updated: _updatedAt
+      changed: _updatedAt
       status: status
       slug: slug{
         current

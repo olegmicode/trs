@@ -109,15 +109,19 @@ const PropertyTeaser = ({ property }) => {
           {property.county && property.county}
         </div>
         <div>
-          <strong>Price:</strong>
-          <span>
-            {property.price.toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            })}
-          </span>
+          {property.price && (
+            <span>
+              <strong>Price:</strong>
+              <span>
+                {property.price.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                })}
+              </span>
+            </span>
+          )}
           {property.pricePerAcre && (
             <span>
               <span> or </span>
@@ -133,15 +137,19 @@ const PropertyTeaser = ({ property }) => {
             </span>
           )}
         </div>
-        <div>
-          <strong>Acres:</strong>
-          {property.acreage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-            "+/-"}
-        </div>
-        <div>
-          <strong>Description:</strong>
-          {property.description}
-        </div>
+        {property.acreage && (
+          <div>
+            <strong>Acres:</strong>
+            {property.acreage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+              "+/-"}
+          </div>
+        )}
+        {property.description && (
+          <div>
+            <strong>Description:</strong>
+            {property.description}
+          </div>
+        )}
       </div>
     </div>
   )

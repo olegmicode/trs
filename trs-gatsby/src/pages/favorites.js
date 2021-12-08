@@ -12,8 +12,8 @@ class Favorites extends React.Component {
     }
   }
   componentWillMount() {
-    if (typeof window !== 'undefined' && window) {
-      var favorites = JSON.parse(localStorage.getItem('Favorites'));
+    if (typeof window !== "undefined" && window) {
+      var favorites = JSON.parse(localStorage.getItem("Favorites"))
       console.log(favorites)
       this.setState({ favorites: favorites }, () => {
         console.log(this.state.favorites)
@@ -25,17 +25,11 @@ class Favorites extends React.Component {
       <Layout>
         {this.state.favorites[0] &&
           this.state.favorites.map((fav, index) => (
-            // <PropertyTeaser property={fav}></PropertyTeaser>
-            'test'
-          ))
-        }
-        {!this.state.favorites[0] &&
-
-          <h3>No favorites added yet.</h3>
-        }
-
+            <PropertyTeaser property={fav}></PropertyTeaser>
+            // 'test'
+          ))}
+        {!this.state.favorites[0] && <h3>No favorites added yet.</h3>}
       </Layout>
-
     )
   }
 }
