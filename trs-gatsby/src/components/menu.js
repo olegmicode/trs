@@ -26,18 +26,17 @@ const Menu = open => {
       render={data => (
         <div
           sx={{
-            padding: ["20px 20px", "20px 20px", "20px 0px"],
             margin: "0 auto",
             boxSizing: "content-box",
             width: ["180px", "180px", "100%"],
             height: "100%",
             right: "0px",
             top: "0px",
-            backgroundColor: ["rgba(255,255,255,0.9)", "none", "none"],
             display: "flex",
             flexDirection: ["column", "column", "row"],
             position: ["fixed", "fixed", "relative"],
             zIndex: "999",
+            borderTop: "thin solid darkGray",
             transition: "transform 0.3s ease-in-out",
             transform: [
               open.open ? "translateX(0%)" : "translateX(100%)",
@@ -52,11 +51,14 @@ const Menu = open => {
               sx={{
                 width: ["100%", "100%", "calc(100% / 7)"],
                 position: "relative",
-                marginBottom: "10px",
+                padding: "10px 10px",
                 "&:hover > div": {
                   display: "block",
                   visibility: "visible",
                   opacity: 1,
+                },
+                "&:first-child": {
+                  borderRight: "thin solid darkGray",
                 },
               }}
             >
@@ -65,6 +67,9 @@ const Menu = open => {
                   color: "black",
                   textDecoration: "none",
                   fontSize: ["24px", "18px", "18px"],
+                  width: "100%",
+                  display: "block",
+                  textAlign: "center",
                 }}
                 activeStyle={{ textDecoration: "underline" }}
                 to={"/" + menuPath(menuItem.children.document.slug.current)}

@@ -20,6 +20,8 @@ export default {
     text: "#000",
     background: "#fff",
     primary: "#33e",
+    offWhite: "#f8f8f8",
+    darkGray: "#333334",
     modes: {
       dark: {
         text: "#fff",

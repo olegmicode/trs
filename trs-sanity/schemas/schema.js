@@ -7,6 +7,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 // We import object and document schemas
 import siteSettings from "./siteSettings";
 import page from "./page";
+import pageDefinition from "./pageDefinition";
 import home from "./home";
 import menuItemSub from "./menuItemSub";
 import menuItemItem from "./menuItemItem";
@@ -18,6 +19,8 @@ import propertyType from "./propertyType";
 import property from "./property";
 import blockcontent from "./blockcontent";
 import team from "./team";
+import imageRightTextLeft from "./section/imageRightTextLeft";
+import imageLeftTextRight from "./section/imageLeftTextRight";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -29,6 +32,7 @@ export default createSchema({
     /* Your types here! */
     siteSettings,
     page,
+    pageDefinition,
     home,
     menuItemSub,
     menuItemItem,
@@ -40,5 +44,7 @@ export default createSchema({
     property,
     team,
     blockcontent,
+    imageLeftTextRight,
+    imageRightTextLeft,
   ]),
 });

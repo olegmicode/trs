@@ -26,7 +26,7 @@ class Header extends React.Component {
       <StaticQuery
         query={graphql`
           query HeadingQuery {
-            sanitySiteSettings {
+            settings: sanitySiteSettings {
               logo {
                 asset {
                   gatsbyImageData
@@ -37,29 +37,39 @@ class Header extends React.Component {
         `}
         render={data => (
           <header>
+            {console.log(data)}
             <div
               sx={{
+                backgroundColor: "offWhite",
                 maxWidth: ["400px", "800px", "1000px"],
-                padding: ["15px 5%", "15px 5%", "15px 10%"],
+                margin: ["15px 5%", "15px 5%", "0px 10%"],
                 margin: "0 auto",
-                display: ["flex", "flex", "null"],
-                alignItems: "center",
-                justifyContent: "space-between",
               }}
             >
-              <Link
-                to={"/"}
+              <div
                 sx={{
-                  maxWidth: "220px",
+                  width: "100%",
+                  display: ["flex", "flex", "null"],
+                  padding: "20px 0px",
+                  alignItems: "center",
+                  justifyContent: "space-between",
                 }}
               >
-                <GatsbyImage
+                <Link
+                  to={"/"}
                   sx={{
-                    maxWidth: "600px",
+                    maxWidth: "500px",
                   }}
-                  image={data.sanitySiteSettings.logo.asset.gatsbyImageData}
-                />
-              </Link>
+                >
+                  <GatsbyImage
+                    sx={{
+                      maxWidth: "600px",
+                    }}
+                    image={data.settings.logo.asset.gatsbyImageData}
+                  />
+                </Link>
+                <div>call: 830-249-9339</div>
+              </div>
               <Burger clickMe={this.toggleMenu} open={this.state.menuOpen} />
               <Menu open={this.state.menuOpen}></Menu>
             </div>
