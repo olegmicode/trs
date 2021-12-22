@@ -22,13 +22,6 @@ export default {
     primary: "#4386b9",
     offWhite: "#f8f8f8",
     darkGray: "#333334",
-    modes: {
-      dark: {
-        text: "#fff",
-        background: "#000",
-        primary: "#cc1",
-      },
-    },
   },
   breakpoints: ["400px", "800px", "1000px"],
 }

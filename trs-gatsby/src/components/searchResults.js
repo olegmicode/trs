@@ -13,7 +13,7 @@ import Select from "react-select"
 import MultiSelect from "@khanacademy/react-multi-select"
 import qs from "qs"
 import Container from "../components/container"
-
+import scrollTo from "gatsby-plugin-smoothscroll"
 import {
   InstantSearch,
   ClearRefinements,
@@ -83,6 +83,7 @@ class SearchResults extends React.Component {
       >
         <Container>
           <div
+            id="filters"
             sx={{
               width: "100%",
               display: "flex",
@@ -205,7 +206,9 @@ class SearchResults extends React.Component {
                 backgroundColor: "primary",
                 color: "white",
                 padding: "10px 20px",
+                cursor: "pointer",
               }}
+              onClick={() => scrollTo("#filters")}
             >
               CHANGE SEARCH CRITERIA
             </div>
@@ -228,6 +231,22 @@ class SearchResults extends React.Component {
               }}
               // Optional parameters
             />
+            <div
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "20px",
+              }}
+            >
+              <div
+                sx={{
+                  cursor: "pointer",
+                }}
+                onClick={() => scrollTo("#filters")}
+              >
+                BACK TO TOP
+              </div>
+            </div>
           </Container>
         </div>
       </InstantSearch>

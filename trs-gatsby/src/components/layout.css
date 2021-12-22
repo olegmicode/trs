@@ -40,12 +40,11 @@ img {
 }
 .ais-InfiniteHits-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   list-style: none;
   padding: 0px;
   margin: 0px;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .ais-InfiniteHits-list .ais-InfiniteHits-item {
   box-sizing: border-box;
@@ -53,7 +52,8 @@ img {
   position: relative;
   background-color: white;
   margin-bottom: 40px;
-  width: calc(100% / 4 - 15px);
+  width: calc((100%) / 4 - 20px);
+  margin-right: 20px;
 }
 .ais-InfiniteHits-loadMore {
   margin: 0 auto;
@@ -63,4 +63,7 @@ img {
   border: 0px;
   padding: 10px 20px;
   cursor: pointer;
+}
+.view-neighborhoods .digett-rows > div:nth-child(4n + 4) {
+  margin-right: 0px;
 }

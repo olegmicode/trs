@@ -11,16 +11,6 @@ const Footer = () => {
         © {new Date().getFullYear()}, Built by
         {` `}
         <a href="https://digett.com">Digett</a>
-        <button
-          sx={{
-            marginLeft: 20,
-          }}
-          onClick={e => {
-            setColorMode(nextColorMode)
-          }}
-        >
-          Change color mode
-        </button>
       </Container>
     </footer>
   )
