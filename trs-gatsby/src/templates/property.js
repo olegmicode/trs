@@ -8,6 +8,7 @@ import { Carousel } from "react-responsive-carousel"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css"
 import ConditionalLayout from "../components/ConditionalLayout"
+
 const ReturnImage = ({ image }) => {
   if (image.asset) {
     return (

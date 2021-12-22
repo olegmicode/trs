@@ -25,7 +25,19 @@ export default {
             { type: "property" },
             { type: "imageLeftTextRight" },
             { type: "imageRightTextLeft" },
+            { type: "textOverImage" },
           ],
+        },
+      ],
+    },
+    {
+      title: "Sidebar",
+      name: "sidebar",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "blockcontent" }],
         },
       ],
     },

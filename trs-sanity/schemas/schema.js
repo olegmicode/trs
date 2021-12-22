@@ -8,7 +8,6 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import siteSettings from "./siteSettings";
 import page from "./page";
 import pageDefinition from "./pageDefinition";
-import home from "./home";
 import menuItemSub from "./menuItemSub";
 import menuItemItem from "./menuItemItem";
 import menuItem from "./menuItem";
@@ -21,7 +20,7 @@ import blockcontent from "./blockcontent";
 import team from "./team";
 import imageRightTextLeft from "./section/imageRightTextLeft";
 import imageLeftTextRight from "./section/imageLeftTextRight";
-
+import textOverImage from "./section/textOverImage";
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -33,7 +32,6 @@ export default createSchema({
     siteSettings,
     page,
     pageDefinition,
-    home,
     menuItemSub,
     menuItemItem,
     menuItem,
@@ -46,5 +44,6 @@ export default createSchema({
     blockcontent,
     imageLeftTextRight,
     imageRightTextLeft,
+    textOverImage,
   ]),
 });

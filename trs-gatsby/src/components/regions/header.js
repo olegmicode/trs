@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Burger from "../burger"
 import Menu from "../menu"
+import Container from "../container"
 class Header extends React.Component {
   constructor(props) {
     super(props)
@@ -38,14 +39,7 @@ class Header extends React.Component {
         render={data => (
           <header>
             {console.log(data)}
-            <div
-              sx={{
-                backgroundColor: "offWhite",
-                maxWidth: ["400px", "800px", "1000px"],
-                margin: ["15px 5%", "15px 5%", "0px 10%"],
-                margin: "0 auto",
-              }}
-            >
+            <Container>
               <div
                 sx={{
                   width: "100%",
@@ -72,7 +66,7 @@ class Header extends React.Component {
               </div>
               <Burger clickMe={this.toggleMenu} open={this.state.menuOpen} />
               <Menu open={this.state.menuOpen}></Menu>
-            </div>
+            </Container>
           </header>
         )}
       />

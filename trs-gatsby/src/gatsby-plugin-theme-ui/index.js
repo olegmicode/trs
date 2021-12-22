@@ -19,7 +19,7 @@ export default {
   colors: {
     text: "#000",
     background: "#fff",
-    primary: "#33e",
+    primary: "#4386b9",
     offWhite: "#f8f8f8",
     darkGray: "#333334",
     modes: {

@@ -7,150 +7,121 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Favorite from "../property/favorite"
 import { render } from "react-dom"
 // add property type value? If sanity property or drupal?
-const SlugPath = ({ slug }) => {
-  if (slug) {
-    if (slug.current) {
-      return (
-        <Link
-          state={{
-            noScroll: true,
-          }}
-          asModal
-          to={"/property/" + slug.current}
-        >
-          View Ranch Details
-        </Link>
-      )
+
+const PropertyTeaser = ({ property }) => {
+  var slugPath = ""
+  if (property.slug) {
+    if (property.slug.current) {
+      slugPath = "/property/" + property.slug.current
     } else {
-      return (
-        <Link
-          state={{
-            noScroll: true,
-          }}
-          asModal
-          to={"/property/" + slug}
-        >
-          View Ranch Details
-        </Link>
-      )
+      slugPath = "/property/" + property.slug
     }
   }
-  return ""
-}
-const PropertyTeaser = ({ property }) => {
-  console.log(property)
   return (
-    <div
-      sx={{
-        display: "flex",
-        flexDirection: ["column", "column", "row"],
-        justifyContent: "space-between",
-        borderBottom: "thin solid gray",
-        paddingBottom: 4,
-        marginBottom: 4,
-        zIndex: "1",
-        position: "relative",
-      }}
-    >
-      <div
-        sx={{
-          width: ["100%", "100%", "40%"],
+    <div>
+      <Link
+        state={{
+          noScroll: true,
         }}
+        asModal
+        to={slugPath}
       >
-        {property.sanityimage && (
-          <GatsbyImage
-            sx={{
-              maxWidth: "100%",
-              height: "auto",
-            }}
-            image={property.sanityimage.asset.gatsbyImageData}
-            width={600}
-            aspectRatio={4 / 2}
-          />
-        )}
-        {property.image && (
-          <GatsbyImage
-            sx={{
-              maxWidth: "100%",
-              height: "auto",
-            }}
-            image={property.image.childImageSharp.gatsbyImageData}
-            width={600}
-            aspectRatio={4 / 3}
-          />
-        )}
-        <SlugPath slug={property.slug}></SlugPath>
-      </div>
-      <div
-        sx={{
-          width: ["calc(100%)", "calc(100%)", "calc(60% - 40px)"],
-        }}
-      >
-        <h1>{property.address}</h1>
-        {property.strapline && <div>{property.strapline}</div>}
-        {property.zip && (
-          <div>
-            <span>{property.city}</span>
-            <span> {property.state}, </span>
-            <span>{property.zip}</span>
-          </div>
-        )}
-        <Favorite
+        <div
           sx={{
-            display: "none",
+            width: "100%",
           }}
-          property={property}
         >
-          Add to Favorites
-        </Favorite>
-        <div>
-          <strong>County:</strong>
-          {property.sanitycounty && property.sanitycounty.countyName}
-          {property.county && property.county}
-        </div>
-        <div>
-          {property.price && (
-            <span>
-              <strong>Price:</strong>
-              <span>
-                {property.price.toLocaleString("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0,
-                })}
-              </span>
-            </span>
+          {property.sanityimage && (
+            <GatsbyImage
+              sx={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
+              image={property.sanityimage.asset.gatsbyImageData}
+              width={600}
+              aspectRatio={4 / 2}
+            />
           )}
-          {property.pricePerAcre && (
-            <span>
-              <span> or </span>
-              <span>
-                {property.pricePerAcre.toLocaleString("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0,
-                })}
-              </span>
-              <span> per acre </span>
-            </span>
+          {property.image && (
+            <GatsbyImage
+              sx={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
+              image={property.image.childImageSharp.gatsbyImageData}
+              width={600}
+              aspectRatio={4 / 3}
+            />
           )}
         </div>
-        {property.acreage && (
+        <div>
+          <h2>{property.address}</h2>
+          {property.strapline && <div>{property.strapline}</div>}
+          {property.zip && (
+            <div>
+              <span>{property.city}</span>
+              <span> {property.state}, </span>
+              <span>{property.zip}</span>
+            </div>
+          )}
+          {/**<Favorite
+            sx={{
+              display: "none",
+            }}
+            property={property}
+          >
+            Add to Favorites
+          </Favorite>*/}
           <div>
-            <strong>Acres:</strong>
-            {property.acreage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-              "+/-"}
+            <strong>County:</strong>
+            {property.sanitycounty && property.sanitycounty.countyName}
+            {property.county && property.county}
           </div>
-        )}
-        {property.description && (
           <div>
-            <strong>Description:</strong>
-            {property.description}
+            {property.price && (
+              <span>
+                <strong>Price:</strong>
+                <span>
+                  {property.price.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </span>
+            )}
+            {property.pricePerAcre && (
+              <span>
+                <span> or </span>
+                <span>
+                  {property.pricePerAcre.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+                <span> per acre </span>
+              </span>
+            )}
           </div>
-        )}
-      </div>
+          {property.acreage && (
+            <div>
+              <strong>Acres:</strong>
+              {property.acreage
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "+/-"}
+            </div>
+          )}
+          {property.description && (
+            <div>
+              <strong>Description:</strong>
+              {property.description}
+            </div>
+          )}
+        </div>
+      </Link>
     </div>
   )
 }

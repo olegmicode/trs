@@ -38,3 +38,29 @@ img {
 .ReactModal__Content--before-close {
   transform: translateY(50px);
 }
+.ais-InfiniteHits-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  justify-content: space-between;
+}
+.ais-InfiniteHits-list .ais-InfiniteHits-item {
+  box-sizing: border-box;
+  z-index: 1;
+  position: relative;
+  background-color: white;
+  margin-bottom: 40px;
+  width: calc(100% / 4 - 15px);
+}
+.ais-InfiniteHits-loadMore {
+  margin: 0 auto;
+  display: block;
+  background-color: #4386b9;
+  color: white;
+  border: 0px;
+  padding: 10px 20px;
+  cursor: pointer;
+}

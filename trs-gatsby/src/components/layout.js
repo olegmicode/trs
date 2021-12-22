@@ -19,20 +19,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header></Header>
-      <div
-        sx={{
-          maxWidth: ["400px", "800px", "1000px"],
-          padding: ["0px 5%", "0px 7%", "0px 10%"],
-          margin: "0 auto",
-          boxSizing: "content-box",
-          a: {
-            textDecoration: "none",
-            color: "text",
-          },
-        }}
-      >
-        <main>{children}</main>
-      </div>
+
+      <main>{children}</main>
+
       <Footer></Footer>
     </>
   )

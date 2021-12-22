@@ -1,19 +1,13 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from "theme-ui"
+import Container from "../container"
 
 const Footer = () => {
   const [colorMode, setColorMode] = useColorMode()
   const nextColorMode = colorMode === "light" ? "dark" : "light"
   return (
     <footer>
-      <div
-        sx={{
-          maxWidth: ["400px", "800px", "1000px"],
-          padding: "0px 10%",
-          margin: "0 auto",
-          boxSizing: "content-box",
-        }}
-      >
+      <Container>
         © {new Date().getFullYear()}, Built by
         {` `}
         <a href="https://digett.com">Digett</a>
@@ -27,7 +21,7 @@ const Footer = () => {
         >
           Change color mode
         </button>
-      </div>
+      </Container>
     </footer>
   )
 }

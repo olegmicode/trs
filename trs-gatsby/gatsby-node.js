@@ -4,6 +4,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const pages = await graphql(`
     {
+      pagedefinition: allSanityPageDefinition {
+        nodes {
+          id
+          slug {
+            current
+          }
+        }
+      }
       ourproperty: allSanityProperty {
         nodes {
           id
@@ -32,11 +40,6 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      home: allSanityHome {
-        nodes {
-          id
-        }
-      }
     }
   `)
   const propertyTemplate = path.resolve("src/templates/property.js")
@@ -59,21 +62,33 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   const pageTemplate = path.resolve("src/templates/page.js")
-  const homeTemplate = path.resolve("src/templates/home.js")
+  const pageDefinitionTemplate = path.resolve("src/templates/pageDefinition.js")
   const additionalPropertiesTemplate = path.resolve(
     "src/templates/additionalProperties.js"
   )
   const ourTeamTemplate = path.resolve("src/templates/ourTeam.js")
   const contactTemplate = path.resolve("src/templates/contact.js")
 
-  pages.data.home.nodes.forEach(node => {
-    createPage({
-      path: `/`,
-      component: homeTemplate,
-      context: {
-        id: node.id,
-      },
-    })
+  pages.data.pagedefinition.nodes.forEach(node => {
+    if (node.slug.current == "home") {
+      createPage({
+        path: `/`,
+        component: pageDefinitionTemplate,
+        context: {
+          home: true,
+          slug: node.slug.current,
+        },
+      })
+    } else {
+      createPage({
+        path: `/${node.slug.current}`,
+        component: pageDefinitionTemplate,
+        context: {
+          home: false,
+          slug: node.slug.current,
+        },
+      })
+    }
   })
 
   pages.data.page.nodes.forEach(node => {
@@ -126,10 +141,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.sourceNodes = ({ actions, getNodesByType }) => {
   const { touchNode } = actions
-    // touch nodes to ensure they aren't garbage collected
-    ;[...getNodesByType(`property`)].forEach(node =>
-      touchNode({ nodeId: node.id })
-    )
+  // touch nodes to ensure they aren't garbage collected
+  ;[...getNodesByType(`property`)].forEach(node =>
+    touchNode({ nodeId: node.id })
+  )
 }
 const toTimestamp = strDate => {
   const dt = Date.parse(strDate)
@@ -199,7 +214,6 @@ async function createImages(createNode, node, actions, createNodeId, cache) {
   return imageIds
 }
 exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
-
   actions.createTypes([
     schema.buildObjectType({
       name: "SanityProperty",
