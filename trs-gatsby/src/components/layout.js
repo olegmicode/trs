@@ -17,13 +17,31 @@ const Layout = ({ children }) => {
     }
   `)
   return (
-    <>
+    <div
+      sx={{
+        fontFamily: "body",
+        fontWeight: "body",
+        fontSize: "2",
+        lineHeight: "body",
+        h1: {
+          fontFamily: "heading",
+          fontWeight: "heading",
+          lineHeight: "heading",
+        },
+        h2: {
+          fontFamily: "heading",
+          fontWeight: "heading",
+          lineHeight: "heading",
+          fontSize: "6",
+        },
+      }}
+    >
       <Header></Header>
 
       <main>{children}</main>
 
       <Footer></Footer>
-    </>
+    </div>
   )
 }
 

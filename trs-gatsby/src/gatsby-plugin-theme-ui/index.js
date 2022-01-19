@@ -1,8 +1,8 @@
 export default {
   initialColorModeName: "light",
   fonts: {
-    body: "system-ui, sans-serif",
-    heading: '"Avenir Next", sans-serif',
+    body: "Open Sans, sans-serif",
+    heading: '"Times", sans-serif',
     monospace: "Menlo, monospace",
   },
   fontWeights: {
@@ -11,7 +11,7 @@ export default {
     bold: 700,
   },
   lineHeights: {
-    body: 1.5,
+    body: "22px",
     heading: 1.125,
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
@@ -22,6 +22,11 @@ export default {
     primary: "#4386b9",
     offWhite: "#f8f8f8",
     darkGray: "#333334",
+    grayMed: "#887E7E",
+    grayBlk: "#484242",
+    grayScant: "#F7F7F7",
+    grayLight: "#E9E7E7",
+    newTan: "#C1B098",
   },
   breakpoints: ["400px", "800px", "1000px"],
 }

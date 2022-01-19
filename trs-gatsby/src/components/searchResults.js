@@ -59,7 +59,6 @@ class SearchResults extends React.Component {
     //     localStorage.setItem("searchState", this.props.location.search)
     //   }
     //   if(searchState = this.props)
-    //   console.log(this.props)
     //   // this.props.searchState
     //   // this.setState({ fav: true })
     // }
@@ -197,6 +196,9 @@ class SearchResults extends React.Component {
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
+            position: "sticky",
+            top: "0",
+            zIndex: "9",
           }}
         >
           <Container>
@@ -284,7 +286,6 @@ class Consumer extends React.Component {
   render() {
     const { selected } = this.state
     const options = []
-    console.log(this.props.items)
     this.props.items.map(item => {
       options.push({
         label: item.label + " (" + item.count + ")",

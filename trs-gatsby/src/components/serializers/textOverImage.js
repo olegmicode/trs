@@ -19,19 +19,21 @@ const TextOverImage = ({ node }) => {
   )
   const bgImage = convertToBgImage(imageData)
   return (
-    <Container>
-      <BackgroundImage
-        Tag="section"
-        // Spread bgImage into BackgroundImage:
-        {...bgImage}
-        preserveStackingContext
-        sx={{
-          padding: "100px 60px",
-        }}
-      >
-        <BlockContent blocks={node.body} serializers={Serializers} />
-      </BackgroundImage>
-    </Container>
+    <section id={node.sanityId}>
+      <Container>
+        <BackgroundImage
+          Tag="div"
+          // Spread bgImage into BackgroundImage:
+          {...bgImage}
+          preserveStackingContext
+          sx={{
+            padding: "100px 60px",
+          }}
+        >
+          <BlockContent blocks={node.body} serializers={Serializers} />
+        </BackgroundImage>
+      </Container>
+    </section>
   )
 }
 

@@ -4,53 +4,104 @@ import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import Layout from "../components/layout"
-import SearchResults from "../components/searchResults"
+import LayoutSearch from "../components/layoutSearch"
+
 const PageDefinition = ({ data }) => {
   const node = data.page
   console.log(data)
   return (
-    <Layout>
-      <div
-        sx={{
-          display: [
-            "block",
-            node.sidebar[0] ? "flex" : "block",
-            node.sidebar[0] ? "flex" : "block",
-          ],
-          justifyContent: "space-between",
-        }}
-      >
-        {node.sidebar[0] && (
+    <div>
+      {node.slug.current == "home" && (
+        <LayoutSearch>
           <div
             sx={{
-              width: [
-                "100%",
-                node.sidebar[0] ? "175px" : "100%",
-                node.sidebar[0] ? "175px" : "100%",
+              display: [
+                "block",
+                node.sidebar[0] ? "flex" : "block",
+                node.sidebar[0] ? "flex" : "block",
               ],
+              justifyContent: "space-between",
             }}
           >
-            <BlockContent
-              blocks={node.sidebar[0]._rawBlockcontent}
-              serializers={Serializers}
-            />
+            {node.sidebar[0] && (
+              <div
+                sx={{
+                  width: [
+                    "100%",
+                    node.sidebar[0] ? "175px" : "100%",
+                    node.sidebar[0] ? "175px" : "100%",
+                  ],
+                }}
+              >
+                <BlockContent
+                  blocks={node.sidebar[0]._rawBlockcontent}
+                  serializers={Serializers}
+                />
+              </div>
+            )}
+            <div
+              sx={{
+                width: [
+                  "100%",
+                  node.sidebar[0] ? "calc(100% - 220px)" : "100%",
+                  node.sidebar[0] ? "calc(100% - 220px)" : "100%",
+                ],
+              }}
+            >
+              <BlockContent
+                blocks={node._rawEntities}
+                serializers={Serializers}
+              />
+            </div>
           </div>
-        )}
-        <div
-          sx={{
-            width: [
-              "100%",
-              node.sidebar[0] ? "calc(100% - 220px)" : "100%",
-              node.sidebar[0] ? "calc(100% - 220px)" : "100%",
-            ],
-          }}
-        >
-          <BlockContent blocks={node._rawEntities} serializers={Serializers} />
-        </div>
-      </div>
-
-      {node.slug.current == "home" && <SearchResults />}
-    </Layout>
+        </LayoutSearch>
+      )}
+      {node.slug.current !== "home" && (
+        <Layout>
+          <div
+            sx={{
+              display: [
+                "block",
+                node.sidebar[0] ? "flex" : "block",
+                node.sidebar[0] ? "flex" : "block",
+              ],
+              justifyContent: "space-between",
+            }}
+          >
+            {node.sidebar[0] && (
+              <div
+                sx={{
+                  width: [
+                    "100%",
+                    node.sidebar[0] ? "175px" : "100%",
+                    node.sidebar[0] ? "175px" : "100%",
+                  ],
+                }}
+              >
+                <BlockContent
+                  blocks={node.sidebar[0]._rawBlockcontent}
+                  serializers={Serializers}
+                />
+              </div>
+            )}
+            <div
+              sx={{
+                width: [
+                  "100%",
+                  node.sidebar[0] ? "calc(100% - 220px)" : "100%",
+                  node.sidebar[0] ? "calc(100% - 220px)" : "100%",
+                ],
+              }}
+            >
+              <BlockContent
+                blocks={node._rawEntities}
+                serializers={Serializers}
+              />
+            </div>
+          </div>
+        </Layout>
+      )}
+    </div>
   )
 }
 export default PageDefinition

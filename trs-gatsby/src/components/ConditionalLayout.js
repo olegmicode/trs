@@ -5,6 +5,8 @@ import Layout from "./layout"
 import { Link, ModalRoutingContext } from "gatsby-plugin-modal-routing-3"
 import SearchResults from "../components/searchResults"
 import Modal from "react-modal"
+import BlockContent from "@sanity/block-content-to-react"
+import Serializers from "../components/serializers/serializers"
 
 const ConditionalLayout = ({ children, ...rest }) => {
   let subtitle
@@ -37,6 +39,10 @@ const ConditionalLayout = ({ children, ...rest }) => {
           </div>
         ) : (
           <Layout>
+            <BlockContent
+              blocks={rest.data.blockFragment._rawEntities[0]}
+              serializers={Serializers}
+            />
             <Modal
               isOpen={modalIsOpen}
               onAfterOpen={afterOpenModal}

@@ -14,7 +14,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "dashboard-widget-gatsby",
-    "@sanity/production-preview"
+    "@sanity/production-preview",
+    "@sanity/color-input"
   ],
   "parts": [
     {

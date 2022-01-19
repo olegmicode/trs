@@ -5,6 +5,11 @@ export default {
   title: "Text Over Image",
   fields: [
     {
+      title: "ID",
+      name: "id",
+      type: "string",
+    },
+    {
       title: "Background Image",
       name: "backgroundImage",
       type: "image",
@@ -19,6 +24,9 @@ export default {
       of: [
         {
           type: "block",
+          marks: {
+            annotations: [{ name: "color", title: "Color", type: "color" }],
+          },
         },
         {
           type: "image",

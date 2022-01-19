@@ -44,6 +44,7 @@ const ReturnCounty = ({ county }) => {
   }
 }
 const Property = ({ data }) => {
+  console.log(data)
   // const node = data.property
   // const images = node.childrenFile
   function youtube_parser(url) {
@@ -65,10 +66,9 @@ const Property = ({ data }) => {
     if (node.youtubeUrl) {
       var videoId = youtube_parser(node.youtubeUrl)
     }
-    console.log(videoId)
   }
   return (
-    <ConditionalLayout>
+    <ConditionalLayout data={data}>
       <div>
         <h1>{node.mlsid}</h1>
         <Carousel
@@ -234,6 +234,9 @@ export const postQuery = graphql`
     }
     ourproperty: sanityProperty(mlsid: { eq: $mlsid }) {
       ...ourPropertyFullFragment
+    }
+    blockFragment: sanityPageDefinition(slug: { current: { eq: "home" } }) {
+      ...blockFragment
     }
   }
 `
