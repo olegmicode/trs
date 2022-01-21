@@ -9,11 +9,14 @@ import withURLSync from "../templates/URLSync"
 import PropTypes from "prop-types"
 import Rheostat from "rheostat"
 import algoliasearch from "algoliasearch/lite"
-import Select, { NonceProvider } from "react-select"
 import MultiSelect from "@khanacademy/react-multi-select"
+import Select from "react-select"
+import makeAnimated from "react-select/animated"
 import qs from "qs"
 import Container from "../components/container"
 import scrollTo from "gatsby-plugin-smoothscroll"
+import debounce from "lodash/debounce"
+import TheSearchBox from "./searchBox"
 import {
   InstantSearch,
   ClearRefinements,
@@ -25,7 +28,9 @@ import {
   connectNumericMenu,
   connectStats,
   connectRefinementList,
+  connectSortBy,
   connectRange,
+  connectSearchBox,
   MenuSelect,
   RefinementList,
   SortBy,
@@ -58,7 +63,6 @@ class SearchResults extends React.Component {
     if (!this.state.searchChange) {
       if (this.props.searchState !== this.state.searchState) {
         this.setState({ searchChange: true })
-        console.log(this)
       }
     }
   }
@@ -81,8 +85,6 @@ class SearchResults extends React.Component {
   }
 
   render() {
-    console.log(this)
-
     const Stats = ({ nbHits }) => <h3>{nbHits} SEARCH RESULTS</h3>
     const CustomStats = connectStats(Stats)
     return (
@@ -92,6 +94,7 @@ class SearchResults extends React.Component {
         searchState={this.props.searchState}
         createURL={this.props.createURL}
         onSearchStateChange={this.props.onSearchStateChange}
+        stalledSearchDelay="200"
       >
         <Container>
           <div
@@ -100,6 +103,8 @@ class SearchResults extends React.Component {
               width: "100%",
               display: "flex",
               padding: "60px 0px",
+              zIndex: "10",
+              position: "relative",
               h3: {
                 fontSize: "1.125rem",
                 fontWeight: "600",
@@ -206,18 +211,26 @@ class SearchResults extends React.Component {
                 flexDirection: "column",
                 justifyContent: "flex-start",
                 boxSizing: "border-box",
-                ".dropdown-heading": {
+                "> div > div > div": {
                   borderRadius: "0px !important",
                   border: "thin solid #887E7E !important",
+                  boxShadow: "none !important",
                 },
-                ".dropdown-heading-dropdown-arrow": {
+                ".css-1hb7zxy-IndicatorsContainer": {
                   backgroundColor: "newTan",
                   width: "40px !important",
-                  paddingLeft: "5px",
-                  span: {
-                    borderColor:
-                      "rgb(255, 255, 255) transparent transparent !important",
-                    borderWidth: "5px 5px 2.5px !important",
+                  path: {
+                    color: "#ffffff",
+                  },
+                  ".css-tlfecz-indicatorContainer": {
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  },
+                  ".css-1okebmr-indicatorSeparator": {
+                    display: "none",
                   },
                 },
               }}
@@ -241,45 +254,83 @@ class SearchResults extends React.Component {
                 paddingRight: "60px",
                 marginRight: "60px",
                 borderRight: "thin solid",
+
                 borderColor: "#887E7E",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center",
+                justifyContent: "flex-start",
                 boxSizing: "border-box",
+                "> div > div > div ": {
+                  borderRadius: "0px !important",
+                  border: "thin solid #887E7E !important",
+                  boxShadow: "none !important",
+                },
+                ".css-1hb7zxy-IndicatorsContainer": {
+                  backgroundColor: "newTan",
+                  width: "40px !important",
+                  path: {
+                    color: "#ffffff",
+                  },
+                  ".css-tlfecz-indicatorContainer": {
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  },
+                  ".css-1okebmr-indicatorSeparator": {
+                    display: "none",
+                  },
+                },
               }}
             >
-              <h3>SORT BY</h3>
-              <SortBy
-                defaultRefinement="additional_properties_price_desc"
-                items={[
-                  {
-                    value: "additional_properties_price_desc",
-                    label: "Price (Descending)",
+              <div
+                sx={{
+                  marginBottom: "40px",
+                }}
+              >
+                <h3>SORT BY</h3>
+                <CustomSort
+                  defaultRefinement="additional_properties_price_desc"
+                  items={[
+                    {
+                      value: "additional_properties_price_desc",
+                      label: "Price (Descending)",
+                    },
+                    {
+                      value: "additional_properties_price_asc",
+                      label: "Price (Ascending)",
+                    },
+                    {
+                      value: "additional_properties_acreage_desc",
+                      label: "Acreage (Descending)",
+                    },
+                    {
+                      value: "additional_properties_acreage_asc",
+                      label: "Acreage (Ascending)",
+                    },
+                    {
+                      value: "additional_properties_date_desc",
+                      label: "Newest to Oldest",
+                    },
+                    {
+                      value: "additional_properties_date_asc",
+                      label: "Oldest to Newest",
+                    },
+                  ]}
+                />
+              </div>
+              <div
+                sx={{
+                  input: {
+                    width: "100%",
+                    padding: "10px 5px",
                   },
-                  {
-                    value: "additional_properties_price_asc",
-                    label: "Price (Ascending)",
-                  },
-                  {
-                    value: "additional_properties_acreage_desc",
-                    label: "Acreage (Descending)",
-                  },
-                  {
-                    value: "additional_properties_acreage_asc",
-                    label: "Acreage (Ascending)",
-                  },
-                  {
-                    value: "additional_properties_date_desc",
-                    label: "Newest to Oldest",
-                  },
-                  {
-                    value: "additional_properties_date_asc",
-                    label: "Oldest to Newest",
-                  },
-                ]}
-              />
-              <h3>SEARCH FOR</h3>
-              <SearchBox />
+                }}
+              >
+                <h3>SEARCH FOR</h3>
+                <TheSearchBox />
+              </div>
             </div>
             <div
               sx={{
@@ -288,13 +339,31 @@ class SearchResults extends React.Component {
             >
               <div
                 sx={{
-                  fontSize: "16px",
+                  fontSize: "1rem",
+                  color: "grayHvy",
                 }}
               >
                 View filter results below, or press “Clear All” to clear your
                 selections and see all featured ranch properties.
               </div>
-              <ClearRefinements />
+              <div
+                sx={{
+                  marginTop: "40px",
+                  ".ais-ClearRefinements": {
+                    display: "flex",
+                    justifyContent: "center",
+                    button: {
+                      backgroundColor: "newTan",
+                      border: "thin solid #887E7E",
+                      width: "100%",
+                      color: "#ffffff",
+                      padding: "20px",
+                    },
+                  },
+                }}
+              >
+                <ClearRefinements />
+              </div>
             </div>
             {/*<SearchBox
             searchAsYouType={false}
@@ -398,6 +467,35 @@ function HitComponent({ hit }) {
     </PropertyTeaser>
   )
 }
+class Switch extends React.Component {
+  constructor(props) {
+    super(props)
+    // this.state = { value: '' };
+    this.state = {
+      selected: [],
+    }
+    this.changed = this.changed.bind(this)
+  }
+
+  changed(data) {
+    console.log(data)
+    this.setState({ selected: data.value }, () => {
+      console.log(this.state.selected)
+      this.props.refine(this.state.selected)
+    })
+  }
+  render() {
+    console.log(this)
+    const options = []
+    this.props.items.map(item => {
+      options.push({
+        value: item.value,
+        label: item.label,
+      })
+    })
+    return <Select options={options} onChange={this.changed} />
+  }
+}
 
 class Consumer extends React.Component {
   constructor(props) {
@@ -410,31 +508,30 @@ class Consumer extends React.Component {
   }
 
   changed(data) {
-    this.setState({ selected: data }, () => {
-      this.props.refine(this.state.selected)
-    })
+    if (data[0]) {
+      this.setState({ selected: data[0].value ? data[0].value : "" }, () => {
+        this.props.refine(this.state.selected)
+      })
+    } else {
+      this.setState({ selected: [] }, () => {
+        this.props.refine(this.state.selected)
+      })
+    }
   }
   render() {
-    const { selected } = this.state
     const options = []
     this.props.items.map(item => {
       options.push({
-        label: item.label + " (" + item.count + ")",
         value: item.label,
+        label: item.label + " (" + item.count + ")",
       })
     })
-
     return (
-      <MultiSelect
+      <Select
         options={options}
-        selected={selected}
-        onSelectedChanged={this.changed}
-        overrideStrings={{
-          selectSomeItems: "Select County",
-          allItemsAreSelected: "All Counties are Selected",
-          selectAll: "Select All",
-          search: "Search",
-        }}
+        isSearchable={true}
+        isMulti
+        onChange={this.changed}
       />
     )
   }
@@ -460,28 +557,67 @@ class ConsumerRadio extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div className="radio">
-          <label>
-            <input
-              type="radio"
-              value="sold"
-              checked={this.state.selectedOption === "sold"}
-              onChange={this.onValueChange}
-            />
-            Sold
-          </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input
-              type="radio"
-              value="for-sale"
-              checked={this.state.selectedOption === "for-sale"}
-              onChange={this.onValueChange}
-            />
+      <div
+        sx={{
+          display: "flex",
+          border: "thin solid #887E7E",
+
+          div: {
+            width: "50%",
+            padding: "8px",
+            position: "relative",
+            label: {
+              color: "#ffffff",
+            },
+            input: {
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              top: "0",
+              left: "0",
+              appearance: "none",
+              padding: "0px",
+              margin: "0px",
+              cursor: "pointer",
+              ":checked": {
+                backgroundColor: "newTan",
+              },
+            },
+            span: {
+              position: "relative",
+              color: "#ffffff",
+              display: "block",
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+              textAlign: "center",
+              fontSize: "16px",
+              "&.for-sale.sold": {
+                color: "grayHvy",
+              },
+            },
+          },
+        }}
+      >
+        <div>
+          <input
+            type="radio"
+            value="for-sale"
+            checked={this.state.selectedOption === "for-sale"}
+            onChange={this.onValueChange}
+          />
+          <span className={"for-sale " + this.state.selectedOption}>
             For Sale
-          </label>
+          </span>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="sold"
+            checked={this.state.selectedOption === "sold"}
+            onChange={this.onValueChange}
+          />
+          <span className={"sold " + this.state.selectedOption}>Sold</span>
         </div>
       </div>
       // <div>
@@ -542,6 +678,7 @@ class RefinementListDis extends Component {
 }
 const CustomRefinementList = connectRefinementList(Consumer)
 const CustomRefinementListRadio = connectRefinementList(ConsumerRadio)
+const CustomSort = connectSortBy(Switch)
 
 class Range extends Component {
   static propTypes = {
