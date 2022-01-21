@@ -33,15 +33,18 @@ class Header extends React.Component {
     }))
   }
   componentWillMount() {
-    function getCookieItem(key) {
-      var updateOpen = ""
-      document.cookie.split(`; `).reduce((total, currentCookie) => {
-        const item = currentCookie.split(`=`)
-        const storedKey = item[0]
-        const storedValue = item[1]
-        updateOpen = key === storedKey ? decodeURIComponent(storedValue) : total
-      }, ``)
-      return updateOpen
+    if (typeof document !== undefined) {
+      function getCookieItem(key) {
+        var updateOpen = ""
+        document.cookie.split(`; `).reduce((total, currentCookie) => {
+          const item = currentCookie.split(`=`)
+          const storedKey = item[0]
+          const storedValue = item[1]
+          updateOpen =
+            key === storedKey ? decodeURIComponent(storedValue) : total
+        }, ``)
+        return updateOpen
+      }
     }
     if (typeof document !== undefined) {
       const updateOpenCookie = getCookieItem("updateOpen")
