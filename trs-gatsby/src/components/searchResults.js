@@ -9,7 +9,7 @@ import withURLSync from "../templates/URLSync"
 import PropTypes from "prop-types"
 import Rheostat from "rheostat"
 import algoliasearch from "algoliasearch/lite"
-import Select from "react-select"
+import Select, { NonceProvider } from "react-select"
 import MultiSelect from "@khanacademy/react-multi-select"
 import qs from "qs"
 import Container from "../components/container"
@@ -44,6 +44,8 @@ class SearchResults extends React.Component {
     // this.state = { value: '' };
     this.state = {
       filtersOpen: false,
+      searchState: this.props.searchState,
+      searchChange: false,
     }
     this.toggleFilters = this.toggleFilters.bind(this)
   }
@@ -51,6 +53,14 @@ class SearchResults extends React.Component {
     this.setState(prevState => ({
       filtersOpen: !prevState.filtersOpen,
     }))
+  }
+  componentWillUpdate() {
+    if (!this.state.searchChange) {
+      if (this.props.searchState !== this.state.searchState) {
+        this.setState({ searchChange: true })
+        console.log(this)
+      }
+    }
   }
   componentDidUpdate() {
     // if (typeof window !== "undefined" && window) {
@@ -62,6 +72,7 @@ class SearchResults extends React.Component {
     //   // this.props.searchState
     //   // this.setState({ fav: true })
     // }
+
     if (typeof window !== "undefined" && window) {
       var searchState =
         window.location.pathname + "?" + qs.stringify(this.props.searchState)
@@ -70,7 +81,9 @@ class SearchResults extends React.Component {
   }
 
   render() {
-    const Stats = ({ nbHits }) => <p>{nbHits} results</p>
+    console.log(this)
+
+    const Stats = ({ nbHits }) => <h3>{nbHits} SEARCH RESULTS</h3>
     const CustomStats = connectStats(Stats)
     return (
       <InstantSearch
@@ -87,38 +100,152 @@ class SearchResults extends React.Component {
               width: "100%",
               display: "flex",
               padding: "60px 0px",
-              alignItems: "flex-start",
+              h3: {
+                fontSize: "1.125rem",
+                fontWeight: "600",
+                color: "grayHvy",
+                textAlign: "center",
+                margin: "0px 0px 15px 0px",
+              },
             }}
           >
             <div
               sx={{
                 width: "calc(100% / 4)",
+                paddingRight: "60px",
+                marginRight: "60px",
+                borderRight: "thin solid",
+                borderColor: "#887E7E",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                boxSizing: "border-box",
               }}
             >
-              <h3>PRICE</h3>
-              <ConnectedRange attribute="price" />
-              <h3>ACREAGE</h3>
-              <ConnectedRange attribute="acreage" />
-            </div>
-            <div
-              sx={{
-                width: "calc(100% / 4)",
-              }}
-            >
-              <h3>COUNTY</h3>
-              <CustomRefinementList attribute="county" />
-
-              <h3>STATUS</h3>
-              <RefinementList
+              <div
                 sx={{
-                  textTransform: "capitalize",
+                  marginBottom: "40px",
+
+                  button: {
+                    borderRadius: "100%",
+                    backgroundColor: "newTan",
+                    width: "16px",
+                    height: "16px",
+                    "::before": {
+                      display: "none !important",
+                    },
+                    "::after": {
+                      display: "none !important",
+                    },
+                  },
+                  ".DefaultProgressBar_progressBar": {
+                    height: "1px",
+                    backgroundColor: "newTan",
+                    top: "1px",
+                    display: "none",
+                    border: "0px",
+                  },
+                  ".DefaultBackground": {
+                    height: "1px",
+                    backgroundColor: "newTan",
+                    top: "1px",
+                    border: "0px",
+                  },
+                  ".rheostat-values": {
+                    display: "none",
+                  },
                 }}
-                attribute="status"
-              />
+              >
+                <h3>PRICE</h3>
+                <ConnectedRange attribute="price" />
+              </div>
+              <div
+                sx={{
+                  button: {
+                    borderRadius: "100%",
+                    backgroundColor: "newTan",
+                    width: "16px",
+                    height: "16px",
+                    "::before": {
+                      display: "none !important",
+                    },
+                    "::after": {
+                      display: "none !important",
+                    },
+                  },
+                  ".DefaultProgressBar_progressBar": {
+                    height: "1px",
+                    backgroundColor: "newTan",
+                    top: "1px",
+                    display: "none",
+                    border: "0px",
+                  },
+                  ".DefaultBackground": {
+                    height: "1px",
+                    backgroundColor: "newTan",
+                    top: "1px",
+                    border: "0px",
+                  },
+                  ".rheostat-values": {
+                    display: "none",
+                  },
+                }}
+              >
+                <h3>ACREAGE</h3>
+                <ConnectedRange attribute="acreage" />
+              </div>
             </div>
             <div
               sx={{
                 width: "calc(100% / 4)",
+                paddingRight: "60px",
+                marginRight: "60px",
+                borderRight: "thin solid",
+                borderColor: "#887E7E",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                boxSizing: "border-box",
+                ".dropdown-heading": {
+                  borderRadius: "0px !important",
+                  border: "thin solid #887E7E !important",
+                },
+                ".dropdown-heading-dropdown-arrow": {
+                  backgroundColor: "newTan",
+                  width: "40px !important",
+                  paddingLeft: "5px",
+                  span: {
+                    borderColor:
+                      "rgb(255, 255, 255) transparent transparent !important",
+                    borderWidth: "5px 5px 2.5px !important",
+                  },
+                },
+              }}
+            >
+              <div
+                sx={{
+                  marginBottom: "40px",
+                }}
+              >
+                <h3>COUNTY</h3>
+                <CustomRefinementList attribute="county" />
+              </div>
+              <div sx={{}}>
+                <h3>STATUS</h3>
+                <CustomRefinementListRadio attribute="status" />
+              </div>
+            </div>
+            <div
+              sx={{
+                width: "calc(100% / 4)",
+                paddingRight: "60px",
+                marginRight: "60px",
+                borderRight: "thin solid",
+                borderColor: "#887E7E",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                boxSizing: "border-box",
               }}
             >
               <h3>SORT BY</h3>
@@ -127,19 +254,19 @@ class SearchResults extends React.Component {
                 items={[
                   {
                     value: "additional_properties_price_desc",
-                    label: "Price: High to Low",
+                    label: "Price (Descending)",
                   },
                   {
                     value: "additional_properties_price_asc",
-                    label: "Price: Low to High",
+                    label: "Price (Ascending)",
                   },
                   {
                     value: "additional_properties_acreage_desc",
-                    label: "Acreage: High to Low",
+                    label: "Acreage (Descending)",
                   },
                   {
                     value: "additional_properties_acreage_asc",
-                    label: "Acreage: Low to High",
+                    label: "Acreage (Ascending)",
                   },
                   {
                     value: "additional_properties_date_desc",
@@ -151,31 +278,23 @@ class SearchResults extends React.Component {
                   },
                 ]}
               />
-              <h3>CLEAR ALL</h3>
-              <ClearRefinements />
+              <h3>SEARCH FOR</h3>
+              <SearchBox />
             </div>
             <div
               sx={{
                 width: "calc(100% / 4)",
               }}
             >
-              <h3>APPLY YOUR SELECTIONS</h3>
               <div
                 sx={{
                   fontSize: "16px",
                 }}
               >
-                Click Below To Apply Your Search Criteria. You Can Clear Your
-                Selections At Any Time By Clicking The "Clear All" Button.
+                View filter results below, or press “Clear All” to clear your
+                selections and see all featured ranch properties.
               </div>
-              <div
-                sx={{
-                  color: "white",
-                  backgroundColor: "primary",
-                }}
-              >
-                SEE RESULTS BELOW
-              </div>
+              <ClearRefinements />
             </div>
             {/*<SearchBox
             searchAsYouType={false}
@@ -190,7 +309,7 @@ class SearchResults extends React.Component {
         <div
           sx={{
             backgroundColor: "darkGray",
-            padding: "60px 0px",
+            padding: "45px 0px",
             color: "white",
             display: "flex",
             alignItems: "center",
@@ -202,17 +321,29 @@ class SearchResults extends React.Component {
           }}
         >
           <Container>
-            <h3>SEARCH RESULTS</h3>
             <div
               sx={{
-                backgroundColor: "primary",
+                h3: {
+                  margin: "0px 0px 20px 0px",
+                },
+              }}
+            >
+              {this.state.searchChange ? (
+                <CustomStats />
+              ) : (
+                <h3>FEATURED PROPERTIES</h3>
+              )}
+            </div>
+            <div
+              sx={{
+                backgroundColor: "newTan",
                 color: "white",
                 padding: "10px 20px",
                 cursor: "pointer",
               }}
               onClick={() => scrollTo("#filters")}
             >
-              CHANGE SEARCH CRITERIA
+              CHANGE FILTER CRITERIA
             </div>
           </Container>
         </div>
@@ -308,6 +439,70 @@ class Consumer extends React.Component {
     )
   }
 }
+class ConsumerRadio extends React.Component {
+  constructor(props) {
+    super(props)
+    // this.state = { value: '' };
+    this.state = {
+      selectedOption: "for-sale",
+    }
+    this.onValueChange = this.onValueChange.bind(this)
+  }
+
+  componentWillMount() {
+    this.props.refine(this.state.selectedOption)
+  }
+
+  onValueChange(event) {
+    this.setState({ selectedOption: event.target.value }, () => {
+      this.props.refine(this.state.selectedOption)
+    })
+  }
+  render() {
+    return (
+      <div>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="sold"
+              checked={this.state.selectedOption === "sold"}
+              onChange={this.onValueChange}
+            />
+            Sold
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="for-sale"
+              checked={this.state.selectedOption === "for-sale"}
+              onChange={this.onValueChange}
+            />
+            For Sale
+          </label>
+        </div>
+      </div>
+      // <div>
+      //   <input type="radio" value="Male" name="gender" onSelectedChanged={this.changed} /> Male
+      //   <input type="radio" value="Female" name="gender" onSelectedChanged={this.changed} /> Female
+      //   <input type="radio" value="Other" name="gender" onSelectedChanged={this.changed} /> Other
+      //   <MultiSelect
+      //     options={options}
+      //     selected={selected}
+      //     onSelectedChanged={this.changed}
+      //     overrideStrings={{
+      //       selectSomeItems: "Select County",
+      //       allItemsAreSelected: "All Counties are Selected",
+      //       selectAll: "Select All",
+      //       search: "Search",
+      //     }}
+      //   />
+      // </div>
+    )
+  }
+}
 class RefinementListDis extends Component {
   constructor(props) {
     super(props)
@@ -346,6 +541,7 @@ class RefinementListDis extends Component {
   }
 }
 const CustomRefinementList = connectRefinementList(Consumer)
+const CustomRefinementListRadio = connectRefinementList(ConsumerRadio)
 
 class Range extends Component {
   static propTypes = {

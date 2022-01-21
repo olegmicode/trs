@@ -26,6 +26,7 @@ export default {
     grayBlk: "#484242",
     grayScant: "#F7F7F7",
     grayLight: "#E9E7E7",
+    grayHvy: "#6D6465",
     newTan: "#C1B098",
   },
   breakpoints: ["400px", "800px", "1000px"],
