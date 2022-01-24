@@ -6,7 +6,13 @@ import Img from "gatsby-image"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Favorite from "../property/favorite"
 import { render } from "react-dom"
+import { StaticQuery, graphql } from "gatsby"
+
 // add property type value? If sanity property or drupal?
+
+function truncate(str) {
+  return str.length > 10 ? str.substring(0, 160) + "..." : str
+}
 
 const PropertyTeaser = ({ property }) => {
   var slugPath = ""
@@ -17,54 +23,145 @@ const PropertyTeaser = ({ property }) => {
       slugPath = "/property/" + property.slug
     }
   }
+
+  console.log(property)
   return (
-    <div>
-      <Link
-        state={{
-          noScroll: true,
-        }}
-        asModal
-        to={slugPath}
-      >
+    <StaticQuery
+      query={graphql`
+        query TeaserQuery {
+          mappin: file(name: { eq: "map-pin" }) {
+            name
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      `}
+      render={data => (
         <div
           sx={{
-            width: "100%",
+            height: "100%",
           }}
         >
-          {property.sanityimage && (
-            <GatsbyImage
+          <Link
+            state={{
+              noScroll: true,
+            }}
+            asModal
+            to={slugPath}
+            sx={{
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <h2
               sx={{
-                maxWidth: "100%",
-                height: "auto",
+                color: "grayHvy",
+                fontSize: "1.25rem !important",
+                lineHeight: "1.4rem !important",
+                margin: "24px 22px 10px 22px",
+                fontFamily: "Open Sans,sans-serif !important",
+                fontWeight: "normal !important",
               }}
-              image={property.sanityimage.asset.gatsbyImageData}
-              width={600}
-              aspectRatio={4 / 2}
-            />
-          )}
-          {property.image && (
-            <GatsbyImage
+            >
+              {property.address}
+            </h2>
+            <div
               sx={{
-                maxWidth: "100%",
-                height: "auto",
+                display: "flex",
+                padding: "0px 22px 30px 22px",
+                color: "grayHvy",
+                justifyContent: "space-between",
               }}
-              image={property.image.childImageSharp.gatsbyImageData}
-              width={600}
-              aspectRatio={4 / 3}
-            />
-          )}
-        </div>
-        <div>
-          <h2>{property.address}</h2>
-          {property.strapline && <div>{property.strapline}</div>}
-          {property.zip && (
-            <div>
-              <span>{property.city}</span>
-              <span> {property.state}, </span>
-              <span>{property.zip}</span>
+            >
+              <div
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <GatsbyImage
+                  sx={{
+                    width: "11px",
+                    marginRight: "10px",
+                  }}
+                  image={data.mappin.childImageSharp.gatsbyImageData}
+                />
+                {property.sanitycounty && property.sanitycounty.countyName}
+                {property.county && property.county}
+              </div>
+              {property.acreage && (
+                <div>
+                  {property.acreage
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ""}
+                  <span> acres</span>
+                </div>
+              )}
             </div>
-          )}
-          {/**<Favorite
+            <div
+              sx={{
+                width: "100%",
+                position: "relative",
+              }}
+            >
+              {property.status === "for-sale" ? (
+                <div
+                  sx={{
+                    backgroundColor: "newTan",
+                    color: "#ffffff",
+                    fontSize: "1rem",
+                    position: "absolute",
+                    right: "20px",
+                    top: "-15px",
+                    padding: "3px 12px",
+                    zIndex: "1",
+                  }}
+                >
+                  FOR SALE
+                </div>
+              ) : (
+                <div
+                  sx={{
+                    backgroundColor: "newTan",
+                    color: "#ffffff",
+                    fontSize: "1rem",
+                    position: "absolute",
+                    right: "20px",
+                    top: "-15px",
+                    padding: "3px 12px",
+                    zIndex: "1",
+                  }}
+                >
+                  SOLD
+                </div>
+              )}
+              {property.sanityimage && (
+                <GatsbyImage
+                  sx={{
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
+                  image={property.sanityimage.asset.gatsbyImageData}
+                  width={600}
+                  aspectRatio={4 / 2}
+                />
+              )}
+              {property.image && (
+                <GatsbyImage
+                  sx={{
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
+                  image={property.image.childImageSharp.gatsbyImageData}
+                  width={600}
+                  aspectRatio={4 / 3}
+                />
+              )}
+            </div>
+            {/**<Favorite
             sx={{
               display: "none",
             }}
@@ -72,57 +169,53 @@ const PropertyTeaser = ({ property }) => {
           >
             Add to Favorites
           </Favorite>*/}
-          <div>
-            <strong>County:</strong>
-            {property.sanitycounty && property.sanitycounty.countyName}
-            {property.county && property.county}
-          </div>
-          <div>
-            {property.price && (
-              <span>
-                <strong>Price:</strong>
-                <span>
-                  {property.price.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })}
-                </span>
-              </span>
-            )}
-            {property.pricePerAcre && (
-              <span>
-                <span> or </span>
-                <span>
-                  {property.pricePerAcre.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })}
-                </span>
-                <span> per acre </span>
-              </span>
-            )}
-          </div>
-          {property.acreage && (
-            <div>
-              <strong>Acres:</strong>
-              {property.acreage
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "+/-"}
+            <div
+              sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                flexDirection: "column",
+              }}
+            >
+              {property.description && (
+                <div
+                  sx={{
+                    padding: "30px 22px 30px 22px",
+                    color: "grayHvy",
+                    fontSize: "1rem",
+                  }}
+                >
+                  {truncate(property.description)}
+                </div>
+              )}
+
+              <div
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  backgroundColor: "grayLight",
+                  color: "grayMed",
+                  padding: "12px 20px",
+                }}
+              >
+                {property.price && (
+                  <div>
+                    {property.price.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0,
+                    })}
+                  </div>
+                )}
+                <div>VIEW DETAILS</div>
+              </div>
             </div>
-          )}
-          {property.description && (
-            <div>
-              <strong>Description:</strong>
-              {property.description}
-            </div>
-          )}
+          </Link>
         </div>
-      </Link>
-    </div>
+      )}
+    />
   )
 }
+
 export default PropertyTeaser

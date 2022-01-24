@@ -43,6 +43,7 @@ const searchClient = algoliasearch(
   process.env.ALGOLIA_APP_ID,
   process.env.ALGOLIA_ADMIN_API_KEY
 )
+
 class SearchResults extends React.Component {
   constructor(props) {
     super(props)
@@ -87,6 +88,7 @@ class SearchResults extends React.Component {
   render() {
     const Stats = ({ nbHits }) => <h3>{nbHits} SEARCH RESULTS</h3>
     const CustomStats = connectStats(Stats)
+
     return (
       <InstantSearch
         searchClient={searchClient}
@@ -203,8 +205,8 @@ class SearchResults extends React.Component {
             <div
               sx={{
                 width: "calc(100% / 4)",
-                paddingRight: "60px",
-                marginRight: "60px",
+                paddingRight: "40px",
+                marginRight: "40px",
                 borderRight: "thin solid",
                 borderColor: "#887E7E",
                 display: "flex",
@@ -358,11 +360,16 @@ class SearchResults extends React.Component {
                       width: "100%",
                       color: "#ffffff",
                       padding: "20px",
+                      cursor: "pointer",
                     },
                   },
                 }}
               >
-                <ClearRefinements />
+                <ClearRefinements
+                  translations={{
+                    reset: "Clear all",
+                  }}
+                />
               </div>
             </div>
             {/*<SearchBox
@@ -424,7 +431,7 @@ class SearchResults extends React.Component {
           }}
         >
           <Container>
-            <Configure hitsPerPage={4} />
+            <Configure hitsPerPage={8} />
 
             <InfiniteHits
               hitComponent={HitComponent}

@@ -7,13 +7,14 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Burger from "../burger"
 import Menu from "../menu"
 import Container from "../container"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 const setItem = (key, value, numberOfDays) => {
   const now = new Date()
 
   // set the time to be now + numberOfDays
   now.setTime(now.getTime() + numberOfDays * 60 * 60 * 24 * 1000)
-  if (typeof document !== undefined) {
+  if (typeof window !== "undefined") {
     document.cookie = `${key}=${value}; expires=${now.toUTCString()}; path=/`
   }
 }
@@ -33,8 +34,8 @@ class Header extends React.Component {
     }))
   }
   componentWillMount() {
-    if (typeof document !== undefined) {
-      function getCookieItem(key) {
+    function getCookieItem(key) {
+      if (typeof window !== "undefined") {
         var updateOpen = ""
         document.cookie.split(`; `).reduce((total, currentCookie) => {
           const item = currentCookie.split(`=`)
@@ -46,7 +47,7 @@ class Header extends React.Component {
         return updateOpen
       }
     }
-    if (typeof document !== undefined) {
+    if (typeof window !== "undefined") {
       const updateOpenCookie = getCookieItem("updateOpen")
       if (updateOpenCookie !== undefined) {
         if (updateOpenCookie === "false") {
@@ -75,6 +76,7 @@ class Header extends React.Component {
     this.setState(prevState => ({
       updateOpen: !prevState.updateOpen,
     }))
+    scrollTo("body")
   }
   useCookie = (key, defaultValue) => {
     // const getCookie = () => getItem(key) || defaultValue
@@ -232,10 +234,13 @@ class Header extends React.Component {
                 <Link
                   to={"/"}
                   sx={{
-                    width: ["200px", "500px", "800px"],
+                    width: ["40%", "40%", "40%"],
                   }}
                 >
                   <GatsbyImage
+                    sx={{
+                      maxWidth: "100%",
+                    }}
                     image={data.settings.logo.asset.gatsbyImageData}
                   />
                 </Link>
@@ -243,9 +248,9 @@ class Header extends React.Component {
                   sx={{
                     display: "flex",
                     width: [
-                      "calc(100% - 200px)",
-                      "calc(100% - 500px)",
-                      "calc(100% - 800px)",
+                      "calc(60% - 40px)",
+                      "calc(60% - 40px)",
+                      "calc(60% - 40px)",
                     ],
                     justifyContent: "flex-end",
                     paddingRight: "40px",

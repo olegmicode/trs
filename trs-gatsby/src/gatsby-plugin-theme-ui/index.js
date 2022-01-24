@@ -11,10 +11,20 @@ export default {
     bold: 700,
   },
   lineHeights: {
-    body: "22px",
-    heading: 1.125,
+    body: "1.375rem",
+    heading: "1.125rem",
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [
+    "0.75rem",
+    "0.875rem",
+    "1rem",
+    "1.25rem",
+    "1.5rem",
+    "2rem",
+    "3rem",
+    "4rem",
+    "4.5rem",
+  ],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   colors: {
     text: "#000",
