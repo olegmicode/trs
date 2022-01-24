@@ -47,6 +47,7 @@ class Header extends React.Component {
         return updateOpen
       }
     }
+
     if (typeof window !== "undefined") {
       const updateOpenCookie = getCookieItem("updateOpen")
       if (updateOpenCookie !== undefined) {
