@@ -40,6 +40,11 @@ const postQuery = `{
       updated: _updatedAt
       changed: _updatedAt
       status: status
+      sanityimage: propertyImages {
+        asset {
+          gatsbyImageData
+        }
+      }
       slug: slug{
         current
       }

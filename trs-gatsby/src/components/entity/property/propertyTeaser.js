@@ -24,7 +24,6 @@ const PropertyTeaser = ({ property }) => {
     }
   }
 
-  console.log(property)
   return (
     <StaticQuery
       query={graphql`
@@ -56,50 +55,59 @@ const PropertyTeaser = ({ property }) => {
               justifyContent: "space-between",
             }}
           >
-            <h2
-              sx={{
-                color: "grayHvy",
-                fontSize: "1.25rem !important",
-                lineHeight: "1.4rem !important",
-                margin: "24px 22px 10px 22px",
-                fontFamily: "Open Sans,sans-serif !important",
-                fontWeight: "normal !important",
-              }}
-            >
-              {property.address}
-            </h2>
             <div
               sx={{
+                flexGrow: "1",
                 display: "flex",
-                padding: "0px 22px 30px 22px",
-                color: "grayHvy",
-                justifyContent: "space-between",
+                flexDirection: "column",
+                flex: "1 1 280px",
               }}
             >
+              <h2
+                sx={{
+                  color: "grayHvy",
+                  fontSize: "1.25rem !important",
+                  lineHeight: "1.4rem !important",
+                  margin: "24px 22px 10px 22px",
+                  fontFamily: "Open Sans,sans-serif !important",
+                  fontWeight: "normal !important",
+                }}
+              >
+                {property.address}
+              </h2>
               <div
                 sx={{
                   display: "flex",
-                  alignItems: "center",
+                  padding: "0px 22px 30px 22px",
+                  color: "grayHvy",
+                  justifyContent: "space-between",
                 }}
               >
-                <GatsbyImage
+                <div
                   sx={{
-                    width: "11px",
-                    marginRight: "10px",
+                    display: "flex",
+                    alignItems: "center",
                   }}
-                  image={data.mappin.childImageSharp.gatsbyImageData}
-                />
-                {property.sanitycounty && property.sanitycounty.countyName}
-                {property.county && property.county}
-              </div>
-              {property.acreage && (
-                <div>
-                  {property.acreage
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ""}
-                  <span> acres</span>
+                >
+                  <GatsbyImage
+                    sx={{
+                      width: "11px",
+                      marginRight: "10px",
+                    }}
+                    image={data.mappin.childImageSharp.gatsbyImageData}
+                  />
+                  {property.sanitycounty && property.sanitycounty.countyName}
+                  {property.county && property.county}
                 </div>
-              )}
+                {property.acreage && (
+                  <div>
+                    {property.acreage
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ""}
+                    <span> acres</span>
+                  </div>
+                )}
+              </div>
             </div>
             <div
               sx={{
@@ -144,7 +152,7 @@ const PropertyTeaser = ({ property }) => {
                     maxWidth: "100%",
                     height: "auto",
                   }}
-                  image={property.sanityimage.asset.gatsbyImageData}
+                  image={property.sanityimage[0].asset.gatsbyImageData}
                   width={600}
                   aspectRatio={4 / 2}
                 />
@@ -175,6 +183,7 @@ const PropertyTeaser = ({ property }) => {
                 display: "flex",
                 justifyContent: "space-between",
                 flexDirection: "column",
+                flexGrow: "1",
               }}
             >
               {property.description && (

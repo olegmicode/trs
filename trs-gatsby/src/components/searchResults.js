@@ -4,7 +4,7 @@ import "rheostat/initialize"
 import "rheostat/css/rheostat.css"
 import Layout from "./layout"
 import PropertyTeaser from "./entity/property/propertyTeaser"
-import React, { Component, Fragment } from "react"
+import React, { Component, useRef, createRef } from "react"
 import withURLSync from "../templates/URLSync"
 import PropTypes from "prop-types"
 import Rheostat from "rheostat"
@@ -19,7 +19,6 @@ import debounce from "lodash/debounce"
 import TheSearchBox from "./searchBox"
 import {
   InstantSearch,
-  ClearRefinements,
   SearchBox,
   Pagination,
   Highlight,
@@ -30,6 +29,7 @@ import {
   connectRefinementList,
   connectSortBy,
   connectRange,
+  connectCurrentRefinements,
   connectSearchBox,
   MenuSelect,
   RefinementList,
@@ -44,6 +44,8 @@ const searchClient = algoliasearch(
   process.env.ALGOLIA_ADMIN_API_KEY
 )
 
+const selectInputRef = createRef()
+
 class SearchResults extends React.Component {
   constructor(props) {
     super(props)
@@ -54,6 +56,7 @@ class SearchResults extends React.Component {
       searchChange: false,
     }
     this.toggleFilters = this.toggleFilters.bind(this)
+    // this.customClear = this.customClear.bind(this)
   }
   toggleFilters() {
     this.setState(prevState => ({
@@ -67,6 +70,7 @@ class SearchResults extends React.Component {
       }
     }
   }
+
   componentDidUpdate() {
     // if (typeof window !== "undefined" && window) {
     //   var searchState = JSON.parse(localStorage.getItem("searchState"))
@@ -83,6 +87,10 @@ class SearchResults extends React.Component {
         window.location.pathname + "?" + qs.stringify(this.props.searchState)
       localStorage.setItem("searchState", searchState)
     }
+  }
+
+  customClear() {
+    selectInputRef.current.select.clearValue()
   }
 
   render() {
@@ -247,7 +255,10 @@ class SearchResults extends React.Component {
               </div>
               <div sx={{}}>
                 <h3>STATUS</h3>
-                <CustomRefinementListRadio attribute="status" />
+                <CustomRefinementListRadio
+                  attribute="status"
+                  defaultRefinement="for-sale"
+                />
               </div>
             </div>
             <div
@@ -365,10 +376,10 @@ class SearchResults extends React.Component {
                   },
                 }}
               >
-                <ClearRefinements
-                  translations={{
-                    reset: "Clear all",
-                  }}
+                <CustomClearRefinements
+                  transformItems={items =>
+                    items.filter(item => item.attribute !== "status")
+                  }
                 />
               </div>
             </div>
@@ -485,14 +496,11 @@ class Switch extends React.Component {
   }
 
   changed(data) {
-    console.log(data)
     this.setState({ selected: data.value }, () => {
-      console.log(this.state.selected)
       this.props.refine(this.state.selected)
     })
   }
   render() {
-    console.log(this)
     const options = []
     this.props.items.map(item => {
       options.push({
@@ -535,6 +543,7 @@ class Consumer extends React.Component {
     })
     return (
       <Select
+        ref={selectInputRef}
         options={options}
         isSearchable={true}
         isMulti
@@ -543,6 +552,11 @@ class Consumer extends React.Component {
     )
   }
 }
+const ClearRefinements = ({ items, refine }) => (
+  <button onClick={() => refine(items)} disabled={!items.length}>
+    Clear all
+  </button>
+)
 class ConsumerRadio extends React.Component {
   constructor(props) {
     super(props)
@@ -686,6 +700,7 @@ class RefinementListDis extends Component {
 const CustomRefinementList = connectRefinementList(Consumer)
 const CustomRefinementListRadio = connectRefinementList(ConsumerRadio)
 const CustomSort = connectSortBy(Switch)
+const CustomClearRefinements = connectCurrentRefinements(ClearRefinements)
 
 class Range extends Component {
   static propTypes = {
