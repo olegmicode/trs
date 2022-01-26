@@ -23,6 +23,7 @@ import {
   Pagination,
   Highlight,
   Configure,
+  ClearRefinements,
   connectHits,
   connectNumericMenu,
   connectStats,
@@ -376,11 +377,16 @@ class SearchResults extends React.Component {
                   },
                 }}
               >
-                <CustomClearRefinements
-                  transformItems={items =>
-                    items.filter(item => item.attribute !== "status")
-                  }
-                />
+                <div onClick={this.customClear.bind(this)}>
+                  <ClearRefinements
+                    transformItems={items =>
+                      items.filter(item => item.attribute !== "status")
+                    }
+                    translations={{
+                      reset: "Clear all",
+                    }}
+                  />
+                </div>
               </div>
             </div>
             {/*<SearchBox
@@ -552,11 +558,12 @@ class Consumer extends React.Component {
     )
   }
 }
-const ClearRefinements = ({ items, refine }) => (
-  <button onClick={() => refine(items)} disabled={!items.length}>
-    Clear all
-  </button>
-)
+// const ClearRefinements = ({ items, refine }) => (
+
+//   <button onClick={() => refine(items)} disabled={!items.length}>
+//     Clear all
+//   </button>
+// )
 class ConsumerRadio extends React.Component {
   constructor(props) {
     super(props)
@@ -700,7 +707,7 @@ class RefinementListDis extends Component {
 const CustomRefinementList = connectRefinementList(Consumer)
 const CustomRefinementListRadio = connectRefinementList(ConsumerRadio)
 const CustomSort = connectSortBy(Switch)
-const CustomClearRefinements = connectCurrentRefinements(ClearRefinements)
+// const CustomClearRefinements = connectCurrentRefinements(ClearRefinements)
 
 class Range extends Component {
   static propTypes = {
