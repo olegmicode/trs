@@ -15,15 +15,6 @@ const PropertyFeaturedLarge = ({ featuredProperty }) => {
             position: "relative",
           }}
         >
-          <GatsbyImage
-            sx={{
-              maxWidth: "100%",
-              height: "auto",
-            }}
-            image={featuredProperty.propertyImages[0].asset.gatsbyImageData}
-            width={600}
-            aspectRatio={4 / 3}
-          />
           {featuredProperty.featuredTextOverlay && (
             <div
               sx={{

@@ -1,6 +1,7 @@
 body,
 html {
   margin: 0px;
+  scroll-behavior: smooth;
 }
 img {
   max-width: 100%;

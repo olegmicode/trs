@@ -398,7 +398,6 @@ class SearchResults extends React.Component {
           */}
           </div>
         </Container>
-
         <div
           sx={{
             backgroundColor: "darkGray",

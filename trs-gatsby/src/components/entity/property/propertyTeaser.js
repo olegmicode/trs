@@ -14,6 +14,10 @@ function truncate(str) {
   return str.length > 10 ? str.substring(0, 160) + "..." : str
 }
 
+function propClick() {
+  console.log(this)
+}
+
 const PropertyTeaser = ({ property }) => {
   var slugPath = ""
   if (property.slug) {
@@ -48,6 +52,7 @@ const PropertyTeaser = ({ property }) => {
             }}
             asModal
             to={slugPath}
+            onClick={propClick}
             sx={{
               height: "100%",
               display: "flex",
