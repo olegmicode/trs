@@ -17,6 +17,7 @@ img {
 .ReactModal__Overlay {
   opacity: 0;
   transition: opacity 0ms ease-out;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .ReactModal__Overlay--after-open {
@@ -30,6 +31,15 @@ img {
 .ReactModal__Content {
   transform: translateY(50px);
   transition: transform 0ms ease-out;
+  max-width: 1000px;
+  padding: 0px 80px !important;
+  margin: 0 auto;
+  border: 0px !important;
+  border-radius: 0px !important;
+  background: transparent !important;
+  position: relative;
+  overflow: hidden !important;
+  height: calc(100% - 80px);
 }
 
 .ReactModal__Content--after-open {

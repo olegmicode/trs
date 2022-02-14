@@ -57,6 +57,12 @@ class ConditionalLayout extends React.Component {
               sx={{
                 zIndex: "1",
                 position: "relative",
+                background: "#f7f7f7",
+                height: "100%",
+                fontFamily: "Open Sans,sans-serif",
+                fontSize: "1rem",
+                fontWeight: "400",
+                lineHeight: "1.438rem",
               }}
             >
               <Link
@@ -64,9 +70,31 @@ class ConditionalLayout extends React.Component {
                 state={{
                   noScroll: true,
                 }}
-              >
-                Close
-              </Link>
+                sx={{
+                  position: "absolute",
+                  right: "-40px",
+                  top: "5px",
+                  zIndex: "9",
+                  height: "30px",
+                  width: "30px",
+                  ":after": {
+                    content: "' '",
+                    height: "30px",
+                    borderLeft: "2px solid #fff",
+                    position: "absolute",
+                    transform: "rotate(45deg)",
+                    left: "10px",
+                  },
+                  ":before": {
+                    content: "' '",
+                    height: "30px",
+                    borderLeft: "2px solid #fff",
+                    position: "absolute",
+                    transform: "rotate(-45deg)",
+                    left: "10px",
+                  },
+                }}
+              ></Link>
               {this.props.children}
             </div>
           ) : (

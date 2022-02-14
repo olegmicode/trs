@@ -26,6 +26,7 @@ export default {
             { type: "imageLeftTextRight" },
             { type: "imageRightTextLeft" },
             { type: "textOverImage" },
+            { type: "columns" },
           ],
         },
       ],

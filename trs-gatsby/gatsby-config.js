@@ -57,6 +57,15 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Open Sans\:300,400,500,600,700,800`, // you can also specify font weights and styles
+        ],
+        display: "swap",
+      },
+    },
     "gatsby-plugin-smoothscroll",
     {
       resolve: `gatsby-source-sanity`,

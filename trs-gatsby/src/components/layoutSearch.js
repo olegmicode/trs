@@ -63,13 +63,16 @@ const LayoutSearch = ({ children }) => {
           }}
         >
           <BlockContent
-            blocks={data.blockFragment._rawEntities}
+            blocks={data.blockFragment._rawEntities[0]}
             serializers={Serializers}
           />
         </div>
       </div>
       <SearchResults />
-
+      <BlockContent
+        blocks={data.blockFragment._rawEntities[1]}
+        serializers={Serializers}
+      />
       <Footer></Footer>
     </div>
   )

@@ -21,6 +21,10 @@ import team from "./team";
 import imageRightTextLeft from "./section/imageRightTextLeft";
 import imageLeftTextRight from "./section/imageLeftTextRight";
 import textOverImage from "./section/textOverImage";
+import columns from "./section/columns";
+import footer from "./footer";
+import blockText from "./section/blockText";
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -45,5 +49,8 @@ export default createSchema({
     imageLeftTextRight,
     imageRightTextLeft,
     textOverImage,
+    columns,
+    blockText,
+    footer,
   ]),
 });

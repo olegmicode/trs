@@ -400,7 +400,7 @@ class SearchResults extends React.Component {
         </Container>
         <div
           sx={{
-            backgroundColor: "darkGray",
+            backgroundColor: "grayHvy",
             padding: "45px 0px",
             color: "white",
             display: "flex",
@@ -441,7 +441,7 @@ class SearchResults extends React.Component {
         </div>
         <div
           sx={{
-            backgroundColor: "offWhite",
+            backgroundColor: "grayLight",
             paddingTop: 5,
             paddingBottom: 5,
           }}

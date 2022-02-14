@@ -8,53 +8,13 @@ import LayoutSearch from "../components/layoutSearch"
 
 const PageDefinition = ({ data }) => {
   const node = data.page
-  console.log(data)
+  console.log(node._rawEntities[1])
   return (
     <div>
       {node.slug.current == "home" && (
-        <LayoutSearch>
-          <div
-            sx={{
-              display: [
-                "block",
-                node.sidebar[0] ? "flex" : "block",
-                node.sidebar[0] ? "flex" : "block",
-              ],
-              justifyContent: "space-between",
-            }}
-          >
-            {node.sidebar[0] && (
-              <div
-                sx={{
-                  width: [
-                    "100%",
-                    node.sidebar[0] ? "175px" : "100%",
-                    node.sidebar[0] ? "175px" : "100%",
-                  ],
-                }}
-              >
-                <BlockContent
-                  blocks={node.sidebar[0]._rawBlockcontent}
-                  serializers={Serializers}
-                />
-              </div>
-            )}
-            <div
-              sx={{
-                width: [
-                  "100%",
-                  node.sidebar[0] ? "calc(100% - 220px)" : "100%",
-                  node.sidebar[0] ? "calc(100% - 220px)" : "100%",
-                ],
-              }}
-            >
-              <BlockContent
-                blocks={node._rawEntities}
-                serializers={Serializers}
-              />
-            </div>
-          </div>
-        </LayoutSearch>
+        <div>
+          <LayoutSearch></LayoutSearch>
+        </div>
       )}
       {node.slug.current !== "home" && (
         <Layout>

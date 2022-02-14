@@ -8,6 +8,7 @@ export const propertyFullFragment = graphql`
     county
     propertyDescription
     price
+    propertyName
     childrenFile {
       childImageSharp {
         gatsbyImageData
