@@ -51,21 +51,6 @@ function youtube_parser(url) {
   var match = url.match(regExp)
   return match && match[1].length == 11 ? match[1] : false
 }
-if (this.props.property) {
-  var node = this.props.property
-  var images = node.childrenFile
-  var county = node.county
-  var feedDescription = node.propertyDescription
-} else {
-  var node = this.props.ourproperty
-  var images = node.propertyImages
-  var county = node.ourcounty
-  var description = node._rawPropertyDescrition
-  var contacts = node.propertyContacts
-  if (node.youtubeUrl) {
-    var videoId = youtube_parser(node.youtubeUrl)
-  }
-}
 
 class Property extends React.Component {
   constructor(props) {
@@ -76,7 +61,6 @@ class Property extends React.Component {
       updateOpen: null,
       overview: true,
     }
-    this.toggleMenu = this.toggleMenu.bind(this)
   }
 
   // tabState(tab) {
@@ -90,8 +74,24 @@ class Property extends React.Component {
   // const node = data.property
   // const images = node.childrenFile
   render() {
+    console.log(this)
+    if (this.props.data.property) {
+      var node = this.props.data.property
+      var images = node.childrenFile
+      var county = node.county
+      var feedDescription = node.propertyDescription
+    } else {
+      var node = this.props.data.ourproperty
+      var images = node.propertyImages
+      var county = node.ourcounty
+      var description = node._rawPropertyDescrition
+      var contacts = node.propertyContacts
+      if (node.youtubeUrl) {
+        var videoId = youtube_parser(node.youtubeUrl)
+      }
+    }
     return (
-      <ConditionalLayout data={this.props}>
+      <ConditionalLayout data={this.props.data}>
         <div
           sx={{
             display: "flex",
@@ -150,7 +150,9 @@ class Property extends React.Component {
                       marginRight: "10px",
                       width: "27px",
                     }}
-                    image={this.props.phone.childImageSharp.gatsbyImageData}
+                    image={
+                      this.props.data.phone.childImageSharp.gatsbyImageData
+                    }
                   />
                   830-249-9339
                 </a>
@@ -164,7 +166,9 @@ class Property extends React.Component {
                     sx={{
                       width: "27px",
                     }}
-                    image={this.props.facebook.childImageSharp.gatsbyImageData}
+                    image={
+                      this.props.data.facebook.childImageSharp.gatsbyImageData
+                    }
                   />
                 </a>
                 <a
@@ -178,7 +182,9 @@ class Property extends React.Component {
                     sx={{
                       width: "27px",
                     }}
-                    image={this.props.twitter.childImageSharp.gatsbyImageData}
+                    image={
+                      this.props.data.twitter.childImageSharp.gatsbyImageData
+                    }
                   />
                 </a>
                 <a
@@ -192,7 +198,9 @@ class Property extends React.Component {
                     sx={{
                       width: "27px",
                     }}
-                    image={this.props.linkedin.childImageSharp.gatsbyImageData}
+                    image={
+                      this.props.data.linkedin.childImageSharp.gatsbyImageData
+                    }
                   />
                 </a>
               </div>
