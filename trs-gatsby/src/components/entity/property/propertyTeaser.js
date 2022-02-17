@@ -97,6 +97,7 @@ const PropertyTeaser = ({ property }) => {
                       width: "11px",
                       marginRight: "10px",
                     }}
+                    alt=""
                     image={data.mappin.childImageSharp.gatsbyImageData}
                   />
                   {property.sanitycounty && property.sanitycounty.countyName}
@@ -155,6 +156,7 @@ const PropertyTeaser = ({ property }) => {
                     maxWidth: "100%",
                     height: "auto",
                   }}
+                  alt=""
                   image={property.sanityimage[0].asset.gatsbyImageData}
                   width={600}
                   aspectRatio={4 / 2}
@@ -166,6 +168,7 @@ const PropertyTeaser = ({ property }) => {
                     maxWidth: "100%",
                     height: "auto",
                   }}
+                  alt=""
                   image={property.image.childImageSharp.gatsbyImageData}
                   width={600}
                   aspectRatio={4 / 3}

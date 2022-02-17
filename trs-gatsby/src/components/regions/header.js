@@ -242,6 +242,7 @@ class Header extends React.Component {
                     sx={{
                       maxWidth: "100%",
                     }}
+                    alt=""
                     image={data.settings.logo.asset.gatsbyImageData}
                   />
                 </Link>
@@ -274,6 +275,7 @@ class Header extends React.Component {
                       sx={{
                         width: "38px",
                       }}
+                      alt=""
                       image={data.megaphone.childImageSharp.gatsbyImageData}
                     />
                   </div>
@@ -298,6 +300,7 @@ class Header extends React.Component {
                           marginRight: "10px",
                           width: "27px",
                         }}
+                        alt=""
                         image={data.phone.childImageSharp.gatsbyImageData}
                       />
                       830-249-9339
@@ -319,6 +322,7 @@ class Header extends React.Component {
                         sx={{
                           width: "27px",
                         }}
+                        alt=""
                         image={data.facebook.childImageSharp.gatsbyImageData}
                       />
                     </a>
@@ -333,6 +337,7 @@ class Header extends React.Component {
                         sx={{
                           width: "27px",
                         }}
+                        alt=""
                         image={data.twitter.childImageSharp.gatsbyImageData}
                       />
                     </a>
@@ -347,6 +352,7 @@ class Header extends React.Component {
                         sx={{
                           width: "27px",
                         }}
+                        alt=""
                         image={data.linkedin.childImageSharp.gatsbyImageData}
                       />
                     </a>

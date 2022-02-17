@@ -78,8 +78,4 @@ const LayoutSearch = ({ children }) => {
   )
 }
 
-LayoutSearch.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
 export default LayoutSearch
