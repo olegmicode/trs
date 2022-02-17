@@ -31,7 +31,6 @@ class Footer extends React.Component {
               },
             }}
           >
-            {console.log(data)}
             <Container>
               <div
                 sx={{

@@ -8,7 +8,6 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../serializers/serializers"
 import Container from "../container"
 const TextOverImage = ({ node }) => {
-  console.log(node)
   const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
   const imageAssetId = node.backgroundImage.asset.id
 

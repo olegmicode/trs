@@ -14,9 +14,7 @@ function truncate(str) {
   return str.length > 10 ? str.substring(0, 160) + "..." : str
 }
 
-function propClick() {
-  console.log(this)
-}
+function propClick() {}
 
 const PropertyTeaser = ({ property }) => {
   var slugPath = ""

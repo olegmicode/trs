@@ -10,21 +10,76 @@ import { Carousel } from "react-responsive-carousel"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css"
 import ConditionalLayout from "../components/ConditionalLayout"
+import { Link } from "gatsby"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
-const ReturnImage = ({ image }) => {
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion"
+
+const ReturnImage = ({ image, videoId, index }) => {
   if (image.asset) {
-    return (
-      <GatsbyImage
-        sx={{
-          maxWidth: "100%",
-          height: "auto",
-        }}
-        image={image.asset.gatsbyImageData}
-        width={600}
-        aspectRatio={4 / 2}
-      />
-    )
-  } else {
+    console.log(index)
+    if (index == 1 && videoId) {
+      return (
+        <div
+          sx={{
+            width: "calc(100%)",
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "5px",
+            "> div": {
+              width: "calc(50% - 2.5px)",
+            },
+            ".yt-lite": {
+              height: "100%",
+            },
+          }}
+        >
+          <div>
+            <LiteYouTubeEmbed id={videoId} />
+          </div>
+          <div>
+            <GatsbyImage
+              sx={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
+              image={image.asset.gatsbyImageData}
+              width={600}
+              aspectRatio={4 / 2}
+            />
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div
+          sx={{
+            width: "calc(50% - 2.5px)",
+            marginBottom: "5px",
+            "&:nth-child(1)": {
+              width: "100%",
+            },
+          }}
+        >
+          <GatsbyImage
+            sx={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
+            image={image.asset.gatsbyImageData}
+            width={600}
+            aspectRatio={4 / 2}
+          />
+        </div>
+      )
+    }
+  } else if (image.childImageSharp) {
     return (
       <GatsbyImage
         sx={{
@@ -39,11 +94,12 @@ const ReturnImage = ({ image }) => {
   }
 }
 const ReturnCounty = ({ county }) => {
-  if (county.countyName) {
-    return county.countyName
-  } else {
-    return county
-  }
+  console.log(county)
+  // if (county.countyName) {
+  //   return county.countyName
+  // } else {
+  //   return county
+  // }
 }
 
 function youtube_parser(url) {
@@ -59,7 +115,6 @@ class Property extends React.Component {
     this.state = {
       menuOpen: false,
       updateOpen: null,
-      overview: true,
     }
   }
 
@@ -74,19 +129,21 @@ class Property extends React.Component {
   // const node = data.property
   // const images = node.childrenFile
   render() {
-    console.log(this)
     if (this.props.data.property) {
       var node = this.props.data.property
       var images = node.childrenFile
       var county = node.county
       var feedDescription = node.propertyDescription
+      var acreage = node.acreage
     } else {
       var node = this.props.data.ourproperty
       var images = node.propertyImages
       var county = node.ourcounty
       var description = node._rawPropertyDescrition
       var contacts = node.propertyContacts
+      var acreage = node.acreage
       if (node.youtubeUrl) {
+        // var videoId = youtube_parser(node.youtubeUrl)
         var videoId = youtube_parser(node.youtubeUrl)
       }
     }
@@ -97,327 +154,455 @@ class Property extends React.Component {
             display: "flex",
             flexWrap: "wrap",
             height: "100%",
-            justifyContent: "space-between",
+            justifyContent: "space-betweeen",
           }}
         >
           <div
             sx={{
-              width: "calc(60% - 10px)",
+              width: "55%",
               backgroundColor: "white",
               overflow: "scroll",
               height: "100%",
+              paddingRight: "10px",
+              boxSizing: "border-box",
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
             }}
           >
             {images.map((image, index) => (
-              <ReturnImage image={image}></ReturnImage>
+              <ReturnImage
+                image={image}
+                videoId={videoId}
+                index={index}
+              ></ReturnImage>
             ))}
           </div>
 
           <div
             sx={{
-              width: "40%",
-              backgroundColor: "white",
+              width: "calc(45%)",
+
               overflow: "scroll",
               height: "100%",
-              padding: "20px 30px",
+
               boxSizing: "border-box",
               color: "grayBlk",
+
+              boxSizing: "border-box",
             }}
           >
             <div
               sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                borderBottom: "thin solid",
-                borderColor: "grayMed",
-                paddingBottom: "20px",
-                marginBottom: "30px",
+                padding: "20px 30px",
+                marginRight: "10px",
+                backgroundColor: "white",
+                borderLeft: "1px solid #E5E5E5",
+                borderRight: "1px solid #E5E5E5",
               }}
             >
-              <div>
-                <a
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    fontSize: "1.125rem",
-                    color: "grayMed",
-                    textDecoration: "none",
-                  }}
-                  href="tel:830-249-9339"
-                >
-                  <GatsbyImage
+              <div
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "thin solid",
+                  borderColor: "grayMed",
+                  paddingBottom: "20px",
+                  marginBottom: "30px",
+                }}
+              >
+                <div>
+                  <a
                     sx={{
-                      marginRight: "10px",
-                      width: "27px",
+                      display: "flex",
+                      alignItems: "center",
+                      fontSize: "1.125rem",
+                      color: "grayMed",
+                      textDecoration: "none",
                     }}
-                    image={
-                      this.props.data.phone.childImageSharp.gatsbyImageData
-                    }
-                  />
-                  830-249-9339
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://www.facebook.com/TexasRanchesForSale"
-                  target="_blank"
-                >
-                  <GatsbyImage
-                    sx={{
-                      width: "27px",
-                    }}
-                    image={
-                      this.props.data.facebook.childImageSharp.gatsbyImageData
-                    }
-                  />
-                </a>
-                <a
-                  href="https://twitter.com/hashtag/TexasRanchesForSale"
-                  target="_blank"
-                  sx={{
-                    marginLeft: "10px",
-                  }}
-                >
-                  <GatsbyImage
-                    sx={{
-                      width: "27px",
-                    }}
-                    image={
-                      this.props.data.twitter.childImageSharp.gatsbyImageData
-                    }
-                  />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/texas-ranches-for-sale"
-                  target="_blank"
-                  sx={{
-                    marginLeft: "10px",
-                  }}
-                >
-                  <GatsbyImage
-                    sx={{
-                      width: "27px",
-                    }}
-                    image={
-                      this.props.data.linkedin.childImageSharp.gatsbyImageData
-                    }
-                  />
-                </a>
-              </div>
-            </div>
-            <div
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                borderBottom: "thin solid",
-                borderColor: "grayMed",
-                paddingBottom: "20px",
-                marginBottom: "30px",
-                alignItems: "center",
-              }}
-            >
-              {node.price && (
-                <div
-                  sx={{
-                    fontSize: "2.25rem",
-                    color: "grayMed",
-                    fontWeight: "700",
-                  }}
-                >
-                  {node.price.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })}
-                </div>
-              )}
-              {node.acreage && (
-                <div
-                  sx={{
-                    fontSize: "1rem",
-                    color: "grayMed",
-                    fontWeight: "600",
-                  }}
-                >
-                  {node.acreage
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " acres"}
-                </div>
-              )}
-            </div>
-            <div
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                borderBottom: "thin solid",
-                borderColor: "grayMed",
-                paddingBottom: "20px",
-                marginBottom: "30px",
-                alignItems: "center",
-              }}
-            >
-              {node.propertyName && (
-                <div
-                  sx={{
-                    fontSize: "1.125rem",
-                    color: "grayMed",
-                    fontWeight: "600",
-                  }}
-                >
-                  {node.propertyName}
-                </div>
-              )}
-              {node.county && (
-                <div
-                  sx={{
-                    fontSize: "1rem",
-                    color: "grayMed",
-                    fontWeight: "400",
-                  }}
-                >
-                  {node.county + " County"}
-                </div>
-              )}
-            </div>
-
-            {description && (
-              <div>
-                <div
-                  sx={{
-                    fontSize: "1.125rem",
-                    color: "grayMed",
-                    fontWeight: "700",
-                  }}
-                >
-                  OVERVIEW
+                    href="tel:830-249-9339"
+                  >
+                    <GatsbyImage
+                      sx={{
+                        marginRight: "10px",
+                        width: "27px",
+                      }}
+                      image={
+                        this.props.data.phone.childImageSharp.gatsbyImageData
+                      }
+                    />
+                    830-249-9339
+                  </a>
                 </div>
                 <div>
-                  {" "}
-                  <BlockContent
-                    blocks={description}
-                    serializers={Serializers}
-                  />
+                  <a
+                    href="https://www.facebook.com/TexasRanchesForSale"
+                    target="_blank"
+                  >
+                    <GatsbyImage
+                      sx={{
+                        width: "27px",
+                      }}
+                      image={
+                        this.props.data.facebook.childImageSharp.gatsbyImageData
+                      }
+                    />
+                  </a>
+                  <a
+                    href="https://twitter.com/hashtag/TexasRanchesForSale"
+                    target="_blank"
+                    sx={{
+                      marginLeft: "10px",
+                    }}
+                  >
+                    <GatsbyImage
+                      sx={{
+                        width: "27px",
+                      }}
+                      image={
+                        this.props.data.twitter.childImageSharp.gatsbyImageData
+                      }
+                    />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/texas-ranches-for-sale"
+                    target="_blank"
+                    sx={{
+                      marginLeft: "10px",
+                    }}
+                  >
+                    <GatsbyImage
+                      sx={{
+                        width: "27px",
+                      }}
+                      image={
+                        this.props.data.linkedin.childImageSharp.gatsbyImageData
+                      }
+                    />
+                  </a>
                 </div>
               </div>
-            )}
-            {feedDescription && (
-              <div>
+              <div
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "thin solid",
+                  borderColor: "grayMed",
+                  paddingBottom: "20px",
+                  marginBottom: "30px",
+                  alignItems: "center",
+                }}
+              >
+                {node.price && (
+                  <div
+                    sx={{
+                      fontSize: "2.25rem",
+                      color: "grayMed",
+                      fontWeight: "700",
+                    }}
+                  >
+                    {node.price.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0,
+                    })}
+                  </div>
+                )}
+                {acreage && (
+                  <div
+                    sx={{
+                      fontSize: "1rem",
+                      color: "grayMed",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {acreage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+                      " acres"}
+                  </div>
+                )}
+              </div>
+
+              <div
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "thin solid",
+                  borderColor: "grayMed",
+                  paddingBottom: "20px",
+                  alignItems: "center",
+                }}
+              >
+                {node.propertyName && (
+                  <div
+                    sx={{
+                      fontSize: "1.125rem",
+                      color: "grayMed",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {node.propertyName}
+                  </div>
+                )}
+                {county && (
+                  <div
+                    sx={{
+                      fontSize: "1rem",
+                      color: "grayMed",
+                      fontWeight: "400",
+                    }}
+                  >
+                    {county + " County"}
+                  </div>
+                )}
+              </div>
+              <Accordion
+                allowMultipleExpanded={true}
+                allowZeroExpanded={true}
+                preExpanded={["1"]}
+                sx={{
+                  ".accordion__button": {
+                    backgroundImage: `url(${this.props.data.carrotLeft.publicURL})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPositionX: "calc(100% - 10px)",
+                    backgroundPositionY: "center",
+                    backgroundSize: "8px",
+                    cursor: "pointer",
+                  },
+                  ".accordion__button[aria-expanded='true']": {
+                    backgroundImage: `url(${this.props.data.carrotDown.publicURL})`,
+                    backgroundSize: "15px",
+                    backgroundPositionX: "calc(100% - 5px)",
+                  },
+                  ".accordion__item": {
+                    borderBottom: "thin solid",
+                    borderColor: "grayMed",
+                    paddingBottom: "20px",
+                    paddingTop: "20px",
+                  },
+                  ".accordion__heading": {
+                    fontSize: "1.125rem",
+                    color: "grayMed",
+                    fontWeight: "700",
+                  },
+                  ".accordion__panel": {
+                    marginTop: "10px",
+                    lineHeight: "1.438rem",
+                  },
+                }}
+              >
+                {description && (
+                  <AccordionItem uuid="1">
+                    <AccordionItemHeading>
+                      <AccordionItemButton>OVERVIEW</AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <BlockContent
+                        blocks={description}
+                        serializers={Serializers}
+                      />
+                      <div
+                        sx={{
+                          display: "flex",
+                          justifyContent: "flex-end",
+                        }}
+                      >
+                        <div
+                          sx={{
+                            color: "white",
+                            backgroundColor: "newTan",
+                            textDecoration: "none",
+                            padding: "15px 0px",
+                            width: "200px",
+                            textAlign: "center",
+                            fontWeight: "600",
+                            marginTop: "40px",
+                          }}
+                          onClick={() => scrollTo("#contact")}
+                        >
+                          Contact {contacts[0].teamFirstName}{" "}
+                          {contacts[0].teamLastName}
+                        </div>
+                      </div>
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )}
+                {feedDescription && (
+                  <div>
+                    <AccordionItem uuid="1">
+                      <AccordionItemHeading>
+                        <AccordionItemButton>OVERVIEW</AccordionItemButton>
+                      </AccordionItemHeading>
+                      <AccordionItemPanel>
+                        <div>{feedDescription}</div>
+                        <div
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                          }}
+                        >
+                          <div
+                            sx={{
+                              color: "white",
+                              backgroundColor: "newTan",
+                              textDecoration: "none",
+                              padding: "15px 0px",
+                              width: "200px",
+                              textAlign: "center",
+                              fontWeight: "600",
+                              marginTop: "40px",
+                            }}
+                            onClick={() => scrollTo("#contact")}
+                          >
+                            Contact Ken Hoerster
+                          </div>
+                        </div>
+                      </AccordionItemPanel>
+                    </AccordionItem>
+                    <AccordionItem uuid="2">
+                      <AccordionItemPanel>
+                        <div></div>
+                      </AccordionItemPanel>
+                    </AccordionItem>
+                  </div>
+                )}
+
+                {node._rawPropertyLocation && (
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>LOCATION</AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <BlockContent
+                        blocks={node._rawPropertyLocation}
+                        serializers={Serializers}
+                      />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )}
+
+                {node._rawPropertyLand && (
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>LAND</AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <BlockContent
+                        blocks={node._rawPropertyLand}
+                        serializers={Serializers}
+                      />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )}
+
+                {node._rawPropertyImprovements && (
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>IMPROVEMENTS</AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <BlockContent
+                        blocks={node._rawPropertyImprovements}
+                        serializers={Serializers}
+                      />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )}
+
+                {node._rawPropertyWildlife && (
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>WILDLIFE</AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <BlockContent
+                        blocks={node._rawPropertyWildlife}
+                        serializers={Serializers}
+                      />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )}
+
+                {node._rawPropertyWater && (
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>WATER</AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <BlockContent
+                        blocks={node._rawPropertyWater}
+                        serializers={Serializers}
+                      />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )}
+                {node.propertyTopographicMap && (
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>MAP</AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <div>
+                        Click “View Full Screen” button on map to see the map
+                        legend and additional features.
+                      </div>
+                      <div
+                        key={`map`}
+                        id="___map"
+                        dangerouslySetInnerHTML={{
+                          __html: node.propertyTopographicMap,
+                        }}
+                      />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )}
+                {node.propertyInteractiveLocationMap && (
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>MAP</AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <div
+                        sx={{
+                          marginBottom: "20px",
+                        }}
+                      >
+                        Click “View Full Screen” button on map to see the map
+                        legend and additional features.
+                      </div>
+                      <div
+                        key={`map`}
+                        id="___map"
+                        dangerouslySetInnerHTML={{
+                          __html: node.propertyInteractiveLocationMap,
+                        }}
+                      />
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )}
+              </Accordion>
+              <div
+                id="contact"
+                sx={{
+                  padding: "20px 0px",
+                }}
+              >
                 <div
                   sx={{
                     fontSize: "1.125rem",
                     color: "grayMed",
                     fontWeight: "700",
-                    marginBottom: "10px",
+                    marginBottom: "20px",
                   }}
                 >
-                  OVERVIEW
+                  CONTACT TEXAS RANCHES FOR SALE
                 </div>
-                <div>{feedDescription}</div>
+                <div>
+                  Please use the form below to contact our office about this or
+                  other properties.
+                </div>
               </div>
-            )}
-            <div>
-              <strong>MLSID:</strong>
-              {node.mlsid}
             </div>
-            {node._rawPropertyLocation && (
-              <div>
-                <strong>Location:</strong>
-                <BlockContent
-                  blocks={node._rawPropertyLocation}
-                  serializers={Serializers}
-                />
-              </div>
-            )}
-            {node._rawPropertyLand && (
-              <div>
-                <strong>Land:</strong>
-                <BlockContent
-                  blocks={node._rawPropertyLand}
-                  serializers={Serializers}
-                />
-              </div>
-            )}
-            {node._rawPropertyImprovements && (
-              <div>
-                <strong>Improvements:</strong>
-                <BlockContent
-                  blocks={node._rawPropertyImprovements}
-                  serializers={Serializers}
-                />
-              </div>
-            )}
-            {node._rawPropertyWater && (
-              <div>
-                <strong>Water:</strong>
-                <BlockContent
-                  blocks={node._rawPropertyWater}
-                  serializers={Serializers}
-                />
-              </div>
-            )}
-            {node._rawPropertyWildlife && (
-              <div>
-                <strong>Wildlife:</strong>
-                <BlockContent
-                  blocks={node._rawPropertyWildlife}
-                  serializers={Serializers}
-                />
-              </div>
-            )}
-            {node.region && (
-              <div>
-                <strong>Contacts:</strong>
-                {contacts.map((contact, index) => (
-                  <div>
-                    <div>{contact.teamEmail}</div>
-                    <div>{contact.teamFirstName}</div>
-                    <div>{contact.teamLastName}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-            {node.contacts && (
-              <div>
-                <strong>Contacts:</strong>
-                {contacts.map((contact, index) => (
-                  <div>
-                    <div>{contact.teamEmail}</div>
-                    <div>{contact.teamFirstName}</div>
-                    <div>{contact.teamLastName}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-            {node.propertyTopographicMap && (
-              <div>
-                <strong>Topographic Map:</strong>
-                <div
-                  key={`map`}
-                  id="___map"
-                  dangerouslySetInnerHTML={{
-                    __html: node.propertyTopographicMap,
-                  }}
-                />
-              </div>
-            )}
-            {videoId && (
-              <div>
-                <LiteYouTubeEmbed id={videoId} />
-              </div>
-            )}
-            {node.propertyInteractiveLocationMap && (
-              <div>
-                <strong>Interactive Location Map:</strong>
-                <div
-                  key={`map`}
-                  id="___map"
-                  dangerouslySetInnerHTML={{
-                    __html: node.propertyInteractiveLocationMap,
-                  }}
-                />
-              </div>
-            )}
           </div>
         </div>
       </ConditionalLayout>
@@ -460,6 +645,12 @@ export const postQuery = graphql`
       childImageSharp {
         gatsbyImageData
       }
+    }
+    carrotLeft: file(name: { eq: "carrotLeft" }) {
+      publicURL
+    }
+    carrotDown: file(name: { eq: "carrotDown" }) {
+      publicURL
     }
   }
 `

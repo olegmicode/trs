@@ -8,7 +8,6 @@ import LayoutSearch from "../components/layoutSearch"
 
 const PageDefinition = ({ data }) => {
   const node = data.page
-  console.log(node._rawEntities[1])
   return (
     <div>
       {node.slug.current == "home" && (

@@ -26,13 +26,15 @@ class ConditionalLayout extends React.Component {
     this.setState(prevState => ({
       modalIsOpen: !prevState.modalIsOpen,
     }))
+    var currentState = this.state
     // window.location.pathname = "/"
     navigate("/", {
       replace: true,
       state: {
-        disableScrollUpdate: true,
+        currentState,
       },
     })
+
     // this.props.history.push("/")
     // if (typeof window !== "undefined" && window) {
     //   window.location = window.location.origin
@@ -48,6 +50,7 @@ class ConditionalLayout extends React.Component {
     // references are now sync'd and can be accessed.
     // subtitle.style.color = "#f00"
   }
+  componentWillMount() {}
   render() {
     return (
       <ModalRoutingContext.Consumer>
@@ -63,6 +66,7 @@ class ConditionalLayout extends React.Component {
                 fontSize: "1rem",
                 fontWeight: "400",
                 lineHeight: "1.438rem",
+                letterSpacing: "1px",
               }}
             >
               <Link
@@ -107,10 +111,23 @@ class ConditionalLayout extends React.Component {
                 isOpen={this.state.modalIsOpen}
                 onAfterOpen={this.afterOpenModal}
                 onRequestClose={this.closeModal}
-                contentLabel="Example Modal"
               >
-                <button onClick={this.closeModal}>Close</button>
-                {this.props.children}
+                <div
+                  sx={{
+                    zIndex: "1",
+                    position: "relative",
+                    background: "#f7f7f7",
+                    height: "100%",
+                    fontFamily: "Open Sans,sans-serif",
+                    fontSize: "1rem",
+                    fontWeight: "400",
+                    lineHeight: "1.438rem",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  <button onClick={this.closeModal}>Close</button>
+                  {this.props.children}
+                </div>
               </Modal>
               <SearchResults />
             </Layout>
