@@ -102,7 +102,7 @@ class ConditionalLayout extends React.Component {
               {this.props.children}
             </div>
           ) : (
-            <Layout>
+            <Layout banner={false}>
               <BlockContent
                 blocks={this.props.data.blockFragment._rawEntities[0]}
                 serializers={Serializers}
@@ -125,7 +125,34 @@ class ConditionalLayout extends React.Component {
                     letterSpacing: "1px",
                   }}
                 >
-                  <button onClick={this.closeModal}>Close</button>
+                  <div
+                    onClick={this.closeModal}
+                    sx={{
+                      position: "absolute",
+                      right: "-40px",
+                      top: "5px",
+                      zIndex: "9",
+                      height: "30px",
+                      width: "30px",
+                      cursor: "pointer",
+                      ":after": {
+                        content: "' '",
+                        height: "30px",
+                        borderLeft: "2px solid #fff",
+                        position: "absolute",
+                        transform: "rotate(45deg)",
+                        left: "10px",
+                      },
+                      ":before": {
+                        content: "' '",
+                        height: "30px",
+                        borderLeft: "2px solid #fff",
+                        position: "absolute",
+                        transform: "rotate(-45deg)",
+                        left: "10px",
+                      },
+                    }}
+                  ></div>
                   {this.props.children}
                 </div>
               </Modal>

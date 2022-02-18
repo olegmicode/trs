@@ -27,6 +27,7 @@ class Header extends React.Component {
       updateOpen: null,
     }
     this.toggleMenu = this.toggleMenu.bind(this)
+    console.log(this)
   }
   toggleMenu() {
     this.setState(prevState => ({
@@ -49,18 +50,27 @@ class Header extends React.Component {
     }
 
     if (typeof window !== "undefined") {
-      const updateOpenCookie = getCookieItem("updateOpen")
-      if (updateOpenCookie !== undefined) {
-        if (updateOpenCookie === "false") {
-          this.setState({ updateOpen: false })
-        } else {
-          setTimeout(
-            function () {
-              //Start the timer
-              this.setState({ updateOpen: true }) //After 1 second, set render to true
-            }.bind(this),
-            2000
-          )
+      console.log(this.props.banner)
+      var banner = ""
+      if (this.props.banner === false) {
+        banner = false
+      } else {
+        banner = true
+      }
+      if (banner) {
+        const updateOpenCookie = getCookieItem("updateOpen")
+        if (updateOpenCookie !== undefined) {
+          if (updateOpenCookie === "false") {
+            this.setState({ updateOpen: false })
+          } else {
+            setTimeout(
+              function () {
+                //Start the timer
+                this.setState({ updateOpen: true }) //After 1 second, set render to true
+              }.bind(this),
+              2000
+            )
+          }
         }
       }
     }

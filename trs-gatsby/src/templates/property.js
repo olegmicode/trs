@@ -213,9 +213,40 @@ class Property extends React.Component {
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
+          className="slideshow-modal"
+          sx={{
+            width: "100%",
+          }}
         >
           <div>
-            <button onClick={this.closeModal}>Close</button>
+            <div
+              onClick={this.closeModal}
+              sx={{
+                position: "absolute",
+                right: "0px",
+                top: "5px",
+                zIndex: "9",
+                height: "30px",
+                width: "30px",
+                cursor: "pointer",
+                ":after": {
+                  content: "' '",
+                  height: "30px",
+                  borderLeft: "2px solid #fff",
+                  position: "absolute",
+                  transform: "rotate(45deg)",
+                  left: "10px",
+                },
+                ":before": {
+                  content: "' '",
+                  height: "30px",
+                  borderLeft: "2px solid #fff",
+                  position: "absolute",
+                  transform: "rotate(-45deg)",
+                  left: "10px",
+                },
+              }}
+            ></div>
             <FullSlide images={newImages} index={this.state.slideIndex} />
           </div>
         </Modal>
