@@ -149,7 +149,6 @@ class SearchResults extends React.Component {
                   borderBottom: ["thin solid", "thin solid", "0px"],
                   borderColor: "#887E7E",
                   paddingBottom: ["30px", "30px", "0px"],
-
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "flex-start",
@@ -183,6 +182,7 @@ class SearchResults extends React.Component {
                     backgroundColor: "newTan",
                     width: "16px",
                     height: "16px",
+                    padding: "0px",
                     "::before": {
                       display: "none !important",
                     },
@@ -218,6 +218,7 @@ class SearchResults extends React.Component {
                     backgroundColor: "newTan",
                     width: "16px",
                     height: "16px",
+                    padding: "0px",
                     "::before": {
                       display: "none !important",
                     },
@@ -253,6 +254,10 @@ class SearchResults extends React.Component {
                   borderRadius: "0px !important",
                   border: "thin solid #887E7E !important",
                   boxShadow: "none !important",
+
+                  "&:nth-of-type(2)": {
+                    borderLeft: "0px !important",
+                  },
                 },
                 ".css-1hb7zxy-IndicatorsContainer": {
                   backgroundColor: "newTan",
@@ -276,12 +281,23 @@ class SearchResults extends React.Component {
               <div
                 sx={{
                   marginBottom: "40px",
+                  ".css-1wa3eu0-placeholder": {
+                    color: "grayHvy",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                  },
                 }}
               >
                 <h3>COUNTY</h3>
                 <CustomRefinementList attribute="county" />
               </div>
-              <div sx={{}}>
+              <div
+                sx={{
+                  "> div": {
+                    border: "0px",
+                  },
+                }}
+              >
                 <h3>STATUS</h3>
                 <CustomRefinementListRadio
                   attribute="status"
@@ -318,6 +334,11 @@ class SearchResults extends React.Component {
               <div
                 sx={{
                   marginBottom: "40px",
+                  ".css-1wa3eu0-placeholder": {
+                    color: "grayHvy",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                  },
                 }}
               >
                 <h3>SORT BY</h3>
@@ -386,6 +407,8 @@ class SearchResults extends React.Component {
                       color: "#ffffff",
                       padding: "20px",
                       cursor: "pointer",
+                      fontSize: "1rem",
+                      fontWeight: "600",
                     },
                   },
                 }}
@@ -396,7 +419,7 @@ class SearchResults extends React.Component {
                       items.filter(item => item.attribute !== "status")
                     }
                     translations={{
-                      reset: "Clear all",
+                      reset: "Clear All",
                     }}
                   />
                 </div>
@@ -482,7 +505,7 @@ class SearchResults extends React.Component {
               }}
               hitComponent={HitComponent}
               translations={{
-                loadMore: "VIEW MORE",
+                loadMore: "View More Properties",
               }}
               // Optional parameters
             />
@@ -496,10 +519,12 @@ class SearchResults extends React.Component {
               <div
                 sx={{
                   cursor: "pointer",
+                  fontSize: "1rem",
+                  fontWeight: "600",
                 }}
                 onClick={() => scrollTo("#filters")}
               >
-                BACK TO TOP
+                Back to top
               </div>
             </div>
           </Container>
@@ -617,7 +642,7 @@ class ConsumerRadio extends React.Component {
       <div
         sx={{
           display: "flex",
-          border: "thin solid #887E7E",
+          // border: "thin solid #887E7E",
 
           div: {
             width: "50%",
@@ -636,6 +661,9 @@ class ConsumerRadio extends React.Component {
               padding: "0px",
               margin: "0px",
               cursor: "pointer",
+              borderRadius: "0px !important",
+              fontSize: "1rem",
+              fontWeight: "600",
               ":checked": {
                 backgroundColor: "newTan",
               },
@@ -648,7 +676,8 @@ class ConsumerRadio extends React.Component {
               height: "100%",
               pointerEvents: "none",
               textAlign: "center",
-              fontSize: "16px",
+              fontSize: "1rem",
+              fontWeight: "600",
               "&.for-sale.sold": {
                 color: "grayHvy",
               },

@@ -79,11 +79,14 @@ img {
 .ais-InfiniteHits-loadMore {
   margin: 0 auto;
   display: block;
-  background-color: #4386b9;
+  background-color: #c1b098;
   color: white;
   border: 0px;
+  border: 1px solid #887e7e;
   padding: 10px 20px;
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .view-neighborhoods .digett-rows > div:nth-child(4n + 4) {
   margin-right: 0px;

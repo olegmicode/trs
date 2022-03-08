@@ -219,6 +219,7 @@ const PropertyTeaser = ({ property }) => {
                   backgroundColor: "grayLight",
                   color: "grayMed",
                   padding: "12px 20px",
+                  fontWeight: "700",
                 }}
               >
                 {property.price && (

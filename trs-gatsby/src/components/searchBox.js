@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import React from "react"
 import debounce from "lodash/debounce"
 import { connectSearchBox } from "react-instantsearch-dom"
@@ -10,5 +12,22 @@ export default connectSearchBox(({ refine }) => {
     debouncedSearch(e, e.eventTarget)
   }
 
-  return <input placeholder="Enter Text" type="search" onChange={onChange} />
+  return (
+    <input
+      sx={{
+        appearance: "none",
+        borderRadius: "0px",
+        border: "thin solid #887E7E",
+        padding: "12px 5px 10px 10px !important",
+        "&::placeholder": {
+          color: "grayHvy",
+          fontSize: "1rem",
+          fontWeight: "600",
+        },
+      }}
+      placeholder="Enter Text"
+      type="search"
+      onChange={onChange}
+    />
+  )
 })

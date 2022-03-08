@@ -15,6 +15,10 @@
 }
 
 #partners {
+  h2 {
+    color: #484242;
+    font-size: 4rem;
+  }
   @include tablet() {
     > div > div {
       flex-wrap: wrap;
