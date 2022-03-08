@@ -476,7 +476,7 @@ class SearchResults extends React.Component {
                     marginRight: ["0px", "0px", "0px"],
                   },
                   "&:nth-of-type(2n + 2)": {
-                    marginRight: ["0px", "0px", "0px"],
+                    marginRight: ["0px", "0px", "20px"],
                   },
                 },
               }}

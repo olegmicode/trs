@@ -152,7 +152,9 @@ class Header extends React.Component {
               sx={{
                 backgroundColor: "grayBlk",
                 color: "#ffffff",
-                padding: this.state.updateOpen ? "80px 20px" : "0px",
+                padding: this.state.updateOpen
+                  ? ["80px 20px", "80px 20px", "80px 0px"]
+                  : "0px",
                 overflow: "hidden",
                 transition: "all .5s ease-in-out",
                 maxHeight: "0px",
@@ -174,15 +176,50 @@ class Header extends React.Component {
                   }}
                 >
                   <div
+                    onClick={this.closePopup.bind(this)}
                     sx={{
+                      display: "flex",
+                      alignItems: "center",
                       position: "absolute",
-                      top: "-40px",
+                      top: ["-60px", "-40px", "-40px"],
                       right: "0px",
                       cursor: "pointer",
                     }}
-                    onClick={this.closePopup.bind(this)}
                   >
-                    Close
+                    <div
+                      sx={{
+                        color: "white",
+                        fontSize: "1rem",
+                      }}
+                    >
+                      Close
+                    </div>
+                    <div
+                      sx={{
+                        border: "2px solid white",
+                        height: "40px",
+                        width: "40px",
+                        marginLeft: "10px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        overFlow: "hidden",
+                        "&:before": {
+                          content: "' '",
+                          height: " calc(100% + 15px)",
+                          borderLeft: "2px solid #fff",
+                          position: "absolute",
+                          transform: "rotate(45deg)",
+                        },
+                        "&:after": {
+                          content: "' '",
+                          height: "calc(100% + 15px)",
+                          borderLeft: "2px solid #fff",
+                          position: "absolute",
+                          transform: "rotate(-45deg)",
+                        },
+                      }}
+                    ></div>
                   </div>
                   <div
                     sx={{

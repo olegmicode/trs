@@ -152,30 +152,36 @@ const PropertyTeaser = ({ property }) => {
                   SOLD
                 </div>
               )}
-              {property.sanityimage && (
-                <GatsbyImage
-                  sx={{
-                    maxWidth: "100%",
-                    height: "auto",
-                  }}
-                  alt=""
-                  image={property.sanityimage[0].asset.gatsbyImageData}
-                  width={600}
-                  aspectRatio={4 / 2}
-                />
-              )}
-              {property.image && (
-                <GatsbyImage
-                  sx={{
-                    maxWidth: "100%",
-                    height: "auto",
-                  }}
-                  alt=""
-                  image={property.image.childImageSharp.gatsbyImageData}
-                  width={600}
-                  aspectRatio={4 / 3}
-                />
-              )}
+              <div
+                sx={{
+                  textAlign: "center",
+                }}
+              >
+                {property.sanityimage && (
+                  <GatsbyImage
+                    sx={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
+                    alt=""
+                    image={property.sanityimage[0].asset.gatsbyImageData}
+                    width={600}
+                    aspectRatio={4 / 2}
+                  />
+                )}
+                {property.image && (
+                  <GatsbyImage
+                    sx={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
+                    alt=""
+                    image={property.image.childImageSharp.gatsbyImageData}
+                    width={600}
+                    aspectRatio={4 / 3}
+                  />
+                )}
+              </div>
             </div>
             {/**<Favorite
             sx={{
