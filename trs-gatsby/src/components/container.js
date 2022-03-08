@@ -1,12 +1,16 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-const Container = ({ children }) => {
+const Container = ({ children, noMobilePadding }) => {
   return (
     <div
       sx={{
-        maxWidth: ["600px", "1000px", "1440px"],
-        padding: ["0px 5%", "0px 5%", "0px 5%"],
+        maxWidth: ["800px", "1000px", "1200px"],
+        padding: [
+          noMobilePadding ? "0px 0px" : "0px 2%",
+          noMobilePadding ? "0px 0px" : "0px 3%",
+          "0px 5%",
+        ],
         margin: "0 auto",
         boxSizing: "content-box",
         a: {

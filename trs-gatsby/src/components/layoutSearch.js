@@ -8,7 +8,6 @@ import Footer from "./regions/footer"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "./serializers/serializers"
 import SearchResults from "../components/searchResults"
-import "./layout.css"
 const LayoutSearch = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteSearchTitleQuery {
@@ -47,7 +46,7 @@ const LayoutSearch = ({ children }) => {
           sx={{
             position: "sticky",
             top: "0",
-            zIndex: "9",
+            zIndex: "11",
           }}
         >
           <Header></Header>

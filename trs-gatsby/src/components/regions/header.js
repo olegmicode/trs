@@ -143,27 +143,34 @@ class Header extends React.Component {
           }
         `}
         render={data => (
-          <header>
+          <header
+            sx={{
+              zIndex: "11",
+            }}
+          >
             <div
               sx={{
                 backgroundColor: "grayBlk",
                 color: "#ffffff",
-                padding: this.state.updateOpen ? "80px 0px" : "0px",
+                padding: this.state.updateOpen ? "80px 20px" : "0px",
                 overflow: "hidden",
                 transition: "all .5s ease-in-out",
                 maxHeight: "0px",
-                maxHeight: this.state.updateOpen ? "400px" : "0px",
+                maxHeight: this.state.updateOpen
+                  ? ["600px", "600px", "400px"]
+                  : "0px",
                 // maxHeight: this.state.updateOpen ? "800px" : "0px",
                 // height: this.state.updateOpen ? "auto" : "0px",
               }}
             >
-              <Container>
+              <Container noMobilePadding={true}>
                 <div
                   sx={{
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
                     position: "relative",
+                    flexDirection: ["column", "column", "row"],
                   }}
                 >
                   <div
@@ -179,13 +186,14 @@ class Header extends React.Component {
                   </div>
                   <div
                     sx={{
-                      width: "calc(50% - 20px)",
+                      width: ["100%", "100%", "calc(50% - 20px)"],
                     }}
                   >
                     <h2
                       sx={{
                         margin: "0px 0px 25px 0px",
                         fontWeight: "normal !important",
+                        lineHeight: "1.2 !important",
                       }}
                     >
                       Update January 2022
@@ -204,7 +212,7 @@ class Header extends React.Component {
                   </div>
                   <div
                     sx={{
-                      width: "calc(50% - 20px)",
+                      width: ["100%", "100%", "calc(50% - 20px)"],
                     }}
                   >
                     <div>
@@ -230,7 +238,7 @@ class Header extends React.Component {
                 </div>
               </Container>
             </div>
-            <Container>
+            <Container noMobilePadding={true}>
               <div
                 sx={{
                   width: "100%",
@@ -240,12 +248,15 @@ class Header extends React.Component {
                   justifyContent: "space-between",
                   backgroundColor: "grayScant",
                   color: "grayMed",
+                  flexDirection: ["column-reverse", "row", "row"],
                 }}
               >
                 <Link
                   to={"/"}
                   sx={{
-                    width: ["40%", "40%", "40%"],
+                    width: ["100%", "65%", "48%"],
+                    paddingRight: ["10px", "0px", "0px"],
+                    boxSizing: "border-box",
                   }}
                 >
                   <GatsbyImage
@@ -259,117 +270,170 @@ class Header extends React.Component {
                 <div
                   sx={{
                     display: "flex",
-                    width: [
-                      "calc(60% - 40px)",
-                      "calc(60% - 40px)",
-                      "calc(60% - 40px)",
-                    ],
-                    justifyContent: "flex-end",
-                    paddingRight: "40px",
+                    width: ["calc(100%)", "calc(35%)", "calc(52%)"],
+                    justifyContent: ["space-between", "flex-end", "flex-end"],
+                    paddingRight: ["10px", "35px", "35px"],
+                    // padding: ["20px 0px", "20px 0px", "0px"],
+                    boxSizing: "border-box",
+                    backgroundColor: ["#E9E7E7", "transparent", "transparent"],
                   }}
                 >
                   <div
                     sx={{
-                      cursor: "pointer  ",
-                      marginRight: "50px",
-                      paddingRight: "50px",
-                      borderRight: "thin solid",
-                      borderColor: "grayMed",
-                      transition: "all 0.25s ease-in",
-                      opacity: !this.state.updateOpen ? "1" : "0",
-                      pointerEvents: !this.state.updateOpen ? "auto" : "none",
+                      backgroundColor: "newTan",
+                      color: "#ffffff",
+                      display: ["flex", "none", "none"],
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: ["20%", "14.3%", "9.9%"],
+                      fontFamily: "Oswald",
+                      fontSize: ["0.9rem", "1.125rem", "1.125rem"],
+                      padding: "5px 0px",
                     }}
-                    onClick={this.openPopup.bind(this)}
                   >
-                    <GatsbyImage
+                    <div
                       sx={{
-                        width: "38px",
+                        "> div": {
+                          lineHeight: "1rem",
+                          display: ["block", "inline", "inline"],
+                        },
                       }}
-                      alt=""
-                      image={data.megaphone.childImageSharp.gatsbyImageData}
-                    />
+                    >
+                      <div>EST.</div>
+                      <div>2001</div>
+                    </div>
                   </div>
-
                   <div
                     sx={{
-                      a: {
-                        color: "grayMed",
-                      },
+                      width: ["80%", "auto", "auto"],
+                      display: ["flex", "flex", "flex"],
+                      justifyContent: ["flex-end", "flex-end", "flex-end"],
+                      alignItems: ["center", "flex-start", "center"],
                     }}
                   >
-                    <a
+                    <div
+                      sx={{
+                        cursor: "pointer",
+                        marginRight: ["30px", "50px", "35px"],
+                        paddingRight: ["0px", "0px", "35px"],
+                        borderRight: ["0px", "0px", "thin solid"],
+                        borderColor: "grayMed",
+                        transition: "all 0.25s ease-in",
+                        opacity: !this.state.updateOpen ? "1" : "0",
+                        pointerEvents: !this.state.updateOpen ? "auto" : "none",
+                      }}
+                      onClick={this.openPopup.bind(this)}
+                    >
+                      <GatsbyImage
+                        sx={{
+                          width: "38px",
+                        }}
+                        alt=""
+                        image={data.megaphone.childImageSharp.gatsbyImageData}
+                      />
+                    </div>
+                    <div
                       sx={{
                         display: "flex",
-                        alignItems: "center",
-                        fontSize: "1.125rem",
-                      }}
-                      href="phone:830-249-9339"
-                    >
-                      <GatsbyImage
-                        sx={{
-                          marginRight: "10px",
-                          width: "27px",
-                        }}
-                        alt=""
-                        image={data.phone.childImageSharp.gatsbyImageData}
-                      />
-                      830-249-9339
-                    </a>
-                  </div>
-                  <div
-                    sx={{
-                      marginLeft: "50px",
-                      paddingLeft: "50px",
-                      borderLeft: "thin solid",
-                      borderColor: "grayMed",
-                    }}
-                  >
-                    <a
-                      href="https://www.facebook.com/TexasRanchesForSale"
-                      target="_blank"
-                    >
-                      <GatsbyImage
-                        sx={{
-                          width: "27px",
-                        }}
-                        alt=""
-                        image={data.facebook.childImageSharp.gatsbyImageData}
-                      />
-                    </a>
-                    <a
-                      href="https://twitter.com/hashtag/TexasRanchesForSale"
-                      target="_blank"
-                      sx={{
-                        marginLeft: "10px",
+                        flexDirection: ["column", "column", "row"],
                       }}
                     >
-                      <GatsbyImage
+                      <div
                         sx={{
-                          width: "27px",
+                          a: {
+                            color: "grayMed",
+                          },
                         }}
-                        alt=""
-                        image={data.twitter.childImageSharp.gatsbyImageData}
-                      />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/company/texas-ranches-for-sale"
-                      target="_blank"
-                      sx={{
-                        marginLeft: "10px",
-                      }}
-                    >
-                      <GatsbyImage
+                      >
+                        <a
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            fontSize: "1.125rem",
+                            color: "grayMed",
+                            marginRight: ["30px", "0px", "0px"],
+                          }}
+                          href="phone:830-249-9339"
+                        >
+                          <GatsbyImage
+                            sx={{
+                              marginRight: "10px",
+                              width: "27px",
+                              display: ["none", "none", "block"],
+                            }}
+                            alt=""
+                            image={data.phone.childImageSharp.gatsbyImageData}
+                          />
+                          830-249-9339
+                        </a>
+                      </div>
+                      <div
                         sx={{
-                          width: "27px",
+                          marginLeft: ["0px", "0px", "35px"],
+                          paddingLeft: ["0px", "0px", "35px"],
+                          borderLeft: ["0px", "0px", "thin solid"],
+                          borderColor: "grayMed",
+                          marginTop: ["20px", "20px", "0px"],
+                          display: ["none", "flex", "flex"],
+                          justifyContent: "flex-end",
                         }}
-                        alt=""
-                        image={data.linkedin.childImageSharp.gatsbyImageData}
-                      />
-                    </a>
+                      >
+                        <a
+                          href="https://www.facebook.com/TexasRanchesForSale"
+                          target="_blank"
+                        >
+                          <GatsbyImage
+                            sx={{
+                              width: "27px",
+                            }}
+                            alt=""
+                            image={
+                              data.facebook.childImageSharp.gatsbyImageData
+                            }
+                          />
+                        </a>
+                        <a
+                          href="https://twitter.com/hashtag/TexasRanchesForSale"
+                          target="_blank"
+                          sx={{
+                            marginLeft: "10px",
+                          }}
+                        >
+                          <GatsbyImage
+                            sx={{
+                              width: "27px",
+                            }}
+                            alt=""
+                            image={data.twitter.childImageSharp.gatsbyImageData}
+                          />
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/company/texas-ranches-for-sale"
+                          target="_blank"
+                          sx={{
+                            marginLeft: "10px",
+                          }}
+                        >
+                          <GatsbyImage
+                            sx={{
+                              width: "27px",
+                            }}
+                            alt=""
+                            image={
+                              data.linkedin.childImageSharp.gatsbyImageData
+                            }
+                          />
+                        </a>
+                      </div>
+                    </div>
+                    <Burger
+                      clickMe={this.toggleMenu}
+                      open={this.state.menuOpen}
+                    />
                   </div>
                 </div>
               </div>
-              <Burger clickMe={this.toggleMenu} open={this.state.menuOpen} />
+
               <Menu open={this.state.menuOpen}></Menu>
             </Container>
           </header>

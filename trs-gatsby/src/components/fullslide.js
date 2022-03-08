@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
 import React from "react"
 import { Fade } from "react-slideshow-image"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -13,7 +14,7 @@ const opts = {
   },
 }
 
-const ReturnImage = ({ image, videoId, index }) => {
+const ReturnImage = ({ image }) => {
   if (image.asset) {
     return (
       <GatsbyImage
@@ -21,9 +22,8 @@ const ReturnImage = ({ image, videoId, index }) => {
           maxWidth: "100%",
           height: "auto",
         }}
-        alt=""
         image={image.asset.gatsbyImageData}
-        width={600}
+        width={800}
         aspectRatio={4 / 2}
       />
     )
@@ -36,7 +36,6 @@ const ReturnImage = ({ image, videoId, index }) => {
           maxWidth: "100%",
           height: "auto",
         }}
-        alt=""
         image={image.childImageSharp.gatsbyImageData}
         width={600}
         aspectRatio={4 / 2}
@@ -53,37 +52,27 @@ const properties = {
   indicators: true,
   autoplay: false,
 }
+const FullSlide = ({ images, index, openModal }) => {
+  const breakpoints = useBreakpoint()
+  const ref = React.createRef()
 
-class FullSlide extends React.Component {
-  constructor(props) {
-    super(props)
-    this.ref = React.createRef()
-    this.state = {
-      showInfo: false,
-    }
-  }
-  componentDidMount() {
-    // if (this.props.index != 1) {
-    //   this.ref.current.goTo(this.props.index - 1)
-    // }
-  }
-  componentDidUpdate() {
-    // this.ref.current.goTo(this.props.index - 1)
-  }
-  render() {
-    {
-      console.log(this)
-    }
-    return (
-      <div>
-        <Fade {...properties} ref={this.ref} defaultIndex={this.props.index}>
-          {this.props.images.map((image, index) => (
+  return (
+    <div>
+      {breakpoints.sm ? (
+        <div>
+          {images.map((image, index) => (
+            <ReturnImage image={image} index={index}></ReturnImage>
+          ))}
+        </div>
+      ) : (
+        <Fade {...properties} ref={ref} defaultIndex={index}>
+          {images.map((image, index) => (
             <ReturnImage image={image} index={index}></ReturnImage>
           ))}
         </Fade>
-      </div>
-    )
-  }
+      )}
+    </div>
+  )
 }
 
 export default FullSlide

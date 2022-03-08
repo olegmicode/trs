@@ -5,8 +5,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./regions/header"
 import Footer from "./regions/footer"
-import "./layout.css"
-const Layout = ({ children, banner }) => {
+const Layout = ({ props, children, banner, header }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -16,6 +15,7 @@ const Layout = ({ children, banner }) => {
       }
     }
   `)
+
   return (
     <div
       sx={{

@@ -7,14 +7,15 @@ import Serializers from "../components/serializers/serializers"
 import { GatsbyImage } from "gatsby-plugin-image"
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import { Carousel } from "react-responsive-carousel"
-import LiteYouTubeEmbed from "react-lite-youtube-embed"
-import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css"
+
 import ConditionalLayout from "../components/ConditionalLayout"
 import { Link } from "gatsby"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import FullSlide from "../components/fullslide"
 import Modal from "react-modal"
-
+import Header from "../components/regions/header"
+import { useBreakpoint } from "gatsby-plugin-breakpoints"
+import PropImages from "../components/propImages"
 import {
   Accordion,
   AccordionItem,
@@ -23,107 +24,6 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion"
 
-const ReturnImage = ({ image, videoId, index }) => {
-  console.log(image)
-  if (image.asset) {
-    return (
-      <GatsbyImage
-        sx={{
-          maxWidth: "100%",
-          height: "auto",
-        }}
-        image={image.asset.gatsbyImageData}
-        width={600}
-        aspectRatio={4 / 2}
-      />
-    )
-  } else if (image.video) {
-    console.log(image.video)
-    return <LiteYouTubeEmbed id={image.video} />
-  } else {
-    return (
-      <GatsbyImage
-        sx={{
-          maxWidth: "100%",
-          height: "auto",
-        }}
-        image={image.childImageSharp.gatsbyImageData}
-        width={600}
-        aspectRatio={4 / 2}
-      />
-    )
-  }
-  // if (image.asset) {
-  //   if (index == 1 && videoId) {
-  //     return (
-  //       <div
-  //         sx={{
-  //           width: "calc(100%)",
-  //           display: "flex",
-  //           justifyContent: "space-between",
-  //           marginBottom: "5px",
-  //           "> div": {
-  //             width: "calc(50% - 2.5px)",
-  //           },
-  //           ".yt-lite": {
-  //             height: "100%",
-  //             pointerEvents: "none",
-  //           },
-  //         }}
-  //       >
-  //         <div>
-  //           <LiteYouTubeEmbed id={videoId} />
-  //         </div>
-  //         <div>
-  //           <GatsbyImage
-  //             sx={{
-  //               maxWidth: "100%",
-  //               height: "auto",
-  //             }}
-  //             image={image.asset.gatsbyImageData}
-  //             width={600}
-  //             aspectRatio={4 / 2}
-  //           />
-  //         </div>
-  //       </div>
-  //     )
-  //   } else {
-  //     return (
-  //       <div
-  //         sx={{
-  //           width: "calc(50% - 2.5px)",
-  //           marginBottom: "5px",
-  //           "&:nth-child(1)": {
-  //             width: "100%",
-  //           },
-  //         }}
-  //       >
-  //         <GatsbyImage
-  //           sx={{
-  //             maxWidth: "100%",
-  //             height: "auto",
-  //           }}
-  //           image={image.asset.gatsbyImageData}
-  //           width={600}
-  //           aspectRatio={4 / 2}
-  //         />
-  //       </div>
-  //     )
-  //   }
-  // } else {
-  //   return (
-  //     <GatsbyImage
-  //       sx={{
-  //         maxWidth: "100%",
-  //         height: "auto",
-  //       }}
-  //       image={image.childImageSharp.gatsbyImageData}
-  //       width={600}
-  //       aspectRatio={4 / 2}
-  //     />
-  //   )
-  // }
-}
 const ReturnCounty = ({ county }) => {
   console.log(county)
   // if (county.countyName) {
@@ -168,7 +68,6 @@ class Property extends React.Component {
       videoId: videoId,
     })
   }
-
   // componentDidMount() {
   //   var theImages = this.props.data.ourproperty.propertyImages
   //   const newVar = this.props.data.ourproperty.propertyImages.slice()
@@ -181,6 +80,7 @@ class Property extends React.Component {
   // }
 
   render() {
+    console.log(this.props)
     if (this.props.data.property) {
       var node = this.props.data.property
       var images = node.childrenFile
@@ -202,21 +102,16 @@ class Property extends React.Component {
         var videoId = youtube_parser(node.youtubeUrl)
         // var newImages = images.slice()
         newImages.splice(1, 0, { video: videoId })
-        console.log(newImages)
       }
     }
 
     return (
       <ConditionalLayout data={this.props.data}>
-        {console.log(this.state)}
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className="slideshow-modal"
-          sx={{
-            width: "100%",
-          }}
         >
           <div>
             <div
@@ -232,7 +127,7 @@ class Property extends React.Component {
                 ":after": {
                   content: "' '",
                   height: "30px",
-                  borderLeft: "2px solid #fff",
+                  borderLeft: "3px solid #fff",
                   position: "absolute",
                   transform: "rotate(45deg)",
                   left: "10px",
@@ -240,13 +135,14 @@ class Property extends React.Component {
                 ":before": {
                   content: "' '",
                   height: "30px",
-                  borderLeft: "2px solid #fff",
+                  borderLeft: "3px solid #fff",
                   position: "absolute",
                   transform: "rotate(-45deg)",
                   left: "10px",
                 },
               }}
             ></div>
+
             <FullSlide images={newImages} index={this.state.slideIndex} />
           </div>
         </Modal>
@@ -254,17 +150,24 @@ class Property extends React.Component {
           sx={{
             display: "flex",
             flexWrap: "wrap",
-            height: "100%",
+            height: ["auto", "100%", "100%"],
+
             justifyContent: "space-betweeen",
+            flexDirection: ["column", "row", "row"],
           }}
         >
           <div
             sx={{
-              width: "55%",
+              display: ["block", "block", "none"],
+            }}
+          ></div>
+          <div
+            sx={{
+              width: ["100%", "55%", "55%"],
               backgroundColor: "white",
-              overflow: "scroll",
-              height: "100%",
-              paddingRight: "10px",
+              overflow: ["hidden", "scroll", "scroll"],
+              height: ["auto", "100%", "100%"],
+              paddingRight: ["0px", "10px", "10px"],
               boxSizing: "border-box",
               display: "flex",
               flexWrap: "wrap",
@@ -273,7 +176,7 @@ class Property extends React.Component {
               "> div": {
                 width: "calc(50% - 2.5px)",
                 marginBottom: "5px",
-                "&:nth-child(1)": {
+                "&:nth-of-type(1)": {
                   width: "100%",
                 },
                 ".yt-lite": {
@@ -283,24 +186,17 @@ class Property extends React.Component {
               },
             }}
           >
-            {newImages.map((image, index) => (
-              <div
-                sx={{
-                  cursor: "pointer",
-                }}
-                onClick={() => this.openModal(index, videoId)}
-              >
-                <ReturnImage image={image} />
-              </div>
-            ))}
+            <PropImages
+              newImages={newImages}
+              openModal={this.openModal}
+            ></PropImages>
           </div>
 
           <div
             sx={{
-              width: "calc(45%)",
-
+              width: ["100%", "45%", "45%"],
               overflow: "scroll",
-              height: "100%",
+              height: ["auto", "100%", "100%"],
 
               boxSizing: "border-box",
               color: "grayBlk",
@@ -310,8 +206,8 @@ class Property extends React.Component {
           >
             <div
               sx={{
-                padding: "20px 30px",
-                marginRight: "10px",
+                padding: ["20px 20px", "20px 20px", "20px 30px"],
+                marginRight: ["0px", "10px", "10px"],
                 backgroundColor: "white",
                 borderLeft: "1px solid #E5E5E5",
                 borderRight: "1px solid #E5E5E5",

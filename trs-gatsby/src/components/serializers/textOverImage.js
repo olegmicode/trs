@@ -19,7 +19,7 @@ const TextOverImage = ({ node }) => {
   const bgImage = convertToBgImage(imageData)
   return (
     <section id={node.sanityId}>
-      <Container>
+      <Container noMobilePadding={true}>
         <BackgroundImage
           Tag="div"
           // Spread bgImage into BackgroundImage:

@@ -32,7 +32,7 @@ img {
   transform: translateY(50px);
   transition: transform 0ms ease-out;
   max-width: 1000px;
-  padding: 0px 80px !important;
+  padding: 0px 35px !important;
   margin: 0 auto;
   border: 0px !important;
   border-radius: 0px !important;
@@ -40,6 +40,23 @@ img {
   position: relative;
   overflow: hidden !important;
   height: calc(100% - 80px);
+  // inset: 0px !important;
+  @include tablet() {
+    height: calc(100%);
+    width: calc(100%);
+    max-width: calc(100%);
+    padding: 0px 0px !important;
+    inset: 0px !important;
+    overflow: scroll !important;
+  }
+  @include mobile() {
+    height: calc(100%);
+    width: calc(100%);
+    max-width: calc(100%);
+    padding: 0px 0px !important;
+    inset: 0px !important;
+    overflow: scroll !important;
+  }
 }
 
 .ReactModal__Content--after-open {
@@ -58,13 +75,6 @@ img {
   flex-wrap: wrap;
 }
 .ais-InfiniteHits-list .ais-InfiniteHits-item {
-  box-sizing: border-box;
-  z-index: 1;
-  position: relative;
-  background-color: white;
-  margin-bottom: 40px;
-  width: calc((100%) / 4 - 20px);
-  margin-right: 20px;
 }
 .ais-InfiniteHits-loadMore {
   margin: 0 auto;
@@ -79,13 +89,18 @@ img {
   margin-right: 0px;
 }
 
-.slideshow-modal {
+body .slideshow-modal {
   background-color: rgba(0, 0, 0, 0.9) !important;
   height: 100% !important;
   width: 100% !important;
   padding: 40px !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
+  z-index: 1002;
+  position: relative;
+  @include mobile() {
+    padding: 0px !important;
+  }
 }
 
 .react-slideshow-fade-wrapper .react-slideshow-fade-images-wrap > div {

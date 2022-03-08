@@ -42,6 +42,7 @@ const PropertyTeaser = ({ property }) => {
         <div
           sx={{
             height: "100%",
+            boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.25)",
           }}
         >
           <Link
@@ -63,7 +64,8 @@ const PropertyTeaser = ({ property }) => {
                 flexGrow: "1",
                 display: "flex",
                 flexDirection: "column",
-                flex: "1 1 280px",
+                flex: ["1", "1", "1"],
+                minHeight: "140px",
               }}
             >
               <h2

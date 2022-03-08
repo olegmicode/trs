@@ -27,7 +27,7 @@ export default {
   ],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   colors: {
-    text: "#000",
+    text: "#887E7E",
     background: "#fff",
     primary: "#4386b9",
     offWhite: "#f8f8f8",
@@ -39,5 +39,5 @@ export default {
     grayHvy: "#6D6465",
     newTan: "#C1B098",
   },
-  breakpoints: ["400px", "800px", "1000px"],
+  breakpoints: ["800px", "1000px", "1200px"],
 }

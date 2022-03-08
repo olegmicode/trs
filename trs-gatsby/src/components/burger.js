@@ -11,16 +11,16 @@ class Burger extends React.Component {
       <div
         onClick={this.clickMe}
         sx={{
-          display: ["flex", "flex", "none"],
+          display: ["flex", "none", "none"],
           flexDirection: "column",
           justifyContent: "space-around",
-          width: "2rem",
-          height: "2rem",
+          width: "30px",
+          height: "30px",
           background: "transparent",
           border: "none",
           cursor: "pointer",
           padding: "0",
-          zIndex: "1001",
+          zIndex: this.props.open ? "1001" : "auto",
           transition: "all 0.3s linear",
           right: [
             this.props.open ? "15px" : "0px",
@@ -42,9 +42,9 @@ class Burger extends React.Component {
       >
         <div
           sx={{
-            width: "2rem",
-            height: "0.25rem",
-            background: "black",
+            width: "100%",
+            height: "5px",
+            background: this.props.open ? "#ffffff" : "#C4C4C4",
             borderRadius: "10px",
             transition: "all 0.3s linear",
             position: "relative",
@@ -58,9 +58,9 @@ class Burger extends React.Component {
         ></div>
         <div
           sx={{
-            width: "2rem",
-            height: "0.25rem",
-            background: "black",
+            width: "100%",
+            height: "5px",
+            background: this.props.open ? "#ffffff" : "#C4C4C4",
             borderRadius: "10px",
             transition: "all 0.3s linear",
             position: "relative",
@@ -79,9 +79,9 @@ class Burger extends React.Component {
         ></div>
         <div
           sx={{
-            width: "2rem",
-            height: "0.25rem",
-            background: "black",
+            width: "100%",
+            height: "5px",
+            background: this.props.open ? "#ffffff" : "#C4C4C4",
             borderRadius: "10px",
             transition: "all 0.3s linear",
             position: "relative",

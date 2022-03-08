@@ -116,6 +116,7 @@ class SearchResults extends React.Component {
               padding: "60px 0px",
               zIndex: "10",
               position: "relative",
+              flexWrap: "wrap",
               h3: {
                 fontSize: "1.125rem",
                 fontWeight: "600",
@@ -123,21 +124,56 @@ class SearchResults extends React.Component {
                 textAlign: "center",
                 margin: "0px 0px 15px 0px",
               },
-            }}
-          >
-            <div
-              sx={{
-                width: "calc(100% / 4)",
-                paddingRight: "60px",
-                marginRight: "60px",
-                borderRight: "thin solid",
-                borderColor: "#887E7E",
+              "> div": {
+                width: ["100%", "calc(100% / 2)", "calc(100% / 4)"],
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "flex-start",
-                boxSizing: "border-box",
-              }}
-            >
+                justifyContent: "center",
+                alignItems: "center",
+                "> div": {
+                  width: "calc(100% - 60px)",
+                },
+                "&:nth-of-type(1)": {
+                  borderRight: ["0px", "thin solid", "thin solid"],
+                  borderBottom: ["thin solid", "thin solid", "0px"],
+                  paddingBottom: ["30px", "30px", "0px"],
+                  marginBottom: ["30px", "0px", "0px"],
+                  borderColor: "#887E7E",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  boxSizing: "border-box",
+                },
+                "&:nth-of-type(2)": {
+                  borderRight: ["none", "none", "thin solid"],
+                  borderBottom: ["thin solid", "thin solid", "0px"],
+                  borderColor: "#887E7E",
+                  paddingBottom: ["30px", "30px", "0px"],
+
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  boxSizing: "border-box",
+                },
+                "&:nth-of-type(3)": {
+                  borderRight: ["none", "thin solid", "thin solid"],
+                  paddingTop: ["30px", "30px", "0px"],
+                  marginBottom: ["30px", "0px", "0px"],
+                  paddingBottom: ["30px", "30px", "0px"],
+                  borderColor: "#887E7E",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  boxSizing: "border-box",
+                  borderBottom: ["thin solid", "0px", "0px"],
+                },
+                // "&:nth-child(4)": {
+                //   paddingTop: ["30px", "30px", "0px"],
+                // },
+              },
+            }}
+          >
+            <div sx={{}}>
               <div
                 sx={{
                   marginBottom: "40px",
@@ -213,15 +249,6 @@ class SearchResults extends React.Component {
             </div>
             <div
               sx={{
-                width: "calc(100% / 4)",
-                paddingRight: "40px",
-                marginRight: "40px",
-                borderRight: "thin solid",
-                borderColor: "#887E7E",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                boxSizing: "border-box",
                 "> div > div > div": {
                   borderRadius: "0px !important",
                   border: "thin solid #887E7E !important",
@@ -264,16 +291,6 @@ class SearchResults extends React.Component {
             </div>
             <div
               sx={{
-                width: "calc(100% / 4)",
-                paddingRight: "60px",
-                marginRight: "60px",
-                borderRight: "thin solid",
-
-                borderColor: "#887E7E",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                boxSizing: "border-box",
                 "> div > div > div ": {
                   borderRadius: "0px !important",
                   border: "thin solid #887E7E !important",
@@ -346,11 +363,7 @@ class SearchResults extends React.Component {
                 <TheSearchBox />
               </div>
             </div>
-            <div
-              sx={{
-                width: "calc(100% / 4)",
-              }}
-            >
+            <div sx={{}}>
               <div
                 sx={{
                   fontSize: "1rem",
@@ -446,10 +459,27 @@ class SearchResults extends React.Component {
             paddingBottom: 5,
           }}
         >
-          <Container>
+          <Container noMobilePadding={true}>
             <Configure hitsPerPage={8} />
 
             <InfiniteHits
+              sx={{
+                "> ul > li": {
+                  boxSizing: "border-box",
+                  zIndex: "1",
+                  position: "relative",
+                  backgroundColor: "white",
+                  marginBottom: "40px",
+                  marginRight: ["0px", "20px", "20px"],
+                  width: ["100%", "calc(50% - 10px)", "calc(100% / 4 - 20px)"],
+                  "&:nth-of-type(4n + 4)": {
+                    marginRight: ["0px", "0px", "0px"],
+                  },
+                  "&:nth-of-type(2n + 2)": {
+                    marginRight: ["0px", "0px", "0px"],
+                  },
+                },
+              }}
               hitComponent={HitComponent}
               translations={{
                 loadMore: "VIEW MORE",

@@ -8,6 +8,7 @@ import Modal from "react-modal"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import { navigate } from "gatsby"
+import Header from "../components/regions/header"
 
 class ConditionalLayout extends React.Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class ConditionalLayout extends React.Component {
     // subtitle.style.color = "#f00"
   }
   componentWillMount() {}
+
   render() {
     return (
       <ModalRoutingContext.Consumer>
@@ -69,40 +71,87 @@ class ConditionalLayout extends React.Component {
                 letterSpacing: "1px",
               }}
             >
-              <Link
-                to={closeTo}
-                state={{
-                  noScroll: true,
-                }}
+              <div
                 sx={{
-                  position: "absolute",
-                  right: "-40px",
-                  top: "5px",
-                  zIndex: "9",
-                  height: "30px",
-                  width: "30px",
-                  ":after": {
-                    content: "' '",
-                    height: "30px",
-                    borderLeft: "2px solid #fff",
-                    position: "absolute",
-                    transform: "rotate(45deg)",
-                    left: "10px",
-                  },
-                  ":before": {
-                    content: "' '",
-                    height: "30px",
-                    borderLeft: "2px solid #fff",
-                    position: "absolute",
-                    transform: "rotate(-45deg)",
-                    left: "10px",
-                  },
+                  display: ["block", "block", "none"],
                 }}
-              ></Link>
+              >
+                <Header noMobilePadding={true}></Header>
+              </div>
+              <div
+                sx={{
+                  background: [
+                    "linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)",
+                    "linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)",
+                    "none",
+                  ],
+                  width: ["100%", "calc(55% - 10px)", "100%"],
+                  height: "50px",
+                  position: ["absolute"],
+                  zIndex: "9",
+                }}
+              >
+                <Link
+                  to={closeTo}
+                  state={{
+                    noScroll: true,
+                  }}
+                  className="prop-modal-close"
+                  sx={{
+                    position: ["relative", "relative", "absolute"],
+
+                    right: ["-20px", "-20px", "-40px"],
+                    top: ["10px", "10px", "5px"],
+                    zIndex: "9",
+                    height: "30px",
+                    width: "30px",
+                    ":after": {
+                      display: ["none", "none", "block"],
+                      content: "' '",
+                      height: "30px",
+                      borderLeft: "3px solid #fff",
+                      position: "absolute",
+                      transform: "rotate(45deg)",
+                      left: "10px",
+                    },
+                    ":before": {
+                      display: ["none", "none", "block"],
+                      content: "' '",
+                      height: "30px",
+                      borderLeft: "3px solid #fff",
+                      position: "absolute",
+                      transform: "rotate(-45deg)",
+                      left: "10px",
+                    },
+                  }}
+                >
+                  <svg
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    focusable="false"
+                    role="img"
+                    sx={{
+                      transform: "rotate(90deg)",
+                      color: "white",
+                      height: "30px",
+                      display: ["block", "block", "none"],
+                    }}
+                  >
+                    <title>Chevron Left</title>
+                    <path
+                      stroke="none"
+                      d="M29.41 8.59a2 2 0 00-2.83 0L16 19.17 5.41 8.59a2 2 0 00-2.83 2.83l12 12a2 2 0 002.82 0l12-12a2 2 0 00.01-2.83z"
+                      sx={{
+                        fill: "white",
+                      }}
+                    ></path>
+                  </svg>
+                </Link>
+              </div>
               {this.props.children}
             </div>
           ) : (
-            <Layout banner={false}>
+            <Layout banner={false} header={true}>
               <BlockContent
                 blocks={this.props.data.blockFragment._rawEntities[0]}
                 serializers={Serializers}
@@ -127,18 +176,18 @@ class ConditionalLayout extends React.Component {
                 >
                   <div
                     onClick={this.closeModal}
+                    className="prop-modal-close"
                     sx={{
                       position: "absolute",
-                      right: "-40px",
-                      top: "5px",
                       zIndex: "9",
                       height: "30px",
                       width: "30px",
                       cursor: "pointer",
+
                       ":after": {
                         content: "' '",
                         height: "30px",
-                        borderLeft: "2px solid #fff",
+                        borderLeft: "3px solid #fff",
                         position: "absolute",
                         transform: "rotate(45deg)",
                         left: "10px",
@@ -146,7 +195,7 @@ class ConditionalLayout extends React.Component {
                       ":before": {
                         content: "' '",
                         height: "30px",
-                        borderLeft: "2px solid #fff",
+                        borderLeft: "3px solid #fff",
                         position: "absolute",
                         transform: "rotate(-45deg)",
                         left: "10px",

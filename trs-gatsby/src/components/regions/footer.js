@@ -26,8 +26,8 @@ class Footer extends React.Component {
               color: "white",
               padding: "80px 0px 20px 0px",
               a: {
-                color: "#3b80bf",
-                textDecoration: "underline",
+                color: "#3b80bf !important",
+                textDecoration: "none !important",
               },
             }}
           >
@@ -40,9 +40,13 @@ class Footer extends React.Component {
                     width: "100%",
                     height: "auto",
                   },
-                  "> div:nth-child(1)": {
-                    width: "calc(35%)",
-                    padding: "0px 50px 0px 0px",
+                  "> div:nth-of-type(1)": {
+                    width: ["100%", "100%", "35%"],
+                    padding: [
+                      "0px 0px 0px 0px",
+                      "0px 0px 0px 0px",
+                      "0px 50px 0px 0px",
+                    ],
                     h3: {
                       fontSize: "2.25rem",
                       lineHeight: "2.25rem",
@@ -50,25 +54,29 @@ class Footer extends React.Component {
                       fontWeight: "normal",
                     },
                   },
-                  "> div:nth-child(2)": {
-                    width: "calc(40%)",
-                    borderRight: "thin solid #E9E7E7",
-                    borderLeft: "thin solid #E9E7E7",
-                    padding: "0px 50px",
+                  "> div:nth-of-type(2)": {
+                    width: ["100%", "100%", "40%"],
+                    borderRight: ["0x", "0px", "thin solid #E9E7E7"],
+                    borderLeft: ["0x", "0px", "thin solid #E9E7E7"],
+                    padding: ["0px 0px", "0px 0px", "0px 50px"],
                     fontSize: "1rem,",
                   },
-                  "> div:nth-child(3)": {
-                    width: "calc(25%)",
-                    padding: "0px 0px 0px 50px",
+                  "> div:nth-of-type(3)": {
+                    width: ["100%", "100%", "25%"],
+                    padding: [
+                      "0px 0px 0px 0px",
+                      "0px 0px 0px 0px",
+                      "0px 0px 0px 50px",
+                    ],
                     p: {
                       display: "none",
                     },
                   },
-                  "> div:nth-child(4)": {
+                  "> div:nth-of-type(4)": {
                     width: "calc(100%)",
                     fontSize: "0.875rem",
-                    textAlign: "center",
-                    marginTop: "100px",
+                    textAlign: ["left", "left", "center"],
+                    marginTop: ["60px", "60px", "100px"],
                   },
                 }}
               >
@@ -79,10 +87,12 @@ class Footer extends React.Component {
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
-                      img: {
-                        width: "100%",
-                        height: "auto",
-                        maxWidth: "300px",
+                      "> div": {
+                        img: {
+                          width: "100%",
+                          height: "auto",
+                          maxWidth: "300px !important",
+                        },
                       },
                     }}
                   >

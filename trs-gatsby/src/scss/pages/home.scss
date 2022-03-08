@@ -1,3 +1,5 @@
+@import "./src/scss/variables.scss";
+@import "./src/scss/mixins.scss";
 #search-hero {
   color: #ffffff;
   > div {
@@ -8,6 +10,35 @@
       position: relative;
       height: 0px;
       min-height: 0px;
+    }
+  }
+}
+
+#partners {
+  @include tablet() {
+    > div > div {
+      flex-wrap: wrap;
+      > div {
+        width: calc(100% / 3);
+        box-sizing: border-box;
+        &:nth-child(3) {
+          padding-top: 20px;
+          padding-bottom: 20px;
+        }
+        &:nth-child(4) {
+          padding-top: 20px;
+          padding-bottom: 20px;
+        }
+      }
+    }
+  }
+  @include mobile() {
+    > div > div {
+      flex-wrap: wrap;
+      > div {
+        width: calc(100% / 2);
+        box-sizing: border-box;
+      }
     }
   }
 }

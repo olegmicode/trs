@@ -3,7 +3,11 @@ require("dotenv").config({
 })
 console.log(`.env.${process.env.NODE_ENV}`)
 const queries = require(`${__dirname}/src/algolia/algolia`)
-
+const myCustomQueries = {
+  sm: "(max-width: 800px)",
+  md: "(max-width: 1000px)",
+  l: "(max-width: 1200px)",
+}
 const postType = {
   id: 1,
   mlsid: "666",
@@ -95,6 +99,12 @@ module.exports = {
       },
     },
     "gatsby-plugin-theme-ui",
+    {
+      resolve: "gatsby-plugin-breakpoints",
+      options: {
+        queries: myCustomQueries,
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-remote-images`,
     //   options: {
@@ -125,6 +135,7 @@ module.exports = {
       resolve: "gatsby-plugin-sass",
       options: {
         sassOptions: {
+          data: `@import "./src/scss/variables.scss"; @import "./src/scss/mixins.scss";`,
           includePaths: ["./src/scss"],
         },
       },
