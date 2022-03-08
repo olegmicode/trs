@@ -47,7 +47,12 @@ img {
     max-width: calc(100%);
     padding: 0px 0px !important;
     inset: 0px !important;
-    overflow: scroll !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    position: absolute !important;
+    top: 0px !important;
+    left: 0px !important;
+    transform: none !important;
   }
   @include mobile() {
     height: calc(100%);
@@ -55,7 +60,12 @@ img {
     max-width: calc(100%);
     padding: 0px 0px !important;
     inset: 0px !important;
-    overflow: scroll !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    position: absolute !important;
+    top: 0px !important;
+    left: 0px !important;
+    transform: none !important;
   }
 }
 
