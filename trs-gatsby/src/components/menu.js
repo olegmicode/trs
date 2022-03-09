@@ -152,7 +152,7 @@ const Menu = open => {
                 sx={{
                   width: ["100%", "calc(100% / 5)", "calc(100% / 5)"],
                   position: "relative",
-                  padding: ["10px 0px", "10px 10px", "10px 10px"],
+                  padding: ["10px 0px", "10px 10px", "20px 10px"],
 
                   "&:hover > div": {
                     display: "block",
@@ -167,6 +167,9 @@ const Menu = open => {
                     ],
                     backgroundColor: ["transparent", "#ffffff", "#ffffff"],
                     minWidth: "150px",
+                    "a > div": {
+                      display: "none",
+                    },
                   },
                   "&:nth-of-type(3)": {
                     display: ["block", "none", "none"],
@@ -183,13 +186,28 @@ const Menu = open => {
                     textDecoration: "none",
                     fontSize: ["1.6rem", "1.125rem", "1.125rem"],
                     width: "100%",
-                    display: "block",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     textAlign: ["left", "center", "center"],
                   }}
                   activeStyle={{ textDecoration: "underline" }}
                   to={"/" + menuPath(menuItem.children.document.slug.current)}
                 >
                   {menuItem.children.title}
+                  {menuItem.children.submenu && (
+                    <div
+                      sx={{
+                        width: "0",
+                        height: "0",
+                        borderLeft: "5px solid transparent",
+                        borderRight: "5px solid transparent",
+                        borderTop: "5px solid",
+                        borderTopColor: "grayMed",
+                        marginLeft: "10px",
+                      }}
+                    ></div>
+                  )}
                 </Link>
                 {menuItem.children.submenu && (
                   <div
@@ -200,6 +218,7 @@ const Menu = open => {
                       transition: "all 0.5s ease",
                       paddingTop: ["0px", "0px", "0px"],
                       left: 0,
+                      marginTop: ["0px", "20px", "20px"],
                       display: ["block", "none", "none"],
                       minWidth: ["auto", "300px", "300px"],
                     }}

@@ -466,8 +466,12 @@ class SearchResults extends React.Component {
             <div
               sx={{
                 h3: {
-                  margin: "0px 0px 40px 0px",
-                  fontSize: ["3rem", "3rem", "4rem"],
+                  margin: [
+                    "0px 0px 20px 0px",
+                    "0px 0px 20px 0px",
+                    "0px 0px 40px 0px",
+                  ],
+                  fontSize: ["2rem", "3rem", "4rem"],
                   fontFamily: "heading",
                   fontWeight: "400",
                   lineHeight: "1.2",
@@ -498,7 +502,7 @@ class SearchResults extends React.Component {
                 sx={{
                   backgroundColor: "newTan",
                   color: "white",
-                  padding: "15px 60px",
+                  padding: ["15px 25px", "15px 40px", "15px 60px"],
                   cursor: "pointer",
                   display: "inline-block",
                   margin: ["0px 15px", "0px 25px", "0px 35px"],
