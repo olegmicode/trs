@@ -18,6 +18,14 @@
   h2 {
     color: #484242;
     font-size: 4rem;
+    line-height: 1.2;
+    font-weight: 400;
+    @include tablet() {
+      font-size: 3rem;
+    }
+    @include mobile() {
+      font-size: 3rem;
+    }
   }
   @include tablet() {
     > div > div {

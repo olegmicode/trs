@@ -286,6 +286,11 @@ class SearchResults extends React.Component {
                     fontSize: "1rem",
                     fontWeight: "600",
                   },
+                  ".css-1uccc91-singleValue": {
+                    color: "grayHvy",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                  },
                 }}
               >
                 <h3>COUNTY</h3>
@@ -335,6 +340,11 @@ class SearchResults extends React.Component {
                 sx={{
                   marginBottom: "40px",
                   ".css-1wa3eu0-placeholder": {
+                    color: "grayHvy",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                  },
+                  ".css-1uccc91-singleValue": {
                     color: "grayHvy",
                     fontSize: "1rem",
                     fontWeight: "600",
@@ -405,7 +415,7 @@ class SearchResults extends React.Component {
                       border: "thin solid #887E7E",
                       width: "100%",
                       color: "#ffffff",
-                      padding: "20px",
+                      padding: "15px",
                       cursor: "pointer",
                       fontSize: "1rem",
                       fontWeight: "600",
@@ -437,7 +447,11 @@ class SearchResults extends React.Component {
         <div
           sx={{
             backgroundColor: "grayHvy",
-            padding: "45px 0px",
+            padding: [
+              "25px 0px 35px 0px",
+              "45px 0px 55px 0px",
+              "60px 0px 70px 0px",
+            ],
             color: "white",
             display: "flex",
             alignItems: "center",
@@ -452,7 +466,11 @@ class SearchResults extends React.Component {
             <div
               sx={{
                 h3: {
-                  margin: "0px 0px 20px 0px",
+                  margin: "0px 0px 40px 0px",
+                  fontSize: ["3rem", "3rem", "4rem"],
+                  fontFamily: "heading",
+                  fontWeight: "400",
+                  lineHeight: "1.2",
                 },
               }}
             >
@@ -464,14 +482,38 @@ class SearchResults extends React.Component {
             </div>
             <div
               sx={{
-                backgroundColor: "newTan",
-                color: "white",
-                padding: "10px 20px",
-                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
-              onClick={() => scrollTo("#filters")}
             >
-              CHANGE FILTER CRITERIA
+              <div
+                sx={{
+                  width: ["50px", "120px", "150px"],
+                  height: "1px",
+                  backgroundColor: "#ffffff",
+                }}
+              ></div>
+              <div
+                sx={{
+                  backgroundColor: "newTan",
+                  color: "white",
+                  padding: "15px 60px",
+                  cursor: "pointer",
+                  display: "inline-block",
+                  margin: ["0px 15px", "0px 25px", "0px 35px"],
+                }}
+                onClick={() => scrollTo("#filters")}
+              >
+                Change Filter Criteria
+              </div>
+              <div
+                sx={{
+                  width: ["50px", "120px", "150px"],
+                  height: "1px",
+                  backgroundColor: "#ffffff",
+                }}
+              ></div>
             </div>
           </Container>
         </div>

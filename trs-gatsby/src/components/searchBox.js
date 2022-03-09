@@ -23,6 +23,8 @@ export default connectSearchBox(({ refine }) => {
           color: "grayHvy",
           fontSize: "1rem",
           fontWeight: "600",
+          letterSpacing: "1.4 !important",
+          fontFamily: "body",
         },
       }}
       placeholder="Enter Text"
