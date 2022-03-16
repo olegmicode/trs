@@ -45,6 +45,12 @@ export default {
       of: [{ type: "block" }],
     },
     {
+      title: "Team Member Affiliations",
+      name: "teamMemberAffiliations",
+      type: "array",
+      of: [{ type: "block" }],
+    },
+    {
       title: "Team Position",
       name: "teamPosition",
       type: "string",

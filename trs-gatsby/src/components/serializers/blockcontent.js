@@ -1,18 +1,20 @@
 /** @jsx jsx */
-import { jsx, useColorMode } from "theme-ui"
-import * as React from "react"
-import { getGatsbyImageData } from "gatsby-source-sanity"
-import { convertToBgImage } from "gbimage-bridge"
-import BackgroundImage from "gatsby-background-image"
+import { jsx } from "theme-ui"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../serializers/serializers"
-import Container from "../container"
 
 const TheBlockContent = ({ node }) => {
   return (
-    <Container>
-      <h3>test block content</h3>
-    </Container>
+    <div id={node.blockId ? node.blockId : ""}>
+      {node.entities &&
+        node.entities.map((item, index) => (
+          <BlockContent key={index} blocks={item} serializers={Serializers} />
+        ))}
+      {node.blockcontent &&
+        node.blockcontent.map((item, index) => (
+          <BlockContent key={index} blocks={item} serializers={Serializers} />
+        ))}
+    </div>
   )
 }
 

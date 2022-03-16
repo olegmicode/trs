@@ -1,0 +1,87 @@
+@import "./src/scss/variables.scss";
+@import "./src/scss/mixins.scss";
+#team-hero {
+  color: #ffffff;
+  > div {
+    > div {
+      width: 100%;
+      padding: 18%;
+      box-sizing: border-box;
+      position: relative;
+      height: 0px;
+      min-height: 0px;
+    }
+  }
+}
+
+#meet-our-team-copy {
+  padding-bottom: 80px;
+  h2 {
+    text-transform: uppercase;
+    text-align: left;
+  }
+  > div {
+    > div {
+      border-bottom: thin solid;
+      border-color: $grayMed;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      flex-wrap: wrap;
+      > div {
+        width: calc(100% / 4 - 15px);
+        padding: 0px;
+        @include tablet() {
+          width: calc(100% / 2 - 15px);
+        }
+        @include tablet() {
+          width: calc(100%);
+        }
+        p {
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}
+
+#team-list {
+  padding: 0px;
+  > div {
+    padding: 0px;
+    > div {
+      flex-wrap: wrap;
+      align-items: flex-start;
+      > div {
+        width: calc(100% / 3 - 60px);
+        box-sizing: border-box;
+        margin-right: 90px;
+        margin-bottom: 60px;
+        padding: 0px;
+        &:nth-child(3n + 3) {
+          margin-right: 0px;
+        }
+        @include tablet() {
+          width: calc(100% / 2 - 40px);
+          margin-right: 80px;
+          &:nth-child(3n + 3) {
+            margin-right: 80px;
+          }
+          &:nth-child(2n + 2) {
+            margin-right: 0px;
+          }
+        }
+        @include mobile() {
+          width: calc(100%);
+          margin-right: 0px;
+          &:nth-child(3n + 3) {
+            margin-right: 0px;
+          }
+          &:nth-child(2n + 2) {
+            margin-right: 0px;
+          }
+        }
+      }
+    }
+  }
+}

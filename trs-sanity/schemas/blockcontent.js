@@ -10,6 +10,27 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: "ID",
+      name: "blockId",
+      type: "string",
+    },
+    {
+      title: "Entities",
+      name: "entities",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [
+            { type: "imageLeftTextRight" },
+            { type: "imageRightTextLeft" },
+            { type: "textOverImage" },
+            { type: "columns" },
+          ],
+        },
+      ],
+    },
+    {
       title: "Block Content",
       name: "blockcontent",
       type: "array",

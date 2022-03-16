@@ -8,7 +8,7 @@ export default {
       name: "document",
       type: "reference",
       title: "Document Reference",
-      to: [{ type: "page" }],
+      to: [{ type: "pageDefinition" }],
     },
   ],
   preview: {

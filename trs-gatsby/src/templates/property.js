@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Helmet } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -80,7 +80,6 @@ class Property extends React.Component {
   // }
 
   render() {
-    console.log(this.props)
     if (this.props.data.property) {
       var node = this.props.data.property
       var images = node.childrenFile

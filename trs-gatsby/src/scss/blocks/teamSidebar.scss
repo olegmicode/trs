@@ -1,0 +1,24 @@
+@import "./src/scss/variables.scss";
+@import "./src/scss/mixins.scss";
+#team-sidebar {
+  @include mobile() {
+    padding: 0px 2%;
+  }
+
+  p {
+    border-bottom: thin solid #887e7e;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    margin-top: 0px;
+  }
+  a {
+    color: #887e7e;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    strong {
+      color: #c1b098;
+      font-weight: normal;
+    }
+  }
+}

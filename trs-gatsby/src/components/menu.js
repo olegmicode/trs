@@ -45,9 +45,9 @@ const Menu = open => {
         <div
           sx={{
             display: "flex",
+            borderBottom: ["thin solid darkGray"],
           }}
         >
-          {console.log(data)}
           <div
             sx={{
               backgroundColor: "newTan",
@@ -186,7 +186,7 @@ const Menu = open => {
                     textDecoration: "none",
                     fontSize: ["1.6rem", "1.125rem", "1.125rem"],
                     width: "100%",
-                    display: "flex",
+                    display: ["block", "flex", "flex"],
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: ["left", "center", "center"],
@@ -205,6 +205,7 @@ const Menu = open => {
                         borderTop: "5px solid",
                         borderTopColor: "grayMed",
                         marginLeft: "10px",
+                        display: ["none", "block", "block"],
                       }}
                     ></div>
                   )}

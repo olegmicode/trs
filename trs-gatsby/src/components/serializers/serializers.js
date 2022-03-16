@@ -3,8 +3,9 @@ import Image from "./image"
 import TextOverImage from "./textOverImage"
 import TheBlockContent from "./blockcontent"
 import Columns from "./columns"
+import Team from "../entity/team/teamTeaser"
+import BlockText from "./blockText"
 import { Link } from "gatsby"
-const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
 const Serializers = {
   container: ({ children }) => <React.Fragment>{children}</React.Fragment>,
   types: {
@@ -12,15 +13,22 @@ const Serializers = {
     textOverImage: TextOverImage,
     blockcontent: TheBlockContent,
     columns: Columns,
+    team: Team,
+    blockText: BlockText,
   },
   marks: {
     internalLink: ({ mark, children }) => {
       var href = ""
       if (mark.reference._type == "team") {
-        href = `/our-team/${mark.reference.slug.current}`
-      } else {
-        href = `/${mark.reference.slug.current}`
+        if (mark.reference.slug) {
+          if (mark.reference.slug.current) {
+            href = `/our-team/${mark.reference.slug.current}`
+          } else {
+            href = `/${mark.reference.slug.current}`
+          }
+        }
       }
+
       return (
         <Link activeStyle={{ textDecoration: "underline" }} to={href}>
           {children}

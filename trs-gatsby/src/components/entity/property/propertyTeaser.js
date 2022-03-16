@@ -155,6 +155,10 @@ const PropertyTeaser = ({ property }) => {
               <div
                 sx={{
                   textAlign: "center",
+                  img: {
+                    maxWidth: "100%",
+                    height: "auto",
+                  },
                 }}
               >
                 {property.sanityimage && (
@@ -165,8 +169,9 @@ const PropertyTeaser = ({ property }) => {
                     }}
                     alt=""
                     image={property.sanityimage[0].asset.gatsbyImageData}
-                    width={600}
-                    aspectRatio={4 / 2}
+                    width={800}
+                    height={500}
+                    aspectRatio={4 / 3}
                   />
                 )}
                 {property.image && (
@@ -177,7 +182,8 @@ const PropertyTeaser = ({ property }) => {
                     }}
                     alt=""
                     image={property.image.childImageSharp.gatsbyImageData}
-                    width={600}
+                    width={800}
+                    height={500}
                     aspectRatio={4 / 3}
                   />
                 )}

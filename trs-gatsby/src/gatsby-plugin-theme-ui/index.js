@@ -12,7 +12,7 @@ export default {
   },
   lineHeights: {
     body: "1.375rem",
-    heading: "1.125rem",
+    heading: "1.2",
   },
   fontSizes: [
     "0.75rem",

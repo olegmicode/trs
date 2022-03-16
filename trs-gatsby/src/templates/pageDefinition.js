@@ -8,6 +8,7 @@ import LayoutSearch from "../components/layoutSearch"
 
 const PageDefinition = ({ data }) => {
   const node = data.page
+  console.log(node)
   return (
     <div>
       {node.slug.current == "home" && (
@@ -17,28 +18,54 @@ const PageDefinition = ({ data }) => {
       )}
       {node.slug.current !== "home" && (
         <Layout>
+          <div>
+            {node._rawHero && (
+              <BlockContent blocks={node._rawHero} serializers={Serializers} />
+            )}
+          </div>
           <div
             sx={{
               display: [
-                "block",
-                node.sidebar[0] ? "flex" : "block",
-                node.sidebar[0] ? "flex" : "block",
+                "flex",
+                node._rawSidebar ? "flex" : "block",
+                node._rawSidebar ? "flex" : "block",
               ],
+              maxWidth: [
+                node._rawSidebar ? "800px" : "100%",
+                node._rawSidebar ? "1000px" : "100%",
+                node._rawSidebar ? "1200px" : "100%",
+              ],
+              margin: [
+                node._rawSidebar ? "0 auto" : "100%",
+                node._rawSidebar ? "0 auto" : "100%",
+                node._rawSidebar ? "0 auto" : "100%",
+              ],
+              padding: [
+                node._rawSidebar ? "0px 0%" : "0px",
+                node._rawSidebar ? "0px 3%" : "0px",
+                node._rawSidebar ? "0px 5%" : "0px",
+              ],
+              boxSizing: "content-box",
               justifyContent: "space-between",
+              flexDirection: ["column-reverse", "row", "row"],
             }}
           >
-            {node.sidebar[0] && (
+            {node._rawSidebar && (
               <div
                 sx={{
                   width: [
                     "100%",
-                    node.sidebar[0] ? "175px" : "100%",
-                    node.sidebar[0] ? "175px" : "100%",
+                    node._rawSidebar ? "280px" : "100%",
+                    node._rawSidebar ? "280px" : "100%",
                   ],
+                  position: ["relative", "sticky", "sticky"],
+                  top: "20px",
+                  height: "100%",
+                  paddingBottom: "20px",
                 }}
               >
                 <BlockContent
-                  blocks={node.sidebar[0]._rawBlockcontent}
+                  blocks={node._rawSidebar[0]}
                   serializers={Serializers}
                 />
               </div>
@@ -47,15 +74,17 @@ const PageDefinition = ({ data }) => {
               sx={{
                 width: [
                   "100%",
-                  node.sidebar[0] ? "calc(100% - 220px)" : "100%",
-                  node.sidebar[0] ? "calc(100% - 220px)" : "100%",
+                  node._rawSidebar ? "calc(100% - 350px)" : "100%",
+                  node._rawSidebar ? "calc(100% - 350px)" : "100%",
                 ],
               }}
             >
-              <BlockContent
-                blocks={node._rawEntities}
-                serializers={Serializers}
-              />
+              {node._rawEntities && (
+                <BlockContent
+                  blocks={node._rawEntities}
+                  serializers={Serializers}
+                />
+              )}
             </div>
           </div>
         </Layout>
@@ -72,11 +101,9 @@ export const pageDefinitionQuery = graphql`
         current
       }
       title
+      _rawHero(resolveReferences: { maxDepth: 10 })
       _rawEntities(resolveReferences: { maxDepth: 10 })
-      sidebar {
-        _rawBlockcontent(resolveReferences: { maxDepth: 10 })
-        blockName
-      }
+      _rawSidebar(resolveReferences: { maxDepth: 10 })
     }
   }
 `

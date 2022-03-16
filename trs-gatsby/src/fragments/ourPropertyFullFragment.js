@@ -30,7 +30,13 @@ export const ourPropertyFullFragment = graphql`
     _rawPropertyDescrition(resolveReferences: { maxDepth: 10 })
     propertyImages {
       asset {
-        gatsbyImageData
+        gatsbyImageData(
+          width: 800
+          height: 500
+          placeholder: BLURRED
+          formats: [AUTO, WEBP, AVIF]
+          layout: CONSTRAINED
+        )
       }
     }
     _rawPropertyImprovements(resolveReferences: { maxDepth: 10 })

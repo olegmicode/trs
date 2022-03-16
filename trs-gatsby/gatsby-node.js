@@ -21,13 +21,6 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      page: allSanityPage {
-        nodes {
-          slug {
-            current
-          }
-        }
-      }
       property: allProperty {
         nodes {
           mlsid
@@ -91,41 +84,41 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   })
 
-  pages.data.page.nodes.forEach(node => {
-    if (node.slug.current == "properties") {
-      createPage({
-        path: `/properties`,
-        component: additionalPropertiesTemplate,
-        context: {
-          slug: node.slug.current,
-        },
-      })
-    } else if (node.slug.current == "texas-ranch-brokerage-team") {
-      createPage({
-        path: `/texas-ranch-brokerage-team`,
-        component: ourTeamTemplate,
-        context: {
-          slug: node.slug.current,
-        },
-      })
-    } else if (node.slug.current == "contact-us") {
-      createPage({
-        path: `/contact-us`,
-        component: contactTemplate,
-        context: {
-          slug: node.slug.current,
-        },
-      })
-    } else {
-      createPage({
-        path: `/${node.slug.current}`,
-        component: pageTemplate,
-        context: {
-          slug: node.slug.current,
-        },
-      })
-    }
-  })
+  // pages.data.page.nodes.forEach(node => {
+  //   if (node.slug.current == "properties") {
+  //     createPage({
+  //       path: `/properties`,
+  //       component: additionalPropertiesTemplate,
+  //       context: {
+  //         slug: node.slug.current,
+  //       },
+  //     })
+  //   } else if (node.slug.current == "texas-ranch-brokerage-team") {
+  //     createPage({
+  //       path: `/texas-ranch-brokerage-team`,
+  //       component: ourTeamTemplate,
+  //       context: {
+  //         slug: node.slug.current,
+  //       },
+  //     })
+  //   } else if (node.slug.current == "contact-us") {
+  //     createPage({
+  //       path: `/contact-us`,
+  //       component: contactTemplate,
+  //       context: {
+  //         slug: node.slug.current,
+  //       },
+  //     })
+  //   } else {
+  //     createPage({
+  //       path: `/${node.slug.current}`,
+  //       component: pageTemplate,
+  //       context: {
+  //         slug: node.slug.current,
+  //       },
+  //     })
+  //   }
+  // })
 
   const teamTemplate = path.resolve("src/templates/team.js")
   pages.data.team.nodes.forEach(node => {

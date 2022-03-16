@@ -18,7 +18,8 @@ const postQuery = `{
       image: childFile {
         childImageSharp {
           gatsbyImageData(
-            width: 600
+            width: 800
+            height:600
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
             layout: CONSTRAINED
@@ -42,7 +43,13 @@ const postQuery = `{
       status: status
       sanityimage: propertyImages {
         asset {
-          gatsbyImageData
+          gatsbyImageData(
+            width: 800
+            height:600
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            layout: CONSTRAINED
+          )
         }
       }
       slug: slug{

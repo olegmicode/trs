@@ -35,6 +35,11 @@ const Layout = ({ props, children, banner, header }) => {
           lineHeight: "heading",
           fontSize: "6",
         },
+        p: {
+          a: {
+            color: "grayMed",
+          },
+        },
       }}
     >
       <Header banner={banner}></Header>

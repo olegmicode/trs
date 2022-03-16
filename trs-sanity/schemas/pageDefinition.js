@@ -15,6 +15,17 @@ export default {
       title: "Slug",
     },
     {
+      title: "Hero",
+      name: "hero",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "blockcontent" }],
+        },
+      ],
+    },
+    {
       title: "Entities",
       name: "entities",
       type: "array",

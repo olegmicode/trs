@@ -1,18 +1,23 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getGatsbyImageData } from "gatsby-source-sanity"
 
 const TeamTeaser = ({ team }) => {
-  console.log(team)
+  const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
+  const imageAssetId = team.teamPhoto.asset.id
+  const imageData = getGatsbyImageData(
+    imageAssetId,
+    { maxWidth: 800 },
+    sanityConfig
+  )
+  // const teamImage = getImage(imageData)
+  // console.log(teamImage)
+  // console.log(imageData)
   return (
     <div
       sx={{
-        border: "thin solid gray",
-        backgroundColor: "lightgray",
-        padding: "20px",
-        width: "calc(100% / 3 - 15px)",
-        marginBottom: "20px",
         boxSizing: "border-box",
       }}
     >
@@ -22,36 +27,50 @@ const TeamTeaser = ({ team }) => {
             maxWidth: "100%",
             height: "auto",
           }}
-          image={team.teamPhoto.asset.gatsbyImageData}
-          width={600}
+          image={imageData}
+          width={800}
           aspectRatio={4 / 3}
         />
       )}
-      <h3>
+      <div
+        sx={{
+          textAlign: "center",
+          marginTop: "30px",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+        }}
+      >
         {team.teamFirstName} {team.teamLastName}
-      </h3>
-      <div>{team.teamPosition}</div>
-      <Link
+      </div>
+      <div
         sx={{
-          display: "block",
+          textAlign: "center",
+          margin: "10px 0px 20px 0px",
+          textTransform: "uppercase",
+          color: "newTan",
         }}
-        to={
-          "/contact-us?team=" +
-          team.teamFirstName +
-          "&lname=" +
-          team.teamLastName
-        }
       >
-        Email {team.teamFirstName}
-      </Link>
-      <Link
+        {team.teamPosition}
+      </div>
+
+      <div
         sx={{
-          display: "block",
+          display: "flex",
+          justifyContent: "center",
         }}
-        to={"/our-team/" + team.slug.current}
       >
-        More about {team.teamFirstName}
-      </Link>
+        <Link
+          sx={{
+            display: "inline-block",
+            backgroundColor: "newTan",
+            color: "white !important",
+            padding: "10px 20px",
+          }}
+          to={"/our-team/" + team.slug.current}
+        >
+          MORE INFO
+        </Link>
+      </div>
     </div>
   )
 }

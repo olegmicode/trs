@@ -1,9 +1,5 @@
 /** @jsx jsx */
-import { jsx, useColorMode } from "theme-ui"
-import * as React from "react"
-import { getGatsbyImageData } from "gatsby-source-sanity"
-import { convertToBgImage } from "gbimage-bridge"
-import BackgroundImage from "gatsby-background-image"
+import { jsx } from "theme-ui"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "./serializers"
 import Container from "../container"
@@ -43,8 +39,9 @@ const Columns = ({ node }) => {
               sx={{
                 padding: "0px 20px",
               }}
+              key={index}
             >
-              <BlockContent blocks={item.body} serializers={Serializers} />
+              {item && <BlockContent blocks={item} serializers={Serializers} />}
             </div>
           ))}
         </div>
