@@ -6,6 +6,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
 import siteSettings from "./siteSettings";
+import trsUpdate from "./trsUpdate";
 import page from "./page";
 import pageDefinition from "./pageDefinition";
 import menuItemSub from "./menuItemSub";
@@ -52,5 +53,6 @@ export default createSchema({
     columns,
     blockText,
     footer,
+    trsUpdate,
   ]),
 });

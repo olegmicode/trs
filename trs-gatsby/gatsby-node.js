@@ -72,6 +72,15 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: node.slug.current,
         },
       })
+    } else if (node.slug.current == "contact-us") {
+      createPage({
+        path: `/${node.slug.current}`,
+        component: contactTemplate,
+        context: {
+          home: true,
+          slug: node.slug.current,
+        },
+      })
     } else {
       createPage({
         path: `/${node.slug.current}`,

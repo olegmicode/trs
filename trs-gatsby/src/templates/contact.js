@@ -8,8 +8,6 @@ import ContactForm from "../components/contactForm"
 const Contact = ({ data }) => {
   return (
     <Layout>
-      <h1>{data.page.title}</h1>
-      <BlockContent blocks={data.page._rawBody} serializers={Serializers} />
       <ContactForm></ContactForm>
     </Layout>
   )

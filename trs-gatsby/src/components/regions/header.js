@@ -8,7 +8,8 @@ import Burger from "../burger"
 import Menu from "../menu"
 import Container from "../container"
 import scrollTo from "gatsby-plugin-smoothscroll"
-
+import BlockContent from "@sanity/block-content-to-react"
+import Serializers from "../serializers/serializers"
 const setItem = (key, value, numberOfDays) => {
   const now = new Date()
 
@@ -110,6 +111,10 @@ class Header extends React.Component {
                 }
               }
             }
+            update: sanityTrsUpdate {
+              _rawUpdate(resolveReferences: { maxDepth: 10 })
+              title
+            }
             facebook: file(name: { eq: "Facebook" }) {
               name
               childImageSharp {
@@ -196,9 +201,8 @@ class Header extends React.Component {
                     </div>
                     <div
                       sx={{
-                        border: "2px solid white",
-                        height: "40px",
-                        width: "40px",
+                        height: "30px",
+                        width: "30px",
                         marginLeft: "10px",
                         display: "flex",
                         alignItems: "center",
@@ -223,53 +227,42 @@ class Header extends React.Component {
                   </div>
                   <div
                     sx={{
-                      width: ["100%", "100%", "calc(50% - 20px)"],
+                      width: ["100%", "100%", "calc(100%)"],
                     }}
                   >
-                    <h2
+                    <div
                       sx={{
                         margin: "0px 0px 25px 0px",
                         fontWeight: "normal !important",
                         lineHeight: "1.2 !important",
+                        fontSize: ["2rem", "2.5rem", "3rem"],
+                        fontFamily: "heading",
                       }}
                     >
-                      Update January 2022
-                    </h2>
-                    <div>
-                      Texas Ranches For Sale was founded in 2001 on the
-                      foundation of providing our clients with the highest
-                      degree of knowledge and to provide honest, personal
-                      attention to every customer. The last 8-9 months have been
-                      unchartered waters and we want to help you navigate
-                      through them. We are staying abreast of the current events
-                      and are dedicated to keeping you informed of any changes
-                      affecting our daily lives, the financial markets, and the
-                      impact those changes might have on the land market.
-                    </div>
-                  </div>
-                  <div
-                    sx={{
-                      width: ["100%", "100%", "calc(50% - 20px)"],
-                    }}
-                  >
-                    <div>
-                      During this time we will continue to diligently promote
-                      our client’s properties and provide quality service to our
-                      buyer clients. We have much to be thankful for, including
-                      our valued clients, colleagues, friends, and family
-                      members. We understand the struggles of this time, but we
-                      have and will not waiver from our commitment to you. Feel
-                      free to reach out to us with any questions and we look
-                      forward to working through this and working with each of
-                      you.
+                      {data.update.title}
                     </div>
                     <div
                       sx={{
-                        marginTop: "25px",
-                        textAlign: "right",
+                        columnCount: ["1", "2", "2"],
+                        columnGap: ["0px", "40px", "40px"],
+                        p: {
+                          margin: [
+                            "20px 0px 0px 0px",
+                            "20px 0px 0px 0px",
+                            "20px 0px 0px 0px",
+                          ],
+                          "&:first-child": {
+                            marginTop: "0px",
+                          },
+                        },
                       }}
                     >
-                      Ken Hoerster, President/Broker
+                      {
+                        <BlockContent
+                          blocks={data.update._rawUpdate}
+                          serializers={Serializers}
+                        />
+                      }
                     </div>
                   </div>
                 </div>
