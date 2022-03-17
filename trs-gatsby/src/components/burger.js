@@ -44,7 +44,7 @@ class Burger extends React.Component {
           sx={{
             width: "100%",
             height: "5px",
-            background: this.props.open ? "#ffffff" : "#C4C4C4",
+            background: this.props.open ? "#ffffff" : "#887E7E",
             borderRadius: "10px",
             transition: "all 0.3s linear",
             position: "relative",
@@ -60,7 +60,7 @@ class Burger extends React.Component {
           sx={{
             width: "100%",
             height: "5px",
-            background: this.props.open ? "#ffffff" : "#C4C4C4",
+            background: this.props.open ? "#ffffff" : "#887E7E",
             borderRadius: "10px",
             transition: "all 0.3s linear",
             position: "relative",
@@ -81,7 +81,7 @@ class Burger extends React.Component {
           sx={{
             width: "100%",
             height: "5px",
-            background: this.props.open ? "#ffffff" : "#C4C4C4",
+            background: this.props.open ? "#ffffff" : "#887E7E",
             borderRadius: "10px",
             transition: "all 0.3s linear",
             position: "relative",

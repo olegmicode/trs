@@ -32,16 +32,18 @@ const TeamTeaser = ({ team }) => {
           aspectRatio={4 / 3}
         />
       )}
-      <div
+      <h2
         sx={{
           textAlign: "center",
           marginTop: "30px",
           fontWeight: "bold",
           textTransform: "uppercase",
+          fontSize: "1rem !important",
+          fontFamily: "Open Sans, sans-serif !important",
         }}
       >
         {team.teamFirstName} {team.teamLastName}
-      </div>
+      </h2>
       <div
         sx={{
           textAlign: "center",

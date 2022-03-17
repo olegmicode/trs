@@ -111,34 +111,34 @@ class Header extends React.Component {
                 }
               }
             }
+            logoStarDesktop: file(name: { eq: "logo-star-est-bottom" }) {
+              name
+              publicURL
+            }
+            logoTextDesktop: file(name: { eq: "logo-star-est-bottom" }) {
+              name
+              publicURL
+            }
             update: sanityTrsUpdate {
               _rawUpdate(resolveReferences: { maxDepth: 10 })
               title
               subTitle
             }
-            facebook: file(name: { eq: "Facebook" }) {
+            facebook: file(name: { eq: "FacebookSVG" }) {
               name
-              childImageSharp {
-                gatsbyImageData
-              }
+              publicURL
             }
-            twitter: file(name: { eq: "Twitter" }) {
+            twitter: file(name: { eq: "TwitterSVG" }) {
               name
-              childImageSharp {
-                gatsbyImageData
-              }
+              publicURL
             }
-            linkedin: file(name: { eq: "LinkedIN" }) {
+            linkedin: file(name: { eq: "LinkedINSVG" }) {
               name
-              childImageSharp {
-                gatsbyImageData
-              }
+              publicURL
             }
-            phone: file(name: { eq: "Phone" }) {
+            phone: file(name: { eq: "PhoneSVG" }) {
               name
-              childImageSharp {
-                gatsbyImageData
-              }
+              publicURL
             }
             megaphone: file(name: { eq: "MegaPhone" }) {
               name
@@ -247,8 +247,8 @@ class Header extends React.Component {
                         margin: "0px 0px 25px 0px",
                         fontWeight: "normal !important",
                         lineHeight: "1.2 !important",
-                        fontSize: ["1.25rem", "1.5rem", "2rem"],
-                        fontFamily: "heading",
+                        fontSize: ["1.125rem", "1.125rem", "1.125rem"],
+                        fontFamily: "body",
                       }}
                     >
                       {data.update.subTitle}
@@ -356,8 +356,8 @@ class Header extends React.Component {
                     <div
                       sx={{
                         cursor: "pointer",
-                        marginRight: ["30px", "50px", "35px"],
-                        paddingRight: ["0px", "0px", "35px"],
+                        marginRight: ["30px", "50px", "25px"],
+                        paddingRight: ["0px", "0px", "25px"],
                         borderRight: ["0px", "0px", "thin solid"],
                         borderColor: "grayMed",
                         transition: "all 0.25s ease-in",
@@ -394,25 +394,26 @@ class Header extends React.Component {
                             fontSize: "1.125rem",
                             color: "grayMed",
                             marginRight: ["30px", "0px", "0px"],
+                            fontWeight: "600",
                           }}
-                          href="phone:830-249-9339"
+                          href="tel:830-249-9339"
                         >
-                          <GatsbyImage
+                          <img
                             sx={{
                               marginRight: "10px",
                               width: "27px",
                               display: ["none", "none", "block"],
                             }}
+                            src={data.phone.publicURL}
                             alt=""
-                            image={data.phone.childImageSharp.gatsbyImageData}
                           />
                           830-249-9339
                         </a>
                       </div>
                       <div
                         sx={{
-                          marginLeft: ["0px", "0px", "35px"],
-                          paddingLeft: ["0px", "0px", "35px"],
+                          marginLeft: ["0px", "0px", "25px"],
+                          paddingLeft: ["0px", "0px", "25px"],
                           borderLeft: ["0px", "0px", "thin solid"],
                           borderColor: "grayMed",
                           marginTop: ["20px", "20px", "0px"],
@@ -424,14 +425,12 @@ class Header extends React.Component {
                           href="https://www.facebook.com/TexasRanchesForSale"
                           target="_blank"
                         >
-                          <GatsbyImage
+                          <img
                             sx={{
                               width: "27px",
                             }}
+                            src={data.facebook.publicURL}
                             alt=""
-                            image={
-                              data.facebook.childImageSharp.gatsbyImageData
-                            }
                           />
                         </a>
                         <a
@@ -441,12 +440,12 @@ class Header extends React.Component {
                             marginLeft: "10px",
                           }}
                         >
-                          <GatsbyImage
+                          <img
                             sx={{
                               width: "27px",
                             }}
+                            src={data.twitter.publicURL}
                             alt=""
-                            image={data.twitter.childImageSharp.gatsbyImageData}
                           />
                         </a>
                         <a
@@ -456,14 +455,12 @@ class Header extends React.Component {
                             marginLeft: "10px",
                           }}
                         >
-                          <GatsbyImage
+                          <img
                             sx={{
                               width: "27px",
                             }}
+                            src={data.linkedin.publicURL}
                             alt=""
-                            image={
-                              data.linkedin.childImageSharp.gatsbyImageData
-                            }
                           />
                         </a>
                       </div>

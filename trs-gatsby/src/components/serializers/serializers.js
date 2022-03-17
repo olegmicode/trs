@@ -1,6 +1,7 @@
 import * as React from "react"
 import Image from "./image"
 import TextOverImage from "./textOverImage"
+import Wysiwyg from "./wysiwyg"
 import TheBlockContent from "./blockcontent"
 import Columns from "./columns"
 import Team from "../entity/team/teamTeaser"
@@ -15,6 +16,7 @@ const Serializers = {
     columns: Columns,
     team: Team,
     blockText: BlockText,
+    wysiwyg: Wysiwyg,
   },
   marks: {
     internalLink: ({ mark, children }) => {

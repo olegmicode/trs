@@ -25,6 +25,7 @@ import textOverImage from "./section/textOverImage";
 import columns from "./section/columns";
 import footer from "./footer";
 import blockText from "./section/blockText";
+import wysiwyg from "./wysiwyg";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -54,5 +55,6 @@ export default createSchema({
     blockText,
     footer,
     trsUpdate,
+    wysiwyg,
   ]),
 });

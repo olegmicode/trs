@@ -4,6 +4,7 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../serializers/serializers"
 
 const TheBlockContent = ({ node }) => {
+  console.log(node)
   return (
     <div id={node.blockId ? node.blockId : ""}>
       {node.entities &&

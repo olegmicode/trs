@@ -38,6 +38,7 @@ export default {
             { type: "imageRightTextLeft" },
             { type: "textOverImage" },
             { type: "columns" },
+            { type: "wysiwyg" },
           ],
         },
       ],
