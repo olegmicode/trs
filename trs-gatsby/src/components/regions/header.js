@@ -164,7 +164,7 @@ class Header extends React.Component {
                 transition: "all .5s ease-in-out",
                 maxHeight: "0px",
                 maxHeight: this.state.updateOpen
-                  ? ["600px", "600px", "400px"]
+                  ? ["800px", "800px", "800px"]
                   : "0px",
                 // maxHeight: this.state.updateOpen ? "800px" : "0px",
                 // height: this.state.updateOpen ? "auto" : "0px",
