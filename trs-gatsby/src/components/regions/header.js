@@ -114,6 +114,7 @@ class Header extends React.Component {
             update: sanityTrsUpdate {
               _rawUpdate(resolveReferences: { maxDepth: 10 })
               title
+              subTitle
             }
             facebook: file(name: { eq: "Facebook" }) {
               name
@@ -232,7 +233,7 @@ class Header extends React.Component {
                   >
                     <div
                       sx={{
-                        margin: "0px 0px 25px 0px",
+                        margin: "0px 0px 0px 0px",
                         fontWeight: "normal !important",
                         lineHeight: "1.2 !important",
                         fontSize: ["2rem", "2.5rem", "3rem"],
@@ -240,6 +241,17 @@ class Header extends React.Component {
                       }}
                     >
                       {data.update.title}
+                    </div>
+                    <div
+                      sx={{
+                        margin: "0px 0px 25px 0px",
+                        fontWeight: "normal !important",
+                        lineHeight: "1.2 !important",
+                        fontSize: ["1.25rem", "1.5rem", "2rem"],
+                        fontFamily: "heading",
+                      }}
+                    >
+                      {data.update.subTitle}
                     </div>
                     <div
                       sx={{

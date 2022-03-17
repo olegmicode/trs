@@ -11,6 +11,11 @@ export default {
       title: "Title",
     },
     {
+      name: "subTitle",
+      type: "string",
+      title: "Sub Title",
+    },
+    {
       title: "Update",
       name: "update",
       type: "array",
