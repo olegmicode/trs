@@ -21,12 +21,14 @@ const Serializers = {
   marks: {
     internalLink: ({ mark, children }) => {
       var href = ""
-      if (mark.reference._type == "team") {
-        if (mark.reference.slug) {
-          if (mark.reference.slug.current) {
-            href = `/our-team/${mark.reference.slug.current}`
-          } else {
-            href = `/${mark.reference.slug.current}`
+      if (mark.reference) {
+        if (mark.reference._type == "team") {
+          if (mark.reference.slug) {
+            if (mark.reference.slug.current) {
+              href = `/our-team/${mark.reference.slug.current}`
+            } else {
+              href = `/${mark.reference.slug.current}`
+            }
           }
         }
       }
