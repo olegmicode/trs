@@ -129,6 +129,10 @@ class Header extends React.Component {
               name
               publicURL
             }
+            logoFull: file(name: { eq: "trfs-logo-horizontal-clean" }) {
+              name
+              publicURL
+            }
             update: sanityTrsUpdate {
               _rawUpdate(resolveReferences: { maxDepth: 10 })
               title
@@ -296,7 +300,11 @@ class Header extends React.Component {
                   borderColor: "grayMed",
                 }}
               >
-                <div sx={{}}>
+                <div
+                  sx={{
+                    display: ["none", "block", "block"],
+                  }}
+                >
                   <Link
                     to="/"
                     sx={{
@@ -345,7 +353,7 @@ class Header extends React.Component {
                     <Link
                       to={"/"}
                       sx={{
-                        width: ["100%", "65%", "47%"],
+                        width: ["100%", "65%", "100%", "75%"],
                         paddingRight: ["0px", "0px", "0px"],
                         boxSizing: "border-box",
                       }}
@@ -360,12 +368,25 @@ class Header extends React.Component {
                       />
                       <img
                         sx={{
-                          display: ["block", "block", "none"],
+                          display: ["none", "block", "none"],
                           height: "86px",
                         }}
                         src={data.logoTextMobile.publicURL}
                         alt="Logo"
                       />
+                      <div
+                        sx={{
+                          padding: "0px 10px 0px 0px",
+                        }}
+                      >
+                        <img
+                          sx={{
+                            display: ["block", "none", "none"],
+                          }}
+                          src={data.logoFull.publicURL}
+                          alt="Logo"
+                        />
+                      </div>
                     </Link>
                     <div
                       sx={{
@@ -389,15 +410,20 @@ class Header extends React.Component {
                           width: ["100%", "auto", "auto"],
                           display: ["flex", "flex", "flex"],
                           justifyContent: ["flex-end", "flex-end", "flex-end"],
-                          alignItems: ["center", "flex-start", "center"],
+                          alignItems: [
+                            "center",
+                            "flex-start",
+                            "flex-start",
+                            "center",
+                          ],
                         }}
                       >
                         <div
                           sx={{
                             cursor: "pointer",
-                            marginRight: ["30px", "50px", "25px"],
-                            paddingRight: ["0px", "0px", "25px"],
-                            borderRight: ["0px", "0px", "thin solid"],
+                            marginRight: ["30px", "50px", "25px", "25px"],
+                            paddingRight: ["0px", "0px", "25px", "25px"],
+                            borderRight: ["0px", "0px", "0px", "thin solid"],
                             borderColor: "grayMed",
                             transition: "all 0.25s ease-in",
                             opacity: !this.state.updateOpen ? "1" : "0",
@@ -420,7 +446,12 @@ class Header extends React.Component {
                         <div
                           sx={{
                             display: "flex",
-                            flexDirection: ["column", "column", "row"],
+                            flexDirection: [
+                              "column",
+                              "column",
+                              "column",
+                              "row",
+                            ],
                           }}
                         >
                           <div
@@ -445,7 +476,7 @@ class Header extends React.Component {
                                 sx={{
                                   marginRight: "10px",
                                   width: "27px",
-                                  display: ["none", "none", "block"],
+                                  display: ["none", "none", "none", "block"],
                                 }}
                                 src={data.phone.publicURL}
                                 alt=""
@@ -455,11 +486,11 @@ class Header extends React.Component {
                           </div>
                           <div
                             sx={{
-                              marginLeft: ["0px", "0px", "25px"],
-                              paddingLeft: ["0px", "0px", "25px"],
-                              borderLeft: ["0px", "0px", "thin solid"],
+                              marginLeft: ["0px", "0px", "0px", "25px"],
+                              paddingLeft: ["0px", "0px", "0px", "25px"],
+                              borderLeft: ["0px", "0px", "0px", "thin solid"],
                               borderColor: "grayMed",
-                              marginTop: ["20px", "20px", "0px"],
+                              marginTop: ["20px", "20px", "20px", "0px"],
                               display: ["none", "flex", "flex"],
                               justifyContent: "flex-end",
                             }}

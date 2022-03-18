@@ -65,9 +65,16 @@ class SearchResults extends React.Component {
     }))
   }
   componentWillUpdate() {
+    console.log(this)
+
     if (!this.state.searchChange) {
       if (this.props.searchState !== this.state.searchState) {
         this.setState({ searchChange: true })
+      }
+      if (
+        this.props.searchState == "?refinementList%5Bstatus%5D=for-sale&page=1"
+      ) {
+        console.log(this)
       }
     }
   }
