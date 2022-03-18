@@ -252,7 +252,7 @@ class Header extends React.Component {
                     </div>
                     <div
                       sx={{
-                        margin: "0px 0px 25px 0px",
+                        margin: "10px 0px 25px 0px",
                         fontWeight: "normal !important",
                         lineHeight: "1.2 !important",
                         fontSize: ["1.125rem", "1.125rem", "1.125rem"],
@@ -381,6 +381,7 @@ class Header extends React.Component {
                           "transparent",
                         ],
                         height: ["45px", "auto", "auto"],
+                        position: "relative",
                       }}
                     >
                       <div
