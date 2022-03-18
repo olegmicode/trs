@@ -115,7 +115,17 @@ class Header extends React.Component {
               name
               publicURL
             }
-            logoTextDesktop: file(name: { eq: "logo-star-est-bottom" }) {
+            logoTextDesktop: file(name: { eq: "trfs-logotype-horizontal" }) {
+              name
+              publicURL
+            }
+            logoTextMobile: file(
+              name: { eq: "trfs-logo-type-muted-compressed" }
+            ) {
+              name
+              publicURL
+            }
+            logoStarMobile: file(name: { eq: "logo-star-est-top" }) {
               name
               publicURL
             }
@@ -140,11 +150,9 @@ class Header extends React.Component {
               name
               publicURL
             }
-            megaphone: file(name: { eq: "MegaPhone" }) {
+            megaphone: file(name: { eq: "megaphone" }) {
               name
-              childImageSharp {
-                gatsbyImageData
-              }
+              publicURL
             }
           }
         `}
@@ -283,197 +291,232 @@ class Header extends React.Component {
             <Container noMobilePadding={true}>
               <div
                 sx={{
-                  width: "100%",
-                  display: ["flex", "flex", "null"],
-                  padding: "0px 0px",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  backgroundColor: "grayScant",
-                  color: "grayMed",
-                  flexDirection: ["column-reverse", "row", "row"],
+                  display: "flex",
+                  borderBottom: "thin solid",
+                  borderColor: "grayMed",
                 }}
               >
-                <Link
-                  to={"/"}
-                  sx={{
-                    width: ["100%", "65%", "48%"],
-                    paddingRight: ["10px", "0px", "0px"],
-                    boxSizing: "border-box",
-                  }}
-                >
-                  <GatsbyImage
+                <div sx={{}}>
+                  <Link
+                    to="/"
                     sx={{
-                      maxWidth: "100%",
+                      display: "block",
+                      lineHeight: "0px",
                     }}
-                    alt=""
-                    image={data.settings.logo.asset.gatsbyImageData}
-                  />
-                </Link>
+                  >
+                    <img
+                      sx={{
+                        display: ["none", "block", "block"],
+                        maxWidth: "initial",
+                        height: ["168px", "168px", "186px"],
+                      }}
+                      src={data.logoStarDesktop.publicURL}
+                      alt="Logo"
+                    />
+                    <img
+                      sx={{
+                        display: ["block", "none", "none"],
+                        maxWidth: "initial",
+                        height: ["131px", "168px", "186px"],
+                      }}
+                      src={data.logoStarMobile.publicURL}
+                      alt="Logo"
+                    />
+                  </Link>
+                </div>
                 <div
                   sx={{
-                    display: "flex",
-                    width: ["calc(100%)", "calc(35%)", "calc(52%)"],
-                    justifyContent: ["space-between", "flex-end", "flex-end"],
-                    paddingRight: ["10px", "35px", "35px"],
-                    // padding: ["20px 0px", "20px 0px", "0px"],
-                    boxSizing: "border-box",
-                    backgroundColor: ["#E9E7E7", "transparent", "transparent"],
+                    width: "100%",
                   }}
                 >
                   <div
                     sx={{
-                      backgroundColor: "newTan",
-                      color: "#ffffff",
-                      display: ["flex", "none", "none"],
+                      width: "100%",
+                      display: ["flex", "flex", "null"],
+                      padding: "0px 0px",
                       alignItems: "center",
-                      justifyContent: "center",
-                      width: ["20%", "14.3%", "9.9%"],
-                      fontFamily: "Oswald",
-                      fontSize: ["0.9rem", "1.125rem", "1.125rem"],
-                      padding: "5px 0px",
+                      justifyContent: "space-between",
+                      backgroundColor: "grayScant",
+                      color: "grayMed",
+                      flexDirection: ["column-reverse", "row", "row"],
+                      height: ["auto", "111px", "123px"],
                     }}
                   >
-                    <div
+                    <Link
+                      to={"/"}
                       sx={{
-                        "> div": {
-                          lineHeight: "1rem",
-                          display: ["block", "inline", "inline"],
-                        },
+                        width: ["100%", "65%", "47%"],
+                        paddingRight: ["0px", "0px", "0px"],
+                        boxSizing: "border-box",
                       }}
                     >
-                      <div>EST.</div>
-                      <div>2001</div>
-                    </div>
-                  </div>
-                  <div
-                    sx={{
-                      width: ["80%", "auto", "auto"],
-                      display: ["flex", "flex", "flex"],
-                      justifyContent: ["flex-end", "flex-end", "flex-end"],
-                      alignItems: ["center", "flex-start", "center"],
-                    }}
-                  >
-                    <div
-                      sx={{
-                        cursor: "pointer",
-                        marginRight: ["30px", "50px", "25px"],
-                        paddingRight: ["0px", "0px", "25px"],
-                        borderRight: ["0px", "0px", "thin solid"],
-                        borderColor: "grayMed",
-                        transition: "all 0.25s ease-in",
-                        opacity: !this.state.updateOpen ? "1" : "0",
-                        pointerEvents: !this.state.updateOpen ? "auto" : "none",
-                      }}
-                      onClick={this.openPopup.bind(this)}
-                    >
-                      <GatsbyImage
+                      <img
                         sx={{
-                          width: "38px",
+                          width: "100%",
+                          display: ["none", "none", "block"],
                         }}
-                        alt=""
-                        image={data.megaphone.childImageSharp.gatsbyImageData}
+                        src={data.logoTextDesktop.publicURL}
+                        alt="Logo"
                       />
-                    </div>
+                      <img
+                        sx={{
+                          display: ["block", "block", "none"],
+                          height: "86px",
+                        }}
+                        src={data.logoTextMobile.publicURL}
+                        alt="Logo"
+                      />
+                    </Link>
                     <div
                       sx={{
                         display: "flex",
-                        flexDirection: ["column", "column", "row"],
+                        width: ["calc(100%)", "calc(35%)", "calc(58%)"],
+                        justifyContent: ["flex-end", "flex-end", "flex-end"],
+                        paddingRight: ["10px", "35px", "35px"],
+                        // padding: ["20px 0px", "20px 0px", "0px"],
+                        boxSizing: "border-box",
+                        backgroundColor: [
+                          "#E9E7E7",
+                          "transparent",
+                          "transparent",
+                        ],
+                        height: ["45px", "auto", "auto"],
                       }}
                     >
                       <div
                         sx={{
-                          a: {
-                            color: "grayMed",
-                          },
+                          width: ["100%", "auto", "auto"],
+                          display: ["flex", "flex", "flex"],
+                          justifyContent: ["flex-end", "flex-end", "flex-end"],
+                          alignItems: ["center", "flex-start", "center"],
                         }}
                       >
-                        <a
+                        <div
                           sx={{
+                            cursor: "pointer",
+                            marginRight: ["30px", "50px", "25px"],
+                            paddingRight: ["0px", "0px", "25px"],
+                            borderRight: ["0px", "0px", "thin solid"],
+                            borderColor: "grayMed",
+                            transition: "all 0.25s ease-in",
+                            opacity: !this.state.updateOpen ? "1" : "0",
+                            pointerEvents: !this.state.updateOpen
+                              ? "auto"
+                              : "none",
                             display: "flex",
                             alignItems: "center",
-                            fontSize: "1.125rem",
-                            color: "grayMed",
-                            marginRight: ["30px", "0px", "0px"],
-                            fontWeight: "600",
                           }}
-                          href="tel:830-249-9339"
+                          onClick={this.openPopup.bind(this)}
                         >
                           <img
                             sx={{
-                              marginRight: "10px",
-                              width: "27px",
-                              display: ["none", "none", "block"],
+                              width: "38px",
                             }}
-                            src={data.phone.publicURL}
+                            src={data.megaphone.publicURL}
                             alt=""
                           />
-                          830-249-9339
-                        </a>
-                      </div>
-                      <div
-                        sx={{
-                          marginLeft: ["0px", "0px", "25px"],
-                          paddingLeft: ["0px", "0px", "25px"],
-                          borderLeft: ["0px", "0px", "thin solid"],
-                          borderColor: "grayMed",
-                          marginTop: ["20px", "20px", "0px"],
-                          display: ["none", "flex", "flex"],
-                          justifyContent: "flex-end",
-                        }}
-                      >
-                        <a
-                          href="https://www.facebook.com/TexasRanchesForSale"
-                          target="_blank"
-                        >
-                          <img
-                            sx={{
-                              width: "27px",
-                            }}
-                            src={data.facebook.publicURL}
-                            alt=""
-                          />
-                        </a>
-                        <a
-                          href="https://twitter.com/hashtag/TexasRanchesForSale"
-                          target="_blank"
+                        </div>
+                        <div
                           sx={{
-                            marginLeft: "10px",
+                            display: "flex",
+                            flexDirection: ["column", "column", "row"],
                           }}
                         >
-                          <img
+                          <div
                             sx={{
-                              width: "27px",
+                              a: {
+                                color: "grayMed",
+                              },
                             }}
-                            src={data.twitter.publicURL}
-                            alt=""
-                          />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/company/texas-ranches-for-sale"
-                          target="_blank"
-                          sx={{
-                            marginLeft: "10px",
-                          }}
-                        >
-                          <img
+                          >
+                            <a
+                              sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                fontSize: "1.125rem",
+                                color: "grayMed",
+                                marginRight: ["60px", "0px", "0px"],
+                                fontWeight: "600",
+                              }}
+                              href="tel:830-249-9339"
+                            >
+                              <img
+                                sx={{
+                                  marginRight: "10px",
+                                  width: "27px",
+                                  display: ["none", "none", "block"],
+                                }}
+                                src={data.phone.publicURL}
+                                alt=""
+                              />
+                              830-249-9339
+                            </a>
+                          </div>
+                          <div
                             sx={{
-                              width: "27px",
+                              marginLeft: ["0px", "0px", "25px"],
+                              paddingLeft: ["0px", "0px", "25px"],
+                              borderLeft: ["0px", "0px", "thin solid"],
+                              borderColor: "grayMed",
+                              marginTop: ["20px", "20px", "0px"],
+                              display: ["none", "flex", "flex"],
+                              justifyContent: "flex-end",
                             }}
-                            src={data.linkedin.publicURL}
-                            alt=""
-                          />
-                        </a>
+                          >
+                            <a
+                              href="https://www.facebook.com/TexasRanchesForSale"
+                              target="_blank"
+                            >
+                              <img
+                                sx={{
+                                  width: "27px",
+                                }}
+                                src={data.facebook.publicURL}
+                                alt=""
+                              />
+                            </a>
+                            <a
+                              href="https://twitter.com/hashtag/TexasRanchesForSale"
+                              target="_blank"
+                              sx={{
+                                marginLeft: "10px",
+                              }}
+                            >
+                              <img
+                                sx={{
+                                  width: "27px",
+                                }}
+                                src={data.twitter.publicURL}
+                                alt=""
+                              />
+                            </a>
+                            <a
+                              href="https://www.linkedin.com/company/texas-ranches-for-sale"
+                              target="_blank"
+                              sx={{
+                                marginLeft: "10px",
+                              }}
+                            >
+                              <img
+                                sx={{
+                                  width: "27px",
+                                }}
+                                src={data.linkedin.publicURL}
+                                alt=""
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <Burger
+                          clickMe={this.toggleMenu}
+                          open={this.state.menuOpen}
+                        />
                       </div>
                     </div>
-                    <Burger
-                      clickMe={this.toggleMenu}
-                      open={this.state.menuOpen}
-                    />
                   </div>
+                  <Menu open={this.state.menuOpen}></Menu>
                 </div>
               </div>
-
-              <Menu open={this.state.menuOpen}></Menu>
             </Container>
           </header>
         )}

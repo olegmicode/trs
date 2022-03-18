@@ -50,7 +50,7 @@ export default {
                     type: "reference",
                     title: "Reference",
                     to: [
-                      { type: "page" },
+                      { type: "pageDefinition" },
                       { type: "team" },
                       // other types you may want to link to
                     ],

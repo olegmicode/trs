@@ -15,6 +15,16 @@ export default {
       title: "Slug",
     },
     {
+      name: "metaTitle",
+      type: "text",
+      title: "Meta Title",
+    },
+    {
+      name: "metaDescription",
+      type: "text",
+      title: "Meta Description",
+    },
+    {
       title: "Hero",
       name: "hero",
       type: "array",

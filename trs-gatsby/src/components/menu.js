@@ -21,23 +21,17 @@ const Menu = open => {
             title
             _rawChildren(resolveReferences: { maxDepth: 10 })
           }
-          facebook: file(name: { eq: "Facebook-white" }) {
+          facebook: file(name: { eq: "FacebookWhite" }) {
             name
-            childImageSharp {
-              gatsbyImageData
-            }
+            publicURL
           }
-          twitter: file(name: { eq: "Twitter-white" }) {
+          twitter: file(name: { eq: "TwitterWhite" }) {
             name
-            childImageSharp {
-              gatsbyImageData
-            }
+            publicURL
           }
-          linkedin: file(name: { eq: "LinkedIN-white" }) {
+          linkedin: file(name: { eq: "LinkedINWhite" }) {
             name
-            childImageSharp {
-              gatsbyImageData
-            }
+            publicURL
           }
         }
       `}
@@ -45,23 +39,8 @@ const Menu = open => {
         <div
           sx={{
             display: "flex",
-            borderBottom: ["thin solid darkGray"],
           }}
         >
-          <div
-            sx={{
-              backgroundColor: "newTan",
-              color: "#ffffff",
-              display: ["none", "flex", "flex"],
-              alignItems: "center",
-              justifyContent: "center",
-              width: ["20%", "14.9%", "10.7%"],
-              fontFamily: "Oswald",
-              fontSize: "1.125rem",
-            }}
-          >
-            EST. 2001
-          </div>
           <div
             sx={{
               margin: "0 auto",
@@ -75,7 +54,8 @@ const Menu = open => {
               flexDirection: ["column", "row", "row"],
               position: ["fixed", "relative", "relative"],
               zIndex: "999",
-              borderTop: ["0px", "thin solid darkGray", "thin solid darkGray"],
+              borderTop: ["0px", "thin solid", "thin solid"],
+              borderColor: "grayMed",
               transition: "transform 0.3s ease-in-out",
               boxSizing: "border-box",
               padding: ["20px", "0px", "0px"],
@@ -107,12 +87,12 @@ const Menu = open => {
                 href="https://www.facebook.com/TexasRanchesForSale"
                 target="_blank"
               >
-                <GatsbyImage
+                <img
                   sx={{
                     width: "27px",
                   }}
+                  src={data.facebook.publicURL}
                   alt=""
-                  image={data.facebook.childImageSharp.gatsbyImageData}
                 />
               </a>
               <a
@@ -122,12 +102,12 @@ const Menu = open => {
                   marginLeft: "10px",
                 }}
               >
-                <GatsbyImage
+                <img
                   sx={{
                     width: "27px",
                   }}
+                  src={data.twitter.publicURL}
                   alt=""
-                  image={data.twitter.childImageSharp.gatsbyImageData}
                 />
               </a>
               <a
@@ -137,12 +117,12 @@ const Menu = open => {
                   marginLeft: "10px",
                 }}
               >
-                <GatsbyImage
+                <img
                   sx={{
                     width: "27px",
                   }}
+                  src={data.linkedin.publicURL}
                   alt=""
-                  image={data.linkedin.childImageSharp.gatsbyImageData}
                 />
               </a>
             </div>
@@ -152,7 +132,7 @@ const Menu = open => {
                 sx={{
                   width: ["100%", "calc(100% / 5)", "calc(100% / 5)"],
                   position: "relative",
-                  padding: ["10px 0px", "10px 10px", "20px 10px"],
+                  padding: ["10px 0px", "17px 10px", "20px 10px"],
 
                   "&:hover > div": {
                     display: "block",
@@ -160,11 +140,8 @@ const Menu = open => {
                     opacity: 1,
                   },
                   "&:nth-of-type(2)": {
-                    borderRight: [
-                      "0px",
-                      "thin solid darkGray",
-                      "thin solid darkGray",
-                    ],
+                    borderRight: ["0px", "thin solid", "thin solid"],
+                    borderColor: "grayMed",
                     backgroundColor: ["transparent", "#ffffff", "#ffffff"],
                     minWidth: "150px",
                     "a > div": {
