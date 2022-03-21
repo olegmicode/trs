@@ -17,6 +17,7 @@ const Serializers = {
     blockText: BlockText,
     wysiwyg: Wysiwyg,
   },
+
   marks: {
     internalLink: ({ mark, children }) => {
       var href = ""

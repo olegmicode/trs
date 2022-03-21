@@ -5,7 +5,7 @@ const Container = ({ children, noMobilePadding }) => {
   return (
     <div
       sx={{
-        maxWidth: ["800px", "1000px", "1200px"],
+        maxWidth: ["800px", "1000px", "1200px", "1440px"],
         padding: [
           noMobilePadding ? "0px 0px" : "0px 2%",
           noMobilePadding ? "0px 0px" : "0px 3%",

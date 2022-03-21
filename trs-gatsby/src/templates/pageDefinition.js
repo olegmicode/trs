@@ -18,11 +18,11 @@ const PageDefinition = ({ data }) => {
       )}
       {node.slug.current !== "home" && (
         <Layout>
-          <div>
-            {node._rawHero && (
+          {node._rawHero && (
+            <div>
               <BlockContent blocks={node._rawHero} serializers={Serializers} />
-            )}
-          </div>
+            </div>
+          )}
           <div
             sx={{
               display: [
@@ -34,6 +34,7 @@ const PageDefinition = ({ data }) => {
                 node._rawSidebar ? "800px" : "100%",
                 node._rawSidebar ? "1000px" : "100%",
                 node._rawSidebar ? "1200px" : "100%",
+                node._rawSidebar ? "1440px" : "100%",
               ],
               margin: [
                 node._rawSidebar ? "0 auto" : "100%",
@@ -59,9 +60,10 @@ const PageDefinition = ({ data }) => {
                     node._rawSidebar ? "280px" : "100%",
                   ],
                   position: ["relative", "sticky", "sticky"],
-                  top: "20px",
+                  top: "0px",
                   height: "100%",
                   paddingBottom: "20px",
+                  paddingTop: "40px",
                 }}
               >
                 <BlockContent
@@ -74,16 +76,26 @@ const PageDefinition = ({ data }) => {
               sx={{
                 width: [
                   "100%",
-                  node._rawSidebar ? "calc(100% - 350px)" : "100%",
-                  node._rawSidebar ? "calc(100% - 350px)" : "100%",
+                  node._rawSidebar ? "calc(100% - 320px)" : "100%",
+                  node._rawSidebar ? "calc(100% - 320px)" : "100%",
                 ],
+                padding: "40px 0px",
               }}
             >
               {node._rawEntities && (
-                <BlockContent
-                  blocks={node._rawEntities}
-                  serializers={Serializers}
-                />
+                <div
+                  className="tester"
+                  sx={{
+                    "section > div": {
+                      padding: "0px !important",
+                    },
+                  }}
+                >
+                  <BlockContent
+                    blocks={node._rawEntities}
+                    serializers={Serializers}
+                  />
+                </div>
               )}
             </div>
           </div>
