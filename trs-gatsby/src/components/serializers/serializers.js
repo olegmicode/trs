@@ -10,7 +10,6 @@ import { Link } from "gatsby"
 const Serializers = {
   container: ({ children }) => <React.Fragment>{children}</React.Fragment>,
   types: {
-    image: Image,
     textOverImage: TextOverImage,
     blockcontent: TheBlockContent,
     columns: Columns,

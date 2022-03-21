@@ -36,6 +36,7 @@ class Footer extends React.Component {
                 sx={{
                   display: "flex",
                   flexWrap: "wrap",
+                  alignItems: "flex-start",
                   img: {
                     width: "100%",
                     height: "auto",
@@ -60,6 +61,9 @@ class Footer extends React.Component {
                     borderLeft: ["0x", "0px", "thin solid #E9E7E7"],
                     padding: ["0px 0px", "0px 0px", "0px 50px"],
                     fontSize: "1rem,",
+                    "p:nth-of-type(1)": {
+                      marginTop: "0px",
+                    },
                   },
                   "> div:nth-of-type(3)": {
                     width: ["100%", "100%", "25%"],
@@ -70,6 +74,9 @@ class Footer extends React.Component {
                     ],
                     p: {
                       display: "none",
+                    },
+                    figure: {
+                      margin: "0px",
                     },
                   },
                   "> div:nth-of-type(4)": {
