@@ -353,7 +353,7 @@ class Header extends React.Component {
                     <Link
                       to={"/"}
                       sx={{
-                        width: ["100%", "65%", "100%", "75%"],
+                        width: ["100%", "65%", "100%", "65%"],
                         paddingRight: ["0px", "0px", "0px"],
                         boxSizing: "border-box",
                       }}
@@ -421,7 +421,7 @@ class Header extends React.Component {
                         <div
                           sx={{
                             cursor: "pointer",
-                            marginRight: ["30px", "50px", "25px", "25px"],
+                            marginRight: ["30px", "40px", "25px", "25px"],
                             paddingRight: ["0px", "0px", "25px", "25px"],
                             borderRight: ["0px", "0px", "0px", "thin solid"],
                             borderColor: "grayMed",
