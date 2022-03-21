@@ -42,11 +42,11 @@ class Footer extends React.Component {
                     height: "auto",
                   },
                   "> div:nth-of-type(1)": {
-                    width: ["100%", "100%", "35%"],
+                    width: ["100%", "100%", "calc(100% / 3)"],
                     padding: [
                       "0px 0px 0px 0px",
                       "0px 0px 0px 0px",
-                      "0px 50px 0px 0px",
+                      "0px 50px 0px 50px",
                     ],
                     h3: {
                       fontSize: "2.25rem",
@@ -56,7 +56,7 @@ class Footer extends React.Component {
                     },
                   },
                   "> div:nth-of-type(2)": {
-                    width: ["100%", "100%", "40%"],
+                    width: ["100%", "100%", "calc(100% / 3)"],
                     borderRight: ["0x", "0px", "thin solid #E9E7E7"],
                     borderLeft: ["0x", "0px", "thin solid #E9E7E7"],
                     padding: ["0px 0px", "0px 0px", "0px 50px"],
@@ -66,11 +66,11 @@ class Footer extends React.Component {
                     },
                   },
                   "> div:nth-of-type(3)": {
-                    width: ["100%", "100%", "25%"],
+                    width: ["100%", "100%", "calc(100% / 3)"],
                     padding: [
                       "0px 0px 0px 0px",
                       "0px 0px 0px 0px",
-                      "0px 0px 0px 50px",
+                      "0px 50px 0px 50px",
                     ],
                     p: {
                       display: "none",
