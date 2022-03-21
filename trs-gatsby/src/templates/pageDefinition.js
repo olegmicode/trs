@@ -5,12 +5,13 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import Layout from "../components/layout"
 import LayoutSearch from "../components/layoutSearch"
-
+import SEO from "../components/seo"
 const PageDefinition = ({ data }) => {
   const node = data.page
   console.log(node)
   return (
     <div>
+      <SEO title={node.metaTitle} description={node.metaDescription}></SEO>
       {node.slug.current == "home" && (
         <div>
           <LayoutSearch></LayoutSearch>
@@ -112,6 +113,8 @@ export const pageDefinitionQuery = graphql`
       slug {
         current
       }
+      metaTitle
+      metaDescription
       title
       _rawHero(resolveReferences: { maxDepth: 10 })
       _rawEntities(resolveReferences: { maxDepth: 10 })
