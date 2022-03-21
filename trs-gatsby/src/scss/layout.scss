@@ -39,7 +39,8 @@ img {
   background: transparent !important;
   position: relative;
   overflow: hidden !important;
-  height: calc(100% - 80px);
+  height: calc(100%);
+  inset: 0px !important;
   // inset: 0px !important;
   @include tablet() {
     height: calc(100%);

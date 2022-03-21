@@ -403,6 +403,7 @@ class Header extends React.Component {
                         ],
                         height: ["45px", "auto", "auto"],
                         position: "relative",
+                        top: ["auto", "auto", "auto", "-7%"],
                       }}
                     >
                       <div
