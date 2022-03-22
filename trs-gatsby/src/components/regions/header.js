@@ -382,6 +382,7 @@ class Header extends React.Component {
                         <img
                           sx={{
                             display: ["block", "none", "none"],
+                            width: "100%",
                           }}
                           src={data.logoFull.publicURL}
                           alt="Logo"
