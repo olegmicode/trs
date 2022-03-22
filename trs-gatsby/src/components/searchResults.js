@@ -37,8 +37,65 @@ import {
   SortBy,
   Stats,
   HitsPerPage,
-  InfiniteHits,
+  connectInfiniteHits,
 } from "react-instantsearch-dom"
+
+const InfiniteHits = ({ hits, hasMore, refineNext }) => (
+  <div>
+    {console.log(hasMore)}
+    <ul className="ais-InfiniteHits-list">
+      {hits.map(hit => (
+        <li
+          sx={{
+            boxSizing: "border-box",
+            zIndex: "1",
+            position: "relative",
+            backgroundColor: "white",
+            marginBottom: "40px",
+            marginRight: ["0px", "20px", "20px", "20px"],
+            width: [
+              "100%",
+              "calc(50% - 10px)",
+              "calc(100% / 3 - 15px)",
+              "calc(100% / 4 - 20px)",
+            ],
+            "&:nth-of-type(4n + 4)": {
+              marginRight: ["0px", "0px", "0px", "0px"],
+            },
+            "&:nth-of-type(3n + 3)": {
+              marginRight: ["0px", "20px", "0px", "20px"],
+            },
+            "&:nth-of-type(2n + 2)": {
+              marginRight: ["0px", "0px", "20px", "20px"],
+            },
+          }}
+          key={hit.objectID}
+        >
+          <HitComponent hit={hit} />
+        </li>
+      ))}
+    </ul>
+    <button
+      sx={{
+        display: hasMore ? "block" : "none",
+        backgroundColor: "#c1b098",
+        border: "1px solid #887e7e",
+        color: "#fff",
+        cursor: "pointer",
+        fontSize: "1rem",
+        fontWeight: "600",
+        margin: "0 auto",
+        padding: "10px 20px",
+      }}
+      disabled={!hasMore}
+      onClick={refineNext}
+    >
+      View More Properties
+    </button>
+  </div>
+)
+
+const CustomInfiniteHits = connectInfiniteHits(InfiniteHits)
 
 const searchClient = algoliasearch(
   process.env.ALGOLIA_APP_ID,
@@ -545,32 +602,9 @@ class SearchResults extends React.Component {
           }}
         >
           <Container noMobilePadding={true}>
-            <Configure hitsPerPage={8} />
+            <Configure hitsPerPage={4} />
+            <CustomInfiniteHits />
 
-            <InfiniteHits
-              sx={{
-                "> ul > li": {
-                  boxSizing: "border-box",
-                  zIndex: "1",
-                  position: "relative",
-                  backgroundColor: "white",
-                  marginBottom: "40px",
-                  marginRight: ["0px", "20px", "20px"],
-                  width: ["100%", "calc(50% - 10px)", "calc(100% / 4 - 20px)"],
-                  "&:nth-of-type(4n + 4)": {
-                    marginRight: ["0px", "0px", "0px"],
-                  },
-                  "&:nth-of-type(2n + 2)": {
-                    marginRight: ["0px", "0px", "20px"],
-                  },
-                },
-              }}
-              hitComponent={HitComponent}
-              translations={{
-                loadMore: "View More Properties",
-              }}
-              // Optional parameters
-            />
             <div
               sx={{
                 display: "flex",

@@ -213,7 +213,7 @@ const Menu = open => {
                           backgroundColor: [
                             "transparent",
                             "grayScant",
-                            "grayScant",
+                            "grayLight",
                           ],
                           textWrap: "wrap",
                           fontSize: ["1.125rem", "1.125rem", "1.125rem"],
