@@ -138,7 +138,8 @@ class SearchResults extends React.Component {
                 justifyContent: "center",
                 alignItems: "center",
                 "> div": {
-                  width: "calc(100% - 60px)",
+                  width: ["100%", "100%", "100%", "100%"],
+                  boxSizing: "border-box",
                 },
                 "&:nth-of-type(1)": {
                   borderRight: ["0px", "thin solid", "thin solid"],
@@ -150,6 +151,13 @@ class SearchResults extends React.Component {
                   flexDirection: "column",
                   justifyContent: "flex-start",
                   boxSizing: "border-box",
+                  paddingRight: ["0px", "30px", "30px", "40px"],
+                  ".handleContainer": {
+                    left: "0px",
+                  },
+                  ".DefaultHandle_handle__horizontal": {
+                    marginLeft: "-5px",
+                  },
                 },
                 "&:nth-of-type(2)": {
                   borderRight: ["none", "none", "thin solid"],
@@ -160,6 +168,8 @@ class SearchResults extends React.Component {
                   flexDirection: "column",
                   justifyContent: "flex-start",
                   boxSizing: "border-box",
+                  paddingRight: ["0px", "0px", "30px", "40px"],
+                  paddingLeft: ["0px", "30px", "30px", "40px"],
                 },
                 "&:nth-of-type(3)": {
                   borderRight: ["none", "thin solid", "thin solid"],
@@ -172,10 +182,13 @@ class SearchResults extends React.Component {
                   justifyContent: "flex-start",
                   boxSizing: "border-box",
                   borderBottom: ["thin solid", "0px", "0px"],
+                  paddingRight: ["0px", "30px", "30px", "40px"],
+                  paddingLeft: ["0px", "0px", "30px", "40px"],
                 },
-                // "&:nth-child(4)": {
-                //   paddingTop: ["30px", "30px", "0px"],
-                // },
+                "&:nth-child(4)": {
+                  paddingLeft: ["0px", "30px", "30px", "40px"],
+                  boxSizing: "border-box",
+                },
               },
             }}
           >
@@ -210,9 +223,7 @@ class SearchResults extends React.Component {
                     top: "1px",
                     border: "0px",
                   },
-                  ".rheostat-values": {
-                    display: "none",
-                  },
+                  ".rheostat-values": {},
                 }}
               >
                 <h3>PRICE</h3>
@@ -246,9 +257,7 @@ class SearchResults extends React.Component {
                     top: "1px",
                     border: "0px",
                   },
-                  ".rheostat-values": {
-                    display: "none",
-                  },
+                  ".rheostat-values": {},
                 }}
               >
                 <h3>ACREAGE</h3>
@@ -852,6 +861,28 @@ class Range extends Component {
     })
   }
 
+  convertToInternationalCurrencySystem(labelValue) {
+    // Nine Zeroes for Billions
+    return Math.abs(Number(labelValue)) >= 1.0e9
+      ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(1) + "B"
+      : // Six Zeroes for Millions
+      Math.abs(Number(labelValue)) >= 1.0e6
+      ? (Math.abs(Number(labelValue)) / 1.0e6).toFixed(1) + "M"
+      : // Three Zeroes for Thousands
+      Math.abs(Number(labelValue)) >= 1.0e3
+      ? (Math.abs(Number(labelValue)) / 1.0e3).toFixed(1) + "K"
+      : Math.abs(Number(labelValue))
+  }
+
+  returnAcres(acres) {
+    // Nine Zeroes for Billions
+    console.log(acres)
+    var acresThousands = acres.toLocaleString("en-US", {
+      maximumFractionDigits: 2,
+    })
+    return acresThousands + " acres"
+  }
+
   onChange = sliderState => {
     if (
       this.props.currentRefinement.min !== sliderState.values[0] ||
@@ -867,6 +898,7 @@ class Range extends Component {
   render() {
     const { min, max, currentRefinement } = this.props
     const { currentValues } = this.state
+
     return min !== max ? (
       <div>
         <Rheostat
@@ -877,8 +909,54 @@ class Range extends Component {
           onValuesUpdated={this.onValuesUpdated}
         />
         <div className="rheostat-values">
-          <div>{currentValues.min}</div>
-          <div>{currentValues.max}</div>
+          {this.props.attribute === "price" && (
+            <div
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontStyle: "italic",
+                marginTop: "10px",
+                width: "calc(100% + 15px)",
+                position: "relative",
+                left: "-7px",
+              }}
+            >
+              <div>
+                {currentValues.min &&
+                  "$" +
+                    this.convertToInternationalCurrencySystem(
+                      currentValues.min
+                    )}
+              </div>
+              <div>
+                {currentValues.max &&
+                  "$" +
+                    this.convertToInternationalCurrencySystem(
+                      currentValues.max
+                    )}
+              </div>
+            </div>
+          )}
+          {this.props.attribute === "acreage" && (
+            <div
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontStyle: "italic",
+                marginTop: "10px",
+                width: "calc(100% + 15px)",
+                position: "relative",
+                left: "-7px",
+              }}
+            >
+              <div>
+                {currentValues.min && this.returnAcres(currentValues.min)}
+              </div>
+              <div>
+                {currentValues.max && this.returnAcres(currentValues.max)}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     ) : (
@@ -896,8 +974,54 @@ class Range extends Component {
           onValuesUpdated={this.onValuesUpdated}
         />
         <div className="rheostat-values">
-          <div>{currentValues.min}</div>
-          <div>{currentValues.max}</div>
+          {this.props.attribute === "price" && (
+            <div
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontStyle: "italic",
+                marginTop: "10px",
+                width: "calc(100% + 15px)",
+                position: "relative",
+                left: "-7px",
+              }}
+            >
+              <div>
+                {currentValues.min &&
+                  "$" +
+                    this.convertToInternationalCurrencySystem(
+                      currentValues.min
+                    )}
+              </div>
+              <div>
+                {currentValues.max &&
+                  "$" +
+                    this.convertToInternationalCurrencySystem(
+                      currentValues.max
+                    )}
+              </div>
+            </div>
+          )}
+          {this.props.attribute === "acreage" && (
+            <div
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontStyle: "italic",
+                marginTop: "10px",
+                width: "calc(100% + 15px)",
+                position: "relative",
+                left: "-7px",
+              }}
+            >
+              <div>
+                {currentValues.min && this.returnAcres(currentValues.min)}
+              </div>
+              <div>
+                {currentValues.max && this.returnAcres(currentValues.max)}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     )
