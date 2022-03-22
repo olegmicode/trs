@@ -602,7 +602,7 @@ class SearchResults extends React.Component {
           }}
         >
           <Container noMobilePadding={true}>
-            <Configure hitsPerPage={4} />
+            <Configure hitsPerPage={8} />
             <CustomInfiniteHits />
 
             <div
