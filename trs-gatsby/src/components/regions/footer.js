@@ -77,7 +77,7 @@ class Footer extends React.Component {
                     },
                     figure: {
                       margin: "0px",
-                      maxWidth: "400px",
+                      maxWidth: "222px",
                     },
                   },
                   "> div:nth-of-type(4)": {
