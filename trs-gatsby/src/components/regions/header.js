@@ -326,7 +326,6 @@ class Header extends React.Component {
                         display: ["block", "none", "none"],
                         maxWidth: "initial",
                         height: ["131px", "168px", "186px"],
-                        margin: "-1px",
                       }}
                       src={data.logoStarMobile.publicURL}
                       alt="Logo"
@@ -384,6 +383,7 @@ class Header extends React.Component {
                           sx={{
                             display: ["block", "none", "none"],
                             width: "100%",
+                            margin: "-1px",
                           }}
                           src={data.logoFull.publicURL}
                           alt="Logo"
