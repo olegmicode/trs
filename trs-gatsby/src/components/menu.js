@@ -179,16 +179,16 @@ const Menu = open => {
                         "#D6D2D2",
                       ],
                     },
+                    "&.active": {
+                      backgroundColor: [
+                        "transparent",
+                        "#D6D2D2",
+                        "#D6D2D2",
+                        "#D6D2D2",
+                      ],
+                    },
                   }}
-                  activeStyle={{
-                    textDecoration: "underline",
-                    backgroundColor: [
-                      "transparent",
-                      "#D6D2D2",
-                      "#D6D2D2",
-                      "#D6D2D2",
-                    ],
-                  }}
+                  activeClassName="active"
                   to={"/" + menuPath(menuItem.children.document.slug.current)}
                 >
                   {menuItem.children.title}
@@ -215,7 +215,7 @@ const Menu = open => {
                       position: ["relative", "absolute", "absolute"],
                       transition: "all 0.5s ease",
                       left: 0,
-                      marginTop: ["0px", "17px", "20px", "20px"],
+                      marginTop: ["0px", "0px", "0px", "0px"],
                       display: ["block", "none", "none"],
                       minWidth: ["auto", "300px", "300px"],
                       backgroundColor: [
@@ -254,8 +254,16 @@ const Menu = open => {
                               "#D6D2D2",
                             ],
                           },
+                          "&.active": {
+                            backgroundColor: [
+                              "transparent",
+                              "#D6D2D2",
+                              "#D6D2D2",
+                              "#D6D2D2",
+                            ],
+                          },
                         }}
-                        activeStyle={{ textDecoration: "underline" }}
+                        activeClassName="active"
                         to={"/" + menuSubItem.document.slug.current}
                         key={index}
                       >
