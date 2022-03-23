@@ -133,7 +133,7 @@ const Menu = open => {
                   position: "relative",
                   padding: ["10px 0px", "17px 10px", "20px 10px"],
                   "&:hover": {
-                    backgroundColor: "grayLight",
+                    backgroundColor: "#D6D2D2",
                   },
                   "&:hover > div": {
                     display: "block",
@@ -198,7 +198,6 @@ const Menu = open => {
                       opacity: ["1", "1", "0"],
                       position: ["relative", "absolute", "absolute"],
                       transition: "all 0.5s ease",
-                      padding: "0px 20px 20px 20px",
                       left: 0,
                       marginTop: ["0px", "20px", "20px"],
                       display: ["block", "none", "none"],
@@ -219,8 +218,8 @@ const Menu = open => {
                           padding: [
                             "0px 0px",
                             "10px 10px",
-                            "10px 10px",
-                            "10px 10px",
+                            "20px 25px",
+                            "20px 25px",
                           ],
                           marginLeft: ["10px", "0px", "0px"],
                           marginTop: ["5px", "0px", "0px"],
@@ -231,6 +230,9 @@ const Menu = open => {
                           ],
                           textWrap: "wrap",
                           fontSize: ["1.125rem", "1.125rem", "1.125rem"],
+                          "&:hover": {
+                            backgroundColor: "#D6D2D2",
+                          },
                         }}
                         activeStyle={{ textDecoration: "underline" }}
                         to={"/" + menuSubItem.document.slug.current}
