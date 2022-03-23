@@ -1,7 +1,7 @@
 export default {
   initialColorModeName: "light",
   fonts: {
-    body: "Open Sans, sans-serif",
+    body: "Arimo, sans-serif",
     heading: '"Times", sans-serif',
     monospace: "Menlo, monospace",
   },
