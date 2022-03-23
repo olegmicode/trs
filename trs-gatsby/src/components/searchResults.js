@@ -213,7 +213,7 @@ class SearchResults extends React.Component {
                     left: "0px",
                   },
                   ".DefaultHandle_handle__horizontal": {
-                    marginLeft: "-5px",
+                    marginLeft: "-8px",
                   },
                 },
                 "&:nth-of-type(2)": {
