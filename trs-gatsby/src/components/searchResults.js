@@ -253,7 +253,7 @@ class SearchResults extends React.Component {
               <div
                 sx={{
                   marginBottom: "40px",
-
+                  padding: ["0px 10px", "0px", "0px", "0px"],
                   button: {
                     borderRadius: "100%",
                     backgroundColor: "newTan",
@@ -288,6 +288,8 @@ class SearchResults extends React.Component {
               </div>
               <div
                 sx={{
+                  padding: ["0px 10px", "0px", "0px", "0px"],
+
                   button: {
                     borderRadius: "100%",
                     backgroundColor: "newTan",
