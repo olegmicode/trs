@@ -133,7 +133,12 @@ const Menu = open => {
                   position: "relative",
                   padding: ["10px 0px", "17px 10px", "20px 10px"],
                   "&:hover": {
-                    backgroundColor: "#D6D2D2",
+                    backgroundColor: [
+                      "transparent",
+                      "#D6D2D2",
+                      "#D6D2D2",
+                      "#D6D2D2",
+                    ],
                   },
                   "&:hover > div": {
                     display: "block",
@@ -147,7 +152,7 @@ const Menu = open => {
                       "thin solid #A29A9A",
                     ],
                     backgroundColor: ["transparent", "#ffffff", "#ffffff"],
-                    minWidth: "250px",
+                    minWidth: "150px",
                     "a > div": {
                       display: "none",
                     },
@@ -199,7 +204,7 @@ const Menu = open => {
                       position: ["relative", "absolute", "absolute"],
                       transition: "all 0.5s ease",
                       left: 0,
-                      marginTop: ["0px", "20px", "20px"],
+                      marginTop: ["0px", "17px", "20px", "20px"],
                       display: ["block", "none", "none"],
                       minWidth: ["auto", "300px", "300px"],
                       backgroundColor: [
@@ -231,7 +236,12 @@ const Menu = open => {
                           textWrap: "wrap",
                           fontSize: ["1.125rem", "1.125rem", "1.125rem"],
                           "&:hover": {
-                            backgroundColor: "#D6D2D2",
+                            backgroundColor: [
+                              "transparent",
+                              "#D6D2D2",
+                              "#D6D2D2",
+                              "#D6D2D2",
+                            ],
                           },
                         }}
                         activeStyle={{ textDecoration: "underline" }}
