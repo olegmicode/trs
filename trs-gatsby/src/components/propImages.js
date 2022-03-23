@@ -74,7 +74,6 @@ const ReturnMobileImage = ({ image }) => {
           height: "auto",
         }}
         image={image.childImageSharp.gatsbyImageData}
-        width={600}
         aspectRatio={4 / 2}
         alt=""
       />
