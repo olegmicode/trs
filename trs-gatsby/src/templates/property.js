@@ -80,6 +80,7 @@ class Property extends React.Component {
   // }
 
   render() {
+    console.log(this.props)
     if (this.props.data.property) {
       var node = this.props.data.property
       var images = node.childrenFile
@@ -627,7 +628,7 @@ export const postQuery = graphql`
     property: property(mlsid: { eq: $mlsid }) {
       ...propertyFullFragment
     }
-    ourproperty: sanityProperty(mlsid: { eq: $mlsid }) {
+    ourproperty: sanityProperty(slug: { current: { eq: $mlsid } }) {
       ...ourPropertyFullFragment
     }
     blockFragment: sanityPageDefinition(slug: { current: { eq: "home" } }) {

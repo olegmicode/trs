@@ -42,7 +42,6 @@ const Menu = open => {
           }}
         >
           <div
-            className="tester"
             sx={{
               margin: "0 auto",
               boxSizing: "content-box",
@@ -128,11 +127,14 @@ const Menu = open => {
             {data.menu._rawChildren.map((menuItem, index) => (
               <div
                 key={index}
+                className="menuitem"
                 sx={{
                   width: ["100%", "calc(100% / 5)", "calc(100% / 5)"],
                   position: "relative",
                   padding: ["10px 0px", "17px 10px", "20px 10px"],
-
+                  "&:hover": {
+                    backgroundColor: "grayLight",
+                  },
                   "&:hover > div": {
                     display: "block",
                     visibility: "visible",

@@ -50,7 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/property/${node.slug.current}`,
       component: propertyTemplate,
       context: {
-        mlsid: node.mlsid,
+        mlsid: node.slug.current,
       },
     })
   })
