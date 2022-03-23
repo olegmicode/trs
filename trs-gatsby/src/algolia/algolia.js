@@ -28,7 +28,7 @@ const postQuery = `{
       }
     }
   }
-  ourproperties: allSanityProperty{
+  ourproperties: allSanityProperty(filter: {_id: {regex: "/^(?!draft).*$/"}}) {
     nodes{
       objectID: id
       address: propertyName

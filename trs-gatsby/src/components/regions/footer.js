@@ -87,8 +87,13 @@ class Footer extends React.Component {
                   "> div:nth-of-type(4)": {
                     width: "calc(100%)",
                     fontSize: "0.875rem",
-                    textAlign: ["left", "left", "center"],
                     marginTop: ["60px", "60px", "100px"],
+                    p: {
+                      textAlign: ["left", "left", "center"],
+                      "&:nth-of-type(2)": {
+                        textAlign: "center",
+                      },
+                    },
                   },
                 }}
               >

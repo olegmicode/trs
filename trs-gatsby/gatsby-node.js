@@ -12,7 +12,9 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      ourproperty: allSanityProperty {
+      ourproperty: allSanityProperty(
+        filter: { _id: { regex: "/^(?!draft).*$/" } }
+      ) {
         nodes {
           id
           mlsid
