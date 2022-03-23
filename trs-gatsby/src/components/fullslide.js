@@ -61,7 +61,13 @@ const FullSlide = ({ images, index, openModal }) => {
       {breakpoints.sm ? (
         <div>
           {images.map((image, index) => (
-            <ReturnImage image={image} index={index}></ReturnImage>
+            <div
+              sx={{
+                marginBottom: "10px",
+              }}
+            >
+              <ReturnImage image={image} index={index}></ReturnImage>
+            </div>
           ))}
         </div>
       ) : (

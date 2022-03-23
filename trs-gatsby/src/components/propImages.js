@@ -4,14 +4,14 @@ import { useBreakpoint } from "gatsby-plugin-breakpoints"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { Fade } from "react-slideshow-image"
+import { Slide } from "react-slideshow-image"
 import "react-slideshow-image/dist/styles.css"
 
 const properties = {
   duration: 5000,
   transitionDuration: 500,
   infinite: true,
-  arrows: true,
+  arrows: false,
   indicators: true,
   autoplay: false,
 }
@@ -50,6 +50,7 @@ const ReturnImage = ({ image }) => {
   }
 }
 const ReturnMobileImage = ({ image }) => {
+  console.log(image)
   if (image.asset) {
     return (
       <GatsbyImage
@@ -63,7 +64,7 @@ const ReturnMobileImage = ({ image }) => {
         alt=""
       />
     )
-  } else if (image.videoId) {
+  } else if (image.video) {
     return <LiteYouTubeEmbed id={image.video} />
   } else if (image.childImageSharp) {
     return (
@@ -86,6 +87,7 @@ const PropImages = ({ newImages, openModal }) => {
   const breakpoints = useBreakpoint()
   return (
     <div
+      className="ttt"
       sx={{
         ".indicators": {
           margin: "0px",
@@ -94,11 +96,12 @@ const PropImages = ({ newImages, openModal }) => {
       }}
     >
       {breakpoints.sm ? (
-        <Fade {...properties}>
+        <Slide {...properties}>
           {newImages.map((image, index) => (
             <div
               sx={{
                 cursor: "pointer",
+                height: "100%",
               }}
               onClick={() => openModal(index)}
               key={index}
@@ -106,7 +109,7 @@ const PropImages = ({ newImages, openModal }) => {
               <ReturnMobileImage image={image} />
             </div>
           ))}
-        </Fade>
+        </Slide>
       ) : (
         <div
           sx={{
