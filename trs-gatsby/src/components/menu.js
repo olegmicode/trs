@@ -42,6 +42,7 @@ const Menu = open => {
           }}
         >
           <div
+            className="tester"
             sx={{
               margin: "0 auto",
               boxSizing: "content-box",
@@ -54,8 +55,7 @@ const Menu = open => {
               flexDirection: ["column", "row", "row"],
               position: ["fixed", "relative", "relative"],
               zIndex: "999",
-              borderTop: ["0px", "thin solid", "thin solid"],
-              borderColor: "grayMed",
+              borderTop: ["0px", "thin solid #A29A9A", "thin solid #A29A9A"],
               transition: "transform 0.3s ease-in-out",
               boxSizing: "border-box",
               padding: ["20px", "0px", "0px"],
@@ -75,8 +75,7 @@ const Menu = open => {
               sx={{
                 marginLeft: ["0px", "0px", "35px"],
                 paddingLeft: ["0px", "0px", "35px"],
-                borderLeft: ["0px", "0px", "thin solid"],
-                borderColor: "grayMed",
+                borderLeft: ["0px", "0px", "thin solid #A29A9A"],
                 marginTop: ["0px", "20px", "0px"],
                 display: ["flex", "none", "none"],
                 justifyContent: "flex-start",
@@ -140,10 +139,13 @@ const Menu = open => {
                     opacity: 1,
                   },
                   "&:nth-of-type(2)": {
-                    borderRight: ["0px", "thin solid", "thin solid"],
-                    borderColor: "grayMed",
+                    borderRight: [
+                      "0px",
+                      "thin solid #A29A9A",
+                      "thin solid #A29A9A",
+                    ],
                     backgroundColor: ["transparent", "#ffffff", "#ffffff"],
-                    minWidth: "150px",
+                    minWidth: "250px",
                     "a > div": {
                       display: "none",
                     },
@@ -194,11 +196,16 @@ const Menu = open => {
                       opacity: ["1", "1", "0"],
                       position: ["relative", "absolute", "absolute"],
                       transition: "all 0.5s ease",
-                      paddingTop: ["0px", "0px", "0px"],
+                      padding: "0px 20px 20px 20px",
                       left: 0,
                       marginTop: ["0px", "20px", "20px"],
                       display: ["block", "none", "none"],
                       minWidth: ["auto", "300px", "300px"],
+                      backgroundColor: [
+                        "transparent",
+                        "grayLight",
+                        "grayLight",
+                      ],
                     }}
                   >
                     {menuItem.children.submenu.map((menuSubItem, index) => (
@@ -207,12 +214,17 @@ const Menu = open => {
                           color: ["#ffffff", "grayMed", "grayMed"],
                           textDecoration: "none",
                           display: "block",
-                          padding: ["0px 0px", "10px 10px", "10px 10px"],
+                          padding: [
+                            "0px 0px",
+                            "10px 10px",
+                            "10px 10px",
+                            "10px 10px",
+                          ],
                           marginLeft: ["10px", "0px", "0px"],
                           marginTop: ["5px", "0px", "0px"],
                           backgroundColor: [
                             "transparent",
-                            "grayScant",
+                            "grayLight",
                             "grayLight",
                           ],
                           textWrap: "wrap",

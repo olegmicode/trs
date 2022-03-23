@@ -296,8 +296,8 @@ class Header extends React.Component {
               <div
                 sx={{
                   display: "flex",
-                  borderBottom: "thin solid",
-                  borderColor: "grayMed",
+                  borderBottom: "thin solid #A29A9A",
+                  borderRight: "thin solid #A29A9A",
                 }}
               >
                 <div

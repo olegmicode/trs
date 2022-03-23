@@ -12,6 +12,10 @@ class Footer extends React.Component {
       <StaticQuery
         query={graphql`
           query FooterQuery {
+            digettlogo: file(name: { eq: "digettlogo" }) {
+              name
+              publicURL
+            }
             footer: sanityFooter {
               item {
                 _rawBody(resolveReferences: { maxDepth: 10 })
@@ -110,6 +114,40 @@ class Footer extends React.Component {
                     />
                   </div>
                 ))}
+                <div
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      fontWeight: "400",
+                      fontSize: "0.875rem",
+                    }}
+                  >
+                    <div>Website by </div>
+                    <div
+                      sx={{
+                        marginLeft: "8px",
+                      }}
+                    >
+                      <a
+                        sx={{
+                          display: "flex",
+                          paddingTop: "3px",
+                        }}
+                        href="https://www.digett.com"
+                      >
+                        <img src={data.digettlogo.publicURL} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </Container>
           </footer>
