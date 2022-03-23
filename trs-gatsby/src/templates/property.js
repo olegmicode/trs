@@ -430,11 +430,12 @@ class Property extends React.Component {
                               textAlign: "center",
                               fontWeight: "600",
                               marginTop: "40px",
+                              cursor: "pointer",
                             }}
                             onClick={() => scrollTo("#contact")}
                           >
                             Contact {contacts[0].teamFirstName}
-                            {contacts[0].teamLastName}
+                            {" " + contacts[0].teamLastName}
                           </div>
                         )}
                       </div>
@@ -465,17 +466,13 @@ class Property extends React.Component {
                               textAlign: "center",
                               fontWeight: "600",
                               marginTop: "40px",
+                              cursor: "pointer",
                             }}
                             onClick={() => scrollTo("#contact")}
                           >
                             Contact Ken Hoerster
                           </div>
                         </div>
-                      </AccordionItemPanel>
-                    </AccordionItem>
-                    <AccordionItem uuid="2">
-                      <AccordionItemPanel>
-                        <div></div>
                       </AccordionItemPanel>
                     </AccordionItem>
                   </div>

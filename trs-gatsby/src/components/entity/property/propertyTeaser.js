@@ -161,7 +161,7 @@ const PropertyTeaser = ({ property }) => {
                   },
                 }}
               >
-                {property.sanityimage > 0 && (
+                {property.sanityimage && (
                   <GatsbyImage
                     sx={{
                       maxWidth: "100%",
