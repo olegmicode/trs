@@ -30,9 +30,7 @@ const postQuery = `{
   }
   ourproperties: allSanityProperty{
     nodes{
-      objectID: slug{
-        current
-      }
+      objectID: id
       address: propertyName
       county: ourcounty
       price: price
