@@ -419,22 +419,24 @@ class Property extends React.Component {
                           justifyContent: "flex-end",
                         }}
                       >
-                        <div
-                          sx={{
-                            color: "white",
-                            backgroundColor: "newTan",
-                            textDecoration: "none",
-                            padding: "15px 0px",
-                            width: "200px",
-                            textAlign: "center",
-                            fontWeight: "600",
-                            marginTop: "40px",
-                          }}
-                          onClick={() => scrollTo("#contact")}
-                        >
-                          Contact {contacts[0].teamFirstName}{" "}
-                          {contacts[0].teamLastName}
-                        </div>
+                        {contacts[0] && (
+                          <div
+                            sx={{
+                              color: "white",
+                              backgroundColor: "newTan",
+                              textDecoration: "none",
+                              padding: "15px 0px",
+                              width: "200px",
+                              textAlign: "center",
+                              fontWeight: "600",
+                              marginTop: "40px",
+                            }}
+                            onClick={() => scrollTo("#contact")}
+                          >
+                            Contact {contacts[0].teamFirstName}
+                            {contacts[0].teamLastName}
+                          </div>
+                        )}
                       </div>
                     </AccordionItemPanel>
                   </AccordionItem>
