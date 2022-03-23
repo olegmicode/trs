@@ -73,7 +73,7 @@ const PropertyTeaser = ({ property }) => {
                   color: "grayHvy",
                   fontSize: "1.25rem !important",
                   lineHeight: "1.5rem !important",
-                  margin: "24px 22px 10px 22px",
+                  margin: "30px 22px 10px 22px",
                   fontFamily: "Open Sans,sans-serif !important",
                   fontWeight: "normal !important",
                 }}

@@ -346,15 +346,16 @@ class Property extends React.Component {
                 }}
               >
                 {node.propertyName && (
-                  <div
+                  <h1
                     sx={{
                       fontSize: "1.125rem",
                       color: "grayMed",
                       fontWeight: "500",
+                      margin: "0px",
                     }}
                   >
                     {node.propertyName}
-                  </div>
+                  </h1>
                 )}
                 {county && (
                   <div

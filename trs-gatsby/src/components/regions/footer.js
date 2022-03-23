@@ -57,6 +57,7 @@ class Footer extends React.Component {
                       lineHeight: "2.25rem",
                       margin: "0px",
                       fontWeight: "normal",
+                      fontFamily: "heading",
                     },
                   },
                   "> div:nth-of-type(2)": {

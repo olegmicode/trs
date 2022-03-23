@@ -131,15 +131,7 @@ const Menu = open => {
                 sx={{
                   width: ["100%", "calc(100% / 5)", "calc(100% / 5)"],
                   position: "relative",
-                  padding: ["10px 0px", "17px 10px", "20px 10px"],
-                  "&:hover": {
-                    backgroundColor: [
-                      "transparent",
-                      "#D6D2D2",
-                      "#D6D2D2",
-                      "#D6D2D2",
-                    ],
-                  },
+                  "&:hover": {},
                   "&:hover > div": {
                     display: "block",
                     visibility: "visible",
@@ -176,8 +168,27 @@ const Menu = open => {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: ["left", "center", "center"],
+                    display: "flex",
+                    padding: ["10px 0px", "17px 10px", "20px 10px"],
+                    boxSizing: "border-box",
+                    "&:hover": {
+                      backgroundColor: [
+                        "transparent",
+                        "#D6D2D2",
+                        "#D6D2D2",
+                        "#D6D2D2",
+                      ],
+                    },
                   }}
-                  activeStyle={{ textDecoration: "underline" }}
+                  activeStyle={{
+                    textDecoration: "underline",
+                    backgroundColor: [
+                      "transparent",
+                      "#D6D2D2",
+                      "#D6D2D2",
+                      "#D6D2D2",
+                    ],
+                  }}
                   to={"/" + menuPath(menuItem.children.document.slug.current)}
                 >
                   {menuItem.children.title}
