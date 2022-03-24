@@ -9,7 +9,7 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import { navigate } from "gatsby"
 import Header from "../components/regions/header"
-
+import Container from "../components/container"
 class ConditionalLayout extends React.Component {
   constructor(props) {
     super(props)
@@ -166,136 +166,44 @@ class ConditionalLayout extends React.Component {
                       top: "1px",
                     }}
                   >
-                    Back to list
+                    Back to List
                   </span>
                 </Link>
               </div>
               {this.props.children}
             </div>
           ) : (
-            <Layout banner={false} header={true}>
-              <BlockContent
-                blocks={this.props.data.blockFragment._rawEntities[0]}
-                serializers={Serializers}
-              />
-              <Modal
-                isOpen={this.state.modalIsOpen}
-                onAfterOpen={this.afterOpenModal}
-                onRequestClose={this.closeModal}
-              >
+            <Layout banner={true} header={true}>
+              <Container noMobilePadding={true}>
                 <div
                   sx={{
-                    zIndex: "1",
-                    position: "relative",
-                    background: "#f7f7f7",
-                    height: "100%",
-                    fontFamily: "Open Sans,sans-serif",
-                    fontSize: "1rem",
-                    fontWeight: "400",
-                    lineHeight: "1.438rem",
-                    letterSpacing: "1px",
+                    ".prop-social": {
+                      display: "none",
+                    },
+                    ".prop-left": {
+                      width: [
+                        "100%",
+                        "55%",
+                        "calc(100% - 450px)",
+                        "calc(100% - 450px)",
+                      ],
+                    },
+                    ".prop-right": {
+                      height: "auto",
+                      width: ["100%", "45%", "450px", "450px"],
+                      overflow: "visible",
+                      "> div": {
+                        marginRight: "0px",
+                        height: "100%",
+                        overflow: "visible",
+                        boxSizing: "border-box",
+                      },
+                    },
                   }}
                 >
-                  <div
-                    sx={{
-                      display: ["block", "block", "none"],
-                    }}
-                  >
-                    <Header noMobilePadding={true}></Header>
-                  </div>
-                  <div
-                    sx={{
-                      width: ["100%", "calc(55% - 10px)", "100%"],
-                      position: ["absolute"],
-                      zIndex: "9",
-                    }}
-                  >
-                    <div
-                      onClick={this.closeModal}
-                      className="prop-modal-close"
-                      sx={{
-                        position: ["relative", "relative", "absolute"],
-                        top: ["40px", "40px", "5px", "5px"],
-                        right: ["-20px", "-20px", "-40px"],
-
-                        zIndex: "9",
-                        height: ["40px", "40px", "30px", "30px"],
-                        width: ["120px", "120px", "30px", "30px"],
-                        backgroundColor: [
-                          "#887E7E",
-                          "#887E7E",
-                          "transparent",
-                          "transparent",
-                        ],
-                        display: "flex",
-                        left: ["0", "0", "auto", "auto"],
-                        alignItems: "center",
-                        borderTopRightRadius: ["25px", "25px", "0px", "0px"],
-                        borderBottomRightRadius: ["25px", "25px", "0px", "0px"],
-                        textDecoration: "none",
-                        boxShadow: [
-                          "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                          "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                          "none",
-                          "none",
-                        ],
-                        ":after": {
-                          display: ["none", "none", "block"],
-                          content: "' '",
-                          height: "30px",
-                          borderLeft: "3px solid #fff",
-                          position: "absolute",
-                          transform: "rotate(45deg)",
-                          left: "10px",
-                        },
-                        ":before": {
-                          display: ["none", "none", "block"],
-                          content: "' '",
-                          height: "30px",
-                          borderLeft: "3px solid #fff",
-                          position: "absolute",
-                          transform: "rotate(-45deg)",
-                          left: "10px",
-                        },
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 32 32"
-                        aria-hidden="true"
-                        focusable="false"
-                        role="img"
-                        sx={{
-                          transform: "rotate(90deg)",
-                          color: "white",
-                          height: "30px",
-                          display: ["block", "block", "none"],
-                        }}
-                      >
-                        <path
-                          stroke="none"
-                          d="M29.41 8.59a2 2 0 00-2.83 0L16 19.17 5.41 8.59a2 2 0 00-2.83 2.83l12 12a2 2 0 002.82 0l12-12a2 2 0 00.01-2.83z"
-                          sx={{
-                            fill: "white",
-                          }}
-                        ></path>
-                      </svg>
-                      <span
-                        sx={{
-                          color: "white",
-                          fontSize: "14px",
-                          display: ["block", "block", "none", "none"],
-                          position: "relative",
-                          top: "1px",
-                        }}
-                      >
-                        Back to list
-                      </span>
-                    </div>
-                  </div>
                   {this.props.children}
                 </div>
-              </Modal>
-              <SearchResults />
+              </Container>
             </Layout>
           )
         }

@@ -80,7 +80,6 @@ class Property extends React.Component {
   // }
 
   render() {
-    console.log(this.props)
     if (this.props.data.property) {
       var node = this.props.data.property
       var images = node.childrenFile
@@ -107,6 +106,7 @@ class Property extends React.Component {
 
     return (
       <ConditionalLayout data={this.props.data}>
+        {console.log(this.props)}
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -147,6 +147,7 @@ class Property extends React.Component {
           </div>
         </Modal>
         <div
+          className="prop-container"
           sx={{
             display: "flex",
             flexWrap: "wrap",
@@ -157,11 +158,7 @@ class Property extends React.Component {
           }}
         >
           <div
-            sx={{
-              display: ["block", "block", "none"],
-            }}
-          ></div>
-          <div
+            className="prop-left"
             sx={{
               width: ["100%", "55%", "55%"],
               backgroundColor: "white",
@@ -193,6 +190,7 @@ class Property extends React.Component {
           </div>
 
           <div
+            className="prop-right"
             sx={{
               width: ["100%", "45%", "45%"],
               overflow: "scroll",
@@ -214,6 +212,7 @@ class Property extends React.Component {
               }}
             >
               <div
+                className="prop-social"
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",

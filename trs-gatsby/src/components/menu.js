@@ -39,6 +39,11 @@ const Menu = open => {
         <div
           sx={{
             display: "flex",
+            height: [
+              "calc(100% - 112px)",
+              "calc(100% - 112px)",
+              "calc(100% - 123px)",
+            ],
           }}
         >
           <div
@@ -131,7 +136,7 @@ const Menu = open => {
                 sx={{
                   width: ["100%", "calc(100% / 5)", "calc(100% / 5)"],
                   position: "relative",
-                  "&:hover": {},
+
                   "&:hover > div": {
                     display: "block",
                     visibility: "visible",
@@ -169,8 +174,9 @@ const Menu = open => {
                     justifyContent: "center",
                     textAlign: ["left", "center", "center"],
                     display: "flex",
-                    padding: ["10px 0px", "17px 10px 16px 10px", "20px 10px"],
+                    padding: ["0px"],
                     boxSizing: "border-box",
+                    height: "100%",
                     "&:hover": {
                       backgroundColor: [
                         "transparent",

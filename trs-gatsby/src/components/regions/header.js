@@ -316,7 +316,7 @@ class Header extends React.Component {
                       sx={{
                         display: ["none", "block", "block"],
                         maxWidth: "initial",
-                        height: ["168px", "168px", "186px"],
+                        height: ["168px", "170px", "186px"],
                       }}
                       src={data.logoStarDesktop.publicURL}
                       alt="Logo"
@@ -347,7 +347,7 @@ class Header extends React.Component {
                       backgroundColor: "grayScant",
                       color: "grayMed",
                       flexDirection: ["column-reverse", "row", "row"],
-                      height: ["auto", "111px", "123px"],
+                      height: ["auto", "112px", "123px"],
                     }}
                   >
                     <Link
