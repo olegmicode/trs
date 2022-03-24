@@ -144,7 +144,7 @@ const Menu = open => {
                       "thin solid #A29A9A",
                     ],
                     backgroundColor: ["transparent", "#ffffff", "#ffffff"],
-                    minWidth: "150px",
+                    minWidth: "165px",
                     "a > div": {
                       display: "none",
                     },
@@ -169,7 +169,7 @@ const Menu = open => {
                     justifyContent: "center",
                     textAlign: ["left", "center", "center"],
                     display: "flex",
-                    padding: ["10px 0px", "17px 10px", "20px 10px"],
+                    padding: ["10px 0px", "17px 10px 16px 10px", "20px 10px"],
                     boxSizing: "border-box",
                     "&:hover": {
                       backgroundColor: [

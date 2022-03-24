@@ -80,13 +80,7 @@ class ConditionalLayout extends React.Component {
               </div>
               <div
                 sx={{
-                  background: [
-                    "linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)",
-                    "linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)",
-                    "none",
-                  ],
                   width: ["100%", "calc(55% - 10px)", "100%"],
-                  height: "50px",
                   position: ["absolute"],
                   zIndex: "9",
                 }}
@@ -99,12 +93,30 @@ class ConditionalLayout extends React.Component {
                   className="prop-modal-close"
                   sx={{
                     position: ["relative", "relative", "absolute"],
-
+                    top: ["40px", "40px", "5px", "5px"],
                     right: ["-20px", "-20px", "-40px"],
-                    top: ["10px", "10px", "5px"],
+
                     zIndex: "9",
-                    height: "30px",
-                    width: "30px",
+                    height: ["40px", "40px", "30px", "30px"],
+                    width: ["120px", "120px", "30px", "30px"],
+                    backgroundColor: [
+                      "#887E7E",
+                      "#887E7E",
+                      "transparent",
+                      "transparent",
+                    ],
+                    display: "flex",
+                    left: ["0", "0", "auto", "auto"],
+                    alignItems: "center",
+                    borderTopRightRadius: ["25px", "25px", "0px", "0px"],
+                    borderBottomRightRadius: ["25px", "25px", "0px", "0px"],
+                    textDecoration: "none",
+                    boxShadow: [
+                      "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                      "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                      "none",
+                      "none",
+                    ],
                     ":after": {
                       display: ["none", "none", "block"],
                       content: "' '",
@@ -137,7 +149,6 @@ class ConditionalLayout extends React.Component {
                       display: ["block", "block", "none"],
                     }}
                   >
-                    <title>Chevron Left</title>
                     <path
                       stroke="none"
                       d="M29.41 8.59a2 2 0 00-2.83 0L16 19.17 5.41 8.59a2 2 0 00-2.83 2.83l12 12a2 2 0 002.82 0l12-12a2 2 0 00.01-2.83z"
@@ -146,6 +157,17 @@ class ConditionalLayout extends React.Component {
                       }}
                     ></path>
                   </svg>
+                  <span
+                    sx={{
+                      color: "white",
+                      fontSize: "14px",
+                      display: ["block", "block", "none", "none"],
+                      position: "relative",
+                      top: "1px",
+                    }}
+                  >
+                    Back to list
+                  </span>
                 </Link>
               </div>
               {this.props.children}
@@ -183,13 +205,7 @@ class ConditionalLayout extends React.Component {
                   </div>
                   <div
                     sx={{
-                      background: [
-                        "linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)",
-                        "linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)",
-                        "none",
-                      ],
                       width: ["100%", "calc(55% - 10px)", "100%"],
-                      height: "50px",
                       position: ["absolute"],
                       zIndex: "9",
                     }}
@@ -199,12 +215,30 @@ class ConditionalLayout extends React.Component {
                       className="prop-modal-close"
                       sx={{
                         position: ["relative", "relative", "absolute"],
-
+                        top: ["40px", "40px", "5px", "5px"],
                         right: ["-20px", "-20px", "-40px"],
-                        top: ["10px", "10px", "5px"],
+
                         zIndex: "9",
-                        height: "30px",
-                        width: "30px",
+                        height: ["40px", "40px", "30px", "30px"],
+                        width: ["120px", "120px", "30px", "30px"],
+                        backgroundColor: [
+                          "#887E7E",
+                          "#887E7E",
+                          "transparent",
+                          "transparent",
+                        ],
+                        display: "flex",
+                        left: ["0", "0", "auto", "auto"],
+                        alignItems: "center",
+                        borderTopRightRadius: ["25px", "25px", "0px", "0px"],
+                        borderBottomRightRadius: ["25px", "25px", "0px", "0px"],
+                        textDecoration: "none",
+                        boxShadow: [
+                          "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                          "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                          "none",
+                          "none",
+                        ],
                         ":after": {
                           display: ["none", "none", "block"],
                           content: "' '",
@@ -237,7 +271,6 @@ class ConditionalLayout extends React.Component {
                           display: ["block", "block", "none"],
                         }}
                       >
-                        <title>Chevron Left</title>
                         <path
                           stroke="none"
                           d="M29.41 8.59a2 2 0 00-2.83 0L16 19.17 5.41 8.59a2 2 0 00-2.83 2.83l12 12a2 2 0 002.82 0l12-12a2 2 0 00.01-2.83z"
@@ -246,6 +279,17 @@ class ConditionalLayout extends React.Component {
                           }}
                         ></path>
                       </svg>
+                      <span
+                        sx={{
+                          color: "white",
+                          fontSize: "14px",
+                          display: ["block", "block", "none", "none"],
+                          position: "relative",
+                          top: "1px",
+                        }}
+                      >
+                        Back to list
+                      </span>
                     </div>
                   </div>
                   {this.props.children}

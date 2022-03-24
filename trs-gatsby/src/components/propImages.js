@@ -86,7 +86,6 @@ const PropImages = ({ newImages, openModal }) => {
   const breakpoints = useBreakpoint()
   return (
     <div
-      className="ttt"
       sx={{
         ".indicators": {
           margin: "0px",
