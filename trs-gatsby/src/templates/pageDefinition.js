@@ -80,24 +80,57 @@ const PageDefinition = ({ data }) => {
                   node._rawSidebar ? "calc(100% - 320px)" : "100%",
                   node._rawSidebar ? "calc(100% - 320px)" : "100%",
                 ],
-                padding: "40px 0px",
               }}
             >
-              {node._rawEntities && (
+              {node._rawHeroImage && (
                 <div
-                  className="tester"
                   sx={{
-                    "section > div": {
-                      padding: "0px !important",
+                    figure: {
+                      margin: "0px",
+                      display: "flex",
                     },
                   }}
                 >
                   <BlockContent
-                    blocks={node._rawEntities}
+                    blocks={node._rawHeroImage}
                     serializers={Serializers}
                   />
                 </div>
               )}
+              <div
+                sx={{
+                  padding: "40px 30px 40px 30px",
+                  color: "#000000",
+                  backgroundColor: "#F7F7F7",
+                  boxSizing: "border-box",
+                  h1: {
+                    marginTop: "0px",
+                  },
+                  "h1,h2,h3,h4,h5,h6": {
+                    color: "#484242",
+                    fontWeight: "400",
+                  },
+                  li: {
+                    marginBottom: "20px",
+                  },
+                }}
+              >
+                {node._rawEntities && (
+                  <div
+                    className="tester"
+                    sx={{
+                      "section > div": {
+                        padding: "0px !important",
+                      },
+                    }}
+                  >
+                    <BlockContent
+                      blocks={node._rawEntities}
+                      serializers={Serializers}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </Layout>
@@ -119,6 +152,7 @@ export const pageDefinitionQuery = graphql`
       _rawHero(resolveReferences: { maxDepth: 10 })
       _rawEntities(resolveReferences: { maxDepth: 10 })
       _rawSidebar(resolveReferences: { maxDepth: 10 })
+      _rawHeroImage(resolveReferences: { maxDepth: 10 })
     }
   }
 `

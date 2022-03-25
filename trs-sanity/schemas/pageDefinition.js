@@ -36,6 +36,11 @@ export default {
       ],
     },
     {
+      title: "Hero Image",
+      name: "heroImage",
+      type: "image",
+    },
+    {
       title: "Entities",
       name: "entities",
       type: "array",
