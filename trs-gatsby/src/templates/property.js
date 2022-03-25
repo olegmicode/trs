@@ -7,7 +7,7 @@ import Serializers from "../components/serializers/serializers"
 import { GatsbyImage } from "gatsby-plugin-image"
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import { Carousel } from "react-responsive-carousel"
-
+import SEO from "../components/seo"
 import ConditionalLayout from "../components/ConditionalLayout"
 import { Link } from "gatsby"
 import scrollTo from "gatsby-plugin-smoothscroll"
@@ -31,6 +31,10 @@ const ReturnCounty = ({ county }) => {
   // } else {
   //   return county
   // }
+}
+
+function truncate(str) {
+  return str.length > 10 ? str.substring(0, 380) : str
 }
 
 function youtube_parser(url) {
@@ -82,13 +86,19 @@ class Property extends React.Component {
   render() {
     if (this.props.data.property) {
       var node = this.props.data.property
+      console.log(node)
       var images = node.childrenFile
       var county = node.county
       var feedDescription = node.propertyDescription
       var acreage = node.acreage
       var newImages = images.slice()
+      var metaTitle = node.propertyName ? node.propertyName : node.mlsid
+      var metaDescription = truncate(node.propertyDescription)
+      var propPath = "https://www.texasranchesforsale.com" + this.props.path
     } else {
       var node = this.props.data.ourproperty
+      console.log(this)
+
       var images = node.propertyImages
       var ourImages = node.propertyImages
       var county = node.ourcounty
@@ -96,6 +106,13 @@ class Property extends React.Component {
       var contacts = node.propertyContacts
       var acreage = node.acreage
       var newImages = images.slice()
+      var metaTitle = node.metaTitle ? node.metaTitle : node.propertyName
+      var propPath = "https://www.texasranchesforsale.com" + this.props.path
+      if (node.metaDescription) {
+        var metaDescription = node.metaDescription
+      } else {
+        var metaDescription = truncate(node.propertySummary)
+      }
       if (node.youtubeUrl) {
         // var videoId = youtube_parser(node.youtubeUrl)
         var videoId = youtube_parser(node.youtubeUrl)
@@ -106,7 +123,11 @@ class Property extends React.Component {
 
     return (
       <ConditionalLayout data={this.props.data}>
-        {console.log(this.props)}
+        <SEO
+          title={metaTitle}
+          description={metaDescription}
+          path={propPath}
+        ></SEO>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}

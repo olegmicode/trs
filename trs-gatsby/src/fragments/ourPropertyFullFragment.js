@@ -7,6 +7,8 @@ export const ourPropertyFullFragment = graphql`
     price
     acreage
     mlsid
+    metaTitle
+    metaDescription
     county {
       countyName
       _rawCountyDescrition(resolveReferences: { maxDepth: 10 })

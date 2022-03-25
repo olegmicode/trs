@@ -27,6 +27,16 @@ export default {
       type: "string",
     },
     {
+      title: "Meta Title",
+      name: "metaTitle",
+      type: "text",
+    },
+    {
+      title: "Meta Description",
+      name: "metaDescription",
+      type: "text",
+    },
+    {
       title: "Property Summary",
       name: "propertySummary",
       type: "text",
