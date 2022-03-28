@@ -23,6 +23,18 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      ourcounty: allSanityCounty {
+        nodes {
+          countyName
+          id
+        }
+      }
+      ourtype: allSanityPropertyType {
+        nodes {
+          id
+          propertyTypeName
+        }
+      }
       property: allProperty {
         nodes {
           mlsid
@@ -37,6 +49,40 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  const propertyListTypeTemplate = path.resolve(
+    "src/templates/propertyListType.js"
+  )
+  pages.data.ourtype.nodes.forEach(node => {
+    var propertyTypeName = node.propertyTypeName
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "")
+    createPage({
+      path: `${propertyTypeName}-ranches-for-sale`,
+      component: propertyListTypeTemplate,
+      context: {
+        type: node.propertyTypeName,
+        id: node.id,
+      },
+    })
+  })
+  const propertyListCountyTemplate = path.resolve(
+    "src/templates/propertyListCounty.js"
+  )
+  pages.data.ourcounty.nodes.forEach(node => {
+    var countyName = node.countyName
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "")
+    createPage({
+      path: `${countyName}-county-ranches-for-sale`,
+      component: propertyListCountyTemplate,
+      context: {
+        county: node.countyName,
+        id: node.id,
+      },
+    })
+  })
   const propertyTemplate = path.resolve("src/templates/property.js")
   pages.data.property.nodes.forEach(node => {
     createPage({

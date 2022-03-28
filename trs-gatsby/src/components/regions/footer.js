@@ -122,6 +122,20 @@ class Footer extends React.Component {
                 ))}
                 <div
                   sx={{
+                    textAlign: "center",
+                    width: "100%",
+                    marginBottom: "10px",
+                    a: {
+                      color: "white !important",
+                      fontSize: "14px",
+                      textDecoration: "underline !important",
+                    },
+                  }}
+                >
+                  <Link to="/sitemap">Property Sitemap</Link>
+                </div>
+                <div
+                  sx={{
                     display: "flex",
                     alignItems: "center",
                     width: "100%",

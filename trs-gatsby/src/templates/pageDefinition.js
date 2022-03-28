@@ -99,8 +99,8 @@ const PageDefinition = ({ data }) => {
               )}
               <div
                 sx={{
-                  padding: "40px 30px 40px 30px",
-                  color: "#000000",
+                  padding: "40px 5% 40px 5%",
+                  color: "grayBlk",
                   backgroundColor: "#F7F7F7",
                   boxSizing: "border-box",
                   h1: {

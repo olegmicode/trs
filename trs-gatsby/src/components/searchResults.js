@@ -42,7 +42,6 @@ import {
 
 const InfiniteHits = ({ hits, hasMore, refineNext }) => (
   <div>
-    {console.log(hasMore)}
     <ul className="ais-InfiniteHits-list">
       {hits.map(hit => (
         <li
@@ -122,8 +121,6 @@ class SearchResults extends React.Component {
     }))
   }
   componentWillUpdate() {
-    console.log(this)
-
     if (!this.state.searchChange) {
       if (this.props.searchState !== this.state.searchState) {
         this.setState({ searchChange: true })
@@ -131,7 +128,6 @@ class SearchResults extends React.Component {
       if (
         this.props.searchState == "?refinementList%5Bstatus%5D=for-sale&page=1"
       ) {
-        console.log(this)
       }
     }
   }
@@ -638,7 +634,7 @@ const MyHits = connectHits(({ hits }) => {
 
 function HitComponent({ hit }) {
   return (
-    <PropertyTeaser property={hit} className="hit">
+    <PropertyTeaser property={hit} className="hit" asModal={true}>
       {hit.price}
     </PropertyTeaser>
   )
@@ -912,7 +908,6 @@ class Range extends Component {
 
   returnAcres(acres) {
     // Nine Zeroes for Billions
-    console.log(acres)
     var acresThousands = acres.toLocaleString("en-US", {
       maximumFractionDigits: 2,
     })

@@ -16,7 +16,7 @@ function truncate(str) {
 
 function propClick() {}
 
-const PropertyTeaser = ({ property }) => {
+const PropertyTeaser = ({ property, asModal }) => {
   var slugPath = ""
   if (property.slug) {
     if (property.slug.current) {
@@ -25,7 +25,6 @@ const PropertyTeaser = ({ property }) => {
       slugPath = "/property/" + property.slug
     }
   }
-
   return (
     <StaticQuery
       query={graphql`
@@ -43,13 +42,14 @@ const PropertyTeaser = ({ property }) => {
           sx={{
             height: "100%",
             boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.25)",
+            letterSpacing: "0px",
           }}
         >
           <Link
             state={{
               noScroll: true,
             }}
-            asModal
+            asModal={asModal}
             to={slugPath}
             onClick={propClick}
             sx={{
@@ -73,7 +73,7 @@ const PropertyTeaser = ({ property }) => {
                   color: "grayHvy",
                   fontSize: "1.25rem !important",
                   lineHeight: "1.5rem !important",
-                  margin: "30px 22px 10px 22px",
+                  margin: "30px 22px 10px 22px !important",
                   fontFamily: "Open Sans,sans-serif !important",
                   fontWeight: "normal !important",
                 }}
