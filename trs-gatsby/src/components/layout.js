@@ -28,13 +28,15 @@ const Layout = ({ props, children, banner, header }) => {
           fontFamily: "heading",
           fontWeight: "heading",
           lineHeight: "heading",
-          fontSize: "4rem",
+          fontSize: "3rem",
+          margin: "1rem 0rem",
         },
         h2: {
           fontFamily: "heading",
           fontWeight: "heading",
           lineHeight: "heading",
-          fontSize: "3rem",
+          fontSize: "2rem",
+          margin: "1rem 0rem",
         },
         p: {
           a: {
