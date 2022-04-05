@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import * as React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+import scrollTo from "gatsby-plugin-smoothscroll"
+import { AnchorLink } from "gatsby-plugin-anchor-links"
 
 const Menu = open => {
   function menuPath(sanityPath) {
     if (sanityPath == "home") {
-      return ""
+      return "#search-results"
     } else {
       return sanityPath
     }
@@ -136,7 +136,7 @@ const Menu = open => {
                 sx={{
                   width: ["100%", "calc(100% / 5)", "calc(100% / 5)"],
                   position: "relative",
-
+                  marginTop: ["20px", "0px", "0px", "0px"],
                   "&:hover > div": {
                     display: "block",
                     visibility: "visible",
@@ -159,24 +159,27 @@ const Menu = open => {
                   },
                   a: {
                     color: ["#ffffff", "grayMed", "grayMed"],
-
-                    // fontSize: "1.125rem",
                   },
                 }}
               >
-                <Link
+                <AnchorLink
                   sx={{
                     textDecoration: "none",
                     fontSize: ["1.6rem", "1.125rem", "1.125rem"],
                     width: "100%",
                     display: ["block", "flex", "flex"],
-                    alignItems: "center",
-                    justifyContent: "center",
+                    alignItems: ["flex-start", "center", "center", "center"],
+                    justifyContent: [
+                      "flex-start",
+                      "center",
+                      "center",
+                      "center",
+                    ],
                     textAlign: ["left", "center", "center"],
                     display: "flex",
                     padding: ["0px"],
                     boxSizing: "border-box",
-                    height: "100%",
+                    height: ["auto", "100%", "100%", "100%"],
                     "&:hover": {
                       backgroundColor: [
                         "transparent",
@@ -212,7 +215,7 @@ const Menu = open => {
                       }}
                     ></div>
                   )}
-                </Link>
+                </AnchorLink>
                 {menuItem.children.submenu && (
                   <div
                     sx={{

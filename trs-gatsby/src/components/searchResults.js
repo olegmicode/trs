@@ -535,6 +535,7 @@ class SearchResults extends React.Component {
         >
           <Container>
             <div
+              id="search-results"
               sx={{
                 h3: {
                   margin: [
