@@ -365,7 +365,7 @@ class SearchResults extends React.Component {
                 }}
               >
                 <h3>COUNTY</h3>
-                <CustomRefinementList attribute="county" />
+                <CustomRefinementList attribute="county" operator="or" />
               </div>
               <div
                 sx={{
@@ -678,8 +678,11 @@ class Consumer extends React.Component {
 
   changed(data) {
     if (data[0]) {
-      this.setState({ selected: data[0].value ? data[0].value : "" }, () => {
-        this.props.refine(this.state.selected)
+      var selectedCounties = []
+      data.forEach(element => {
+        selectedCounties.push(element.value)
+        this.setState({ selected: selectedCounties })
+        this.props.refine(selectedCounties)
       })
     } else {
       this.setState({ selected: [] }, () => {

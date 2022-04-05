@@ -4,8 +4,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
-import SEO from "../components/seo"
 import { Link } from "gatsby"
+import SEO from "../components/seo"
 import PropertyTeaser from "../components/entity/property/propertyTeaser"
 import Layout from "../components/layout"
 import Container from "../components/container"
@@ -15,9 +15,21 @@ class PropertyListCounty extends React.Component {
   }
 
   render() {
-    console.log(this)
+    var metaTitle = this.props.data.county.metaTitle
+      ? this.props.data.county.metaTitle
+      : this.props.data.county.countyName
+    var propPath = "https://www.texasranchesforsale.com" + this.props.path
+    var metaDescription = ""
+    if (this.props.data.county.metaDescription) {
+      var metaDescription = this.props.data.county.metaDescription
+    }
     return (
       <Layout>
+        <SEO
+          title={metaTitle}
+          description={metaDescription}
+          path={propPath}
+        ></SEO>
         <Container>
           <div
             sx={{
@@ -30,7 +42,6 @@ class PropertyListCounty extends React.Component {
               serializers={Serializers}
             />
           </div>
-          {console.log(this.props.data.ourproperty.nodes[0])}
           {this.props.data.ourproperty.nodes[0] ? (
             <ul
               sx={{
@@ -98,6 +109,8 @@ export const postQuery = graphql`
       id
       _rawCountyDescrition(resolveReferences: { maxDepth: 10 })
       countyName
+      metaTitle
+      metaDescription
     }
     ourproperty: allSanityProperty(
       filter: { county: { countyName: { eq: $county } } }

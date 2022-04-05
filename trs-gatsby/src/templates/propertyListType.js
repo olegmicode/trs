@@ -4,19 +4,31 @@ import React from "react"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
-import SEO from "../components/seo"
-import { Link } from "gatsby"
 import PropertyTeaser from "../components/entity/property/propertyTeaser"
 import Layout from "../components/layout"
 import Container from "../components/container"
+import SEO from "../components/seo"
+
 class PropertyListType extends React.Component {
   constructor(props) {
     super(props)
   }
-
   render() {
+    var metaTitle = this.props.data.type.metaTitle
+      ? this.props.data.type.metaTitle
+      : this.props.data.type.propertyTypeName
+    var propPath = "https://www.texasranchesforsale.com" + this.props.path
+    var metaDescription = ""
+    if (this.props.data.type.metaDescription) {
+      var metaDescription = this.props.data.type.metaDescription
+    }
     return (
       <Layout>
+        <SEO
+          title={metaTitle}
+          description={metaDescription}
+          path={propPath}
+        ></SEO>
         <Container>
           <div
             sx={{
@@ -96,6 +108,8 @@ export const postQuery = graphql`
       id
       _rawPropertyTypeDescrition(resolveReferences: { maxDepth: 10 })
       propertyTypeName
+      metaTitle
+      metaDescription
     }
     ourproperty: allSanityProperty(
       filter: {
