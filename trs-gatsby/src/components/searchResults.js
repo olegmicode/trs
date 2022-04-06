@@ -15,7 +15,6 @@ import makeAnimated from "react-select/animated"
 import qs from "qs"
 import Container from "../components/container"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import debounce from "lodash/debounce"
 import TheSearchBox from "./searchBox"
 import {
   InstantSearch,
@@ -24,6 +23,7 @@ import {
   Highlight,
   Configure,
   ClearRefinements,
+  ClearAll,
   connectHits,
   connectNumericMenu,
   connectStats,
@@ -39,7 +39,9 @@ import {
   HitsPerPage,
   connectInfiniteHits,
 } from "react-instantsearch-dom"
-
+const CustomClearAll = connectCurrentRefinements(({ query }) => (
+  <div>{query}</div>
+))
 const InfiniteHits = ({ hits, hasMore, refineNext }) => (
   <div>
     <ul className="ais-InfiniteHits-list">
@@ -102,6 +104,7 @@ const searchClient = algoliasearch(
 )
 
 const selectInputRef = createRef()
+const searchInputRef = createRef()
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -152,6 +155,9 @@ class SearchResults extends React.Component {
 
   customClear() {
     selectInputRef.current.select.clearValue()
+    console.log(searchInputRef)
+    const sarchInput = searchInputRef.current.childNodes[0]
+    sarchInput.value = ""
   }
 
   render() {
@@ -462,7 +468,9 @@ class SearchResults extends React.Component {
                 }}
               >
                 <h3>SEARCH FOR</h3>
-                <TheSearchBox />
+                <div ref={searchInputRef}>
+                  <TheSearchBox />
+                </div>
               </div>
             </div>
             <div sx={{}}>
@@ -502,6 +510,7 @@ class SearchResults extends React.Component {
                     translations={{
                       reset: "Clear All",
                     }}
+                    clearsQuery
                   />
                 </div>
               </div>
