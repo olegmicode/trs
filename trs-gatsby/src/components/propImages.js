@@ -50,7 +50,6 @@ const ReturnImage = ({ image }) => {
   }
 }
 const ReturnMobileImage = ({ image }) => {
-  console.log(image)
   if (image.asset) {
     return (
       <GatsbyImage

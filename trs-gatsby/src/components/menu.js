@@ -64,7 +64,7 @@ const Menu = open => {
               boxSizing: "border-box",
               padding: ["20px", "0px", "0px"],
               backgroundColor: [
-                "rgba(170, 64, 66, 0.92);",
+                "rgba(109, 100, 101, 0.92)",
                 "grayLight",
                 "grayLight",
               ],

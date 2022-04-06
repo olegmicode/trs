@@ -39,9 +39,7 @@ import {
   HitsPerPage,
   connectInfiniteHits,
 } from "react-instantsearch-dom"
-const CustomClearAll = connectCurrentRefinements(({ query }) => (
-  <div>{query}</div>
-))
+
 const InfiniteHits = ({ hits, hasMore, refineNext }) => (
   <div>
     <ul className="ais-InfiniteHits-list">
