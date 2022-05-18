@@ -55,8 +55,8 @@ module.exports = {
         name: `Texas Ranches For Sale`,
         short_name: `TRFS`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#AA4042`,
+        theme_color: `#AA4042`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },

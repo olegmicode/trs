@@ -84,9 +84,10 @@ class Property extends React.Component {
   // }
 
   render() {
+    console.log(this.props.data)
+
     if (this.props.data.property) {
       var node = this.props.data.property
-      console.log(node)
       var images = node.childrenFile
       var county = node.county
       var feedDescription = node.propertyDescription
@@ -95,10 +96,28 @@ class Property extends React.Component {
       var metaTitle = node.propertyName ? node.propertyName : node.mlsid
       var metaDescription = truncate(node.propertyDescription)
       var propPath = "https://www.texasranchesforsale.com" + this.props.path
+      var office = this.props.data.property.field_office1
+      if (this.props.data.property.field_listingidserbo[0]) {
+        var disclaimer =
+          "©2019 San Antonio Board of Realtors. All rights reserved. Information Deemed Reliable but Not Guaranteed. Information on this site is provided exclusively for consumers personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Listing courtesy of " +
+          office +
+          "."
+      }
+      if (this.props.data.property.field_mst_mls_number[0]) {
+        var disclaimer =
+          "©2019 Kerrville Board of Realtors® All rights reserved. The data relating to real estate for sale on this web site comes in part from the Kerrville Board of Realtors®. The broker providing this data believes it to be correct, but advises interested parties to confirm the data before relying on it in a purchase decision. Some properties which appear for sale on this web site may subsequently have sold and may no longer be available. Listing courtesy of " +
+          office +
+          "."
+      }
+      if (this.props.data.property.field_idx_mls_number[0]) {
+        var disclaimer =
+          "The data relating to real estate for sale on this website comes in part from the Internet Data Exchange (IDX) of the Central Hill Country Board of REALTORS® Multiple Listing Service (CHCBRMLS). The CHCBR IDX logo indicates listings of other real estate firms that are identified in the detailed listing information. The information being provided is for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Information herein is deemed reliable but not guaranteed, representations are approximate, individual verifications are recommended. Copyright 2019 Central Hill Country Board of REALTORS®. All rights reserved. Listing courtesy of " +
+          office +
+          "."
+      }
     } else {
+      var ourDisclaimer = this.props.data.disclaimer.nodes[0]._rawBlockcontent
       var node = this.props.data.ourproperty
-      console.log(this)
-
       var images = node.propertyImages
       var ourImages = node.propertyImages
       var county = node.ourcounty
@@ -633,6 +652,13 @@ class Property extends React.Component {
                   Please use the form below to contact our office about this or
                   other properties.
                 </div>
+                {ourDisclaimer && (
+                  <BlockContent
+                    blocks={ourDisclaimer}
+                    serializers={Serializers}
+                  />
+                )}
+                {disclaimer && disclaimer}
               </div>
             </div>
           </div>
@@ -653,6 +679,14 @@ export const postQuery = graphql`
     }
     blockFragment: sanityPageDefinition(slug: { current: { eq: "home" } }) {
       ...blockFragment
+    }
+    disclaimer: allSanityBlockcontent(
+      filter: { blockId: { eq: "disclaimer" } }
+    ) {
+      nodes {
+        blockId
+        _rawBlockcontent(resolveReferences: { maxDepth: 10 })
+      }
     }
     facebook: file(name: { eq: "Facebook" }) {
       name

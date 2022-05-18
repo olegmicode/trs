@@ -9,6 +9,10 @@ export const propertyFullFragment = graphql`
     propertyDescription
     price
     propertyName
+    field_listingidserbo
+    field_idx_mls_number
+    field_mst_mls_number
+    field_office1
     childrenFile {
       childImageSharp {
         gatsbyImageData(

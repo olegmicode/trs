@@ -51,22 +51,6 @@ const InfiniteHits = ({ hits, hasMore, refineNext }) => (
             position: "relative",
             backgroundColor: "white",
             marginBottom: "40px",
-            marginRight: ["0px", "20px", "20px", "20px"],
-            width: [
-              "100%",
-              "calc(50% - 10px)",
-              "calc(100% / 3 - 15px)",
-              "calc(100% / 4 - 20px)",
-            ],
-            "&:nth-of-type(4n + 4)": {
-              marginRight: ["0px", "0px", "0px", "0px"],
-            },
-            "&:nth-of-type(3n + 3)": {
-              marginRight: ["0px", "20px", "0px", "20px"],
-            },
-            "&:nth-of-type(2n + 2)": {
-              marginRight: ["0px", "0px", "20px", "20px"],
-            },
           }}
           key={hit.objectID}
         >
@@ -522,13 +506,46 @@ class SearchResults extends React.Component {
           */}
           </div>
         </Container>
+
+        <div
+          id="search-results"
+          sx={{
+            backgroundColor: "grayHvy",
+            color: "white",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            padding: [
+              "15px 0px 0px 0px",
+              "20px 0px 0px 0px",
+              "30px 0px 0px 0px",
+            ],
+            h3: {
+              margin: ["0px 0px 0px 0px", "0px 0px 0px 0px", "0px 0px 0px 0px"],
+              fontSize: ["2rem", "3rem", "4rem"],
+              fontFamily: "heading",
+              fontWeight: "400",
+              lineHeight: "1.2",
+            },
+          }}
+        >
+          <Container>
+            {this.state.searchChange ? (
+              <CustomStats />
+            ) : (
+              <h3>FEATURED PROPERTIES</h3>
+            )}
+          </Container>
+        </div>
+
         <div
           sx={{
             backgroundColor: "grayHvy",
             padding: [
-              "25px 0px 35px 0px",
-              "45px 0px 55px 0px",
-              "60px 0px 70px 0px",
+              "15px 0px 15px 0px",
+              "20px 0px 20px 0px",
+              "30px 0px 30px 0px",
             ],
             color: "white",
             display: "flex",
@@ -541,28 +558,6 @@ class SearchResults extends React.Component {
           }}
         >
           <Container>
-            <div
-              id="search-results"
-              sx={{
-                h3: {
-                  margin: [
-                    "0px 0px 20px 0px",
-                    "0px 0px 20px 0px",
-                    "0px 0px 40px 0px",
-                  ],
-                  fontSize: ["2rem", "3rem", "4rem"],
-                  fontFamily: "heading",
-                  fontWeight: "400",
-                  lineHeight: "1.2",
-                },
-              }}
-            >
-              {this.state.searchChange ? (
-                <CustomStats />
-              ) : (
-                <h3>FEATURED PROPERTIES</h3>
-              )}
-            </div>
             <div
               sx={{
                 display: "flex",
