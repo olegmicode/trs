@@ -8,7 +8,8 @@ const Container = ({ children, noMobilePadding }) => {
         maxWidth: ["800px", "1000px", "1200px", "1440px"],
         padding: [
           noMobilePadding ? "0px 0px" : "0px 5%",
-          noMobilePadding ? "0px 0px" : "0px 5%",
+          "0px 5%",
+          "0px 5%",
           "0px 5%",
         ],
         margin: "0 auto",
