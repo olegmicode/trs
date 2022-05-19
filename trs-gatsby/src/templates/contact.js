@@ -5,10 +5,13 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import Layout from "../components/layout"
 import ContactForm from "../components/contactForm"
+import Container from "../components/container"
 const Contact = ({ data }) => {
   return (
     <Layout>
-      <ContactForm></ContactForm>
+      <Container>
+        <ContactForm></ContactForm>
+      </Container>
     </Layout>
   )
 }

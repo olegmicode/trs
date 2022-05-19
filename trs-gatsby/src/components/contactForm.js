@@ -58,13 +58,41 @@ const MyForm = () => {
         <form
           sx={{
             display: "flex",
-
             flexDirection: "column",
+            alignItems: "flex-end",
+            justifyContent: "flex-end",
+            input: {
+              border: "1px solid #484242",
+              color: "#484242",
+              backgroundColor: "transparent",
+              padding: "8px 20px",
+              fontSize: "1rem",
+              width: "100%",
+              borderRadius: "0px !important",
+              boxSizing: "border-box",
+              "&:nth-child(2)": {
+                margin: "15px 0px",
+              },
+              "&::placeholder": {
+                color: "#484242",
+              },
+              "&:focus-visible": {
+                borderRadius: "0px !important",
+                outline: "none !important",
+              },
+            },
+            button: {
+              border: "1px solid #484242",
+              color: "#484242",
+              backgroundColor: "transparent",
+              padding: "8px 30px",
+              fontSize: "1rem",
+              cursor: "pointer",
+            },
           }}
           onSubmit={handleOnSubmit}
         >
-          <label>Name*</label>
-          <input type="text" required name="name" />
+          <input placeholder="Name" type="text" required name="name" />
           <label>Email*</label>
           <input type="email" required name="email" />
           <label>Phone</label>
