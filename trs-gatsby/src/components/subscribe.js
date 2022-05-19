@@ -27,10 +27,7 @@ class Subscribe extends Component {
             flexDirection: "column",
             alignItems: "flex-end",
             justifyContent: "flex-end",
-          }}
-        >
-          <input
-            sx={{
+            input: {
               border: "1px solid #E9E7E7",
               color: "white",
               backgroundColor: "transparent",
@@ -39,6 +36,9 @@ class Subscribe extends Component {
               width: "100%",
               borderRadius: "0px !important",
               boxSizing: "border-box",
+              "&:nth-child(2)": {
+                margin: "15px 0px",
+              },
               "&::placeholder": {
                 color: "white",
               },
@@ -46,7 +46,18 @@ class Subscribe extends Component {
                 borderRadius: "0px !important",
                 outline: "none !important",
               },
-            }}
+            },
+            button: {
+              border: "1px solid #E9E7E7",
+              color: "white",
+              backgroundColor: "transparent",
+              padding: "8px 30px",
+              fontSize: "1rem",
+              cursor: "pointer",
+            },
+          }}
+        >
+          <input
             placeholder="Enter your name"
             id="fieldName"
             name="cm-name"
@@ -60,37 +71,9 @@ class Subscribe extends Component {
             class="js-cm-email-input"
             placeholder="Enter your email address"
             required
-            sx={{
-              border: "1px solid #E9E7E7",
-              color: "white",
-              backgroundColor: "transparent",
-              padding: "8px 20px",
-              fontSize: "1rem",
-              width: "100%",
-              margin: "15px 0px",
-              boxSizing: "border-box",
-              "&::placeholder": {
-                color: "white !important",
-              },
-              "&:focus-visible": {
-                borderRadius: "0px !important",
-                outline: "none !important",
-              },
-            }}
           />
 
-          <button
-            sx={{
-              border: "1px solid #E9E7E7",
-              color: "white",
-              backgroundColor: "transparent",
-              padding: "8px 30px",
-              fontSize: "1rem",
-              cursor: "pointer",
-            }}
-            class="js-cm-submit-button"
-            type="submit"
-          >
+          <button class="js-cm-submit-button" type="submit">
             Submit
           </button>
         </div>

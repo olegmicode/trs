@@ -538,7 +538,6 @@ class SearchResults extends React.Component {
             )}
           </Container>
         </div>
-
         <div
           sx={{
             backgroundColor: "grayHvy",
@@ -558,7 +557,6 @@ class SearchResults extends React.Component {
           }}
         >
           <Container>
-            test
             <div
               sx={{
                 display: "flex",
