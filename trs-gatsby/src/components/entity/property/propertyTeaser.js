@@ -121,10 +121,85 @@ const PropertyTeaser = ({ property, asModal }) => {
                 position: "relative",
               }}
             >
-              {property.status === "for-sale" ? (
+              {property.status === "just-sold" ? (
                 <div
                   sx={{
-                    backgroundColor: "newTan",
+                    backgroundColor: "#6D6465",
+                    color: "#ffffff",
+                    fontSize: "1rem",
+                    position: "absolute",
+                    right: "20px",
+                    top: "-15px",
+                    padding: "3px 12px",
+                    zIndex: "1",
+                  }}
+                >
+                  JUST SOLD
+                </div>
+              ) : property.status === "under-contract" ? (
+                <div
+                  sx={{
+                    backgroundColor: "#887E7E",
+                    color: "#ffffff",
+                    fontSize: "1rem",
+                    position: "absolute",
+                    right: "20px",
+                    top: "-15px",
+                    padding: "3px 12px",
+                    zIndex: "1",
+                  }}
+                >
+                  UNDER CONTRACT
+                </div>
+              ) : property.status === "reduced" ? (
+                <div
+                  sx={{
+                    backgroundColor: "#E9E7E7",
+                    color: "#ffffff",
+                    fontSize: "1rem",
+                    position: "absolute",
+                    right: "20px",
+                    top: "-15px",
+                    padding: "3px 12px",
+                    zIndex: "1",
+                  }}
+                >
+                  REDUCED
+                </div>
+              ) : property.status === "new" ? (
+                <div
+                  sx={{
+                    backgroundColor: "#AA4044",
+                    color: "#ffffff",
+                    fontSize: "1rem",
+                    position: "absolute",
+                    right: "20px",
+                    top: "-15px",
+                    padding: "3px 12px",
+                    zIndex: "1",
+                  }}
+                >
+                  NEW
+                </div>
+              ) : property.status === "coming-soon" ? (
+                <div
+                  sx={{
+                    backgroundColor: "#0070B2",
+                    color: "#ffffff",
+                    fontSize: "1rem",
+                    position: "absolute",
+                    right: "20px",
+                    top: "-15px",
+                    padding: "3px 12px",
+                    zIndex: "1",
+                  }}
+                >
+                  COMING SOON
+                </div>
+              ) : property.status === "for-sale" ? (
+                <div
+                  sx={{
+                    backgroundColor: "#C1B098",
                     color: "#ffffff",
                     fontSize: "1rem",
                     position: "absolute",
@@ -139,7 +214,7 @@ const PropertyTeaser = ({ property, asModal }) => {
               ) : (
                 <div
                   sx={{
-                    backgroundColor: "newTan",
+                    backgroundColor: "#484242",
                     color: "#ffffff",
                     fontSize: "1rem",
                     position: "absolute",

@@ -110,10 +110,10 @@ class SearchResults extends React.Component {
       if (this.props.searchState !== this.state.searchState) {
         this.setState({ searchChange: true })
       }
-      if (
-        this.props.searchState == "?refinementList%5Bstatus%5D=for-sale&page=1"
-      ) {
-      }
+      // if (
+      //   this.props.searchState == "?refinementList%5Bstatus%5D=for-sale&page=1"
+      // ) {
+      // }
     }
   }
 
@@ -365,7 +365,7 @@ class SearchResults extends React.Component {
                 <h3>STATUS</h3>
                 <CustomRefinementListRadio
                   attribute="status"
-                  defaultRefinement="for-sale"
+                  defaultRefinement="z-sold"
                 />
               </div>
             </div>
@@ -412,7 +412,7 @@ class SearchResults extends React.Component {
               >
                 <h3>SORT BY</h3>
                 <CustomSort
-                  defaultRefinement="additional_properties_price_desc"
+                  defaultRefinement="additional_properties_status_asc"
                   items={[
                     {
                       value: "additional_properties_price_desc",
@@ -602,7 +602,7 @@ class SearchResults extends React.Component {
           }}
         >
           <Container noMobilePadding={true}>
-            <Configure hitsPerPage={8} />
+            <Configure hitsPerPage={9} />
             <CustomInfiniteHits />
 
             <div
@@ -722,7 +722,16 @@ class ConsumerRadio extends React.Component {
     super(props)
     // this.state = { value: '' };
     this.state = {
-      selectedOption: "for-sale",
+      selectedOption: [
+        "for-sale",
+        "z-sold",
+        "just-sold",
+        "under-contract",
+        "reduced",
+        "new",
+        "coming-soon",
+      ],
+      statusChecked: "for-sale",
     }
     this.onValueChange = this.onValueChange.bind(this)
   }
@@ -732,7 +741,21 @@ class ConsumerRadio extends React.Component {
   }
 
   onValueChange(event) {
-    this.setState({ selectedOption: event.target.value }, () => {
+    if (event.target.value == "for-sale") {
+      var statusValue = [
+        "for-sale",
+        "z-sold",
+        "just-sold",
+        "under-contract",
+        "reduced",
+        "new",
+        "coming-soon",
+      ]
+    } else {
+      var statusValue = "z-sold"
+    }
+    this.setState({ statusChecked: event.target.value }, () => {})
+    this.setState({ selectedOption: statusValue }, () => {
       this.props.refine(this.state.selectedOption)
     })
   }
@@ -769,7 +792,7 @@ class ConsumerRadio extends React.Component {
             },
             span: {
               position: "relative",
-              color: "#ffffff",
+              color: "white",
               display: "block",
               width: "100%",
               height: "100%",
@@ -777,7 +800,7 @@ class ConsumerRadio extends React.Component {
               textAlign: "center",
               fontSize: "1rem",
               fontWeight: "600",
-              "&.for-sale.sold": {
+              "&.for-sale.z-sold": {
                 color: "grayHvy",
               },
             },
@@ -788,21 +811,21 @@ class ConsumerRadio extends React.Component {
           <input
             type="radio"
             value="for-sale"
-            checked={this.state.selectedOption === "for-sale"}
+            checked={this.state.statusChecked === "for-sale"}
             onChange={this.onValueChange}
           />
-          <span className={"for-sale " + this.state.selectedOption}>
+          <span className={"for-sale " + this.state.statusChecked}>
             For Sale
           </span>
         </div>
         <div>
           <input
             type="radio"
-            value="sold"
-            checked={this.state.selectedOption === "sold"}
+            value="z-sold"
+            checked={this.state.statusChecked === "z-sold"}
             onChange={this.onValueChange}
           />
-          <span className={"sold " + this.state.selectedOption}>Sold</span>
+          <span className={this.state.statusChecked + " z-sold"}>Sold</span>
         </div>
       </div>
       // <div>
@@ -830,7 +853,15 @@ class RefinementListDis extends Component {
     // this.state = { value: '' };
     this.state = {
       value: "",
-      selectedOption: null,
+      selectedOption: [
+        "for-sale",
+        "z-sold",
+        "just-sold",
+        "under-contract",
+        "reduced",
+        "new",
+        "coming-soon",
+      ],
     }
     this.handleSelectChange = this.handleSelectChange.bind(this)
   }

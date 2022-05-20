@@ -80,8 +80,13 @@ export default {
       type: "string",
       options: {
         list: [
+          { title: "Coming Soon", value: "coming-soon" },
+          { title: "New", value: "new" },
           { title: "For Sale", value: "for-sale" },
-          { title: "Sold", value: "sold" },
+          { title: "Reduced", value: "reduced" },
+          { title: "Under Contract", value: "under-contract" },
+          { title: "Just Sold", value: "just-sold" },
+          { title: "Sold", value: "z-sold" },
         ], // <-- predefined values
         layout: "radio", // <-- defaults to 'dropdown'
       },
