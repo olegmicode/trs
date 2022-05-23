@@ -1,3 +1,4 @@
+const { notDeepStrictEqual } = require("assert")
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
@@ -69,20 +70,20 @@ exports.createPages = async ({ graphql, actions }) => {
   const propertyListCountyTemplate = path.resolve(
     "src/templates/propertyListCounty.js"
   )
-  pages.data.ourcounty.nodes.forEach(node => {
-    var countyName = node.countyName
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "")
-    createPage({
-      path: `${countyName}-county-ranches-for-sale`,
-      component: propertyListCountyTemplate,
-      context: {
-        county: node.countyName,
-        id: node.id,
-      },
-    })
-  })
+  // pages.data.ourcounty.nodes.forEach(node => {
+  //   var countyName = node.countyName
+  //     .toLowerCase()
+  //     .replace(/ /g, "-")
+  //     .replace(/[^\w-]+/g, "")
+  //   createPage({
+  //     path: `${countyName}-county-ranches-for-sale`,
+  //     component: propertyListCountyTemplate,
+  //     context: {
+  //       county: node.countyName,
+  //       id: node.id,
+  //     },
+  //   })
+  // })
   const propertyTemplate = path.resolve("src/templates/property.js")
   pages.data.property.nodes.forEach(node => {
     createPage({
@@ -208,7 +209,18 @@ exports.onCreateNode = async ({
   cache,
 }) => {
   const { createNode } = actions
+  // if (node.internal.type === `SanityProperty`) {
+  //   console.log("yes")
+  //   if (node.status === "z-sold") {
+  //     console.log("3")
+  //     node.weight = 3
+  //   } else {
+  //     node.weight = 1
+  //     console.log("1")
+  //   }
+  // }
   if (node.internal.type === `property`) {
+    node.weight = 2
     if (node.price) {
       node.price = parseInt(node.price)
     }
@@ -274,6 +286,18 @@ exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
           resolve(source, args, context, info) {
             county = getNode(source.county._ref)
             return county.countyName
+          },
+        },
+        weight: {
+          type: "Int",
+          resolve(source, args, context, info) {
+            ourStatus = source.status
+            console.log(ourStatus)
+            if (ourStatus === "z-sold") {
+              return 3
+            } else {
+              return 1
+            }
           },
         },
       },

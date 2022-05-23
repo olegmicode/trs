@@ -412,7 +412,7 @@ class SearchResults extends React.Component {
               >
                 <h3>SORT BY</h3>
                 <CustomSort
-                  defaultRefinement="additional_properties_status_asc"
+                  defaultRefinement="additional_properties_price_desc"
                   items={[
                     {
                       value: "additional_properties_price_desc",

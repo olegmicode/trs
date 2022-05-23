@@ -15,6 +15,7 @@ const postQuery = `{
       zip: zip
       slug: mlsid
       status: status
+      weight: weight
       image: childFile {
         childImageSharp {
           gatsbyImageData(
@@ -41,6 +42,7 @@ const postQuery = `{
       updated: _updatedAt
       changed: _updatedAt
       status: status
+      weight:weight
       sanityimage: propertyImages {
         asset {
           gatsbyImageData(
