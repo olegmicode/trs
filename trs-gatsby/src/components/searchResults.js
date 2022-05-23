@@ -752,7 +752,7 @@ class ConsumerRadio extends React.Component {
         "coming-soon",
       ]
     } else {
-      var statusValue = "z-sold"
+      var statusValue = ["z-sold", "just-sold"]
     }
     this.setState({ statusChecked: event.target.value }, () => {})
     this.setState({ selectedOption: statusValue }, () => {

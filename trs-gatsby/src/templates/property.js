@@ -124,15 +124,21 @@ class Property extends React.Component {
       var description = node._rawPropertyDescrition
       var contacts = node.propertyContacts
       var acreage = node.acreage
-      var newImages = images.slice()
       var metaTitle = node.metaTitle ? node.metaTitle : node.propertyName
       var propPath = "https://www.texasranchesforsale.com" + this.props.path
+      var status = node.status
+      if (status === "z-sold") {
+        var newImages = images.slice(0, 3)
+      } else {
+        var newImages = images.slice()
+      }
+      console.log(status)
       if (node.metaDescription) {
         var metaDescription = node.metaDescription
       } else {
         var metaDescription = truncate(node.propertySummary)
       }
-      if (node.youtubeUrl) {
+      if (node.youtubeUrl && status !== "z-sold") {
         // var videoId = youtube_parser(node.youtubeUrl)
         var videoId = youtube_parser(node.youtubeUrl)
         // var newImages = images.slice()
@@ -344,7 +350,7 @@ class Property extends React.Component {
                   alignItems: "center",
                 }}
               >
-                {node.price && (
+                {node.status !== "z-sold" && node.price && (
                   <div
                     sx={{
                       fontSize: "2.25rem",
@@ -587,7 +593,7 @@ class Property extends React.Component {
                     </AccordionItemPanel>
                   </AccordionItem>
                 )}
-                {node.propertyTopographicMap && (
+                {node.status !== "z-sold" && node.propertyTopographicMap && (
                   <AccordionItem>
                     <AccordionItemHeading>
                       <AccordionItemButton>MAP</AccordionItemButton>
@@ -607,30 +613,31 @@ class Property extends React.Component {
                     </AccordionItemPanel>
                   </AccordionItem>
                 )}
-                {node.propertyInteractiveLocationMap && (
-                  <AccordionItem>
-                    <AccordionItemHeading>
-                      <AccordionItemButton>MAP</AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <div
-                        sx={{
-                          marginBottom: "20px",
-                        }}
-                      >
-                        Click “View Full Screen” button on map to see the map
-                        legend and additional features.
-                      </div>
-                      <div
-                        key={`map`}
-                        id="___map"
-                        dangerouslySetInnerHTML={{
-                          __html: node.propertyInteractiveLocationMap,
-                        }}
-                      />
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                )}
+                {node.status !== "z-sold" &&
+                  node.propertyInteractiveLocationMap && (
+                    <AccordionItem>
+                      <AccordionItemHeading>
+                        <AccordionItemButton>MAP</AccordionItemButton>
+                      </AccordionItemHeading>
+                      <AccordionItemPanel>
+                        <div
+                          sx={{
+                            marginBottom: "20px",
+                          }}
+                        >
+                          Click “View Full Screen” button on map to see the map
+                          legend and additional features.
+                        </div>
+                        <div
+                          key={`map`}
+                          id="___map"
+                          dangerouslySetInnerHTML={{
+                            __html: node.propertyInteractiveLocationMap,
+                          }}
+                        />
+                      </AccordionItemPanel>
+                    </AccordionItem>
+                  )}
               </Accordion>
               <div
                 id="contact"
