@@ -22,8 +22,8 @@ import {
   Pagination,
   Highlight,
   Configure,
+  Hits,
   ClearRefinements,
-  ClearAll,
   connectHits,
   connectNumericMenu,
   connectStats,
@@ -40,8 +40,22 @@ import {
   connectInfiniteHits,
 } from "react-instantsearch-dom"
 
+const CustomClearRefinements = connectCurrentRefinements(
+  ({ refine, items, customClear }) => (
+    <button
+      onClick={() => {
+        refine(items)
+        customClear()
+      }}
+    >
+      Clear All
+    </button>
+  )
+)
+
 const InfiniteHits = ({ hits, hasMore, refineNext }) => (
   <div>
+    {console.log(hits)}
     <ul className="ais-InfiniteHits-list">
       {hits.map(hit => (
         <li
@@ -86,7 +100,9 @@ const searchClient = algoliasearch(
 )
 
 const selectInputRef = createRef()
+const sortInputRef = createRef()
 const searchInputRef = createRef()
+const statusRadioRef = createRef()
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -137,9 +153,10 @@ class SearchResults extends React.Component {
 
   customClear() {
     selectInputRef.current.select.clearValue()
-    console.log(searchInputRef)
+    sortInputRef.current.select.clearValue()
     const sarchInput = searchInputRef.current.childNodes[0]
     sarchInput.value = ""
+    statusRadioRef.current.childNodes[0].childNodes[0].click()
   }
 
   render() {
@@ -411,6 +428,7 @@ class SearchResults extends React.Component {
                 }}
               >
                 <h3>SORT BY</h3>
+
                 <CustomSort
                   defaultRefinement="additional_properties_price_desc"
                   items={[
@@ -468,7 +486,7 @@ class SearchResults extends React.Component {
               <div
                 sx={{
                   marginTop: "40px",
-                  ".ais-ClearRefinements": {
+                  " > div": {
                     display: "flex",
                     justifyContent: "center",
                     button: {
@@ -484,15 +502,10 @@ class SearchResults extends React.Component {
                   },
                 }}
               >
-                <div onClick={this.customClear.bind(this)}>
-                  <ClearRefinements
-                    transformItems={items =>
-                      items.filter(item => item.attribute !== "status")
-                    }
-                    translations={{
-                      reset: "Clear All",
-                    }}
+                <div>
+                  <CustomClearRefinements
                     clearsQuery
+                    customClear={this.customClear.bind(this)}
                   />
                 </div>
               </div>
@@ -652,9 +665,15 @@ class Switch extends React.Component {
   }
 
   changed(data) {
-    this.setState({ selected: data.value }, () => {
-      this.props.refine(this.state.selected)
-    })
+    if (data) {
+      this.setState({ selected: data.value }, () => {
+        this.props.refine(this.state.selected)
+      })
+    } else {
+      this.setState({ selected: "additional_properties_price_desc" }, () => {
+        this.props.refine(this.state.selected)
+      })
+    }
   }
   render() {
     const options = []
@@ -664,7 +683,9 @@ class Switch extends React.Component {
         label: item.label,
       })
     })
-    return <Select options={options} onChange={this.changed} />
+    return (
+      <Select ref={sortInputRef} options={options} onChange={this.changed} />
+    )
   }
 }
 
@@ -762,6 +783,7 @@ class ConsumerRadio extends React.Component {
   render() {
     return (
       <div
+        ref={statusRadioRef}
         sx={{
           display: "flex",
           // border: "thin solid #887E7E",
@@ -807,7 +829,9 @@ class ConsumerRadio extends React.Component {
           },
         }}
       >
-        <div>
+        <div
+          className={this.state.statusChecked === "for-sale" && "active-status"}
+        >
           <input
             type="radio"
             value="for-sale"
@@ -818,7 +842,9 @@ class ConsumerRadio extends React.Component {
             For Sale
           </span>
         </div>
-        <div>
+        <div
+          className={this.state.statusChecked === "z-sold" && "active-status"}
+        >
           <input
             type="radio"
             value="z-sold"

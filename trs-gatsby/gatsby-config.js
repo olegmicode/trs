@@ -20,6 +20,9 @@ const postType = {
   zip: "666",
   state: "AK",
   propertyName: "The Name",
+  field_listingidserbo: "666",
+  field_mst_mls_number: "666",
+  field_idx_mls_number: "666",
   propertyImages: [
     "https://mls-api-trfs.pantheonsite.io/sites/default/files/99722-1599649396-44.jpg",
     "https://mls-api-trfs.pantheonsite.io/sites/default/files/78490-1597381396-17.jpg",
