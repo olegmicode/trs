@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { getGatsbyImageData } from "gatsby-source-sanity"
 
 const TeamTeaser = ({ team }) => {
@@ -9,7 +9,7 @@ const TeamTeaser = ({ team }) => {
   const imageAssetId = team.teamPhoto.asset.id
   const imageData = getGatsbyImageData(
     imageAssetId,
-    { maxWidth: 800 },
+    { height: 1000, width: 700 },
     sanityConfig
   )
   // const teamImage = getImage(imageData)
@@ -19,6 +19,9 @@ const TeamTeaser = ({ team }) => {
     <div
       sx={{
         boxSizing: "border-box",
+        height: "100%",
+        boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.25)",
+        letterSpacing: "0px",
       }}
     >
       {team.teamPhoto && (
@@ -28,8 +31,8 @@ const TeamTeaser = ({ team }) => {
             height: "auto",
           }}
           image={imageData}
-          width={800}
-          aspectRatio={4 / 3}
+          width={200}
+          height={300}
         />
       )}
       <h2
@@ -67,6 +70,8 @@ const TeamTeaser = ({ team }) => {
             backgroundColor: "newTan",
             color: "white !important",
             padding: "10px 20px",
+            width: "100%",
+            textAlign: "center",
           }}
           to={"/our-team/" + team.slug.current}
         >

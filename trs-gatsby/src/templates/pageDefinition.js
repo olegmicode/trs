@@ -10,7 +10,7 @@ const PageDefinition = ({ data }) => {
   const node = data.page
   console.log(node)
   return (
-    <div>
+    <div id={node.slug.current}>
       <SEO title={node.metaTitle} description={node.metaDescription}></SEO>
       {node.slug.current == "home" && (
         <div>
@@ -54,6 +54,7 @@ const PageDefinition = ({ data }) => {
           >
             {node._rawSidebar && (
               <div
+                className="sidebar"
                 sx={{
                   width: [
                     "100%",
@@ -98,6 +99,7 @@ const PageDefinition = ({ data }) => {
                 </div>
               )}
               <div
+                className="main-body"
                 sx={{
                   padding: "40px 5% 40px 5%",
                   color: "grayBlk",

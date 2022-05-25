@@ -1,5 +1,14 @@
 @import "./src/scss/variables.scss";
 @import "./src/scss/mixins.scss";
+#texas-ranch-brokerage-team{
+  .sidebar{
+    padding-top:0px;
+  }
+  .main-body{
+    background-color:transparent;
+    padding:0px;
+  }
+}
 #team-hero {
   color: #ffffff;
   > div {
@@ -69,9 +78,9 @@
       flex-wrap: wrap;
       align-items: flex-start;
       > div {
-        width: calc(100% / 3 - 60px);
+        width: calc(100% / 3 - 20px);
         box-sizing: border-box;
-        margin-right: 90px;
+        margin-right: 30px;
         margin-bottom: 60px;
         padding: 0px;
         &:nth-child(3n + 3) {
