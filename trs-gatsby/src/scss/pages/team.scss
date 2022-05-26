@@ -87,10 +87,10 @@
           margin-right: 0px;
         }
         @include tablet() {
-          width: calc(100% / 2 - 40px);
-          margin-right: 80px;
+          width: calc(100% / 2 - 20px);
+          margin-right: 40px;
           &:nth-child(3n + 3) {
-            margin-right: 80px;
+            margin-right: 40px;
           }
           &:nth-child(2n + 2) {
             margin-right: 0px;

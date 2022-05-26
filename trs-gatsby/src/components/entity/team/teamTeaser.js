@@ -22,62 +22,50 @@ const TeamTeaser = ({ team }) => {
         height: "100%",
         boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.25)",
         letterSpacing: "0px",
+        paddingBottom: "20px",
       }}
     >
-      {team.teamPhoto && (
-        <GatsbyImage
-          sx={{
-            maxWidth: "100%",
-            height: "auto",
-          }}
-          image={imageData}
-          width={200}
-          height={300}
-        />
-      )}
-      <h2
-        sx={{
-          textAlign: "center",
-          marginTop: "30px",
-          fontWeight: "bold",
-          textTransform: "uppercase",
-          fontSize: "1rem !important",
-          fontFamily: "Open Sans, sans-serif !important",
-        }}
-      >
-        {team.teamFirstName} {team.teamLastName}
-      </h2>
-      <div
-        sx={{
-          textAlign: "center",
-          margin: "10px 0px 20px 0px",
-          textTransform: "uppercase",
-          color: "newTan",
-        }}
-      >
-        {team.teamPosition}
-      </div>
-
-      <div
+      <Link
         sx={{
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
         }}
+        to={"/our-team/" + team.slug.current}
       >
-        <Link
+        {team.teamPhoto && (
+          <GatsbyImage
+            sx={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
+            image={imageData}
+            width={200}
+            height={300}
+          />
+        )}
+        <h2
           sx={{
-            display: "inline-block",
-            backgroundColor: "newTan",
-            color: "white !important",
-            padding: "10px 20px",
-            width: "100%",
             textAlign: "center",
+            marginTop: "30px",
+            fontWeight: "bold",
+            textTransform: "uppercase",
+            fontSize: "1rem !important",
+            fontFamily: "Open Sans, sans-serif !important",
           }}
-          to={"/our-team/" + team.slug.current}
         >
-          MORE INFO
-        </Link>
-      </div>
+          {team.teamFirstName} {team.teamLastName}
+        </h2>
+        <div
+          sx={{
+            textAlign: "center",
+            textTransform: "uppercase",
+            color: "newTan",
+          }}
+        >
+          {team.teamPosition}
+        </div>
+      </Link>
     </div>
   )
 }
