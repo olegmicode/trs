@@ -63,8 +63,9 @@ const Team = ({ data }) => {
             <div>
               <h1
                 sx={{
-                  margin: "0px 0px 0px 0px",
+                  margin: "0px 20px 10px 0px !important",
                   textTransform: "uppercase",
+                  lineHeight: "2.3rem !important",
                 }}
               >
                 {data.team.teamFirstName} {data.team.teamLastName}
@@ -73,6 +74,7 @@ const Team = ({ data }) => {
                 sx={{
                   color: "newTan",
                   textTransform: "uppercase",
+                  marginBottom: "10px",
                 }}
               >
                 {data.team.teamPosition}
@@ -87,7 +89,6 @@ const Team = ({ data }) => {
                   color: "white",
                   textDecoration: "none",
                   padding: "10px 40px",
-                  marginTop: ["10px", "10px", "5px"],
                 }}
                 to={
                   "/contact-us?team=" +

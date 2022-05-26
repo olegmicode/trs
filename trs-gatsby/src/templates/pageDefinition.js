@@ -49,7 +49,7 @@ const PageDefinition = ({ data }) => {
               ],
               boxSizing: "content-box",
               justifyContent: "space-between",
-              flexDirection: ["column-reverse", "row", "row"],
+              flexDirection: ["column", "row", "row"],
             }}
           >
             {node._rawSidebar && (
