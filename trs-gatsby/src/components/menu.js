@@ -163,6 +163,7 @@ const Menu = open => {
                 }}
               >
                 <AnchorLink
+                  activeClassName="active"
                   sx={{
                     textDecoration: "none",
                     fontSize: ["1.6rem", "1.125rem", "1.125rem"],
@@ -197,7 +198,6 @@ const Menu = open => {
                       ],
                     },
                   }}
-                  activeClassName="active"
                   to={"/" + menuPath(menuItem.children.document.slug.current)}
                 >
                   {menuItem.children.title}
@@ -236,6 +236,7 @@ const Menu = open => {
                   >
                     {menuItem.children.submenu.map((menuSubItem, index) => (
                       <Link
+                        activeClassName="active"
                         sx={{
                           color: ["#ffffff", "grayMed", "grayMed"],
                           textDecoration: "none",
@@ -272,7 +273,6 @@ const Menu = open => {
                             ],
                           },
                         }}
-                        activeClassName="active"
                         to={"/" + menuSubItem.document.slug.current}
                         key={index}
                       >

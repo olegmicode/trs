@@ -191,7 +191,7 @@ class Property extends React.Component {
                 },
               }}
             ></div>
-
+            test
             <FullSlide images={newImages} index={this.state.slideIndex} />
           </div>
         </Modal>

@@ -4,8 +4,8 @@ require("dotenv").config({
 console.log(`.env.${process.env.NODE_ENV}`)
 const queries = require(`${__dirname}/src/algolia/algolia`)
 const myCustomQueries = {
-  sm: "(max-width: 800px)",
-  md: "(max-width: 1000px)",
+  sm: "(max-width: 1000px)",
+  md: "(max-width: 1100px)",
   l: "(max-width: 1200px)",
 }
 const postType = {

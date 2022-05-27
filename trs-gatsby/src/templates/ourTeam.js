@@ -6,10 +6,13 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import Layout from "../components/layout"
 import TeamTeaser from "../components/entity/team/teamTeaser"
+import SEO from "../components/seo"
+
 const OurTeam = ({ data }) => {
   const node = data.page
   return (
     <Layout>
+      <SEO title="Our Team" description="Our team description"></SEO>
       <div
         sx={{
           display: [
@@ -55,7 +58,10 @@ const OurTeam = ({ data }) => {
             }}
           >
             {data.ourteam.nodes.map((team, index) => (
-              <TeamTeaser index={index} team={team} />
+              <div>
+                test
+                <TeamTeaser index={index} team={team} />
+              </div>
             ))}
           </div>
         </div>

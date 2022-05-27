@@ -129,20 +129,15 @@ const MyForm = () => {
             <option value="am">AM</option>
             <option value="pm">PM</option>
           </select>
+          <div className="check-container">
+            <input type="checkbox" name="subscribe_to_newsletter" value="1" />
+            <label>
+              Yes, please sign me up to receive the Texas Ranches For Sale
+              monthly e-Newsletter.
+            </label>
+          </div>
           {serverState.team && (
             <div>
-              <div className="check-container">
-                <input
-                  type="checkbox"
-                  name="subscribe_to_newsletter"
-                  value="1"
-                />
-                <label>
-                  Yes, please sign me up to receive the Texas Ranches For Sale
-                  monthly e-Newsletter.
-                </label>
-              </div>
-
               <div
                 sx={{
                   width: "100%",

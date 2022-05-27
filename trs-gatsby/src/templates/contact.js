@@ -1,14 +1,15 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
-import BlockContent from "@sanity/block-content-to-react"
-import Serializers from "../components/serializers/serializers"
 import Layout from "../components/layout"
 import ContactForm from "../components/contactForm"
 import Container from "../components/container"
+import SEO from "../components/seo"
+
 const Contact = ({ data }) => {
   return (
     <Layout>
+      <SEO title="Contact Us" description="Contact us description"></SEO>
       <Container>
         <div
           sx={{
@@ -20,7 +21,7 @@ const Contact = ({ data }) => {
         >
           <div
             sx={{
-              width: "280px",
+              width: ["100%", "100%", "280px"],
               position: ["relative", "sticky", "sticky"],
               top: "0px",
               height: "100%",
@@ -40,7 +41,7 @@ const Contact = ({ data }) => {
           </div>
           <div
             sx={{
-              width: "calc(100% - 320px)",
+              width: ["100%", "100%", "calc(100% - 320px)"],
               padding: "40px 5% 40px 5%",
               color: "grayBlk",
               backgroundColor: "#F7F7F7",

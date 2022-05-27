@@ -39,5 +39,5 @@ export default {
     grayHvy: "#6D6465",
     newTan: "#C1B098",
   },
-  breakpoints: ["800px", "1000px", "1200px", "1440px"],
+  breakpoints: ["1000px", "1100px", "1200px", "1440px"],
 }

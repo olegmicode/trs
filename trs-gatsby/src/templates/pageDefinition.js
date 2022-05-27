@@ -8,10 +8,10 @@ import LayoutSearch from "../components/layoutSearch"
 import SEO from "../components/seo"
 const PageDefinition = ({ data }) => {
   const node = data.page
-  console.log(node)
+  const metaTitle = node.metaTitle ? node.metaTitle : node.title
   return (
     <div id={node.slug.current}>
-      <SEO title={node.metaTitle} description={node.metaDescription}></SEO>
+      <SEO title={metaTitle} description={node.metaDescription}></SEO>
       {node.slug.current == "home" && (
         <div>
           <LayoutSearch></LayoutSearch>
