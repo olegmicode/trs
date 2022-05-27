@@ -531,9 +531,23 @@ class Property extends React.Component {
                               marginTop: "40px",
                               cursor: "pointer",
                             }}
-                            onClick={() => scrollTo("#contact")}
                           >
-                            Contact Ken Hoerster
+                            <Link
+                              sx={{
+                                color: "white !important",
+                                textDecoration: "none",
+                              }}
+                              to={
+                                "/contact-us?team=" +
+                                contacts[0].teamFirstName +
+                                "&lname=" +
+                                contacts[0].teamLastName +
+                                "&address=" +
+                                node.propertyName
+                              }
+                            >
+                              Contact Ken Hoerster
+                            </Link>
                           </div>
                         </div>
                       </AccordionItemPanel>
@@ -662,20 +676,6 @@ class Property extends React.Component {
                   padding: "20px 0px",
                 }}
               >
-                <div
-                  sx={{
-                    fontSize: "1.125rem",
-                    color: "grayMed",
-                    fontWeight: "700",
-                    marginBottom: "20px",
-                  }}
-                >
-                  CONTACT TEXAS RANCHES FOR SALE
-                </div>
-                <div>
-                  Please use the form below to contact our office about this or
-                  other properties.
-                </div>
                 {ourDisclaimer && (
                   <BlockContent
                     blocks={ourDisclaimer}
