@@ -97,6 +97,7 @@ class Property extends React.Component {
       var metaDescription = truncate(node.propertyDescription)
       var propPath = "https://www.texasranchesforsale.com" + this.props.path
       var office = this.props.data.property.field_office1
+      var mlsid = this.props.data.property.mlsid
       if (this.props.data.property.field_listingidserbo) {
         var disclaimer =
           "©2019 San Antonio Board of Realtors. All rights reserved. Information Deemed Reliable but Not Guaranteed. Information on this site is provided exclusively for consumers personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Listing courtesy of " +
@@ -127,6 +128,8 @@ class Property extends React.Component {
       var metaTitle = node.metaTitle ? node.metaTitle : node.propertyName
       var propPath = "https://www.texasranchesforsale.com" + this.props.path
       var status = node.status
+      var mlsid = node.mlsid
+      console.log(node)
       if (status === "z-sold") {
         var newImages = images.slice(0, 3)
       } else {
@@ -478,10 +481,24 @@ class Property extends React.Component {
                               marginTop: "40px",
                               cursor: "pointer",
                             }}
-                            onClick={() => scrollTo("#contact")}
                           >
-                            Contact {contacts[0].teamFirstName}
-                            {" " + contacts[0].teamLastName}
+                            <Link
+                              sx={{
+                                color: "white !important",
+                                textDecoration: "none",
+                              }}
+                              to={
+                                "/contact-us?team=" +
+                                contacts[0].teamFirstName +
+                                "&lname=" +
+                                contacts[0].teamLastName +
+                                "&address=" +
+                                node.propertyName
+                              }
+                            >
+                              Contact {contacts[0].teamFirstName}
+                              {" " + contacts[0].teamLastName}
+                            </Link>
                           </div>
                         )}
                       </div>

@@ -76,13 +76,14 @@
     padding: 0px;
     > div {
       flex-wrap: wrap;
-      align-items: flex-start;
+      align-items: stretch;
       > div {
         width: calc(100% / 3 - 20px);
         box-sizing: border-box;
         margin-right: 30px;
         margin-bottom: 60px;
         padding: 0px;
+        display:flex;
         &:nth-child(3n + 3) {
           margin-right: 0px;
         }

@@ -75,6 +75,7 @@ const Team = ({ data }) => {
                   color: "newTan",
                   textTransform: "uppercase",
                   marginBottom: "10px",
+                  padding: "0px 20px",
                 }}
               >
                 {data.team.teamPosition}

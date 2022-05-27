@@ -10,7 +10,54 @@ const Contact = ({ data }) => {
   return (
     <Layout>
       <Container>
-        <ContactForm></ContactForm>
+        <div
+          sx={{
+            display: "flex",
+            boxSizing: "content-box",
+            justifyContent: "space-between",
+            flexDirection: ["column", "row", "row"],
+          }}
+        >
+          <div
+            sx={{
+              width: "280px",
+              position: ["relative", "sticky", "sticky"],
+              top: "0px",
+              height: "100%",
+              paddingBottom: "20px",
+              paddingTop: "40px",
+              div: {
+                marginBottom: "5px",
+                fontSize: "1rem",
+              },
+            }}
+          >
+            <div>
+              <strong>Texas Ranches For Sale</strong>
+            </div>
+            <div>609 FM 289Comfort, TX 78013</div>
+            <div> 830-249-9339 Office 210-579-1900 Fax</div>
+          </div>
+          <div
+            sx={{
+              width: "calc(100% - 320px)",
+              padding: "40px 5% 40px 5%",
+              color: "grayBlk",
+              backgroundColor: "#F7F7F7",
+              boxSizing: "border-box",
+            }}
+          >
+            <h1
+              sx={{
+                marginTop: "0px !important",
+              }}
+            >
+              Contact Us
+            </h1>
+
+            <ContactForm></ContactForm>
+          </div>
+        </div>
       </Container>
     </Layout>
   )

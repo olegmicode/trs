@@ -52,6 +52,7 @@ const TeamTeaser = ({ team }) => {
             textTransform: "uppercase",
             fontSize: "1rem !important",
             fontFamily: "Open Sans, sans-serif !important",
+            padding: "0px 20px",
           }}
         >
           {team.teamFirstName} {team.teamLastName}
@@ -61,6 +62,7 @@ const TeamTeaser = ({ team }) => {
             textAlign: "center",
             textTransform: "uppercase",
             color: "newTan",
+            padding: "0px 20px",
           }}
         >
           {team.teamPosition}

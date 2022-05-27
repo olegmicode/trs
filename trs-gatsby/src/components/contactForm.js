@@ -5,17 +5,20 @@ import axios from "axios"
 const MyForm = () => {
   var team = ""
   var lname = ""
+  var address = ""
   if (typeof window !== "undefined") {
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
     var team = urlParams.get("team")
     var lname = urlParams.get("lname")
+    var address = urlParams.get("address")
   }
   const [serverState, setServerState] = useState({
     submitting: false,
     status: null,
     team: team,
     lname: lname,
+    address: address,
   })
   const handleServerResponse = (ok, msg, form) => {
     setServerState({
@@ -51,7 +54,7 @@ const MyForm = () => {
           <div>
             You are sending this message to
             <strong> {team + " " + lname} </strong>to inquire about
-            <strong> Our Services</strong>
+            <strong> {address}</strong>
           </div>
         )}
 
@@ -126,57 +129,65 @@ const MyForm = () => {
             <option value="am">AM</option>
             <option value="pm">PM</option>
           </select>
-          <div className="check-container">
-            <input type="checkbox" name="subscribe_to_newsletter" value="1" />
-            <label>
-              Yes, please sign me up to receive the Texas Ranches For Sale
-              monthly e-Newsletter.
-            </label>
-          </div>
+          {serverState.team && (
+            <div>
+              <div className="check-container">
+                <input
+                  type="checkbox"
+                  name="subscribe_to_newsletter"
+                  value="1"
+                />
+                <label>
+                  Yes, please sign me up to receive the Texas Ranches For Sale
+                  monthly e-Newsletter.
+                </label>
+              </div>
 
-          <div
-            sx={{
-              width: "100%",
-              fontWeight: "bold",
-              fontSize: "1.2rem",
-              marginTop: "20px",
-            }}
-          >
-            Please Select All That Apply Below:
-          </div>
-          <div className="check-container">
-            <input type="checkbox" name="agent_contact" value="1" />
-            <label>
-              I would like to know more about this property, please have an
-              agent contact me directly
-            </label>
-          </div>
-          <div className="check-container">
-            <input type="checkbox" name="appointment" value="1" />
-            <label>
-              I would like to make an appointment to view this property
-            </label>
-          </div>
+              <div
+                sx={{
+                  width: "100%",
+                  fontWeight: "bold",
+                  fontSize: "1.2rem",
+                  marginTop: "20px",
+                }}
+              >
+                Please Select All That Apply Below:
+              </div>
+              <div className="check-container">
+                <input type="checkbox" name="agent_contact" value="1" />
+                <label>
+                  I would like to know more about this property, please have an
+                  agent contact me directly
+                </label>
+              </div>
+              <div className="check-container">
+                <input type="checkbox" name="appointment" value="1" />
+                <label>
+                  I would like to make an appointment to view this property
+                </label>
+              </div>
 
-          <div className="check-container">
-            <input type="checkbox" name="evaluation" value="1" />
-            <label>
-              I am interested in a current market evaluation of my property
-            </label>
-          </div>
+              <div className="check-container">
+                <input type="checkbox" name="evaluation" value="1" />
+                <label>
+                  I am interested in a current market evaluation of my property
+                </label>
+              </div>
 
-          <div className="check-container">
-            <input type="checkbox" name="autoalerts" value="1" />
-            <label>
-              I would like to receive automatic email alerts when similar
-              properties become available
-            </label>
-          </div>
+              <div className="check-container">
+                <input type="checkbox" name="autoalerts" value="1" />
+                <label>
+                  I would like to receive automatic email alerts when similar
+                  properties become available
+                </label>
+              </div>
 
-          <div className="check-container">
-            <input type="checkbox" name="haveagent" value="1" />
-            <label>I am currently working with a real estate agent</label>
-          </div>
+              <div className="check-container">
+                <input type="checkbox" name="haveagent" value="1" />
+                <label>I am currently working with a real estate agent</label>
+              </div>
+            </div>
+          )}
           <div
             sx={{
               width: "100%",
