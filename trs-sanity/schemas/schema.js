@@ -26,6 +26,7 @@ import columns from "./section/columns";
 import footer from "./footer";
 import blockText from "./section/blockText";
 import wysiwyg from "./wysiwyg";
+import contactForm from "./section/contactForm";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -56,5 +57,6 @@ export default createSchema({
     footer,
     trsUpdate,
     wysiwyg,
+    contactForm,
   ]),
 });

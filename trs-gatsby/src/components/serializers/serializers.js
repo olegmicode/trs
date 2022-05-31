@@ -2,6 +2,7 @@ import * as React from "react"
 import Image from "./image"
 import TextOverImage from "./textOverImage"
 import Wysiwyg from "./wysiwyg"
+import ContactForm from "./contactForm"
 import TheBlockContent from "./blockcontent"
 import Columns from "./columns"
 import Team from "../entity/team/teamTeaser"
@@ -17,6 +18,7 @@ const Serializers = {
     team: Team,
     blockText: BlockText,
     wysiwyg: Wysiwyg,
+    contactForm: ContactForm,
     block: props => {
       switch (props.node.style) {
         case "subscribe-form":

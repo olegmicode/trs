@@ -160,6 +160,14 @@ const Menu = open => {
                   a: {
                     color: ["#ffffff", "grayMed", "grayMed"],
                   },
+                  '[aria-current="page"]': {
+                    backgroundColor: [
+                      "transparent",
+                      "#D6D2D2",
+                      "#D6D2D2",
+                      "#D6D2D2",
+                    ],
+                  },
                 }}
               >
                 <AnchorLink

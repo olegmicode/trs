@@ -54,6 +54,7 @@ export default {
             { type: "textOverImage" },
             { type: "columns" },
             { type: "wysiwyg" },
+            { type: "contactForm" },
           ],
         },
       ],
