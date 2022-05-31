@@ -94,6 +94,7 @@ class Property extends React.Component {
       var acreage = node.acreage
       var newImages = images.slice()
       var metaTitle = node.propertyName ? node.propertyName : node.mlsid
+      var title = node.propertyName ? node.propertyName : node.mlsid
       var metaDescription = truncate(node.propertyDescription)
       var propPath = "https://www.texasranchesforsale.com" + this.props.path
       var office = this.props.data.property.field_office1
@@ -129,6 +130,7 @@ class Property extends React.Component {
       var propPath = "https://www.texasranchesforsale.com" + this.props.path
       var status = node.status
       var mlsid = node.mlsid
+      var title = node.propertyName
       console.log(node)
       if (status === "z-sold") {
         var newImages = images.slice(0, 3)
@@ -191,7 +193,7 @@ class Property extends React.Component {
                 },
               }}
             ></div>
-            test
+
             <FullSlide images={newImages} index={this.state.slideIndex} />
           </div>
         </Modal>
@@ -393,7 +395,7 @@ class Property extends React.Component {
                   alignItems: "center",
                 }}
               >
-                {node.propertyName && (
+                {title && (
                   <h1
                     sx={{
                       fontSize: "1.125rem",
@@ -402,7 +404,7 @@ class Property extends React.Component {
                       margin: "0px",
                     }}
                   >
-                    {node.propertyName}
+                    {title}
                   </h1>
                 )}
                 {county && (
@@ -468,7 +470,7 @@ class Property extends React.Component {
                           justifyContent: "flex-end",
                         }}
                       >
-                        {contacts[0] && (
+                        {contacts && (
                           <div
                             sx={{
                               color: "white",
@@ -538,12 +540,10 @@ class Property extends React.Component {
                                 textDecoration: "none",
                               }}
                               to={
-                                "/contact-us?team=" +
-                                contacts[0].teamFirstName +
-                                "&lname=" +
-                                contacts[0].teamLastName +
+                                "/contact-us?team=Ken" +
+                                "&lname=Hoerster" +
                                 "&address=" +
-                                node.propertyName
+                                title
                               }
                             >
                               Contact Ken Hoerster

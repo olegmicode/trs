@@ -36,7 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
           propertyTypeName
         }
       }
-      property: allProperty {
+      property: allProperty(filter: { mlsid: { ne: "666" } }) {
         nodes {
           mlsid
         }
