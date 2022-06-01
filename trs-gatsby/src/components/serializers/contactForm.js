@@ -51,10 +51,14 @@ const MyForm = () => {
     <div>
       <div>
         {serverState.team && (
-          <div>
+          <div
+            sx={{
+              marginBottom: "20px",
+            }}
+          >
             You are sending this message to
             <strong> {team + " " + lname} </strong>to inquire about
-            <strong> {address}</strong>
+            <strong> {address}.</strong>
           </div>
         )}
 

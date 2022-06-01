@@ -73,14 +73,14 @@ class ConditionalLayout extends React.Component {
             >
               <div
                 sx={{
-                  display: ["block", "block", "none"],
+                  display: ["block", "none", "none", "none"],
                 }}
               >
                 <Header noMobilePadding={true}></Header>
               </div>
               <div
                 sx={{
-                  width: ["100%", "calc(55% - 10px)", "100%"],
+                  width: ["100%", "100%", "100%"],
                   position: ["absolute"],
                   zIndex: "9",
                 }}
@@ -92,33 +92,33 @@ class ConditionalLayout extends React.Component {
                   }}
                   className="prop-modal-close"
                   sx={{
-                    position: ["relative", "relative", "absolute"],
-                    top: ["40px", "40px", "5px", "5px"],
-                    right: ["-20px", "-20px", "-40px"],
+                    position: ["relative", "absolute", "absolute"],
+                    top: ["40px", "5px", "5px", "5px"],
+                    right: ["-20px", "-40px", "-40px"],
 
                     zIndex: "9",
-                    height: ["40px", "40px", "30px", "30px"],
-                    width: ["120px", "120px", "30px", "30px"],
+                    height: ["40px", "30px", "30px", "30px"],
+                    width: ["120px", "30px", "30px", "30px"],
                     backgroundColor: [
                       "#887E7E",
-                      "#887E7E",
+                      "transparent",
                       "transparent",
                       "transparent",
                     ],
                     display: "flex",
-                    left: ["0", "0", "auto", "auto"],
+                    left: ["0", "auto", "auto", "auto"],
                     alignItems: "center",
-                    borderTopRightRadius: ["25px", "25px", "0px", "0px"],
-                    borderBottomRightRadius: ["25px", "25px", "0px", "0px"],
+                    borderTopRightRadius: ["25px", "0px", "0px", "0px"],
+                    borderBottomRightRadius: ["25px", "0px", "0px", "0px"],
                     textDecoration: "none",
                     boxShadow: [
                       "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                      "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                      "none",
                       "none",
                       "none",
                     ],
                     ":after": {
-                      display: ["none", "none", "block"],
+                      display: ["none", "block", "block"],
                       content: "' '",
                       height: "30px",
                       borderLeft: "3px solid #fff",
@@ -127,7 +127,7 @@ class ConditionalLayout extends React.Component {
                       left: "10px",
                     },
                     ":before": {
-                      display: ["none", "none", "block"],
+                      display: ["none", "block", "block"],
                       content: "' '",
                       height: "30px",
                       borderLeft: "3px solid #fff",
@@ -146,7 +146,7 @@ class ConditionalLayout extends React.Component {
                       transform: "rotate(90deg)",
                       color: "white",
                       height: "30px",
-                      display: ["block", "block", "none"],
+                      display: ["block", "none", "none", "none"],
                     }}
                   >
                     <path
@@ -161,7 +161,7 @@ class ConditionalLayout extends React.Component {
                     sx={{
                       color: "white",
                       fontSize: "14px",
-                      display: ["block", "block", "none", "none"],
+                      display: ["block", "none", "none", "none"],
                       position: "relative",
                       top: "1px",
                     }}

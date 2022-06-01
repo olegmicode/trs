@@ -46,17 +46,17 @@ figure {
   inset: 0px !important;
   // inset: 0px !important;
   @include tablet() {
-    height: calc(100%);
-    width: calc(100%);
-    max-width: calc(100%);
-    padding: 0px 0px !important;
-    inset: 0px !important;
-    overflow-y: scroll !important;
-    overflow-x: hidden !important;
-    position: absolute !important;
-    top: 0px !important;
-    left: 0px !important;
-    transform: none !important;
+    // height: calc(100%);
+    // width: calc(100%);
+    // max-width: calc(100%);
+    // padding: 0px 0px !important;
+    // inset: 0px !important;
+    // overflow-y: scroll !important;
+    // overflow-x: hidden !important;
+    // position: absolute !important;
+    // top: 0px !important;
+    // left: 0px !important;
+    // transform: none !important;
   }
   @include mobile() {
     height: calc(100%);

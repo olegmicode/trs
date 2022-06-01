@@ -239,7 +239,6 @@ class Property extends React.Component {
               openModal={this.openModal}
             ></PropImages>
           </div>
-
           <div
             className="prop-right"
             sx={{
