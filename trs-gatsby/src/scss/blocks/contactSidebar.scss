@@ -1,0 +1,11 @@
+@import "./src/scss/variables.scss";
+@import "./src/scss/mixins.scss";
+#contact-sidebar {
+  @include mobile() {
+    padding: 0px 2%;
+  }
+  p {
+    margin: 0px;
+  }
+  
+}

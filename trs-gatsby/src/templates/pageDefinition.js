@@ -33,7 +33,7 @@ const PageDefinition = ({ data }) => {
               ],
               maxWidth: [
                 node._rawSidebar ? "800px" : "100%",
-                node._rawSidebar ? "1000px" : "100%",
+                node._rawSidebar ? "1100px" : "100%",
                 node._rawSidebar ? "1200px" : "100%",
                 node._rawSidebar ? "1440px" : "100%",
               ],
@@ -44,7 +44,7 @@ const PageDefinition = ({ data }) => {
               ],
               padding: [
                 node._rawSidebar ? "0px 0%" : "0px",
-                node._rawSidebar ? "0px 3%" : "0px",
+                node._rawSidebar ? "0px 5%" : "0px",
                 node._rawSidebar ? "0px 5%" : "0px",
               ],
               boxSizing: "content-box",
