@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useBreakpoint } from "gatsby-plugin-breakpoints"
-import React from "react"
+import { withBreakpoints } from "gatsby-plugin-breakpoints"
+import React, { forwardRef } from "react"
 import { Fade } from "react-slideshow-image"
 import { GatsbyImage } from "gatsby-plugin-image"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
 import "react-slideshow-image/dist/styles.css"
 import YouTube from "react-youtube"
+import { off } from "process"
 const opts = {
   playerVars: {
     // https://developers.google.com/youtube/player_parameters
@@ -14,7 +15,7 @@ const opts = {
   },
 }
 
-const ReturnImage = ({ image }) => {
+const ReturnImage = forwardRef(({ image, index }, ref) => {
   if (image.asset) {
     return (
       <GatsbyImage
@@ -28,7 +29,14 @@ const ReturnImage = ({ image }) => {
       />
     )
   } else if (image.video) {
-    return <LiteYouTubeEmbed id={image.video} />
+    return (
+      <div ref={ref}>
+        <LiteYouTubeEmbed id={image.video}>
+          {" "}
+          {console.log(ref)}
+        </LiteYouTubeEmbed>
+      </div>
+    )
   } else {
     return (
       <GatsbyImage
@@ -42,43 +50,87 @@ const ReturnImage = ({ image }) => {
       />
     )
   }
+})
+
+class FullSlide extends React.Component {
+  constructor(props) {
+    super(props)
+    this.toggleArrows = this.toggleArrows.bind(this)
+  }
+  componentDidMount() {
+    this.divRef.current.focus()
+  }
+  toggleArrows(e) {
+    if (e.key == "ArrowRight") {
+      this.ref.current.goNext()
+    }
+    if (e.key == "ArrowLeft") {
+      this.ref.current.goNext()
+    }
+  }
+
+  render() {
+    console.log(this.props)
+    this.ref = React.createRef()
+    this.divRef = React.createRef()
+    this.videoRef = React.createRef()
+    const { breakpoints } = this.props
+    const properties = {
+      duration: 5000,
+      transitionDuration: 500,
+      infinite: true,
+      arrows: true,
+      indicators: true,
+      autoplay: false,
+      onChange: (previous, next) => {
+        console.log(previous)
+        if (previous === 1) {
+          console.log(this.videoRef.current.childNodes)
+          this.videoRef.current.childNodes.forEach(element => {
+            if (element.classList.contains("lyt-activated")) {
+              // element.classList = ["yt-lite"]
+              console.log(element)
+              element.childNodes.forEach(elementInner => {
+                if (elementInner.tagName === "IFRAME") {
+                  console.log(elementInner.src)
+                  var src = elementInner.src.replace("autoplay=1", "autoplay=0")
+                  elementInner.src = src
+                }
+              })
+            }
+          })
+          // this.videoRef.current.childNodes[3].play()
+        }
+      },
+    }
+    return (
+      <div onKeyDown={this.toggleArrows} tabIndex={0} ref={this.divRef}>
+        {breakpoints.sm ? (
+          <div>
+            {this.props.images.map((image, index) => (
+              <div
+                sx={{
+                  marginBottom: "10px",
+                }}
+              >
+                <ReturnImage image={image} index={index}></ReturnImage>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Fade {...properties} ref={this.ref} defaultIndex={this.props.index}>
+            {this.props.images.map((image, index) => (
+              <ReturnImage
+                image={image}
+                index={index}
+                ref={this.videoRef}
+              ></ReturnImage>
+            ))}
+          </Fade>
+        )}
+      </div>
+    )
+  }
 }
 
-const properties = {
-  duration: 5000,
-  transitionDuration: 500,
-  infinite: true,
-  arrows: true,
-  indicators: true,
-  autoplay: false,
-}
-const FullSlide = ({ images, index, openModal }) => {
-  const breakpoints = useBreakpoint()
-  const ref = React.createRef()
-
-  return (
-    <div>
-      {breakpoints.sm ? (
-        <div>
-          {images.map((image, index) => (
-            <div
-              sx={{
-                marginBottom: "10px",
-              }}
-            >
-              <ReturnImage image={image} index={index}></ReturnImage>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <Fade {...properties} ref={ref} defaultIndex={index}>
-          {images.map((image, index) => (
-            <ReturnImage image={image} index={index}></ReturnImage>
-          ))}
-        </Fade>
-      )}
-    </div>
-  )
-}
-
-export default FullSlide
+export default withBreakpoints(FullSlide)

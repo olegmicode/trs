@@ -397,7 +397,7 @@ class Property extends React.Component {
                 {title && (
                   <h1
                     sx={{
-                      fontSize: "1.125rem",
+                      fontSize: "1.125rem !important",
                       color: "grayMed",
                       fontWeight: "500",
                       margin: "0px",
