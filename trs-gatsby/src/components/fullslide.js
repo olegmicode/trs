@@ -65,7 +65,7 @@ class FullSlide extends React.Component {
       this.ref.current.goNext()
     }
     if (e.key == "ArrowLeft") {
-      this.ref.current.goNext()
+      this.ref.current.goBack()
     }
   }
 
@@ -83,23 +83,27 @@ class FullSlide extends React.Component {
       indicators: true,
       autoplay: false,
       onChange: (previous, next) => {
-        console.log(previous)
-        if (previous === 1) {
-          console.log(this.videoRef.current.childNodes)
-          this.videoRef.current.childNodes.forEach(element => {
-            if (element.classList.contains("lyt-activated")) {
-              // element.classList = ["yt-lite"]
-              console.log(element)
-              element.childNodes.forEach(elementInner => {
-                if (elementInner.tagName === "IFRAME") {
-                  console.log(elementInner.src)
-                  var src = elementInner.src.replace("autoplay=1", "autoplay=0")
-                  elementInner.src = src
-                }
-              })
-            }
-          })
-          // this.videoRef.current.childNodes[3].play()
+        if (this.videoRef.current) {
+          if (previous === 1) {
+            console.log(this.videoRef.current.childNodes)
+            this.videoRef.current.childNodes.forEach(element => {
+              if (element.classList.contains("lyt-activated")) {
+                // element.classList = ["yt-lite"]
+                console.log(element)
+                element.childNodes.forEach(elementInner => {
+                  if (elementInner.tagName === "IFRAME") {
+                    console.log(elementInner.src)
+                    var src = elementInner.src.replace(
+                      "autoplay=1",
+                      "autoplay=0"
+                    )
+                    elementInner.src = src
+                  }
+                })
+              }
+            })
+            // this.videoRef.current.childNodes[3].play()
+          }
         }
       },
     }
