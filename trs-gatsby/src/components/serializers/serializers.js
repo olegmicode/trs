@@ -6,6 +6,7 @@ import ContactForm from "./contactForm"
 import TheBlockContent from "./blockcontent"
 import Columns from "./columns"
 import Team from "../entity/team/teamTeaser"
+import ArticlePDFTeaser from "../entity/articlePDF/articlePDFTeaser"
 import BlockText from "./blockText"
 import { Link } from "gatsby"
 import Subscribe from "../subscribe"
@@ -16,6 +17,7 @@ const Serializers = {
     blockcontent: TheBlockContent,
     columns: Columns,
     team: Team,
+    articlePDF: ArticlePDFTeaser,
     blockText: BlockText,
     wysiwyg: Wysiwyg,
     contactForm: ContactForm,

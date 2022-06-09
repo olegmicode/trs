@@ -8,6 +8,7 @@
 import "./src/scss/styles.scss"
 import "./src/scss/pages/home.scss"
 import "./src/scss/pages/team.scss"
+import "./src/scss/pages/articles.scss"
 import "./src/scss/regions/footer.scss"
 import "./src/scss/blocks/menuSidebar.scss"
 import "./src/scss/blocks/contactSidebar.scss"

@@ -9,6 +9,7 @@ import siteSettings from "./siteSettings";
 import trsUpdate from "./trsUpdate";
 import page from "./page";
 import pageDefinition from "./pageDefinition";
+import articlePDF from "./articlePDF";
 import menuItemSub from "./menuItemSub";
 import menuItemItem from "./menuItemItem";
 import menuItem from "./menuItem";
@@ -39,6 +40,7 @@ export default createSchema({
     siteSettings,
     page,
     pageDefinition,
+    articlePDF,
     menuItemSub,
     menuItemItem,
     menuItem,

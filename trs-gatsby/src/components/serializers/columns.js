@@ -4,6 +4,7 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "./serializers"
 import Container from "../container"
 const Columns = ({ node }) => {
+  console.log(node)
   return (
     <section
       id={node.sanityId}

@@ -36,7 +36,7 @@ export default {
       name: "reference",
       type: "reference",
       title: "Reference",
-      to: [{ type: "team" }],
+      to: [{ type: "team" },{ type: "articlePDF" }],
     },
   ],
 };
