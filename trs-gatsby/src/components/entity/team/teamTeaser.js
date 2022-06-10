@@ -9,7 +9,7 @@ const TeamTeaser = ({ team }) => {
   const imageAssetId = team.teamPhoto.asset.id
   const imageData = getGatsbyImageData(
     imageAssetId,
-    { height: 1000, width: 700 },
+    { height: 1300, width: 1000 },
     sanityConfig
   )
   // const teamImage = getImage(imageData)

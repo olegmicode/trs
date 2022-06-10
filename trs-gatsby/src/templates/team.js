@@ -13,9 +13,9 @@ const Team = ({ data }) => {
     <Layout>
       <div
         sx={{
-          maxWidth: ["800px", "1000px", "1200px"],
+          maxWidth: ["1000px", "1100px", "1200px"],
           margin: "0 auto",
-          padding: ["40px 0%", "40px 3%", "80px 5%"],
+          padding: ["40px 0%", "40px 5%", "80px 5%"],
           display: "flex",
           boxSizing: "content-box",
           justifyContent: "space-between",
@@ -45,7 +45,7 @@ const Team = ({ data }) => {
           sx={{
             width: ["100%", "calc(100% - 350px)", "calc(100% - 350px)"],
             boxSizing: "border-box",
-            padding: ["0px 2%", "0px 0px", "0px 0px"],
+            padding: ["0px 5%", "0px 0px", "0px 0px"],
           }}
         >
           <div
@@ -115,12 +115,12 @@ const Team = ({ data }) => {
           {data.team.teamPhoto && (
             <div
               sx={{
-                width: ["calc(100% + 4%)", "30%", "30%"],
+                width: ["calc(100% + 12%)", "30%", "30%"],
                 float: ["none", "left", "left"],
                 marginRight: ["0px", "40px", "40px"],
                 position: "relative",
-                left: ["-2%", "0%", "0%"],
-                right: ["-2%", "0%", "0%"],
+                left: ["-6%", "0%", "0%"],
+                right: ["-6%", "0%", "0%"],
                 marginBottom: "20px",
               }}
             >

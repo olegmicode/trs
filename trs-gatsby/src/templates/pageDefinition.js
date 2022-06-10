@@ -32,7 +32,7 @@ const PageDefinition = ({ data }) => {
                 node._rawSidebar ? "flex" : "block",
               ],
               maxWidth: [
-                node._rawSidebar ? "800px" : "100%",
+                node._rawSidebar ? "1000px" : "100%",
                 node._rawSidebar ? "1100px" : "100%",
                 node._rawSidebar ? "1200px" : "100%",
                 node._rawSidebar ? "1440px" : "100%",

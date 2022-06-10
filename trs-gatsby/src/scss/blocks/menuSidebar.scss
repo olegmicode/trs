@@ -2,7 +2,7 @@
 @import "./src/scss/mixins.scss";
 #menu-sidebar {
   @include mobile() {
-    padding: 0px 2%;
+    padding: 0px 5%;
   }
   p {
     margin: 0px;
