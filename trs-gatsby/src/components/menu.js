@@ -29,6 +29,14 @@ const Menu = open => {
             name
             publicURL
           }
+          instagram: file(name: { eq: "instagramwhitenew" }) {
+            name
+            publicURL
+          }
+          youtube: file(name: { eq: "youtubewhitenew" }) {
+            name
+            publicURL
+          }
           linkedin: file(name: { eq: "LinkedINWhite" }) {
             name
             publicURL
@@ -99,7 +107,7 @@ const Menu = open => {
                 />
               </a>
               <a
-                href="https://twitter.com/hashtag/TexasRanchesForSale"
+                href="https://www.instagram.com/texasranchesforsale/?hl=en"
                 target="_blank"
                 sx={{
                   marginLeft: "10px",
@@ -109,10 +117,25 @@ const Menu = open => {
                   sx={{
                     width: "27px",
                   }}
-                  src={data.twitter.publicURL}
+                  src={data.instagram.publicURL}
                   alt=""
                 />
               </a>
+              <a
+              href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
+              target="_blank"
+              sx={{
+                marginLeft: "10px",
+              }}
+            >
+              <img
+                sx={{
+                  width: "27px",
+                }}
+                src={data.youtube.publicURL}
+                alt=""
+              />
+            </a>
               <a
                 href="https://www.linkedin.com/company/texas-ranches-for-sale"
                 target="_blank"

@@ -146,6 +146,14 @@ class Header extends React.Component {
               name
               publicURL
             }
+            instagram: file(name: { eq: "instagramnew" }) {
+              name
+              publicURL
+            }
+            youtube: file(name: { eq: "youtubenew" }) {
+              name
+              publicURL
+            }
             linkedin: file(name: { eq: "LinkedINSVG" }) {
               name
               publicURL
@@ -489,8 +497,8 @@ class Header extends React.Component {
                           </div>
                           <div
                             sx={{
-                              marginLeft: ["0px", "0px", "0px", "25px"],
-                              paddingLeft: ["0px", "0px", "0px", "25px"],
+                              marginLeft: ["0px", "0px", "0px", "20px"],
+                              paddingLeft: ["0px", "0px", "0px", "20px"],
                               borderLeft: ["0px", "0px", "0px", "thin solid"],
                               borderColor: "grayMed",
                               marginTop: ["20px", "20px", "20px", "0px"],
@@ -511,17 +519,32 @@ class Header extends React.Component {
                               />
                             </a>
                             <a
-                              href="https://twitter.com/hashtag/TexasRanchesForSale"
+                              href="https://www.instagram.com/texasranchesforsale/?hl=en"
                               target="_blank"
                               sx={{
-                                marginLeft: "10px",
+                                marginLeft: "5px",
                               }}
                             >
                               <img
                                 sx={{
                                   width: "27px",
                                 }}
-                                src={data.twitter.publicURL}
+                                src={data.instagram.publicURL}
+                                alt=""
+                              />
+                            </a>
+                            <a
+                              href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
+                              target="_blank"
+                              sx={{
+                                marginLeft: "5px",
+                              }}
+                            >
+                              <img
+                                sx={{
+                                  width: "27px",
+                                }}
+                                src={data.youtube.publicURL}
                                 alt=""
                               />
                             </a>
@@ -529,7 +552,7 @@ class Header extends React.Component {
                               href="https://www.linkedin.com/company/texas-ranches-for-sale"
                               target="_blank"
                               sx={{
-                                marginLeft: "10px",
+                                marginLeft: "5px",
                               }}
                             >
                               <img

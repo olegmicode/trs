@@ -283,64 +283,76 @@ class Property extends React.Component {
                     }}
                     href="tel:830-249-9339"
                   >
-                    <GatsbyImage
+                    <img
                       sx={{
                         marginRight: "10px",
                         width: "27px",
                       }}
-                      image={
-                        this.props.data.phone.childImageSharp.gatsbyImageData
+                      src={
+                        this.props.data.phone.publicURL
                       }
                     />
                     830-249-9339
                   </a>
                 </div>
                 <div>
-                  <a
-                    href="https://www.facebook.com/TexasRanchesForSale"
-                    target="_blank"
-                  >
-                    <GatsbyImage
-                      sx={{
-                        width: "27px",
-                      }}
-                      image={
-                        this.props.data.facebook.childImageSharp.gatsbyImageData
-                      }
-                    />
-                  </a>
-                  <a
-                    href="https://twitter.com/hashtag/TexasRanchesForSale"
-                    target="_blank"
-                    sx={{
-                      marginLeft: "10px",
-                    }}
-                  >
-                    <GatsbyImage
-                      sx={{
-                        width: "27px",
-                      }}
-                      image={
-                        this.props.data.twitter.childImageSharp.gatsbyImageData
-                      }
-                    />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/texas-ranches-for-sale"
-                    target="_blank"
-                    sx={{
-                      marginLeft: "10px",
-                    }}
-                  >
-                    <GatsbyImage
-                      sx={{
-                        width: "27px",
-                      }}
-                      image={
-                        this.props.data.linkedin.childImageSharp.gatsbyImageData
-                      }
-                    />
-                  </a>
+                <a
+                href="https://www.facebook.com/TexasRanchesForSale"
+                target="_blank"
+              >
+                <img
+                  sx={{
+                    width: "27px",
+                  }}
+                  src={this.props.data.facebook.publicURL}
+                  alt=""
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/texasranchesforsale/?hl=en"
+                target="_blank"
+                sx={{
+                  marginLeft: "5px",
+                }}
+              >
+                <img
+                  sx={{
+                    width: "27px",
+                  }}
+                  src={this.props.data.instagram.publicURL}
+                  alt=""
+                />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
+                target="_blank"
+                sx={{
+                  marginLeft: "5px",
+                }}
+              >
+                <img
+                  sx={{
+                    width: "27px",
+                  }}
+                  src={this.props.data.youtube.publicURL}
+                  alt=""
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/texas-ranches-for-sale"
+                target="_blank"
+                sx={{
+                  marginLeft: "5px",
+                }}
+              >
+                <img
+                  sx={{
+                    width: "27px",
+                  }}
+                  src={this.props.data.linkedin.publicURL}
+                  alt=""
+                />
+              </a>
                 </div>
               </div>
               <div
@@ -711,29 +723,25 @@ export const postQuery = graphql`
         _rawBlockcontent(resolveReferences: { maxDepth: 10 })
       }
     }
-    facebook: file(name: { eq: "Facebook" }) {
+    facebook: file(name: { eq: "FacebookSVG" }) {
       name
-      childImageSharp {
-        gatsbyImageData
-      }
+      publicURL
     }
-    twitter: file(name: { eq: "Twitter" }) {
+    instagram: file(name: { eq: "instagramnew" }) {
       name
-      childImageSharp {
-        gatsbyImageData
-      }
+      publicURL
     }
-    linkedin: file(name: { eq: "LinkedIN" }) {
+    youtube: file(name: { eq: "youtubenew" }) {
       name
-      childImageSharp {
-        gatsbyImageData
-      }
+      publicURL
     }
-    phone: file(name: { eq: "Phone" }) {
+    linkedin: file(name: { eq: "LinkedINSVG" }) {
       name
-      childImageSharp {
-        gatsbyImageData
-      }
+      publicURL
+    }
+    phone: file(name: { eq: "PhoneSVG" }) {
+      name
+      publicURL
     }
     carrotLeft: file(name: { eq: "carrotLeft" }) {
       publicURL
