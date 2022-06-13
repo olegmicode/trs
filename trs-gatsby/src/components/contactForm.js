@@ -2,6 +2,8 @@
 import { jsx } from "theme-ui"
 import React, { useState } from "react"
 import axios from "axios"
+import { Helmet } from "react-helmet"
+
 const MyForm = () => {
   var team = ""
   var lname = ""
@@ -49,6 +51,9 @@ const MyForm = () => {
   }
   return (
     <div>
+    <Helmet>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdT6WkgAAAAAGhyquV5YMeQUtH6vbsj2PqMutSK"></script>
+    </Helmet>
       <div>
         {serverState.team && (
           <div>

@@ -159,7 +159,7 @@ const Menu = open => {
                 sx={{
                   width: ["100%", "calc(100% / 5)", "calc(100% / 5)"],
                   position: "relative",
-                  marginTop: ["20px", "0px", "0px", "0px"],
+                  marginTop: ["25px", "0px", "0px", "0px"],
                   "&:hover > div": {
                     display: "block",
                     visibility: "visible",
@@ -278,8 +278,8 @@ const Menu = open => {
                             "20px 25px",
                             "20px 25px",
                           ],
-                          marginLeft: ["10px", "0px", "0px"],
-                          marginTop: ["5px", "0px", "0px"],
+                          marginLeft: ["25px", "0px", "0px"],
+                          marginTop: ["25px", "0px", "0px"],
                           backgroundColor: [
                             "transparent",
                             "grayLight",
