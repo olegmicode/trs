@@ -2,10 +2,6 @@
 import { jsx } from "theme-ui"
 import React, { useState } from "react"
 import axios from "axios"
-import {
-  GoogleReCaptchaProvider,
-  GoogleReCaptcha
-} from "react-google-recaptcha-v3";
 const MyForm = () => {
   var team = ""
   var lname = ""
@@ -17,15 +13,12 @@ const MyForm = () => {
     var lname = urlParams.get("lname")
     var address = urlParams.get("address")
   }
-  const [query, setQuery] = useState(false)
-  const [token, setToken] = useState()
   const [serverState, setServerState] = useState({
     submitting: false,
     status: null,
     team: team,
     lname: lname,
     address: address,
-    "g-recaptcha-response": ""
   })
   const handleServerResponse = (ok, msg, form) => {
     setServerState({
@@ -33,22 +26,19 @@ const MyForm = () => {
       status: { ok, msg },
     })
     if (ok) {
-      // if (typeof window !== "undefined") {
-      //   window.location.href = "/contact-thank-you"
-      // }
+      if (typeof window !== "undefined") {
+        window.location.href = "/contact-thank-you"
+      }
     }
   }
   const handleOnSubmit = e => {
     e.preventDefault()
     const form = e.target
-    const data = new FormData(form)
-    data.append("g-recaptcha-response", token)
-    console.log(data, "data")
     setServerState({ submitting: true })
     axios({
       method: "post",
       url: "https://getform.io/f/876d17f4-71ab-4e91-8120-8c442089cd72",
-      data: data,
+      data: new FormData(form),
     })
       .then(r => {
         handleServerResponse(true, "Thanks!", form)
@@ -71,7 +61,7 @@ const MyForm = () => {
             <strong> {address}.</strong>
           </div>
         )}
-        <GoogleReCaptchaProvider reCaptchaKey="6LdT6WkgAAAAAGhyquV5YMeQUtH6vbsj2PqMutSK">
+
         <form
           sx={{
             display: "flex",
@@ -247,15 +237,9 @@ const MyForm = () => {
               width: "100%",
             }}
           >
-          <GoogleReCaptcha
-          onVerify={token => {
-            setToken(token)
-          }}
-        />
             <button type="submit">Submit</button>
           </div>
         </form>
-        </GoogleReCaptchaProvider>
       </div>
     </div>
   )
