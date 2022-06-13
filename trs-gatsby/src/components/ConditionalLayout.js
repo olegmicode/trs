@@ -177,6 +177,8 @@ class ConditionalLayout extends React.Component {
               <Container noMobilePadding={true}>
                 <div
                   sx={{
+                    height:["auto","calc(100vh - 170px)","calc(100vh - 185px)"],
+                    overFlow:"hidden",
                     ".prop-social": {
                       display: "none",
                     },
@@ -189,12 +191,12 @@ class ConditionalLayout extends React.Component {
                       ],
                     },
                     ".prop-right": {
-                      height: "auto",
+                      // height: "auto",
                       width: ["100%", "45%", "450px", "450px"],
-                      overflow: "visible",
+                      // overflow: ["visible","hidden","hidden","hidden"],
                       "> div": {
                         marginRight: "0px",
-                        height: "100%",
+                        // height: "100%",
                         overflow: "visible",
                         boxSizing: "border-box",
                       },
