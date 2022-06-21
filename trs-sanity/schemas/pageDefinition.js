@@ -55,6 +55,7 @@ export default {
             { type: "columns" },
             { type: "wysiwyg" },
             { type: "contactForm" },
+            { type: "imageCarousel" },
           ],
         },
       ],
