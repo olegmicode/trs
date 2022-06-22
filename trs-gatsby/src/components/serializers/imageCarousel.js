@@ -78,7 +78,7 @@ const ImageCarousel = ({ node }) => {
         >
           {node.body.map(el => (
             <div>
-              {!isMobile ? <MobileImage image={el.mobileVersion} /> : <DesktopImage image={el.desktopVersion} />}
+              {isMobile ? <MobileImage image={el.mobileVersion} /> : <DesktopImage image={el.desktopVersion} />}
             </div>
           ))}
         </Carousel>
