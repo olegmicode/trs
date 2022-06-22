@@ -11,13 +11,8 @@ export default {
     },
     {
       type: "image",
-      title: "Desktop version image",
+      title: "Image",
       name: "desktopVersion",
-    },
-    {
-      type: "image",
-      title: "Mobile version image",
-      name: "mobileVersion",
     },
   ],
 };

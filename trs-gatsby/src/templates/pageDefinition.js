@@ -9,6 +9,7 @@ import SEO from "../components/seo"
 const PageDefinition = ({ data }) => {
   const node = data.page
   const metaTitle = node.metaTitle ? node.metaTitle : node.title
+  console.log("==== page definition response ====", data)
   return (
     <div id={node.slug.current}>
       <SEO title={metaTitle} description={node.metaDescription}></SEO>

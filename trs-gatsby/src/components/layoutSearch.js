@@ -51,16 +51,7 @@ const LayoutSearch = ({ children }) => {
         >
           <Header></Header>
         </div>
-        <div
-          sx={{
-            div: {
-              div: {
-                minHeight: "450px",
-                padding: "0px",
-              },
-            },
-          }}
-        >
+        <div>
           <BlockContent
             blocks={data.blockFragment._rawEntities[0]}
             serializers={Serializers}

@@ -1,5 +1,4 @@
 import * as React from "react"
-import Image from "./image"
 import TextOverImage from "./textOverImage"
 import Wysiwyg from "./wysiwyg"
 import ContactForm from "./contactForm"
@@ -8,6 +7,7 @@ import Columns from "./columns"
 import Team from "../entity/team/teamTeaser"
 import ArticlePDFTeaser from "../entity/articlePDF/articlePDFTeaser"
 import BlockText from "./blockText"
+import ImageCarousel from "./imageCarousel";
 import { Link } from "gatsby"
 import Subscribe from "../subscribe"
 const Serializers = {
@@ -19,6 +19,7 @@ const Serializers = {
     team: Team,
     articlePDF: ArticlePDFTeaser,
     blockText: BlockText,
+    imageCarousel: ImageCarousel,
     wysiwyg: Wysiwyg,
     contactForm: ContactForm,
     block: props => {
