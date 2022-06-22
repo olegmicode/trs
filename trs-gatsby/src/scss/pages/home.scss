@@ -57,4 +57,12 @@
 
 .carousel-root {
   overflow: hidden;
+  .carousel-image > div {
+    width: 100%;
+    padding: 23%;
+    box-sizing: border-box;
+    position: relative;
+    height: 0px;
+    min-height: 0px;
+  }
 }
