@@ -1,0 +1,19 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1440px;
+  min-height: 560px;
+  padding: 0 5%;
+  overflow: hidden;
+  position: relative;
+   h1 {
+    font-size: 120px !important;
+    font-weight: 700 !important;
+    text-align: center;
+    align-content: center;
+  }
+}
