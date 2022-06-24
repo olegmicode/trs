@@ -1,13 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-// import { Link } from "gatsby"
 import { Link } from "gatsby-plugin-modal-routing-3"
-import Img from "gatsby-image"
 import { GatsbyImage } from "gatsby-plugin-image"
-import Favorite from "../property/favorite"
-import { render } from "react-dom"
 import { StaticQuery, graphql } from "gatsby"
 
+import { NoImage } from "./noImage";
 // add property type value? If sanity property or drupal?
 
 function truncate(str) {
@@ -262,16 +259,11 @@ const PropertyTeaser = ({ property, asModal }) => {
                     aspectRatio={4 / 3}
                   />
                 )}
+                {!property.sanityimage && !property.image && (
+                  <NoImage />
+                )}
               </div>
             </div>
-            {/**<Favorite
-            sx={{
-              display: "none",
-            }}
-            property={property}
-          >
-            Add to Favorites
-          </Favorite>*/}
             <div
               sx={{
                 height: "100%",
