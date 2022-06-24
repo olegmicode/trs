@@ -2,41 +2,26 @@
 import { jsx } from "theme-ui"
 import "rheostat/initialize"
 import "rheostat/css/rheostat.css"
-import Layout from "./layout"
 import PropertyTeaser from "./entity/property/propertyTeaser"
 import React, { Component, useRef, createRef } from "react"
 import withURLSync from "../templates/URLSync"
 import PropTypes from "prop-types"
 import Rheostat from "rheostat"
 import algoliasearch from "algoliasearch/lite"
-import MultiSelect from "@khanacademy/react-multi-select"
 import Select from "react-select"
-import makeAnimated from "react-select/animated"
 import qs from "qs"
 import Container from "../components/container"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import TheSearchBox from "./searchBox"
 import {
   InstantSearch,
-  SearchBox,
-  Pagination,
-  Highlight,
   Configure,
-  Hits,
-  ClearRefinements,
   connectHits,
-  connectNumericMenu,
   connectStats,
   connectRefinementList,
   connectSortBy,
   connectRange,
   connectCurrentRefinements,
-  connectSearchBox,
-  MenuSelect,
-  RefinementList,
-  SortBy,
-  Stats,
-  HitsPerPage,
   connectInfiniteHits,
 } from "react-instantsearch-dom"
 
@@ -55,7 +40,6 @@ const CustomClearRefinements = connectCurrentRefinements(
 
 const InfiniteHits = ({ hits, hasMore, refineNext }) => (
   <div>
-    {console.log(hits)}
     <ul className="ais-InfiniteHits-list">
       {hits.map(hit => (
         <li
@@ -107,14 +91,12 @@ const statusRadioRef = createRef()
 class SearchResults extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = { value: '' };
     this.state = {
       filtersOpen: false,
       searchState: this.props.searchState,
       searchChange: false,
     }
     this.toggleFilters = this.toggleFilters.bind(this)
-    // this.customClear = this.customClear.bind(this)
   }
   toggleFilters() {
     this.setState(prevState => ({
@@ -126,24 +108,10 @@ class SearchResults extends React.Component {
       if (this.props.searchState !== this.state.searchState) {
         this.setState({ searchChange: true })
       }
-      // if (
-      //   this.props.searchState == "?refinementList%5Bstatus%5D=for-sale&page=1"
-      // ) {
-      // }
     }
   }
 
   componentDidUpdate() {
-    // if (typeof window !== "undefined" && window) {
-    //   var searchState = JSON.parse(localStorage.getItem("searchState"))
-    //   if(searchState !== this.props.location.search){
-    //     localStorage.setItem("searchState", this.props.location.search)
-    //   }
-    //   if(searchState = this.props)
-    //   // this.props.searchState
-    //   // this.setState({ fav: true })
-    // }
-
     if (typeof window !== "undefined" && window) {
       var searchState =
         window.location.pathname + "?" + qs.stringify(this.props.searchState)
@@ -510,13 +478,6 @@ class SearchResults extends React.Component {
                 </div>
               </div>
             </div>
-            {/*<SearchBox
-            searchAsYouType={false}
-            translations={{
-              placeholder: "Search by word or phrase",
-            }}
-          />
-          */}
           </div>
         </Container>
 
@@ -642,10 +603,6 @@ class SearchResults extends React.Component {
     )
   }
 }
-const MyHits = connectHits(({ hits }) => {
-  const hs = hits.map(hit => <HitComponent key={hit.objectID} hit={hit} />)
-  return <div id="hits">{hs}</div>
-})
 
 function HitComponent({ hit }) {
   return (
@@ -657,7 +614,6 @@ function HitComponent({ hit }) {
 class Switch extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = { value: '' };
     this.state = {
       selected: [],
     }
@@ -692,7 +648,6 @@ class Switch extends React.Component {
 class Consumer extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = { value: '' };
     this.state = {
       selected: [],
     }
@@ -732,12 +687,6 @@ class Consumer extends React.Component {
     )
   }
 }
-// const ClearRefinements = ({ items, refine }) => (
-
-//   <button onClick={() => refine(items)} disabled={!items.length}>
-//     Clear all
-//   </button>
-// )
 class ConsumerRadio extends React.Component {
   constructor(props) {
     super(props)
@@ -786,7 +735,6 @@ class ConsumerRadio extends React.Component {
         ref={statusRadioRef}
         sx={{
           display: "flex",
-          // border: "thin solid #887E7E",
 
           div: {
             width: "50%",
@@ -854,29 +802,13 @@ class ConsumerRadio extends React.Component {
           <span className={this.state.statusChecked + " z-sold"}>Sold</span>
         </div>
       </div>
-      // <div>
-      //   <input type="radio" value="Male" name="gender" onSelectedChanged={this.changed} /> Male
-      //   <input type="radio" value="Female" name="gender" onSelectedChanged={this.changed} /> Female
-      //   <input type="radio" value="Other" name="gender" onSelectedChanged={this.changed} /> Other
-      //   <MultiSelect
-      //     options={options}
-      //     selected={selected}
-      //     onSelectedChanged={this.changed}
-      //     overrideStrings={{
-      //       selectSomeItems: "Select County",
-      //       allItemsAreSelected: "All Counties are Selected",
-      //       selectAll: "Select All",
-      //       search: "Search",
-      //     }}
-      //   />
-      // </div>
     )
   }
 }
 class RefinementListDis extends Component {
   constructor(props) {
     super(props)
-    // this.state = { value: '' };
+
     this.state = {
       value: "",
       selectedOption: [
@@ -901,14 +833,7 @@ class RefinementListDis extends Component {
   }
 
   render() {
-    const { selectedOption } = this.state
     return (
-      // <Select
-      //   options={this.props.items}
-      //   value={selectedOption}
-      //   isMulti={true}
-      //   onChange={this.setSelectedOption}
-      // />
       <Select
         isMulti={true}
         value={this.state.value}
@@ -921,7 +846,6 @@ class RefinementListDis extends Component {
 const CustomRefinementList = connectRefinementList(Consumer)
 const CustomRefinementListRadio = connectRefinementList(ConsumerRadio)
 const CustomSort = connectSortBy(Switch)
-// const CustomClearRefinements = connectCurrentRefinements(ClearRefinements)
 
 class Range extends Component {
   static propTypes = {
