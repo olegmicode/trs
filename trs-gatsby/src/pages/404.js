@@ -2,13 +2,13 @@ import * as React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 import "./404.scss"
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="404: Not found" />
+    <Seo title="404: Not found" />
     <section className="error-page">
       <h1>4 0 4</h1>
       <h2>Sorry, Page Not Found</h2>

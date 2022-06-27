@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
 import Burger from "../burger"
 import Menu from "../menu"
 import Container from "../container"
@@ -28,7 +27,6 @@ class Header extends React.Component {
       updateOpen: null,
     }
     this.toggleMenu = this.toggleMenu.bind(this)
-    console.log(this)
   }
   toggleMenu() {
     this.setState(prevState => ({
@@ -45,6 +43,7 @@ class Header extends React.Component {
           const storedValue = item[1]
           updateOpen =
             key === storedKey ? decodeURIComponent(storedValue) : total
+          return item
         }, ``)
         return updateOpen
       }
@@ -183,7 +182,6 @@ class Header extends React.Component {
                   : "0px",
                 overflow: "hidden",
                 transition: "all .5s ease-in-out",
-                maxHeight: "0px",
                 maxHeight: this.state.updateOpen
                   ? ["800px", "800px", "800px"]
                   : "0px",
@@ -509,6 +507,7 @@ class Header extends React.Component {
                             <a
                               href="https://www.facebook.com/TexasRanchesForSale"
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <img
                                 sx={{
@@ -521,6 +520,7 @@ class Header extends React.Component {
                             <a
                               href="https://www.instagram.com/texasranchesforsale/?hl=en"
                               target="_blank"
+                              rel="noreferrer"
                               sx={{
                                 marginLeft: "5px",
                               }}
@@ -536,6 +536,7 @@ class Header extends React.Component {
                             <a
                               href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
                               target="_blank"
+                              rel="noreferrer"
                               sx={{
                                 marginLeft: "5px",
                               }}
@@ -551,6 +552,7 @@ class Header extends React.Component {
                             <a
                               href="https://www.linkedin.com/company/texas-ranches-for-sale"
                               target="_blank"
+                              rel="noreferrer"
                               sx={{
                                 marginLeft: "5px",
                               }}

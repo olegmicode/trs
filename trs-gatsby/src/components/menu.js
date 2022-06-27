@@ -2,12 +2,11 @@
 import { jsx } from "theme-ui"
 import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import scrollTo from "gatsby-plugin-smoothscroll"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 
 const Menu = open => {
   function menuPath(sanityPath) {
-    if (sanityPath == "home") {
+    if (sanityPath === "home") {
       return "#search-results"
     } else {
       return sanityPath
@@ -57,7 +56,6 @@ const Menu = open => {
           <div
             sx={{
               margin: "0 auto",
-              boxSizing: "content-box",
               width: ["75%", "100%", "100%"],
               maxWidth: ["300px", "100%", "100%"],
               height: "100%",
@@ -97,6 +95,7 @@ const Menu = open => {
               <a
                 href="https://www.facebook.com/TexasRanchesForSale"
                 target="_blank"
+                rel="noreferrer"
               >
                 <img
                   sx={{
@@ -109,6 +108,7 @@ const Menu = open => {
               <a
                 href="https://www.instagram.com/texasranchesforsale/?hl=en"
                 target="_blank"
+                rel="noreferrer"
                 sx={{
                   marginLeft: "10px",
                 }}
@@ -124,6 +124,7 @@ const Menu = open => {
               <a
               href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
               target="_blank"
+              rel="noreferrer"
               sx={{
                 marginLeft: "10px",
               }}
@@ -139,6 +140,7 @@ const Menu = open => {
               <a
                 href="https://www.linkedin.com/company/texas-ranches-for-sale"
                 target="_blank"
+                rel="noreferrer"
                 sx={{
                   marginLeft: "10px",
                 }}
@@ -199,7 +201,6 @@ const Menu = open => {
                     textDecoration: "none",
                     fontSize: ["1.6rem", "1.125rem", "1.125rem"],
                     width: "100%",
-                    display: ["block", "flex", "flex"],
                     alignItems: ["flex-start", "center", "center", "center"],
                     justifyContent: [
                       "flex-start",

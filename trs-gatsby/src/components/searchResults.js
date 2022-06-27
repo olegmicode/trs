@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 import "rheostat/initialize"
 import "rheostat/css/rheostat.css"
 import PropertyTeaser from "./entity/property/propertyTeaser"
-import React, { Component, useRef, createRef } from "react"
+import React, { Component, createRef } from "react"
 import withURLSync from "../templates/URLSync"
 import PropTypes from "prop-types"
 import Rheostat from "rheostat"
@@ -16,7 +16,6 @@ import TheSearchBox from "./searchBox"
 import {
   InstantSearch,
   Configure,
-  connectHits,
   connectStats,
   connectRefinementList,
   connectSortBy,
@@ -632,13 +631,10 @@ class Switch extends React.Component {
     }
   }
   render() {
-    const options = []
-    this.props.items.map(item => {
-      options.push({
-        value: item.value,
-        label: item.label,
-      })
-    })
+    const options = this.props.items.map(item => ({
+      value: item.value,
+      label: item.label,
+    }))
     return (
       <Select ref={sortInputRef} options={options} onChange={this.changed} />
     )
@@ -669,13 +665,10 @@ class Consumer extends React.Component {
     }
   }
   render() {
-    const options = []
-    this.props.items.map(item => {
-      options.push({
-        value: item.label,
-        label: item.label + " (" + item.count + ")",
-      })
-    })
+    const options = this.props.items.map(item => ({
+      value: item.label,
+      label: item.label + " (" + item.count + ")",
+    }))
     return (
       <Select
         ref={selectInputRef}
@@ -711,8 +704,9 @@ class ConsumerRadio extends React.Component {
   }
 
   onValueChange(event) {
-    if (event.target.value == "for-sale") {
-      var statusValue = [
+    let statusValue = []
+    if (event.target.value === "for-sale") {
+      statusValue = [
         "for-sale",
         "z-sold",
         "just-sold",
@@ -722,7 +716,7 @@ class ConsumerRadio extends React.Component {
         "coming-soon",
       ]
     } else {
-      var statusValue = ["z-sold", "just-sold"]
+      statusValue = ["z-sold", "just-sold"]
     }
     this.setState({ statusChecked: event.target.value }, () => {})
     this.setState({ selectedOption: statusValue }, () => {
@@ -805,44 +799,7 @@ class ConsumerRadio extends React.Component {
     )
   }
 }
-class RefinementListDis extends Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      value: "",
-      selectedOption: [
-        "for-sale",
-        "z-sold",
-        "just-sold",
-        "under-contract",
-        "reduced",
-        "new",
-        "coming-soon",
-      ],
-    }
-    this.handleSelectChange = this.handleSelectChange.bind(this)
-  }
-  handleSelectChange(item) {
-    this.setState(
-      {
-        value: item,
-      },
-      this.props.refine(item.length > 0 ? item[item.length - 1].value : "")
-    )
-  }
-
-  render() {
-    return (
-      <Select
-        isMulti={true}
-        value={this.state.value}
-        options={this.props.items}
-        onChange={this.handleSelectChange}
-      />
-    )
-  }
-}
 const CustomRefinementList = connectRefinementList(Consumer)
 const CustomRefinementListRadio = connectRefinementList(ConsumerRadio)
 const CustomSort = connectSortBy(Switch)
