@@ -258,7 +258,7 @@ class Header extends React.Component {
                         fontFamily: "heading",
                       }}
                     >
-                      {data.update.title}
+                      {data?.update?.title}
                     </div>
                     <div
                       sx={{
@@ -269,7 +269,7 @@ class Header extends React.Component {
                         fontFamily: "body",
                       }}
                     >
-                      {data.update.subTitle}
+                      {data.update?.subTitle}
                     </div>
                     <div
                       sx={{
@@ -289,7 +289,7 @@ class Header extends React.Component {
                     >
                       {
                         <BlockContent
-                          blocks={data.update._rawUpdate}
+                          blocks={data.update?._rawUpdate}
                           serializers={Serializers}
                         />
                       }

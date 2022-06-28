@@ -154,7 +154,7 @@ const Menu = open => {
                 />
               </a>
             </div>
-            {data.menu._rawChildren.map((menuItem, index) => (
+            {data.menu?._rawChildren.map((menuItem, index) => (
               <div
                 key={index}
                 className="menuitem"

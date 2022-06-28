@@ -14,5 +14,10 @@ export default {
       title: "Image",
       name: "desktopVersion",
     },
+    {
+      title: "URL",
+      name: "url",
+      type: "string",
+    },
   ],
 };

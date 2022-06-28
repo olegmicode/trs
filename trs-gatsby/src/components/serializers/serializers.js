@@ -10,6 +10,8 @@ import BlockText from "./blockText"
 import ImageCarousel from "./imageCarousel";
 import { Link } from "gatsby"
 import Subscribe from "../subscribe"
+import CustomImage from "./customImage"
+
 const Serializers = {
   container: ({ children }) => <React.Fragment>{children}</React.Fragment>,
   types: {
@@ -19,6 +21,7 @@ const Serializers = {
     team: Team,
     articlePDF: ArticlePDFTeaser,
     blockText: BlockText,
+    customImage: CustomImage,
     imageCarousel: ImageCarousel,
     wysiwyg: Wysiwyg,
     contactForm: ContactForm,

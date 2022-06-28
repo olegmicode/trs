@@ -20,6 +20,9 @@ export default {
       type: "array",
       of: [
         {
+          type: "customImage",
+        },
+        {
           type: "blockText",
         },
       ],
