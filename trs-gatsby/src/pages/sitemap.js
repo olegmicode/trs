@@ -2,14 +2,10 @@
 import { jsx } from "theme-ui"
 import * as React from "react"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Container from "../components/container"
 class Sitemap extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   countyLink(text) {
     return (
       text
@@ -27,7 +23,6 @@ class Sitemap extends React.Component {
     )
   }
   render() {
-    console.log(this)
     return (
       <StaticQuery
         query={graphql`

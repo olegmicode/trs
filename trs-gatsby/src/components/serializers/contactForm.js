@@ -1,18 +1,20 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React, { useState } from "react"
+import { useState } from "react"
 import axios from "axios"
 const MyForm = () => {
-  var team = ""
-  var lname = ""
-  var address = ""
+  let team = ""
+  let lname = ""
+  let address = ""
+
   if (typeof window !== "undefined") {
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
-    var team = urlParams.get("team")
-    var lname = urlParams.get("lname")
-    var address = urlParams.get("address")
+    team = urlParams.get("team")
+    lname = urlParams.get("lname")
+    address = urlParams.get("address")
   }
+
   const [serverState, setServerState] = useState({
     submitting: false,
     status: null,
@@ -20,6 +22,7 @@ const MyForm = () => {
     lname: lname,
     address: address,
   })
+
   const handleServerResponse = (ok, msg, form) => {
     setServerState({
       submitting: false,
@@ -128,21 +131,21 @@ const MyForm = () => {
           onSubmit={handleOnSubmit}
         >
           <div className="label-input">
-            <label>Name*</label>
+            <label for="name">Name*</label>
             <input type="text" required name="name" />
           </div>
           <div className="label-input">
-            <label>Email*</label>
+            <label for="email">Email*</label>
 
             <input type="email" required name="email" />
           </div>
           <div className="label-input">
-            <label>Phone</label>
+            <label for="phone">Phone</label>
 
             <input type="phone" name="phone" />
           </div>
           <div className="label-input">
-            <label>Best Time to Call</label>
+            <label for="time">Best Time to Call</label>
             <select name="time">
               <option value="anytime">Anytime</option>
               <option value="am">AM</option>
@@ -151,7 +154,7 @@ const MyForm = () => {
           </div>
           <div className="check-container">
             <input type="checkbox" name="subscribe_to_newsletter" value="1" />
-            <label>
+            <label for="subscribe_to_newsletter">
               Yes, please sign me up to receive the Texas Ranches For Sale
               monthly e-Newsletter.
             </label>
@@ -170,28 +173,28 @@ const MyForm = () => {
               </div>
               <div className="check-container">
                 <input type="checkbox" name="agent_contact" value="1" />
-                <label>
+                <label for="agent_contact">
                   I would like to know more about this property, please have an
                   agent contact me directly
                 </label>
               </div>
               <div className="check-container">
                 <input type="checkbox" name="appointment" value="1" />
-                <label>
+                <label for="appointment">
                   I would like to make an appointment to view this property
                 </label>
               </div>
 
               <div className="check-container">
                 <input type="checkbox" name="evaluation" value="1" />
-                <label>
+                <label for="evaluation">
                   I am interested in a current market evaluation of my property
                 </label>
               </div>
 
               <div className="check-container">
                 <input type="checkbox" name="autoalerts" value="1" />
-                <label>
+                <label for="autoalerts">
                   I would like to receive automatic email alerts when similar
                   properties become available
                 </label>
@@ -199,7 +202,7 @@ const MyForm = () => {
 
               <div className="check-container">
                 <input type="checkbox" name="haveagent" value="1" />
-                <label>I am currently working with a real estate agent</label>
+                <label for="haveagent">I am currently working with a real estate agent</label>
               </div>
             </div>
           )}

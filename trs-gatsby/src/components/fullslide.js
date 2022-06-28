@@ -5,6 +5,7 @@ import React, { forwardRef } from "react"
 import { Fade } from "react-slideshow-image"
 import { GatsbyImage } from "gatsby-plugin-image"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
+import _ from "lodash"
 import "react-slideshow-image/dist/styles.css"
 
 const ReturnImage = forwardRef(({ image, index }, ref) => {
@@ -53,16 +54,15 @@ class FullSlide extends React.Component {
     this.divRef.current.focus()
   }
   toggleArrows(e) {
-    if (e.key == "ArrowRight") {
+    if (e.key === "ArrowRight") {
       this.ref.current.goNext()
     }
-    if (e.key == "ArrowLeft") {
+    if (e.key === "ArrowLeft") {
       this.ref.current.goBack()
     }
   }
 
   render() {
-    console.log(this.props)
     this.ref = React.createRef()
     this.divRef = React.createRef()
     this.videoRef = React.createRef()
@@ -100,11 +100,12 @@ class FullSlide extends React.Component {
       },
     }
     return (
-      <div onKeyDown={this.toggleArrows} tabIndex={0} ref={this.divRef}>
+      <div onKeyDown={this.toggleArrows} ref={this.divRef}>
         {breakpoints.sm ? (
           <div>
             {this.props.images.map((image, index) => (
               <div
+                key={_.uniqueId()}
                 sx={{
                   marginBottom: "10px",
                 }}

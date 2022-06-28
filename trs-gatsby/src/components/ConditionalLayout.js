@@ -3,17 +3,12 @@ import { jsx } from "theme-ui"
 import React from "react"
 import Layout from "./layout"
 import { Link, ModalRoutingContext } from "gatsby-plugin-modal-routing-3"
-import SearchResults from "../components/searchResults"
-import Modal from "react-modal"
-import BlockContent from "@sanity/block-content-to-react"
-import Serializers from "../components/serializers/serializers"
 import { navigate } from "gatsby"
 import Header from "../components/regions/header"
 import Container from "../components/container"
 class ConditionalLayout extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = { value: '' };
     this.state = {
       modalIsOpen: true,
       setIsOpen: true,

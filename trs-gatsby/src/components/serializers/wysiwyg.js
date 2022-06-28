@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { jsx, useColorMode } from "theme-ui"
-import * as React from "react"
+import { jsx } from "theme-ui"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../serializers/serializers"
 import Container from "../container"

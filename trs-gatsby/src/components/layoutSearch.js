@@ -1,14 +1,13 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import * as React from "react"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./regions/header"
 import Footer from "./regions/footer"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "./serializers/serializers"
 import SearchResults from "../components/searchResults"
-const LayoutSearch = ({ children }) => {
+
+const LayoutSearch = () => {
   const data = useStaticQuery(graphql`
     query SiteSearchTitleQuery {
       site: site {

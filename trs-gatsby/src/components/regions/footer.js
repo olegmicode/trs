@@ -163,7 +163,7 @@ class Footer extends React.Component {
                         }}
                         href="https://www.digett.com"
                       >
-                        <img src={data.digettlogo.publicURL} />
+                        <img src={data.digettlogo.publicURL} alt="Footer Logos" />
                       </a>
                     </div>
                   </div>

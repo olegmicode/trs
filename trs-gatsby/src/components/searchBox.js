@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import debounce from "lodash/debounce"
 import { connectSearchBox } from "react-instantsearch-dom"
 

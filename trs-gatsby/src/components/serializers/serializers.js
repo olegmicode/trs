@@ -56,7 +56,7 @@ const Serializers = {
     internalLink: ({ mark, children }) => {
       var href = ""
       if (mark.reference) {
-        if (mark.reference._type == "team") {
+        if (mark.reference._type === "team") {
           if (mark.reference.slug) {
             if (mark.reference.slug.current) {
               href = `/our-team/${mark.reference.slug.current}`

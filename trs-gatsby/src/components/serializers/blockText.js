@@ -10,10 +10,10 @@ const BlockText = ({ node }) => {
       {node.body && (
         <BlockContent blocks={node.body} serializers={Serializers} />
       )}
-      {node.reference && node.reference._type == "team" && (
+      {node.reference && node.reference._type === "team" && (
         <TeamTeaser team={node.reference} />
       )}
-      {node.reference && node.reference._type == "articlePDF" && (
+      {node.reference && node.reference._type === "articlePDF" && (
         <ArticlePDFTeaser article={node.reference} />
       )}
     </div>
