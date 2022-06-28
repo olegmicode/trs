@@ -6,14 +6,6 @@ import { Fade } from "react-slideshow-image"
 import { GatsbyImage } from "gatsby-plugin-image"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
 import "react-slideshow-image/dist/styles.css"
-import YouTube from "react-youtube"
-import { off } from "process"
-const opts = {
-  playerVars: {
-    // https://developers.google.com/youtube/player_parameters
-    autoplay: 1,
-  },
-}
 
 const ReturnImage = forwardRef(({ image, index }, ref) => {
   if (image.asset) {
