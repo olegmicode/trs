@@ -22,6 +22,9 @@ export default {
         {
           type: "customImage",
         },
+        {
+          type: "blockText",
+        },
       ],
     },
   ],

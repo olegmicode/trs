@@ -98,7 +98,7 @@ class Footer extends React.Component {
                   },
                 }}
               >
-                {data.footer.item.map((item, index) => (
+                {data.footer?.item.map((item, index) => (
                   <div
                     sx={{
                       boxSizing: "border-box",

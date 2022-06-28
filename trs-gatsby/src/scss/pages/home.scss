@@ -66,3 +66,13 @@
     min-height: 0px;
   }
 }
+
+@keyframes left-moving {
+  0% {
+    transform: translateX(0) translateZ(0px);
+  }
+
+  100% {
+    transform: translateX(-75%) translateZ(0px);
+  }
+}
