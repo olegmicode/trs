@@ -7,28 +7,25 @@ import Serializers from "../components/serializers/serializers"
 import PropertyTeaser from "../components/entity/property/propertyTeaser"
 import Layout from "../components/layout"
 import Container from "../components/container"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 class PropertyListType extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
-    var metaTitle = this.props.data.type.metaTitle
+    const metaTitle = this.props.data.type.metaTitle
       ? this.props.data.type.metaTitle
       : this.props.data.type.propertyTypeName
-    var propPath = "https://www.texasranchesforsale.com" + this.props.path
-    var metaDescription = ""
+    const propPath = "https://www.texasranchesforsale.com" + this.props.path
+    let metaDescription = ""
     if (this.props.data.type.metaDescription) {
-      var metaDescription = this.props.data.type.metaDescription
+      metaDescription = this.props.data.type.metaDescription
     }
     return (
       <Layout>
-        <SEO
+        <Seo
           title={metaTitle}
           description={metaDescription}
           path={propPath}
-        ></SEO>
+        ></Seo>
         <Container>
           <div
             sx={{

@@ -1,14 +1,13 @@
 /** @jsx jsx */
-import { jsx, useColorMode } from "theme-ui"
-import * as React from "react"
+import { jsx } from "theme-ui"
 import { getGatsbyImageData } from "gatsby-source-sanity"
 import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from "gatsby-background-image"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../serializers/serializers"
 import Container from "../container"
+
 const TextOverImage = ({ node }) => {
-  console.log(node)
   const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
   const imageAssetId = node.backgroundImage.asset.id
 

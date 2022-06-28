@@ -1,4 +1,4 @@
-export default {
+const theme = {
   initialColorModeName: "light",
   fonts: {
     body: "Arimo, sans-serif",
@@ -41,3 +41,5 @@ export default {
   },
   breakpoints: ["1000px", "1100px", "1200px", "1440px"],
 }
+
+export default theme;

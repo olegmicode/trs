@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React, { useState, Component } from "react"
+import { Component } from "react"
 class Subscribe extends Component {
   componentDidMount() {
     const script = document.createElement("script")

@@ -5,15 +5,15 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import Layout from "../components/layout"
 import LayoutSearch from "../components/layoutSearch"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 const PageDefinition = ({ data }) => {
   const node = data.page
   const metaTitle = node.metaTitle ? node.metaTitle : node.title
   console.log("==== page definition response ====", data)
   return (
     <div id={node.slug.current}>
-      <SEO title={metaTitle} description={node.metaDescription}></SEO>
-      {node.slug.current == "home" && (
+      <Seo title={metaTitle} description={node.metaDescription}></Seo>
+      {node.slug.current === "home" && (
         <div>
           <LayoutSearch></LayoutSearch>
         </div>

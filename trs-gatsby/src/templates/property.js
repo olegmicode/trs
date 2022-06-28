@@ -1,21 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import { graphql, Helmet } from "gatsby"
-import BlockContent from "@sanity/block-content-to-react"
-import Serializers from "../components/serializers/serializers"
-import { GatsbyImage } from "gatsby-plugin-image"
-import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
-import { Carousel } from "react-responsive-carousel"
-import SEO from "../components/seo"
-import ConditionalLayout from "../components/ConditionalLayout"
-import { Link } from "gatsby"
-import scrollTo from "gatsby-plugin-smoothscroll"
-import FullSlide from "../components/fullslide"
 import Modal from "react-modal"
-import Header from "../components/regions/header"
-import { useBreakpoint } from "gatsby-plugin-breakpoints"
-import PropImages from "../components/propImages"
+import { graphql, Link } from "gatsby"
 import {
   Accordion,
   AccordionItem,
@@ -24,14 +11,12 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion"
 
-const ReturnCounty = ({ county }) => {
-  console.log(county)
-  // if (county.countyName) {
-  //   return county.countyName
-  // } else {
-  //   return county
-  // }
-}
+import BlockContent from "@sanity/block-content-to-react"
+import Serializers from "../components/serializers/serializers"
+import Seo from "../components/seo"
+import ConditionalLayout from "../components/ConditionalLayout"
+import FullSlide from "../components/fullslide"
+import PropImages from "../components/propImages"
 
 function truncate(str) {
   return str.length > 10 ? str.substring(0, 380) : str
@@ -40,13 +25,12 @@ function truncate(str) {
 function youtube_parser(url) {
   var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/
   var match = url.match(regExp)
-  return match && match[1].length == 11 ? match[1] : false
+  return match && match[1].length === 11 ? match[1] : false
 }
 
 class Property extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = { value: '' };
     this.state = {
       modalIsOpen: false,
       slideIndex: "1",
@@ -72,92 +56,94 @@ class Property extends React.Component {
       videoId: videoId,
     })
   }
-  // componentDidMount() {
-  //   var theImages = this.props.data.ourproperty.propertyImages
-  //   const newVar = this.props.data.ourproperty.propertyImages.slice()
-  //   newVar.splice(1, 0, "test")
-  //   console.log(newVar)
-
-  //   this.setState({
-  //     images: newVar,
-  //   })
-  // }
 
   render() {
     console.log(this.props.data)
+    let node,
+      images,
+      county,
+      feedDescription,
+      acreage,
+      newImages,
+      metaTitle,
+      title,
+      metaDescription,
+      propPath,
+      office,
+      ourDisclaimer,
+      description,
+      contacts,
+      status,
+      disclaimer
 
     if (this.props.data.property) {
-      var node = this.props.data.property
-      var images = node.childrenFile
-      var county = node.county
-      var feedDescription = node.propertyDescription
-      var acreage = node.acreage
-      var newImages = images.slice()
-      var metaTitle = node.propertyName ? node.propertyName : node.mlsid
-      var title = node.propertyName ? node.propertyName : node.mlsid
-      var metaDescription = truncate(node.propertyDescription)
-      var propPath = "https://www.texasranchesforsale.com" + this.props.path
-      var office = this.props.data.property.field_office1
-      var mlsid = this.props.data.property.mlsid
+      node = this.props.data.property
+      images = node.childrenFile
+      county = node.county
+      feedDescription = node.propertyDescription
+      acreage = node.acreage
+      newImages = images.slice()
+      metaTitle = node.propertyName ? node.propertyName : node.mlsid
+      title = node.propertyName ? node.propertyName : node.mlsid
+      metaDescription = truncate(node.propertyDescription)
+      propPath = "https://www.texasranchesforsale.com" + this.props.path
+      office = this.props.data.property.field_office1
+
       if (this.props.data.property.field_listingidserbo) {
-        var disclaimer =
+        disclaimer =
           "©2019 San Antonio Board of Realtors. All rights reserved. Information Deemed Reliable but Not Guaranteed. Information on this site is provided exclusively for consumers personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Listing courtesy of " +
           office +
           "."
       }
       if (this.props.data.property.field_mst_mls_number) {
-        var disclaimer =
+        disclaimer =
           "©2019 Kerrville Board of Realtors® All rights reserved. The data relating to real estate for sale on this web site comes in part from the Kerrville Board of Realtors®. The broker providing this data believes it to be correct, but advises interested parties to confirm the data before relying on it in a purchase decision. Some properties which appear for sale on this web site may subsequently have sold and may no longer be available. Listing courtesy of " +
           office +
           "."
       }
       if (this.props.data.property.field_idx_mls_number) {
-        var disclaimer =
+        disclaimer =
           "The data relating to real estate for sale on this website comes in part from the Internet Data Exchange (IDX) of the Central Hill Country Board of REALTORS® Multiple Listing Service (CHCBRMLS). The CHCBR IDX logo indicates listings of other real estate firms that are identified in the detailed listing information. The information being provided is for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Information herein is deemed reliable but not guaranteed, representations are approximate, individual verifications are recommended. Copyright 2019 Central Hill Country Board of REALTORS®. All rights reserved. Listing courtesy of " +
           office +
           "."
       }
     } else {
-      var ourDisclaimer = this.props.data.disclaimer.nodes[0]._rawBlockcontent
-      var node = this.props.data.ourproperty
-      var images = node.propertyImages
-      var ourImages = node.propertyImages
-      var county = node.ourcounty
-      var description = node._rawPropertyDescrition
-      var contacts = node.propertyContacts
-      var acreage = node.acreage
-      var metaTitle = node.metaTitle ? node.metaTitle : node.propertyName
-      var propPath = "https://www.texasranchesforsale.com" + this.props.path
-      var status = node.status
-      var mlsid = node.mlsid
-      var title = node.propertyName
-      console.log(node)
+      ourDisclaimer = this.props.data.disclaimer.nodes[0]._rawBlockcontent
+      node = this.props.data.ourproperty
+      images = node.propertyImages
+      county = node.ourcounty
+      description = node._rawPropertyDescrition
+      contacts = node.propertyContacts
+      acreage = node.acreage
+      metaTitle = node.metaTitle ? node.metaTitle : node.propertyName
+      propPath = "https://www.texasranchesforsale.com" + this.props.path
+      status = node.status
+      title = node.propertyName
+
       if (status === "z-sold") {
-        var newImages = images.slice(0, 3)
+        newImages = images.slice(0, 3)
       } else {
-        var newImages = images.slice()
+        newImages = images.slice()
       }
-      console.log(status)
+
       if (node.metaDescription) {
-        var metaDescription = node.metaDescription
+        metaDescription = node.metaDescription
       } else {
-        var metaDescription = truncate(node.propertySummary)
+        metaDescription = truncate(node.propertySummary)
       }
       if (node.youtubeUrl && status !== "z-sold") {
-        // var videoId = youtube_parser(node.youtubeUrl)
         var videoId = youtube_parser(node.youtubeUrl)
-        // var newImages = images.slice()
         newImages.splice(1, 0, { video: videoId })
       }
     }
 
     return (
       <ConditionalLayout data={this.props.data}>
-        <SEO
+        <Seo
           title={metaTitle}
           description={metaDescription}
           path={propPath}
-        ></SEO>
+        ></Seo>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -245,8 +231,6 @@ class Property extends React.Component {
               width: ["100%", "45%", "45%"],
               overflow: "scroll",
               height: ["auto", "100%", "100%"],
-
-              boxSizing: "border-box",
               color: "grayBlk",
 
               boxSizing: "border-box",
@@ -288,71 +272,74 @@ class Property extends React.Component {
                         marginRight: "10px",
                         width: "27px",
                       }}
-                      src={
-                        this.props.data.phone.publicURL
-                      }
+                      src={this.props.data.phone.publicURL}
+                      alt="Phone"
                     />
                     830-249-9339
                   </a>
                 </div>
                 <div>
-                <a
-                href="https://www.facebook.com/TexasRanchesForSale"
-                target="_blank"
-              >
-                <img
-                  sx={{
-                    width: "27px",
-                  }}
-                  src={this.props.data.facebook.publicURL}
-                  alt=""
-                />
-              </a>
-              <a
-                href="https://www.instagram.com/texasranchesforsale/?hl=en"
-                target="_blank"
-                sx={{
-                  marginLeft: "5px",
-                }}
-              >
-                <img
-                  sx={{
-                    width: "27px",
-                  }}
-                  src={this.props.data.instagram.publicURL}
-                  alt=""
-                />
-              </a>
-              <a
-                href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
-                target="_blank"
-                sx={{
-                  marginLeft: "5px",
-                }}
-              >
-                <img
-                  sx={{
-                    width: "27px",
-                  }}
-                  src={this.props.data.youtube.publicURL}
-                  alt=""
-                />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/texas-ranches-for-sale"
-                target="_blank"
-                sx={{
-                  marginLeft: "5px",
-                }}
-              >
-                <img
-                  sx={{
-                    width: "27px",
-                  }}
-                  src={this.props.data.linkedin.publicURL}
-                  alt=""
-                />
-              </a>
+                  <a
+                    href="https://www.facebook.com/TexasRanchesForSale"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img
+                      sx={{
+                        width: "27px",
+                      }}
+                      src={this.props.data.facebook.publicURL}
+                      alt=""
+                    />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/texasranchesforsale/?hl=en"
+                    target="_blank"
+                    rel="noopener"
+                    sx={{
+                      marginLeft: "5px",
+                    }}
+                  >
+                    <img
+                      sx={{
+                        width: "27px",
+                      }}
+                      src={this.props.data.instagram.publicURL}
+                      alt=""
+                    />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
+                    target="_blank"
+                    rel="noopener"
+                    sx={{
+                      marginLeft: "5px",
+                    }}
+                  >
+                    <img
+                      sx={{
+                        width: "27px",
+                      }}
+                      src={this.props.data.youtube.publicURL}
+                      alt=""
+                    />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/texas-ranches-for-sale"
+                    target="_blank"
+                    rel="noopener"
+                    sx={{
+                      marginLeft: "5px",
+                    }}
+                  >
+                    <img
+                      sx={{
+                        width: "27px",
+                      }}
+                      src={this.props.data.linkedin.publicURL}
+                      alt=""
+                    />
+                  </a>
                 </div>
               </div>
               <div
