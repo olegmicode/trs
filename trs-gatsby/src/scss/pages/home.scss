@@ -58,6 +58,7 @@
 .carousel-root {
   overflow: hidden;
   .carousel-image > div {
+    animation: fadeIn 5s;
     width: 100%;
     padding: 23%;
     box-sizing: border-box;
@@ -65,6 +66,11 @@
     height: 0px;
     min-height: 0px;
   }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .logo-slider {
@@ -79,7 +85,7 @@
     );
     content: " ";
     position: absolute;
-    z-index: 9;
+    z-index: 7;
     width: 180px;
     height: 100%;
   }
@@ -93,7 +99,7 @@
     );
     content: " ";
     position: absolute;
-    z-index: 9;
+    z-index: 7;
     width: 180px;
     height: 100%;
   }

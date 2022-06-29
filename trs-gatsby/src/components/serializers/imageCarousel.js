@@ -1,12 +1,8 @@
-import * as React from "react"
-import { Carousel } from "react-responsive-carousel"
+import React, { useEffect, useRef, useState }from "react"
 import { getGatsbyImageData } from "gatsby-source-sanity"
-import { convertToBgImage } from "gbimage-bridge"
-import BackgroundImage from "gatsby-background-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Container from "../container"
-
-import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const Image = ({ image }) => {
   const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
@@ -17,48 +13,53 @@ const Image = ({ image }) => {
     { maxWidth: 1920 },
     sanityConfig
   )
-  const bgImage = convertToBgImage(imageData)
+
   return (
-    <BackgroundImage
-      Tag="div"
-      // Spread bgImage into BackgroundImage:
-      {...bgImage}
-      preserveStackingContext
+    <GatsbyImage
       sx={{
-        padding: "100px 60px",
+        maxWidth: "100%",
+        height: "auto",
       }}
-    >
-    </BackgroundImage>
+      image={imageData}
+      width={600}
+      aspectRatio={4 / 2}
+    />
   )
 };
 
 const ImageCarousel = ({ node }) => {
-  if (!node.body) {
+  const currentIndexRef = useRef(-1);
+  const [idx, setIndex] = useState(0)
+
+  const displayRandomImage = () => {
+    let index = Math.floor(Math.random() * (node.body ? node.body.length : 0));
+    while (currentIndexRef.current === index) {
+      index = Math.floor(Math.random() * (node.body ? node.body.length : 0));
+    }
+    if (currentIndexRef.current !== index) {
+      currentIndexRef.current = index;
+      setIndex(index);
+    }
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => displayRandomImage(), 5000);
+
+    return () => {
+      clearInterval(timer);
+    }
+  }, []);
+
+  if (!node.body && node.body.length < 1) {
     return <div />
   }
 
   return (
     <section id={node.sanityId}>
       <Container noMobilePadding={true}>
-        <Carousel
-          stopOnHover={false}
-          dynamicHeight={false}
-          autoPlay
-          showThumbs={false}
-          infiniteLoop
-          showIndicators={false}
-          showArrows={false}
-          showStatus={false}
-          interval={5000}
-          animationHandler="fade"
-          swipeable={false}
-        >
-          {node.body.map(el => (
-            <div className="carousel-image">
-              <Image image={el.desktopVersion} />
-            </div>
-          ))}
-        </Carousel>
+        <div className="carousel-image">
+          <Image image={node.body[idx].desktopVersion} />
+        </div>
       </Container>
     </section>
   )
