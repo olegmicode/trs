@@ -5,7 +5,12 @@ import Serializers from "./serializers"
 import Container from "../container"
 
 const Columns = ({ node }) => {
-  console.log(node)
+  const handleClick = (url) => {
+    if (typeof window !== "undefined" && window) {
+      window.open(url, '_blank').focus();
+    }
+  }
+  
   return (
     <section
       id={node.sanityId}
@@ -17,44 +22,82 @@ const Columns = ({ node }) => {
         {node.title && (
           <h2
             sx={{
-              fontSize: "4rem",
+              fontSize: "50px",
+              textTransform: "uppercase",
               fontWeight: "400 !important",
               textAlign: "center",
+              margin: "46px 0 0px",
             }}
           >
             {node.title}
           </h2>
         )}
 
-        <div
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            img: {
-              width: "100%",
-              height: "auto",
-            },
-            animation: node.item.find(e => e._type === "blockText") ? "none" : "left-moving 50s linear 0s infinite alternate;",
-          }}
-        >
-          {node.item.find(e => e._type === "blockText") && node.item.map((item, index) => (
-            <div
-              sx={{
-                padding: "0px 20px",
-              }}
-              key={index}
-            >
-              {item && <BlockContent blocks={item} serializers={Serializers} />}
-            </div>
-          ))}
-          {!node.item.find(e => e._type === "blockText") && (<div sx={{ display: "flex", alignItems: "center" }}>
+        {node.item.find(e => e._type === "blockText") && (
+          <div
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              img: {
+                width: "100%",
+                height: "auto",
+              },
+            }}
+          >
             {node.item.map((item, index) => (
-              <div key={index} sx={{ minWidth: "16%" }}>
-                {item && <BlockContent blocks={item} serializers={Serializers} />}
+              <div
+                sx={{
+                  padding: "0px 20px",
+                }}
+                key={index}
+              >
+                {item && (
+                  <BlockContent blocks={item} serializers={Serializers} />
+                )}
               </div>
             ))}
-          </div>)}
-        </div>
+          </div>
+        )}
+
+        {!node.item.find(e => e._type === "blockText") && (
+          <div
+            sx={{
+              overflow: "hidden",
+              position: "relative",
+              transition: "all 0.3s ease",
+              display: "block",
+            }}
+          >
+            <ul
+              className="logo-slider"
+              sx={{
+                display: "flex",
+              }}
+            >
+              {node.item.map((item, index) => (
+                <li key={index} onClick={() => handleClick(item.url)}>
+                  {item && (
+                    <BlockContent blocks={item} serializers={Serializers} />
+                  )}
+                </li>
+              ))}
+              {node.item.map((item, index) => (
+                <li key={index} onClick={() => handleClick(item.url)}>
+                  {item && (
+                    <BlockContent blocks={item} serializers={Serializers} />
+                  )}
+                </li>
+              ))}
+              {node.item.map((item, index) => (
+                <li key={index} onClick={() => handleClick(item.url)}>
+                  {item && (
+                    <BlockContent blocks={item} serializers={Serializers} />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </Container>
     </section>
   )
