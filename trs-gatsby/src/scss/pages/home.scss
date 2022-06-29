@@ -17,7 +17,7 @@
 #partners {
   h2 {
     color: #484242;
-    font-size: 4rem;
+    font-size: "50px";
     line-height: 1.2;
     font-weight: 400;
     @include tablet() {
@@ -67,12 +67,51 @@
   }
 }
 
-@keyframes left-moving {
-  0% {
-    transform: translateX(0) translateZ(0px);
+.logo-slider {
+  width: calc(240px * 30);
+  &::before {
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      to right,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    content: " ";
+    position: absolute;
+    z-index: 9;
+    width: 180px;
+    height: 100%;
+  }
+  &::after {
+    top: 0;
+    right: 0;
+    background: linear-gradient(
+      to left,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    content: " ";
+    position: absolute;
+    z-index: 9;
+    width: 180px;
+    height: 100%;
   }
 
+  li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    width: 240px;
+    animation: translateinfinite 25s linear infinite;
+  }
+}
+
+@keyframes translateinfinite {
   100% {
-    transform: translateX(-75%) translateZ(0px);
+    transform: translateX(calc(-240px * 15));
   }
 }

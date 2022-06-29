@@ -496,7 +496,7 @@ class SearchResults extends React.Component {
             ],
             h3: {
               margin: ["0px 0px 0px 0px", "0px 0px 0px 0px", "0px 0px 0px 0px"],
-              fontSize: ["2rem", "3rem", "4rem"],
+              fontSize: ["2rem", "3rem", "50px"],
               fontFamily: "heading",
               fontWeight: "400",
               lineHeight: "1.2",
