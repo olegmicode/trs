@@ -17,8 +17,9 @@
 #partners {
   h2 {
     color: #484242;
-    font-size: "50px";
-    line-height: 1.2;
+    font-size: 50px;
+    line-height: 46px;
+    letter-spacing: 2px;
     font-weight: 400;
     @include tablet() {
       font-size: 3rem;
@@ -74,7 +75,7 @@
 }
 
 .logo-slider {
-  width: calc(240px * 30);
+  width: calc(300px * 30);
   &::before {
     top: 0;
     left: 0;
@@ -111,8 +112,19 @@
     align-items: center;
     cursor: pointer;
 
-    width: 240px;
-    animation: translateinfinite 25s linear infinite;
+    width: 360px;
+    margin-left: 75px;
+    margin-right: 75px;
+
+    &:first-child {
+      margin-left: 0px;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    animation: translateinfinite 50s linear infinite;
   }
 }
 

@@ -12,16 +12,11 @@ const CustomImage = ({ node }) => {
     { maxWidth: 1920 },
     sanityConfig
   )
+  console.log(imageData);
 
   return (
     <GatsbyImage
-      sx={{
-        maxWidth: "100%",
-        height: "auto",
-      }}
       image={imageData}
-      width={600}
-      aspectRatio={4 / 2}
     />
   )
 }

@@ -15,18 +15,17 @@ const Columns = ({ node }) => {
     <section
       id={node.sanityId}
       sx={{
-        padding: "40px 0px",
+        padding: "25px 0px",
       }}
     >
       <Container>
         {node.title && (
           <h2
             sx={{
-              fontSize: "50px",
               textTransform: "uppercase",
               fontWeight: "400 !important",
               textAlign: "center",
-              margin: "46px 0 0px",
+              margin: "25px 0",
             }}
           >
             {node.title}
@@ -72,6 +71,7 @@ const Columns = ({ node }) => {
               className="logo-slider"
               sx={{
                 display: "flex",
+                margin: "25px 0",
               }}
             >
               {node.item.map((item, index) => (
