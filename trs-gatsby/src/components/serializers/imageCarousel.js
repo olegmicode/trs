@@ -1,8 +1,12 @@
-import React, { useEffect, useRef, useState }from "react"
+import * as React from "react"
+import { Carousel } from "react-responsive-carousel"
 import { getGatsbyImageData } from "gatsby-source-sanity"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { convertToBgImage } from "gbimage-bridge"
+import BackgroundImage from "gatsby-background-image"
 
 import Container from "../container"
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const Image = ({ image }) => {
   const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
@@ -13,53 +17,66 @@ const Image = ({ image }) => {
     { maxWidth: 1920 },
     sanityConfig
   )
-
+  const bgImage = convertToBgImage(imageData)
   return (
-    <GatsbyImage
+    <BackgroundImage
+      Tag="div"
+      // Spread bgImage into BackgroundImage:
+      {...bgImage}
+      preserveStackingContext
       sx={{
-        maxWidth: "100%",
-        height: "auto",
+        padding: "100px 60px",
       }}
-      image={imageData}
-      width={600}
-      aspectRatio={4 / 2}
-    />
+    >
+    </BackgroundImage>
   )
 };
 
+const shuffle = (array) => {
+  let tmp, current, top = array.length;
+  if(top) while(--top) {
+    current = Math.floor(Math.random() * (top + 1));
+    tmp = array[current];
+    array[current] = array[top];
+    array[top] = tmp;
+  }
+  return array;
+}
+
 const ImageCarousel = ({ node }) => {
-  const currentIndexRef = useRef(-1);
-  const [idx, setIndex] = useState(0)
-
-  const displayRandomImage = () => {
-    let index = Math.floor(Math.random() * (node.body ? node.body.length : 0));
-    while (currentIndexRef.current === index) {
-      index = Math.floor(Math.random() * (node.body ? node.body.length : 0));
+  const images = React.useMemo(() => {
+    if (node.body) {
+      return shuffle(node.body);
     }
-    if (currentIndexRef.current !== index) {
-      currentIndexRef.current = index;
-      setIndex(index);
-    }
-  };
+    return [];
+  }, [node])
 
-  useEffect(() => {
-    const timer = setInterval(() => displayRandomImage(), 5000);
-
-    return () => {
-      clearInterval(timer);
-    }
-  }, []);
-
-  if (!node.body && node.body.length < 1) {
+  if (!node.body) {
     return <div />
   }
 
   return (
     <section id={node.sanityId}>
       <Container noMobilePadding={true}>
-        <div className="carousel-image">
-          <Image image={node.body[idx].desktopVersion} />
-        </div>
+        <Carousel
+          stopOnHover={false}
+          dynamicHeight={false}
+          autoPlay
+          showThumbs={false}
+          infiniteLoop
+          showIndicators={false}
+          showArrows={false}
+          showStatus={false}
+          interval={5000}
+          animationHandler="fade"
+          swipeable={false}
+        >
+          {images.map(el => (
+            <div className="carousel-image">
+              <Image image={el.desktopVersion} />
+            </div>
+          ))}
+        </Carousel>
       </Container>
     </section>
   )
