@@ -14,7 +14,6 @@ const Container = ({ children, noMobilePadding }) => {
         ],
         margin: "0 auto",
         boxSizing: "content-box",
-        overflow: "hidden",
         a: {
           textDecoration: "none",
           color: "text",
