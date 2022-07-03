@@ -22,7 +22,7 @@ const ReturnImage = ({ image }) => {
       <GatsbyImage
         sx={{
           maxWidth: "100%",
-          height: "auto",
+          height: "100%",
         }}
         image={image.asset.gatsbyImageData}
         width={600}
