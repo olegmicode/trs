@@ -4,17 +4,15 @@ import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getGatsbyImageData } from "gatsby-source-sanity"
 
+import sanityConfig from "../../../sanityConfig"
+
 const TeamTeaser = ({ team }) => {
-  const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
-  const imageAssetId = team.teamPhoto.asset.id
   const imageData = getGatsbyImageData(
-    imageAssetId,
+    team.teamPhoto.asset.id,
     { height: 1300, width: 1000 },
     sanityConfig
   )
-  // const teamImage = getImage(imageData)
-  // console.log(teamImage)
-  // console.log(imageData)
+
   return (
     <div
       sx={{
@@ -71,4 +69,5 @@ const TeamTeaser = ({ team }) => {
     </div>
   )
 }
+
 export default TeamTeaser

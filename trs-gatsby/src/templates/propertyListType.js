@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import PropertyTeaser from "../components/entity/property/propertyTeaser"
-import Layout from "../components/layout"
+import Layout from "../layout"
 import Container from "../components/container"
 import Seo from "../components/seo"
 

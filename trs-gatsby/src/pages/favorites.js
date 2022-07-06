@@ -1,36 +1,33 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import * as React from "react"
-import Layout from "../components/layout"
+import { uniqueId } from "lodash"
+import { useState, useEffect } from "react"
+
+import Layout from "../layout"
 import PropertyTeaser from "../components/entity/property/propertyTeaser"
 
-class Favorites extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      favorites: [{}],
-    }
-  }
-  componentWillMount() {
+import "./404.scss"
+
+const Favorites = () => {
+  const [favorites, setFavorites] = useState([])
+
+  useEffect(() => {
     if (typeof window !== "undefined" && window) {
-      var favorites = JSON.parse(localStorage.getItem("Favorites"))
-      console.log(favorites)
-      this.setState({ favorites: favorites }, () => {
-        console.log(this.state.favorites)
-      })
+      const favs = JSON.parse(localStorage.getItem("Favorites"))
+      setFavorites(favs || [])
     }
-  }
-  render() {
-    return (
-      <Layout>
-        {this.state.favorites[0] &&
-          this.state.favorites.map((fav, index) => (
-            <PropertyTeaser property={fav}></PropertyTeaser>
-            // 'test'
+  }, [])
+
+  return (
+    <Layout>
+      <section className="error-page">
+        {favorites.length > 0 &&
+          favorites.map((fav, index) => (
+            <PropertyTeaser key={uniqueId()} property={fav} />
           ))}
-        {!this.state.favorites[0] && <h3>No favorites added yet.</h3>}
-      </Layout>
-    )
-  }
+        {favorites.length < 1 && <h3>No favorites added yet.</h3>}
+      </section>
+    </Layout>
+  )
 }
 export default Favorites

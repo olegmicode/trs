@@ -7,7 +7,7 @@ import Serializers from "../components/serializers/serializers"
 import { Link } from "gatsby"
 import SEO from "../components/seo"
 import PropertyTeaser from "../components/entity/property/propertyTeaser"
-import Layout from "../components/layout"
+import Layout from "../layout"
 import Container from "../components/container"
 class PropertyListCounty extends React.Component {
   constructor(props) {

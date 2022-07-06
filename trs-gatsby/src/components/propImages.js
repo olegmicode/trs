@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { useBreakpoint } from "gatsby-plugin-breakpoints"
-import LiteYouTubeEmbed from "react-lite-youtube-embed"
-import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css"
 import { GatsbyImage } from "gatsby-plugin-image"
+import LiteYouTubeEmbed from "react-lite-youtube-embed"
 import { Slide } from "react-slideshow-image"
 import "react-slideshow-image/dist/styles.css"
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css"
 
 const properties = {
   duration: 5000,

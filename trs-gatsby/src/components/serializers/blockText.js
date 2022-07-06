@@ -4,6 +4,7 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "./serializers"
 import TeamTeaser from "../entity/team/teamTeaser"
 import ArticlePDFTeaser from "../entity/articlePDF/articlePDFTeaser"
+
 const BlockText = ({ node }) => {
   return (
     <div>

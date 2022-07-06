@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { StaticQuery, graphql } from "gatsby"
 
@@ -26,7 +26,8 @@ export const NoImage = () => {
               image={data.noimage.childImageSharp.gatsbyImageData}
             />
           </div>
-        )}}
+        )
+      }}
     />
   )
 }

@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
-import Header from "./regions/header"
-import Footer from "./regions/footer"
+import Header from "../layout/header"
+import Footer from "../layout/footer"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "./serializers/serializers"
 import SearchResults from "../components/searchResults"

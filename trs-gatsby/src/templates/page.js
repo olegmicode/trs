@@ -1,14 +1,12 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
-import Layout from "../components/layout"
+import Layout from "../layout"
 
 const Page = ({ data }) => {
   const node = data.page
-  const images = node.image
   return (
     <Layout>
       <div

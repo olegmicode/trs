@@ -6,7 +6,6 @@ import { connectSearchBox } from "react-instantsearch-dom"
 export default connectSearchBox(({ refine }) => {
   const debouncedSearch = debounce(e => refine(e.target.value), 1000)
   const onChange = e => {
-    console.log(e)
     e.persist()
     debouncedSearch(e, e.eventTarget)
   }

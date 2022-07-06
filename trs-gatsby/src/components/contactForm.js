@@ -1,13 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React, { useState } from "react"
 import axios from "axios"
+import { useState } from "react"
 import { Helmet } from "react-helmet"
 
 const MyForm = () => {
   var team = ""
   var lname = ""
   var address = ""
+
   if (typeof window !== "undefined") {
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
@@ -15,6 +16,7 @@ const MyForm = () => {
     var lname = urlParams.get("lname")
     var address = urlParams.get("address")
   }
+
   const [serverState, setServerState] = useState({
     submitting: false,
     status: null,
@@ -22,6 +24,7 @@ const MyForm = () => {
     lname: lname,
     address: address,
   })
+
   const handleServerResponse = (ok, msg, form) => {
     setServerState({
       submitting: false,
@@ -33,6 +36,7 @@ const MyForm = () => {
       }
     }
   }
+
   const handleOnSubmit = e => {
     e.preventDefault()
     const form = e.target
@@ -49,11 +53,12 @@ const MyForm = () => {
         handleServerResponse(false, r.response.data.error, form)
       })
   }
+
   return (
     <div>
-    <Helmet>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LdT6WkgAAAAAGhyquV5YMeQUtH6vbsj2PqMutSK"></script>
-    </Helmet>
+      <Helmet>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LdT6WkgAAAAAGhyquV5YMeQUtH6vbsj2PqMutSK"></script>
+      </Helmet>
       <div>
         {serverState.team && (
           <div>
