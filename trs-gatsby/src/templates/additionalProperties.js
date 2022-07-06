@@ -2,14 +2,13 @@
 import { jsx } from "theme-ui"
 import "rheostat/initialize"
 import "rheostat/css/rheostat.css"
-import Layout from "../components/layout"
+import Layout from "../layout"
 import PropertyTeaser from "../components/entity/property/propertyTeaser"
-import React, { Component, Fragment } from "react"
+import React, { Component } from "react"
 import withURLSync from "./URLSync"
 import PropTypes from "prop-types"
 import Rheostat from "rheostat"
 import algoliasearch from "algoliasearch/lite"
-import Select from "react-select"
 import MultiSelect from "@khanacademy/react-multi-select"
 import qs from "qs"
 
@@ -18,17 +17,12 @@ import {
   ClearRefinements,
   SearchBox,
   Pagination,
-  Highlight,
-  Configure,
   connectHits,
-  connectNumericMenu,
   connectStats,
   connectRefinementList,
   connectRange,
-  MenuSelect,
   RefinementList,
   SortBy,
-  Stats,
 } from "react-instantsearch-dom"
 
 const searchClient = algoliasearch(
@@ -38,7 +32,6 @@ const searchClient = algoliasearch(
 class AdditionalProperties extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = { value: '' };
     this.state = {
       filtersOpen: false,
     }
@@ -50,16 +43,6 @@ class AdditionalProperties extends React.Component {
     }))
   }
   componentDidUpdate() {
-    // if (typeof window !== "undefined" && window) {
-    //   var searchState = JSON.parse(localStorage.getItem("searchState"))
-    //   if(searchState !== this.props.location.search){
-    //     localStorage.setItem("searchState", this.props.location.search)
-    //   }
-    //   if(searchState = this.props)
-    //   console.log(this.props)
-    //   // this.props.searchState
-    //   // this.setState({ fav: true })
-    // }
     if (typeof window !== "undefined" && window) {
       var searchState =
         window.location.pathname + "?" + qs.stringify(this.props.searchState)
@@ -68,7 +51,6 @@ class AdditionalProperties extends React.Component {
   }
 
   render() {
-    console.log("test")
     const Stats = ({ nbHits }) => <p>{nbHits} results</p>
     const CustomStats = connectStats(Stats)
     return (
@@ -266,43 +248,7 @@ class Consumer extends React.Component {
     )
   }
 }
-class RefinementListDis extends Component {
-  constructor(props) {
-    super(props)
-    // this.state = { value: '' };
-    this.state = {
-      value: "",
-      selectedOption: null,
-    }
-    this.handleSelectChange = this.handleSelectChange.bind(this)
-  }
-  handleSelectChange(item) {
-    this.setState(
-      {
-        value: item,
-      },
-      this.props.refine(item.length > 0 ? item[item.length - 1].value : "")
-    )
-  }
 
-  render() {
-    const { selectedOption } = this.state
-    return (
-      // <Select
-      //   options={this.props.items}
-      //   value={selectedOption}
-      //   isMulti={true}
-      //   onChange={this.setSelectedOption}
-      // />
-      <Select
-        isMulti={true}
-        value={this.state.value}
-        options={this.props.items}
-        onChange={this.handleSelectChange}
-      />
-    )
-  }
-}
 const CustomRefinementList = connectRefinementList(Consumer)
 
 class Range extends Component {

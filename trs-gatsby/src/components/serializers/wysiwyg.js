@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../serializers/serializers"
 import Container from "../container"
+
 const Wysiwyg = ({ node }) => {
   return (
     <section id={node.sanityId}>

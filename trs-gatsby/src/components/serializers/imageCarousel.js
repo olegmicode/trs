@@ -5,15 +5,13 @@ import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from "gatsby-background-image"
 
 import Container from "../container"
+import sanityConfig from "../../sanityConfig"
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const Image = ({ image }) => {
-  const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
-  const imageAssetId = image.asset.id
-
   const imageData = getGatsbyImageData(
-    imageAssetId,
+    image.asset.id,
     { maxWidth: 1920 },
     sanityConfig
   )
@@ -21,14 +19,12 @@ const Image = ({ image }) => {
   return (
     <BackgroundImage
       Tag="div"
-      // Spread bgImage into BackgroundImage:
       {...bgImage}
       preserveStackingContext
       sx={{
         padding: "100px 60px",
       }}
-    >
-    </BackgroundImage>
+    />
   )
 };
 

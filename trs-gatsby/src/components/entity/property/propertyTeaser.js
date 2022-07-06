@@ -4,17 +4,29 @@ import { Link } from "gatsby-plugin-modal-routing-3"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { StaticQuery, graphql } from "gatsby"
 
-import { NoImage } from "./noImage";
-// add property type value? If sanity property or drupal?
+import { NoImage } from "./noImage"
 
-function truncate(str) {
-  return str.length > 10 ? str.substring(0, 160) + "..." : str
-}
+import { truncate } from "../../../utils/stringUtils"
 
-function propClick() {}
+const Ribbon = ({ color, label }) => (
+  <div
+    sx={{
+      backgroundColor: color,
+      color: "#ffffff",
+      fontSize: "1rem",
+      position: "absolute",
+      right: "20px",
+      top: "-15px",
+      padding: "3px 12px",
+      zIndex: "1",
+    }}
+  >
+    {label}
+  </div>
+)
 
 const PropertyTeaser = ({ property, asModal }) => {
-  var slugPath = ""
+  let slugPath = ""
   if (property.slug) {
     if (property.slug.current) {
       slugPath = "/property/" + property.slug.current
@@ -22,6 +34,7 @@ const PropertyTeaser = ({ property, asModal }) => {
       slugPath = "/property/" + property.slug
     }
   }
+
   return (
     <StaticQuery
       query={graphql`
@@ -48,7 +61,7 @@ const PropertyTeaser = ({ property, asModal }) => {
             }}
             asModal={asModal}
             to={slugPath}
-            onClick={propClick}
+            onClick={() => {}}
             sx={{
               height: "100%",
               display: "flex",
@@ -119,110 +132,19 @@ const PropertyTeaser = ({ property, asModal }) => {
               }}
             >
               {property.status === "just-sold" ? (
-                <div
-                  sx={{
-                    backgroundColor: "#6D6465",
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                    position: "absolute",
-                    right: "20px",
-                    top: "-15px",
-                    padding: "3px 12px",
-                    zIndex: "1",
-                  }}
-                >
-                  JUST SOLD
-                </div>
+                <Ribbon color="#6D6465" label="JUST SOLD" />
               ) : property.status === "under-contract" ? (
-                <div
-                  sx={{
-                    backgroundColor: "#887E7E",
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                    position: "absolute",
-                    right: "20px",
-                    top: "-15px",
-                    padding: "3px 12px",
-                    zIndex: "1",
-                  }}
-                >
-                  UNDER CONTRACT
-                </div>
+                <Ribbon color="#887E7E" label="UNDER CONTRACT" />
               ) : property.status === "reduced" ? (
-                <div
-                  sx={{
-                    backgroundColor: "#E9E7E7",
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                    position: "absolute",
-                    right: "20px",
-                    top: "-15px",
-                    padding: "3px 12px",
-                    zIndex: "1",
-                  }}
-                >
-                  REDUCED
-                </div>
+                <Ribbon color="#E9E7E7" label="REDUCED" />
               ) : property.status === "new" ? (
-                <div
-                  sx={{
-                    backgroundColor: "#AA4044",
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                    position: "absolute",
-                    right: "20px",
-                    top: "-15px",
-                    padding: "3px 12px",
-                    zIndex: "1",
-                  }}
-                >
-                  NEW
-                </div>
+                <Ribbon color="#AA4044" label="NEW" />
               ) : property.status === "coming-soon" ? (
-                <div
-                  sx={{
-                    backgroundColor: "#0070B2",
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                    position: "absolute",
-                    right: "20px",
-                    top: "-15px",
-                    padding: "3px 12px",
-                    zIndex: "1",
-                  }}
-                >
-                  COMING SOON
-                </div>
+                <Ribbon color="#0070B2" label="COMING SOON" />
               ) : property.status === "for-sale" ? (
-                <div
-                  sx={{
-                    backgroundColor: "#C1B098",
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                    position: "absolute",
-                    right: "20px",
-                    top: "-15px",
-                    padding: "3px 12px",
-                    zIndex: "1",
-                  }}
-                >
-                  FOR SALE
-                </div>
+                <Ribbon color="#C1B098" label="FOR SALE" />
               ) : (
-                <div
-                  sx={{
-                    backgroundColor: "#484242",
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                    position: "absolute",
-                    right: "20px",
-                    top: "-15px",
-                    padding: "3px 12px",
-                    zIndex: "1",
-                  }}
-                >
-                  SOLD
-                </div>
+                <Ribbon color="#484242" label="SOLD" />
               )}
               <div
                 sx={{
@@ -259,9 +181,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                     aspectRatio={4 / 3}
                   />
                 )}
-                {!property.sanityimage && !property.image && (
-                  <NoImage />
-                )}
+                {!property.sanityimage && !property.image && <NoImage />}
               </div>
             </div>
             <div

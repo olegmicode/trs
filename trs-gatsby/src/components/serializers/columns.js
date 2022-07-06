@@ -5,12 +5,12 @@ import Serializers from "./serializers"
 import Container from "../container"
 
 const Columns = ({ node }) => {
-  const handleClick = (url) => {
+  const handleClick = url => {
     if (typeof window !== "undefined" && window) {
-      window.open(url, '_blank').focus();
+      window.open(url, "_blank").focus()
     }
   }
-  
+
   return (
     <section
       id={node.sanityId}

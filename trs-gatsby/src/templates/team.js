@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
 import { GatsbyImage } from "gatsby-plugin-image"
-import Layout from "../components/layout"
+import Layout from "../layout"
 const Team = ({ data }) => {
   const sidebar = data.sidebar
   console.log(data)

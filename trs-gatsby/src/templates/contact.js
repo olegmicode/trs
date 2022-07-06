@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../layout"
 import ContactForm from "../components/contactForm"
 import Container from "../components/container"
 import SEO from "../components/seo"

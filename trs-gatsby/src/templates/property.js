@@ -18,9 +18,7 @@ import ConditionalLayout from "../components/ConditionalLayout"
 import FullSlide from "../components/fullslide"
 import PropImages from "../components/propImages"
 
-function truncate(str) {
-  return str.length > 10 ? str.substring(0, 380) : str
-}
+import { truncate } from "../utils/stringUtils"
 
 function youtube_parser(url) {
   var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/
@@ -85,7 +83,7 @@ class Property extends React.Component {
       newImages = images.slice()
       metaTitle = node.propertyName ? node.propertyName : node.mlsid
       title = node.propertyName ? node.propertyName : node.mlsid
-      metaDescription = truncate(node.propertyDescription)
+      metaDescription = truncate(node.propertyDescription, 380)
       propPath = "https://www.texasranchesforsale.com" + this.props.path
       office = this.props.data.property.field_office1
 
@@ -129,7 +127,7 @@ class Property extends React.Component {
       if (node.metaDescription) {
         metaDescription = node.metaDescription
       } else {
-        metaDescription = truncate(node.propertySummary)
+        metaDescription = truncate(node.propertySummary, 380)
       }
       if (node.youtubeUrl && status !== "z-sold") {
         var videoId = youtube_parser(node.youtubeUrl)

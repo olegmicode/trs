@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui"
 import { useState } from "react"
 import axios from "axios"
+
 const MyForm = () => {
   let team = ""
   let lname = ""
@@ -23,7 +24,7 @@ const MyForm = () => {
     address: address,
   })
 
-  const handleServerResponse = (ok, msg, form) => {
+  const handleServerResponse = (ok, msg) => {
     setServerState({
       submitting: false,
       status: { ok, msg },
@@ -34,6 +35,7 @@ const MyForm = () => {
       }
     }
   }
+
   const handleOnSubmit = e => {
     e.preventDefault()
     const form = e.target
@@ -50,6 +52,7 @@ const MyForm = () => {
         handleServerResponse(false, r.response.data.error, form)
       })
   }
+
   return (
     <div>
       <div>
@@ -202,7 +205,9 @@ const MyForm = () => {
 
               <div className="check-container">
                 <input type="checkbox" name="haveagent" value="1" />
-                <label for="haveagent">I am currently working with a real estate agent</label>
+                <label for="haveagent">
+                  I am currently working with a real estate agent
+                </label>
               </div>
             </div>
           )}

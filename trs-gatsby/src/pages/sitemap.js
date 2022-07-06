@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import * as React from "react"
-import Layout from "../components/layout"
+import Layout from "../layout"
 import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Container from "../components/container"

@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import PropTypes from "prop-types"
-import Header from "./regions/header"
-import Footer from "./regions/footer"
+import Header from "./header"
+import Footer from "./footer"
 
 const Layout = ({ children, banner }) => (
   <div

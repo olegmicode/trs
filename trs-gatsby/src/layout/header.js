@@ -3,12 +3,12 @@ import { jsx } from "theme-ui"
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import Burger from "../burger"
-import Menu from "../menu"
-import Container from "../container"
+import Burger from "../components/burger"
+import Menu from "../components/menu"
+import Container from "../components/container"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import BlockContent from "@sanity/block-content-to-react"
-import Serializers from "../serializers/serializers"
+import Serializers from "../components/serializers/serializers"
 const setItem = (key, value, numberOfDays) => {
   const now = new Date()
 

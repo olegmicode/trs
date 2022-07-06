@@ -7,16 +7,17 @@ import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../serializers/serializers"
 import Container from "../container"
 
-const TextOverImage = ({ node }) => {
-  const sanityConfig = { projectId: "5b1rgyjn", dataset: "production" }
-  const imageAssetId = node.backgroundImage.asset.id
+import sanityConfig from "../../sanityConfig"
 
+const TextOverImage = ({ node }) => {
   const imageData = getGatsbyImageData(
-    imageAssetId,
+    node.backgroundImage.asset.id,
     { maxWidth: 1920 },
     sanityConfig
   )
+
   const bgImage = convertToBgImage(imageData)
+
   return (
     <section id={node.sanityId}>
       <Container noMobilePadding={true}>

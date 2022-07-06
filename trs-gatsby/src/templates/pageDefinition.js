@@ -3,13 +3,13 @@ import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "../components/serializers/serializers"
-import Layout from "../components/layout"
+import Layout from "../layout"
 import LayoutSearch from "../components/layoutSearch"
 import Seo from "../components/seo"
 const PageDefinition = ({ data }) => {
   const node = data.page
   const metaTitle = node.metaTitle ? node.metaTitle : node.title
-  console.log("==== page definition response ====", data)
+
   return (
     <div id={node.slug.current}>
       <Seo title={metaTitle} description={node.metaDescription}></Seo>

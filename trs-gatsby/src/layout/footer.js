@@ -3,9 +3,9 @@ import { jsx } from "theme-ui"
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import Container from "../container"
+import Container from "../components/container"
 import BlockContent from "@sanity/block-content-to-react"
-import Serializers from "../serializers/serializers"
+import Serializers from "../components/serializers/serializers"
 class Footer extends React.Component {
   render() {
     return (
@@ -163,7 +163,10 @@ class Footer extends React.Component {
                         }}
                         href="https://www.digett.com"
                       >
-                        <img src={data.digettlogo.publicURL} alt="Footer Logos" />
+                        <img
+                          src={data.digettlogo.publicURL}
+                          alt="Footer Logos"
+                        />
                       </a>
                     </div>
                   </div>
