@@ -195,7 +195,7 @@ class Property extends React.Component {
           <div
             className="prop-left"
             sx={{
-              width: ["100%", "55%", "55%"],
+              width: ["100%", "60%", "60%"],
               backgroundColor: "white",
               overflow: ["hidden", "scroll", "scroll"],
               height: ["auto", "100%", "100%"],
@@ -226,7 +226,7 @@ class Property extends React.Component {
           <div
             className="prop-right"
             sx={{
-              width: ["100%", "45%", "45%"],
+              width: ["100%", "40%", "40%"],
               overflow: "scroll",
               height: ["auto", "100%", "100%"],
               color: "grayBlk",

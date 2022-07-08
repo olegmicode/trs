@@ -36,11 +36,11 @@ const ReturnImage = ({ image }) => {
     return (
       <GatsbyImage
         sx={{
-          maxWidth: "100%",
+          maxWidth: "fit-content",
           height: "auto",
         }}
         image={image.childImageSharp.gatsbyImageData}
-        width={600}
+        width={900}
         aspectRatio={4 / 2}
         alt=""
       />

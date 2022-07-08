@@ -14,7 +14,7 @@ export const propertyFullFragment = graphql`
     childrenFile {
       childImageSharp {
         gatsbyImageData(
-          width: 800
+          width: 900
           height: 500
           placeholder: BLURRED
           formats: [AUTO, WEBP, AVIF]
