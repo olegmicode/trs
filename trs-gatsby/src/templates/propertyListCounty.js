@@ -129,7 +129,7 @@ export const postQuery = graphql`
         sanityimage: propertyImages {
           asset {
             gatsbyImageData(
-              width: 800
+              width: 900
               height: 600
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]

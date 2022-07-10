@@ -138,14 +138,14 @@ const ConditionalLayout = ({ ...props }) => {
                   ".prop-left": {
                     width: [
                       "100%",
-                      "55%",
-                      "calc(100% - 450px)",
-                      "calc(100% - 450px)",
+                      "60%",
+                      "calc(100% - 500px)",
+                      "calc(100% - 500px)",
                     ],
                   },
                   ".prop-right": {
                     // height: "auto",
-                    width: ["100%", "45%", "450px", "450px"],
+                    width: ["100%", "40%", "500px", "500px"],
                     // overflow: ["visible","hidden","hidden","hidden"],
                     "> div": {
                       marginRight: "0px",
