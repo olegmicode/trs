@@ -157,28 +157,24 @@ const PropertyTeaser = ({ property, asModal }) => {
               >
                 {property.sanityimage && (
                   <GatsbyImage
+                    layout="constrained"
                     sx={{
-                      maxWidth: "100%",
-                      height: "auto",
+                      maxHeight: '300px'
                     }}
                     alt=""
                     image={property.sanityimage[0].asset.gatsbyImageData}
-                    width={800}
-                    height={500}
-                    aspectRatio={4 / 3}
+                    aspectRatio={20 / 13}
                   />
                 )}
                 {property.image && (
                   <GatsbyImage
+                    layout="constrained"
                     sx={{
-                      maxWidth: "100%",
-                      height: "auto",
+                      maxHeight: '300px'
                     }}
                     alt=""
                     image={property.image.childImageSharp.gatsbyImageData}
-                    width={800}
-                    height={500}
-                    aspectRatio={4 / 3}
+                    aspectRatio={20 / 13}
                   />
                 )}
                 {!property.sanityimage && !property.image && <NoImage />}

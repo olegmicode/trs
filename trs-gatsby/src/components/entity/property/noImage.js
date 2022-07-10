@@ -17,7 +17,7 @@ export const NoImage = () => {
       `}
       render={data => {
         return (
-          <div style={{ padding: "7% 0" }}>
+          <div>
             <GatsbyImage
               sx={{
                 width: "100px",
