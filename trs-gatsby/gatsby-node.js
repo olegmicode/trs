@@ -244,9 +244,7 @@ exports.onCreateNode = async ({
           createNodeId,
           cache
         )
-        console.log(imageIds)
         node.children = imageIds
-        console.log(node.mlsid)
       } catch (error) {
         console.log(error)
       }
@@ -257,7 +255,7 @@ exports.onCreateNode = async ({
 async function createImages(createNode, node, actions, createNodeId, cache) {
   var imageIds = []
   await Promise.all(
-    node.propertyImages.map(async image => {
+    node.propertyImages.map(async (image, index) => {
       let fileNode
       try {
         fileNode = await createRemoteFileNode({
@@ -268,13 +266,14 @@ async function createImages(createNode, node, actions, createNodeId, cache) {
           createNodeId,
         })
         if (fileNode) {
-          imageIds.push(fileNode.id)
+          imageIds[index] = fileNode.id
         }
       } catch (e) {
         // Ignore
       }
     })
   )
+  console.log(imageIds)
   return imageIds
 }
 exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
