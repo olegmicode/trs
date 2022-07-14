@@ -19,11 +19,10 @@ export const NoImage = () => {
         return (
           <div>
             <GatsbyImage
-              sx={{
-                width: "100px",
-              }}
+              layout="constrained"
               alt=""
               image={data.noimage.childImageSharp.gatsbyImageData}
+              aspectRatio={20 / 13}
             />
           </div>
         )
