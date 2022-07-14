@@ -20,7 +20,7 @@ const postQuery = `{
         childImageSharp {
           gatsbyImageData(
             width: 1000
-            height:800
+            height: 650
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
             layout: CONSTRAINED
@@ -47,7 +47,7 @@ const postQuery = `{
         asset {
           gatsbyImageData(
             width: 1000
-            height:800
+            height: 650
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
             layout: CONSTRAINED

@@ -158,9 +158,6 @@ const PropertyTeaser = ({ property, asModal }) => {
                 {property.sanityimage && (
                   <GatsbyImage
                     layout="constrained"
-                    sx={{
-                      maxHeight: '300px'
-                    }}
                     alt=""
                     image={property.sanityimage[0].asset.gatsbyImageData}
                     aspectRatio={20 / 13}
@@ -169,9 +166,6 @@ const PropertyTeaser = ({ property, asModal }) => {
                 {property.image && (
                   <GatsbyImage
                     layout="constrained"
-                    sx={{
-                      maxHeight: '300px'
-                    }}
                     alt=""
                     image={property.image.childImageSharp.gatsbyImageData}
                     aspectRatio={20 / 13}
