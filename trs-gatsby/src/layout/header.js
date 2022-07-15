@@ -298,7 +298,7 @@ class Header extends React.Component {
                 </div>
               </Container>
             </div>
-            <Container noMobilePadding={true}>
+            <Container fullWidth noMobilePadding={true}>
               <div
                 sx={{
                   display: "flex",
@@ -359,7 +359,8 @@ class Header extends React.Component {
                     <Link
                       to={"/"}
                       sx={{
-                        width: ["100%", "65%", "100%", "65%"],
+                        maxWidth: ["auto", "650px", "auto", "650px"],
+                        width: ["100%", "50%", "100%", "50%"],
                         paddingRight: ["0px", "0px", "0px"],
                         boxSizing: "border-box",
                       }}

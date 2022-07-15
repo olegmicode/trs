@@ -3,8 +3,7 @@ import { jsx } from "theme-ui"
 import { connectRefinementList } from "react-instantsearch-dom"
 import Select from "react-select"
 
-const Consumer = ({ ref, items, refine }) => {
-
+const Consumer = ({ ref, className, items, refine }) => {
   const handleChange = (data) => {
     if (data[0]) {
       const selectedCounties = []
@@ -24,6 +23,7 @@ const Consumer = ({ ref, items, refine }) => {
 
   return (
     <Select
+      className={className}
       ref={ref}
       options={options}
       isSearchable={true}

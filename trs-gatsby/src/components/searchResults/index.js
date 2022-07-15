@@ -136,12 +136,13 @@ class SearchResults extends React.Component {
         onSearchStateChange={this.props.onSearchStateChange}
         stalledSearchDelay="200"
       >
-        <Container>
+        <Container fullWidth background="#484242">
           <div
             id="filters"
             sx={{
-              width: "100%",
+              width: "90%",
               display: "flex",
+              margin: "0px auto",
               padding: "60px 0px",
               zIndex: "10",
               position: "relative",
@@ -149,7 +150,7 @@ class SearchResults extends React.Component {
               h3: {
                 fontSize: "1.125rem",
                 fontWeight: "600",
-                color: "grayHvy",
+                color: "newTan",
                 textAlign: "center",
                 margin: "0px 0px 15px 0px",
               },
@@ -321,8 +322,11 @@ class SearchResults extends React.Component {
               <div
                 sx={{
                   marginBottom: "40px",
+                  ".filter-select .css-yk16xz-control": {
+                    background: "transparent"
+                  },
                   ".css-1wa3eu0-placeholder": {
-                    color: "grayHvy",
+                    color: "newTan",
                     fontSize: "1rem",
                     fontWeight: "600",
                   },
@@ -334,7 +338,7 @@ class SearchResults extends React.Component {
                 }}
               >
                 <h3>COUNTY</h3>
-                <CustomRefinementList attribute="county" operator="or" ref={selectInputRef} />
+                <CustomRefinementList className="filter-select" attribute="county" operator="or" ref={selectInputRef} />
               </div>
               <div
                 sx={{
@@ -380,8 +384,11 @@ class SearchResults extends React.Component {
               <div
                 sx={{
                   marginBottom: "40px",
+                  ".css-yk16xz-control":{
+                    background: "transparent"
+                  },
                   ".css-1wa3eu0-placeholder": {
-                    color: "grayHvy",
+                    color: "newTan",
                     fontSize: "1rem",
                     fontWeight: "600",
                   },
@@ -443,7 +450,7 @@ class SearchResults extends React.Component {
               <div
                 sx={{
                   fontSize: "1rem",
-                  color: "grayHvy",
+                  color: "newTan",
                 }}
               >
                 View filter results below, or press “Clear All” to clear your

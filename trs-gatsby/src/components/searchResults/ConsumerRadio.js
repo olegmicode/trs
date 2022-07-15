@@ -82,7 +82,7 @@ const ConsumerRadio = ({ refine, ref, ...props }) => {
             fontSize: "1rem",
             fontWeight: "600",
             "&.for-sale.z-sold": {
-              color: "grayHvy",
+              color: "newTan",
             },
           },
         },
