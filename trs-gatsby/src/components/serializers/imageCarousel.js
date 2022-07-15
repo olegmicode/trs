@@ -53,7 +53,7 @@ const ImageCarousel = ({ node }) => {
 
   return (
     <section id={node.sanityId}>
-      <Container noMobilePadding={true}>
+      <Container fullWidth noMobilePadding={true}>
         <Carousel
           stopOnHover={false}
           dynamicHeight={false}

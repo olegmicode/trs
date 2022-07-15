@@ -16,9 +16,11 @@ export default connectSearchBox(({ refine }) => {
         appearance: "none",
         borderRadius: "0px",
         border: "thin solid #887E7E",
+        background: "transparent",
+        color: "newTan",
         padding: "12px 5px 10px 10px !important",
         "&::placeholder": {
-          color: "grayHvy",
+          color: "newTan",
           fontSize: "1rem",
           fontWeight: "600",
           letterSpacing: "1.4 !important",
