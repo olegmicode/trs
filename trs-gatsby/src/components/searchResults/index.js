@@ -136,11 +136,11 @@ class SearchResults extends React.Component {
         onSearchStateChange={this.props.onSearchStateChange}
         stalledSearchDelay="200"
       >
-        <Container fullWidth background="#484242">
+        <Container background="#484242">
           <div
             id="filters"
             sx={{
-              width: "90%",
+              width: "100%",
               display: "flex",
               margin: "0px auto",
               padding: "60px 0px",
@@ -226,6 +226,8 @@ class SearchResults extends React.Component {
                     width: "16px",
                     height: "16px",
                     padding: "0px",
+                    border: "none",
+                    boxShadow: "none",
                     "::before": {
                       display: "none !important",
                     },
@@ -261,6 +263,8 @@ class SearchResults extends React.Component {
                     backgroundColor: "newTan",
                     width: "16px",
                     height: "16px",
+                    border: "none",
+                    boxShadow: "none",
                     padding: "0px",
                     "::before": {
                       display: "none !important",

@@ -3,6 +3,8 @@ import { jsx } from "theme-ui"
 import BlockContent from "@sanity/block-content-to-react"
 import Serializers from "./serializers"
 import Container from "../container"
+import InfiniteLooper from "../InfiniteLooper"
+import "./columns.css"
 
 const Columns = ({ node }) => {
   const handleClick = url => {
@@ -67,35 +69,23 @@ const Columns = ({ node }) => {
               display: "block",
             }}
           >
-            <ul
+            <div
               className="logo-slider"
               sx={{
                 display: "flex",
                 margin: "25px 0",
               }}
             >
-              {node.item.map((item, index) => (
-                <li key={index} onClick={() => handleClick(item.url)}>
-                  {item && (
-                    <BlockContent blocks={item} serializers={Serializers} />
-                  )}
-                </li>
-              ))}
-              {node.item.map((item, index) => (
-                <li key={index} onClick={() => handleClick(item.url)}>
-                  {item && (
-                    <BlockContent blocks={item} serializers={Serializers} />
-                  )}
-                </li>
-              ))}
-              {node.item.map((item, index) => (
-                <li key={index} onClick={() => handleClick(item.url)}>
-                  {item && (
-                    <BlockContent blocks={item} serializers={Serializers} />
-                  )}
-                </li>
-              ))}
-            </ul>
+              <InfiniteLooper speed="20" direction="right">
+                {node.item.map((item, index) => (
+                  <div className="contentBlock contentBlock--one" key={index} onClick={() => handleClick(item.url)}>
+                    {item && (
+                      <BlockContent blocks={item} serializers={Serializers} />
+                    )}
+                  </div>
+                ))}
+              </InfiniteLooper>
+            </div>
           </div>
         )}
       </Container>

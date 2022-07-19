@@ -1,0 +1,57 @@
+/* Looper styles */
+@keyframes slideAnim {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.looper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.looper__innerList {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
+
+.looper__innerList[data-animate="true"] .looper__listInstance {
+  animation: slideAnim linear infinite;
+}
+
+.looper__listInstance {
+  display: flex;
+  width: max-content;
+
+  animation: none;
+}
+
+/* Example content styles */
+:root {
+  --green: #59c3c3;
+  --offwhite: #ebebeb;
+  --red: #e65a5e;
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#root {
+  flex: 1;
+  padding: 16px;
+  font-family: sans-serif;
+  color: var(--offwhite);
+  background: linear-gradient(-45deg, #4c468b, #05031a);
+}
+.description {
+  margin-bottom: 16px;
+  text-align: center;
+}
