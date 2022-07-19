@@ -9,19 +9,14 @@ import Layout from "../layout"
 import Container from "../components/container"
 import Seo from "../components/seo"
 
-class PropertyListCounty extends React.Component {
+class PropertyListRegion extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
-    const metaTitle = this.props.data.county.metaTitle
-      ? this.props.data.county.metaTitle
-      : this.props.data.county.countyName
+    const metaTitle = this.props.data.region.regionName
     const propPath = "https://www.texasranchesforsale.com" + this.props.path
-    let metaDescription = ""
-    if (this.props.data.county.metaDescription) {
-      metaDescription = this.props.data.county.metaDescription
-    }
+    const metaDescription = ""
     return (
       <Layout>
         <Seo
@@ -37,7 +32,7 @@ class PropertyListCounty extends React.Component {
             }}
           >
             <BlockContent
-              blocks={this.props.data.county._rawCountyDescrition}
+              blocks={this.props.data.region._rawRegionDescrition}
               serializers={Serializers}
             />
           </div>
@@ -91,7 +86,7 @@ class PropertyListCounty extends React.Component {
                 color: "grayBlk",
               }}
             >
-              No properties in {this.props.data.county.countyName} county.
+              No properties in {this.props.data.region.regionName} region.
               Please check back regularly.
             </div>
           )}
@@ -100,24 +95,26 @@ class PropertyListCounty extends React.Component {
     )
   }
 }
-export default PropertyListCounty
+export default PropertyListRegion
 
 export const postQuery = graphql`
-  query PropertyListByCounty($county: String!, $id: String!) {
-    county: sanityCounty(id: { eq: $id }) {
+  query PropertyListByRegion($region: String!, $id: String!) {
+    region: sanityRegion(id: { eq: $id }) {
       id
-      _rawCountyDescrition(resolveReferences: { maxDepth: 10 })
-      countyName
-      metaTitle
-      metaDescription
+      _rawRegionDescrition(resolveReferences: { maxDepth: 10 })
+      regionName
     }
     ourproperty: allSanityProperty(
-      filter: { county: { countyName: { eq: $county } } }
+      filter: { region: {elemMatch: {regionName: {eq: $region}}} }
     ) {
       nodes {
         id
         status
-        county: ourcounty
+        region {
+          id
+          _rawRegionDescrition(resolveReferences: { maxDepth: 10 })
+          regionName
+        }
         price
         acreage
         address: propertyName

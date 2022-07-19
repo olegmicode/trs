@@ -30,6 +30,12 @@ exports.createPages = async ({ graphql, actions }) => {
           id
         }
       }
+      ourregion: allSanityRegion {
+        nodes {
+          regionName
+          id
+        }
+      }
       ourtype: allSanityPropertyType {
         nodes {
           id
@@ -67,23 +73,43 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
   const propertyListCountyTemplate = path.resolve(
     "src/templates/propertyListCounty.js"
   )
-  // pages.data.ourcounty.nodes.forEach(node => {
-  //   var countyName = node.countyName
-  //     .toLowerCase()
-  //     .replace(/ /g, "-")
-  //     .replace(/[^\w-]+/g, "")
-  //   createPage({
-  //     path: `${countyName}-county-ranches-for-sale`,
-  //     component: propertyListCountyTemplate,
-  //     context: {
-  //       county: node.countyName,
-  //       id: node.id,
-  //     },
-  //   })
-  // })
+  pages.data.ourcounty.nodes.forEach(node => {
+    var countyName = node.countyName
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "")
+    createPage({
+      path: `${countyName}-county-ranches-for-sale`,
+      component: propertyListCountyTemplate,
+      context: {
+        county: node.countyName,
+        id: node.id,
+      },
+    })
+  })
+
+  const propertyListRegionTemplate = path.resolve(
+    "src/templates/propertyListRegion.js"
+  )
+  pages.data.ourregion.nodes.forEach(node => {
+    var regionName = node.regionName
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "")
+    createPage({
+      path: `${regionName}-region-ranches-for-sale`,
+      component: propertyListRegionTemplate,
+      context: {
+        region: node.regionName,
+        id: node.id,
+      },
+    })
+  })
+
   const propertyTemplate = path.resolve("src/templates/property.js")
   pages.data.property.nodes.forEach(node => {
     createPage({
