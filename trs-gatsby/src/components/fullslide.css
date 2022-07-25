@@ -1,0 +1,18 @@
+.slider-container {
+    max-height: 90vh;
+}
+
+.slider-container .react-slideshow-fade-images-wrap {
+    max-height: 90vh;
+}
+.slider-container .react-slideshow-fade-images-wrap > div {
+    display: flex !important;
+    justify-content: center;
+}
+
+.yt-lite {
+    width: calc(100 / 56.25 * 90vh);
+    max-width: 80vw;
+    height: 90vh;
+    margin: auto;
+}
