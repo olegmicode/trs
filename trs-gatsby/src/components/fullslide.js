@@ -7,6 +7,7 @@ import { forwardRef, useEffect, useRef, useMemo } from "react"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
 import { Fade } from "react-slideshow-image"
 
+import "./fullslide.css"
 import "react-slideshow-image/dist/styles.css"
 
 const ReturnImage = forwardRef(({ image }, ref) => {
@@ -14,17 +15,20 @@ const ReturnImage = forwardRef(({ image }, ref) => {
     return (
       <GatsbyImage
         sx={{
-          maxWidth: "100%",
-          height: "auto",
+          width: "auto",
+          maxHeight: "90vh",
+          margin: "auto",
+          objectFit: "contain"
         }}
         image={image.asset.gatsbyImageData}
+        objectFit="contain"
         width={800}
         aspectRatio={4 / 2}
       />
     )
   } else if (image.video) {
     return (
-      <div ref={ref}>
+      <div ref={ref} style={{ maxHeight: "90vh", width: "auto" }}>
         <LiteYouTubeEmbed id={image.video}>
           {" "}
           {console.log(ref)}
@@ -35,11 +39,13 @@ const ReturnImage = forwardRef(({ image }, ref) => {
     return (
       <GatsbyImage
         sx={{
-          maxWidth: "100%",
-          height: "auto",
+          width: "auto",
+          maxHeight: "90vh",
+          margin: "auto",
         }}
         image={image.childImageSharp.gatsbyImageData}
         width={600}
+        objectFit="contain"
         aspectRatio={4 / 2}
       />
     )
@@ -99,11 +105,12 @@ const FullSlide = ({ ...props }) => {
   }, [videoRef])
 
   return (
-    <div onKeyDown={toggleArrows} ref={divRef}>
+    <div className="slider-container" onKeyDown={toggleArrows} ref={divRef}>
       {breakpoints.sm ? (
-        <div>
+        <div className="custom-slider">
           {props.images.map((image, index) => (
             <div
+              className="custom-slide"
               key={_.uniqueId()}
               sx={{
                 marginBottom: "10px",
@@ -114,7 +121,7 @@ const FullSlide = ({ ...props }) => {
           ))}
         </div>
       ) : (
-        <Fade {...properties} ref={ref} defaultIndex={props.index}>
+        <Fade {...properties} style={{ maxHeight: "90vh" }} ref={ref} defaultIndex={props.index}>
           {props.images.map((image, index) => (
             <ReturnImage
               key={_.uniqueId()}
