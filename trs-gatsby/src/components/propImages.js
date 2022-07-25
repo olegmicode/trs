@@ -124,7 +124,7 @@ const PropImages = ({ newImages, openModal }) => {
                 width: "100%",
               },
               ".yt-lite": {
-                height: "100%",
+                width: "100%",
                 pointerEvents: "none",
               },
             },
