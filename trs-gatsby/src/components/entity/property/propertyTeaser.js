@@ -75,7 +75,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                 display: "flex",
                 flexDirection: "column",
                 flex: ["1", "1", "1"],
-                minHeight: "140px",
+                minHeight: "115px",
               }}
             >
               <h2
@@ -83,9 +83,11 @@ const PropertyTeaser = ({ property, asModal }) => {
                   color: "grayHvy",
                   fontSize: "1.25rem !important",
                   lineHeight: "1.5rem !important",
-                  margin: "30px 22px 10px 22px !important",
-                  fontFamily: "Open Sans,sans-serif !important",
-                  fontWeight: "normal !important",
+                  margin: "26px 26px 10px 26px !important",
+                  fontFamily: "Arimo,sans-serif !important",
+                  textTransform: 'uppercase',
+                  fontWeight: "bold !important",
+                  letterSpacing: '1.2px'
                 }}
               >
                 {property.address}
@@ -93,9 +95,12 @@ const PropertyTeaser = ({ property, asModal }) => {
               <div
                 sx={{
                   display: "flex",
-                  padding: "0px 22px 30px 22px",
+                  padding: "0px 26px 15px 26px",
                   color: "grayHvy",
                   justifyContent: "space-between",
+                  fontSize: '16px',
+                  fontFamily: 'Arimo, sans-serif',
+                  fontWeight: 'normal'
                 }}
               >
                 <div
@@ -186,9 +191,10 @@ const PropertyTeaser = ({ property, asModal }) => {
               {property.description && (
                 <div
                   sx={{
-                    padding: "30px 22px 30px 22px",
+                    padding: "17px 26px 17px 26px",
                     color: "grayHvy",
                     fontSize: "1rem",
+                    minHeight: "116px"
                   }}
                 >
                   {truncate(property.description)}
@@ -201,8 +207,9 @@ const PropertyTeaser = ({ property, asModal }) => {
                   justifyContent: "space-between",
                   backgroundColor: "grayLight",
                   color: "grayMed",
-                  padding: "12px 20px",
+                  padding: "12px 26px 16px",
                   fontWeight: "700",
+                  letterSpacing: '1px'
                 }}
               >
                 {property.price && (

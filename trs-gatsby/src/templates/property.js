@@ -136,7 +136,7 @@ class Property extends React.Component {
     }
 
     return (
-      <ConditionalLayout data={this.props.data}>
+      <ConditionalLayout background="#6D6465" data={this.props.data}>
         <Seo
           title={metaTitle}
           description={metaDescription}
@@ -372,7 +372,7 @@ class Property extends React.Component {
                     sx={{
                       fontSize: "1rem",
                       color: "grayMed",
-                      fontWeight: "600",
+                      fontWeight: "450",
                     }}
                   >
                     {acreage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
@@ -394,9 +394,10 @@ class Property extends React.Component {
                 {title && (
                   <h1
                     sx={{
-                      fontSize: "1.125rem !important",
+                      fontSize: "18px !important",
                       color: "grayMed",
-                      fontWeight: "500",
+                      fontWeight: "700",
+                      textTransform: "uppercase",
                       margin: "0px",
                     }}
                   >
