@@ -17,7 +17,7 @@ const ConditionalLayout = ({ ...props }) => {
               position: "relative",
               background: "#f7f7f7",
               height: "100%",
-              fontFamily: "Open Sans,sans-serif",
+              fontFamily: "Arimo,sans-serif",
               fontSize: "1rem",
               fontWeight: "400",
               lineHeight: "1.438rem",
@@ -127,7 +127,7 @@ const ConditionalLayout = ({ ...props }) => {
           </div>
         ) : (
           <Layout banner={true} header={true}>
-            <Container noMobilePadding={true}>
+            <Container background={props.background} noMobilePadding={true}>
               <div
                 sx={{
                   height:["auto","calc(100vh - 170px)","calc(100vh - 185px)"],
