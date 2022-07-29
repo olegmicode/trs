@@ -22,14 +22,21 @@ class PropertyListCounty extends React.Component {
     if (this.props.data.county.metaDescription) {
       metaDescription = this.props.data.county.metaDescription
     }
+    console.log(metaTitle)
     return (
       <Layout>
-        <Seo
-          title={metaTitle}
-          description={metaDescription}
-          path={propPath}
-        />
+        <Seo title={metaTitle} description={metaDescription} path={propPath} />
         <Container>
+          <h2
+            sx={{
+              fontFamily: "Arimo, sans-serif !important",
+              fontSize: "3rem !important",
+              marginTop: "100px !important",
+              color: "grayBlk"
+            }}
+          >
+            {metaTitle}
+          </h2>
           <div
             sx={{
               padding: "20px 0px",
