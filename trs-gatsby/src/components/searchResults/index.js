@@ -56,7 +56,7 @@ const InfiniteHits = ({ hits, hasMore, refineNext }) => (
       sx={{
         display: hasMore ? "block" : "none",
         backgroundColor: "#c1b098",
-        border: "1px solid #887e7e",
+        border: "none",
         color: "#fff",
         cursor: "pointer",
         fontSize: "1rem",
