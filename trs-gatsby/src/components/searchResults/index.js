@@ -60,7 +60,8 @@ const InfiniteHits = ({ hits, hasMore, refineNext }) => (
         color: "#fff",
         cursor: "pointer",
         fontSize: "1rem",
-        fontWeight: "600",
+        fontWeight: "400",
+        fontFamily: "Arimo, sans-serif",
         margin: "0 auto",
         padding: "10px 20px",
       }}
