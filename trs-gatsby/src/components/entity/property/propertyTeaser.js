@@ -75,7 +75,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                 display: "flex",
                 flexDirection: "column",
                 flex: ["1", "1", "1"],
-                minHeight: "115px",
+                minHeight: "110px",
               }}
             >
               <h2
@@ -122,7 +122,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                 </div>
                 {property.acreage && (
                   <div>
-                    {property.acreage
+                    +/- {property.acreage
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ""}
                     <span> acres</span>
@@ -194,7 +194,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                     padding: "17px 26px 17px 26px",
                     color: "grayHvy",
                     fontSize: "1rem",
-                    minHeight: "116px"
+                    minHeight: "66px"
                   }}
                 >
                   {truncate(property.description)}
@@ -209,7 +209,8 @@ const PropertyTeaser = ({ property, asModal }) => {
                   color: "grayMed",
                   padding: "12px 26px 16px",
                   fontWeight: "700",
-                  letterSpacing: '1px'
+                  fontSize: '20px',
+                  letterSpacing: '0px'
                 }}
               >
                 {property.price && (
