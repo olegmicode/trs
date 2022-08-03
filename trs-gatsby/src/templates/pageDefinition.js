@@ -9,7 +9,7 @@ import Seo from "../components/seo"
 const PageDefinition = ({ data }) => {
   const node = data.page
   const metaTitle = node.metaTitle ? node.metaTitle : node.title
-
+  console.log(node._rawHero);
   return (
     <div id={node.slug.current}>
       <Seo title={metaTitle} description={node.metaDescription}></Seo>
