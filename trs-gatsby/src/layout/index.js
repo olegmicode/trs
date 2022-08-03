@@ -11,7 +11,7 @@ const Layout = ({ children, banner }) => (
       fontWeight: "body",
       fontSize: "2",
       lineHeight: "body",
-      letterSpacing: "1px",
+      letterSpacing: "0px",
       h1: {
         fontFamily: "heading",
         fontWeight: "heading",

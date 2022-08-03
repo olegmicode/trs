@@ -14,6 +14,7 @@ class PropertyListRegion extends React.Component {
     super(props)
   }
   render() {
+    console.log(this.props)
     const metaTitle = this.props.data.region.regionName
     const propPath = "https://www.texasranchesforsale.com" + this.props.path
     const metaDescription = ""
@@ -31,6 +32,7 @@ class PropertyListRegion extends React.Component {
               color: "grayBlk",
             }}
           >
+            <h1 sx={{ fontFamily: 'Times, sans-serif' }}>{`${metaTitle} Region Ranches for Sale`}</h1>
             <BlockContent
               blocks={this.props.data.region._rawRegionDescrition}
               serializers={Serializers}

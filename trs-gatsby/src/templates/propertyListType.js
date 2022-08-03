@@ -33,6 +33,7 @@ class PropertyListType extends React.Component {
               color: "grayBlk",
             }}
           >
+            <h1 sx={{ fontFamily: 'Times, sans-serif' }}>{`${metaTitle} Type Ranches for Sale`}</h1>
             <BlockContent
               blocks={this.props.data.type._rawPropertyTypeDescrition}
               serializers={Serializers}

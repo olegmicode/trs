@@ -27,22 +27,13 @@ class PropertyListCounty extends React.Component {
       <Layout>
         <Seo title={metaTitle} description={metaDescription} path={propPath} />
         <Container>
-          <h2
-            sx={{
-              fontFamily: "Arimo, sans-serif !important",
-              fontSize: "3rem !important",
-              marginTop: "100px !important",
-              color: "grayBlk"
-            }}
-          >
-            {metaTitle}
-          </h2>
           <div
             sx={{
               padding: "20px 0px",
               color: "grayBlk",
             }}
           >
+            <h1 sx={{ fontFamily: 'Times, sans-serif' }}>{metaTitle}</h1>
             <BlockContent
               blocks={this.props.data.county._rawCountyDescrition}
               serializers={Serializers}
