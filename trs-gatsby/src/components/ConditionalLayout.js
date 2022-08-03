@@ -21,7 +21,7 @@ const ConditionalLayout = ({ ...props }) => {
               fontSize: "1rem",
               fontWeight: "400",
               lineHeight: "1.438rem",
-              letterSpacing: "1px",
+              letterSpacing: "0px",
             }}
           >
             <div

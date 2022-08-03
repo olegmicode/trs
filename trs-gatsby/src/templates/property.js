@@ -348,7 +348,7 @@ class Property extends React.Component {
                   borderColor: "grayMed",
                   paddingBottom: "20px",
                   marginBottom: "30px",
-                  alignItems: "center",
+                  alignItems: "baseline",
                 }}
               >
                 {node.status !== "z-sold" && node.price && (
@@ -396,7 +396,8 @@ class Property extends React.Component {
                     sx={{
                       fontSize: "18px !important",
                       color: "grayMed",
-                      fontWeight: "700",
+                      fontFamily: "Arimo, sans-serif !important",
+                      fontWeight: "700 !important",
                       textTransform: "uppercase",
                       margin: "0px",
                     }}
