@@ -14,7 +14,7 @@ const ArticlePDFTeaser = ({ article }) => {
 
   return (
     <div>
-      <a href={article.pdf ? article.pdf.asset.url : ""}>
+      <a href={article.pdf ? article.pdf.asset.url : ""} target="_blank" rel="noopener noreferrer">
         {imageData && (
           <GatsbyImage
             sx={{
