@@ -2,7 +2,7 @@
 export default {
   name: "pageDefinition",
   type: "document",
-  title: "Page Definition",
+  title: "Pages",
   fields: [
     {
       name: "title",
