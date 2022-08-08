@@ -23,6 +23,10 @@
       "path": "./schemas/schema.js"
     },
     {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./custom/deskStructure.js"
+    },
+    {
       "implements": "part:@sanity/production-preview/resolve-production-url",
       "path": "./resolveProductionUrl.js"
     }
