@@ -87,7 +87,10 @@ const PropertyTeaser = ({ property, asModal }) => {
                   fontFamily: "Arimo,sans-serif !important",
                   textTransform: 'uppercase',
                   fontWeight: "bold !important",
-                  letterSpacing: '1.2px'
+                  letterSpacing: '1.2px',
+                  overflow: "hidden",
+                  whiteSpace: "nowrap",
+                  textOverflow: "ellipsis"
                 }}
               >
                 {property.address}
@@ -194,7 +197,10 @@ const PropertyTeaser = ({ property, asModal }) => {
                     padding: "17px 26px 17px 26px",
                     color: "grayHvy",
                     fontSize: "1rem",
-                    minHeight: "66px"
+                    minHeight: "66px",
+                    width: "fit-content",
+                    blockSize: "fit-content",
+                    textAlign: "justify"
                   }}
                 >
                   {truncate(property.description)}
