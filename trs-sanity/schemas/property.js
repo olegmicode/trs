@@ -1,5 +1,5 @@
 export default {
-  title: "Property",
+  title: "Properties",
   name: "property",
   type: "document",
   fields: [
