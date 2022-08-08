@@ -76,7 +76,7 @@ const Columns = ({ node }) => {
                 margin: "25px 0",
               }}
             >
-              <InfiniteLooper speed="30" direction="left">
+              <InfiniteLooper speed="35" direction="left">
                 {node.item.map((item, index) => (
                   <div className="contentBlock contentBlock--one" key={index} onClick={() => handleClick(item.url)}>
                     {item && (
