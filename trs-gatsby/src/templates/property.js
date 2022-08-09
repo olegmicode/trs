@@ -375,6 +375,8 @@ class Property extends React.Component {
                       fontWeight: "450",
                     }}
                   >
+                    +/-
+                    {" "}
                     {acreage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
                       " acres"}
                   </div>
