@@ -1,6 +1,7 @@
 const { notDeepStrictEqual } = require("assert")
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const path = require("path")
+const { node } = require("prop-types")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const pages = await graphql(`
@@ -22,6 +23,11 @@ exports.createPages = async ({ graphql, actions }) => {
           slug {
             current
           }
+        }
+      }
+      additionalcounty: allProperty {
+        group(field: county) {
+          fieldValue
         }
       }
       ourcounty: allSanityCounty {
@@ -77,7 +83,26 @@ exports.createPages = async ({ graphql, actions }) => {
   const propertyListCountyTemplate = path.resolve(
     "src/templates/propertyListCounty.js"
   )
+  let newCountyArray = []
   pages.data.ourcounty.nodes.forEach(node => {
+    newCountyArray.push(node)
+  })
+  pages.data.additionalcounty.group.forEach(node => {
+    let countyInArray = false
+    newCountyArray.forEach(nodeInner => {
+      if (node.fieldValue == nodeInner.countyName) {
+        countyInArray = true
+      }
+    })
+    if (!countyInArray) {
+      let countyObject = { countyName: node.fieldValue, id: "additional" }
+      newCountyArray.push(countyObject)
+    }
+  })
+  // newArray.forEach(node => {
+
+  // })
+  newCountyArray.forEach(node => {
     var countyName = node.countyName
       .toLowerCase()
       .replace(/ /g, "-")
@@ -91,7 +116,21 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+  // pages.data.additionalcounty.group.forEach(node => {
+  //   var countyName = node.fieldValue
+  //     .toLowerCase()
+  //     .replace(/ /g, "-")
+  //     .replace(/[^\w-]+/g, "")
 
+  //   createPage({
+  //     path: `${countyName}-county-ranches-for-sale`,
+  //     component: propertyListCountyTemplate,
+  //     context: {
+  //       county: node.fieldValue,
+  //       id: node.id,
+  //     },
+  //   })
+  // })
   const propertyListRegionTemplate = path.resolve(
     "src/templates/propertyListRegion.js"
   )
@@ -141,8 +180,7 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: node.slug.current,
         },
       })
-    }
-    else {
+    } else {
       createPage({
         path: `/${node.slug.current}`,
         component: pageDefinitionTemplate,
@@ -247,7 +285,6 @@ async function createImages(createNode, node, actions, createNodeId, cache) {
       }
     })
   )
-  console.log(imageIds)
   return imageIds
 }
 exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
@@ -267,7 +304,6 @@ exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
           type: "Int",
           resolve(source, args, context, info) {
             ourStatus = source.status
-            console.log(ourStatus)
             if (ourStatus === "z-sold") {
               return 3
             } else {
