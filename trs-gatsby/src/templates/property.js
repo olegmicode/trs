@@ -408,15 +408,19 @@ class Property extends React.Component {
                   </h1>
                 )}
                 {county && (
-                  <div
+                  <Link
                     sx={{
                       fontSize: "1rem",
                       color: "grayMed",
                       fontWeight: "400",
+                      textDecoration: "none",
                     }}
+                    to={`/${county.toLowerCase()}-county-ranches-for-sale`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     {county + " County"}
-                  </div>
+                  </Link>
                 )}
               </div>
               <Accordion
@@ -476,8 +480,8 @@ class Property extends React.Component {
                               color: "white",
                               backgroundColor: "newTan",
                               textDecoration: "none",
-                              padding: "15px 0px",
-                              width: "200px",
+                              padding: "15px 15px",
+                              minWidth: "200px",
                               textAlign: "center",
                               fontWeight: "600",
                               marginTop: "40px",
@@ -526,8 +530,8 @@ class Property extends React.Component {
                               color: "white",
                               backgroundColor: "newTan",
                               textDecoration: "none",
-                              padding: "15px 0px",
-                              width: "200px",
+                              padding: "15px 15px",
+                              minWidth: "200px",
                               textAlign: "center",
                               fontWeight: "600",
                               marginTop: "40px",
