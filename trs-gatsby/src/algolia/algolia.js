@@ -48,7 +48,7 @@ const postQuery = `{
           gatsbyImageData(
             width: 1000
             height: 650
-            placeholder: BLURRED
+            placeholder: DOMINANT_COLOR
             formats: [AUTO, WEBP, AVIF]
             layout: CONSTRAINED
           )

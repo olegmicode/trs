@@ -14,15 +14,24 @@ class PropertyListCounty extends React.Component {
     super(props)
   }
   render() {
-    const metaTitle = this.props.data.county.metaTitle
-      ? this.props.data.county.metaTitle
-      : this.props.data.county.countyName
-    const propPath = "https://www.texasranchesforsale.com" + this.props.path
+    let metaTitle = ""
+    let propPath = ""
     let metaDescription = ""
-    if (this.props.data.county.metaDescription) {
-      metaDescription = this.props.data.county.metaDescription
+    if (this.props.data.county) {
+      metaTitle = this.props.data.county.metaTitle
+        ? this.props.data.county.metaTitle
+        : this.props.data.county.countyName
+      propPath = "https://www.texasranchesforsale.com" + this.props.path
+      metaDescription = ""
+      if (this.props.data.county.metaDescription) {
+        metaDescription = this.props.data.county.metaDescription
+      }
+    } else {
+      metaTitle = this.props.pageContext.county + " County"
+      propPath = "https://www.texasranchesforsale.com" + this.props.path
+      metaDescription = ""
     }
-    console.log(metaTitle)
+
     return (
       <Layout>
         <Seo title={metaTitle} description={metaDescription} path={propPath} />
@@ -33,24 +42,28 @@ class PropertyListCounty extends React.Component {
               color: "grayBlk",
             }}
           >
-            <h1 sx={{ fontFamily: 'Times, sans-serif' }}>{metaTitle}</h1>
-            <BlockContent
-              blocks={this.props.data.county._rawCountyDescrition}
-              serializers={Serializers}
-            />
+            <h1 sx={{ fontFamily: "Times, sans-serif" }}>{metaTitle}</h1>
+            {this.props.data.county ? (
+              <BlockContent
+                blocks={this.props.data.county._rawCountyDescrition}
+                serializers={Serializers}
+              />
+            ) : (
+              ""
+            )}
           </div>
-          {this.props.data.ourproperty.nodes[0] ? (
-            <ul
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                listStyle: "none",
-                margin: "0",
-                padding: "20px 0px",
-              }}
-            >
-              {this.props.data.ourproperty.nodes.map((node, index) => (
+          <ul
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              listStyle: "none",
+              margin: "0",
+              padding: "20px 0px",
+            }}
+          >
+            {this.props.data.ourproperty.nodes[0] &&
+              this.props.data.ourproperty.nodes.map((node, index) => (
                 <li
                   sx={{
                     boxSizing: "border-box",
@@ -80,19 +93,44 @@ class PropertyListCounty extends React.Component {
                   <PropertyTeaser property={node} asModal={false} />
                 </li>
               ))}
-            </ul>
-          ) : (
-            <div
-              sx={{
-                fontSize: "24px",
-                padding: "0px 0px 40px 0px",
-                color: "grayBlk",
-              }}
-            >
-              No properties in {this.props.data.county.countyName} county.
-              Please check back regularly.
-            </div>
-          )}
+            {this.props.data.additionalproperties.nodes[0] &&
+              this.props.data.additionalproperties.nodes.map((node, index) => (
+                <li
+                  sx={{
+                    boxSizing: "border-box",
+                    zIndex: "1",
+                    position: "relative",
+                    backgroundColor: "white",
+                    marginBottom: "40px",
+                    marginRight: ["0px", "20px", "20px", "20px"],
+                    width: [
+                      "100%",
+                      "calc(50% - 10px)",
+                      "calc(100% / 3 - 15px)",
+                      "calc(100% / 4 - 20px)",
+                    ],
+                    "&:nth-of-type(4n + 4)": {
+                      marginRight: ["0px", "0px", "0px", "0px"],
+                    },
+                    "&:nth-of-type(3n + 3)": {
+                      marginRight: ["0px", "20px", "0px", "20px"],
+                    },
+                    "&:nth-of-type(2n + 2)": {
+                      marginRight: ["0px", "0px", "20px", "20px"],
+                    },
+                  }}
+                  index={index}
+                >
+                  <PropertyTeaser property={node} asModal={false} />
+                </li>
+              ))}
+          </ul>
+          {!this.props.data.additionalproperties.nodes[0] &&
+            !this.props.data.ourproperty.nodes[0] && (
+              <div>
+                No properties in {this.props.pageContext.county} county.{" "}
+              </div>
+            )}
         </Container>
       </Layout>
     )
@@ -108,6 +146,38 @@ export const postQuery = graphql`
       countyName
       metaTitle
       metaDescription
+    }
+    additionalproperties: allProperty(
+      filter: { mlsid: { ne: "666" }, county: { eq: $county } }
+    ) {
+      nodes {
+        objectID: mlsid
+        mlsid
+        acreage: acreage
+        county: county
+        address: propertyName
+        description: propertyDescription
+        price: price
+        updated: _updatedAt
+        changed: dateChanged
+        city: city
+        state: state
+        zip: zip
+        slug: mlsid
+        status: status
+        weight: weight
+        image: childFile {
+          childImageSharp {
+            gatsbyImageData(
+              width: 1000
+              height: 650
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+              layout: CONSTRAINED
+            )
+          }
+        }
+      }
     }
     ourproperty: allSanityProperty(
       filter: { county: { countyName: { eq: $county } } }
