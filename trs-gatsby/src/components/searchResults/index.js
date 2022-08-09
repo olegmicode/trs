@@ -13,7 +13,7 @@ import {
 } from "react-instantsearch-dom"
 
 import PropertyTeaser from "../entity/property/propertyTeaser"
-import withURLSync from "../../templates/URLSync"
+import withStorageSync from "../../templates/StorageSync"
 import Container from "../../components/container"
 import TheSearchBox from "../searchBox"
 import ConnectedRange from "./Range"
@@ -622,4 +622,4 @@ function HitComponent({ hit }) {
   )
 }
 
-export default withURLSync(SearchResults)
+export default withStorageSync(SearchResults)
