@@ -203,6 +203,18 @@ const PropertyTeaser = ({ property, asModal }) => {
                   {truncate(property.description)}
                 </div>
               )}
+              {property.propertySummary && (
+                <div
+                  sx={{
+                    padding: "17px 26px 17px 26px",
+                    color: "grayHvy",
+                    fontSize: "1rem",
+                    minHeight: "66px",
+                  }}
+                >
+                  {truncate(property.propertySummary)}
+                </div>
+              )}
 
               <div
                 sx={{
