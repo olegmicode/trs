@@ -87,19 +87,19 @@ class Property extends React.Component {
       propPath = "https://www.texasranchesforsale.com" + this.props.path
       office = this.props.data.property.field_office1
 
-      if (this.props.data.property.field_listingidserbo) {
+      if (this.props.data.property.feed === "serbo") {
         disclaimer =
           "©2019 San Antonio Board of Realtors. All rights reserved. Information Deemed Reliable but Not Guaranteed. Information on this site is provided exclusively for consumers personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Listing courtesy of " +
           office +
           "."
       }
-      if (this.props.data.property.field_mst_mls_number) {
+      if (this.props.data.property.feed === "mst") {
         disclaimer =
           "©2019 Kerrville Board of Realtors® All rights reserved. The data relating to real estate for sale on this web site comes in part from the Kerrville Board of Realtors®. The broker providing this data believes it to be correct, but advises interested parties to confirm the data before relying on it in a purchase decision. Some properties which appear for sale on this web site may subsequently have sold and may no longer be available. Listing courtesy of " +
           office +
           "."
       }
-      if (this.props.data.property.field_idx_mls_number) {
+      if (this.props.data.property.feed === "idx") {
         disclaimer =
           "The data relating to real estate for sale on this website comes in part from the Internet Data Exchange (IDX) of the Central Hill Country Board of REALTORS® Multiple Listing Service (CHCBRMLS). The CHCBR IDX logo indicates listings of other real estate firms that are identified in the detailed listing information. The information being provided is for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Information herein is deemed reliable but not guaranteed, representations are approximate, individual verifications are recommended. Copyright 2019 Central Hill Country Board of REALTORS®. All rights reserved. Listing courtesy of " +
           office +

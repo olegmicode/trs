@@ -116,21 +116,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-  // pages.data.additionalcounty.group.forEach(node => {
-  //   var countyName = node.fieldValue
-  //     .toLowerCase()
-  //     .replace(/ /g, "-")
-  //     .replace(/[^\w-]+/g, "")
 
-  //   createPage({
-  //     path: `${countyName}-county-ranches-for-sale`,
-  //     component: propertyListCountyTemplate,
-  //     context: {
-  //       county: node.fieldValue,
-  //       id: node.id,
-  //     },
-  //   })
-  // })
   const propertyListRegionTemplate = path.resolve(
     "src/templates/propertyListRegion.js"
   )
@@ -238,6 +224,9 @@ exports.onCreateNode = async ({
     if (node.price) {
       node.price = parseInt(node.price)
     }
+    if (node.field_listingidserbo) {
+      console.log(node.field_listingidserbo)
+    }
     if (node.pricePerAcre) {
       node.pricePerAcre = parseInt(node.pricePerAcre)
     }
@@ -308,6 +297,28 @@ exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
               return 3
             } else {
               return 1
+            }
+          },
+        },
+      },
+    }),
+    schema.buildObjectType({
+      name: "property",
+      interfaces: ["Node"],
+      fields: {
+        feed: {
+          type: "String",
+          resolve(source, args, context, info) {
+            if (source.field_listingidserbo[0].length > 0) {
+              return "serbo"
+            }
+            if (source.field_mst_mls_number[0].length > 0) {
+              return "mst"
+            }
+            if (source.field_idx_mls_number[0].length > 0) {
+              return "idx"
+            } else {
+              return "none"
             }
           },
         },

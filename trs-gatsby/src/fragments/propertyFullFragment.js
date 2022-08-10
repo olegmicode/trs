@@ -9,8 +9,8 @@ export const propertyFullFragment = graphql`
     propertyDescription
     price
     propertyName
-
     field_office1
+    feed
     childrenFile {
       childImageSharp {
         gatsbyImageData(
