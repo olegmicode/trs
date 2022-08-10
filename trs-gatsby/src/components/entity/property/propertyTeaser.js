@@ -15,7 +15,7 @@ const Ribbon = ({ color, label }) => (
       color: "#ffffff",
       fontSize: "1rem",
       position: "absolute",
-      right: "20px",
+      right: "26px",
       top: "-15px",
       padding: "3px 12px",
       zIndex: "1",
@@ -87,7 +87,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                   fontFamily: "Arimo,sans-serif !important",
                   textTransform: 'uppercase',
                   fontWeight: "bold !important",
-                  letterSpacing: '1.2px',
+                  letterSpacing: '0px',
                   overflow: "hidden",
                   whiteSpace: "nowrap",
                   textOverflow: "ellipsis"
@@ -198,12 +198,21 @@ const PropertyTeaser = ({ property, asModal }) => {
                     color: "grayHvy",
                     fontSize: "1rem",
                     minHeight: "66px",
-                    width: "fit-content",
-                    blockSize: "fit-content",
-                    textAlign: "justify"
                   }}
                 >
                   {truncate(property.description)}
+                </div>
+              )}
+              {property.propertySummary && (
+                <div
+                  sx={{
+                    padding: "17px 26px 17px 26px",
+                    color: "grayHvy",
+                    fontSize: "1rem",
+                    minHeight: "66px",
+                  }}
+                >
+                  {truncate(property.propertySummary)}
                 </div>
               )}
 

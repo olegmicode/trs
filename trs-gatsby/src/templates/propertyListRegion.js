@@ -32,7 +32,7 @@ class PropertyListRegion extends React.Component {
               color: "grayBlk",
             }}
           >
-            <h1 sx={{ fontFamily: 'Times, sans-serif' }}>{`${metaTitle} Region Ranches for Sale`}</h1>
+            <h1 sx={{ fontFamily: 'Times, sans-serif' }}>{`${metaTitle} Ranches for Sale`}</h1>
             <BlockContent
               blocks={this.props.data.region._rawRegionDescrition}
               serializers={Serializers}

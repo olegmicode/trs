@@ -4,13 +4,13 @@ if (typeof window !== "undefined") {
   const updateAfter = 700
   const searchStateToURL = searchState =>
     searchState
-      ? `${window.location.pathname}?${qs.stringify(searchState)}`
+      ? `${qs.stringify(searchState)}`
       : ""
 
-  var withURLSync = Front =>
-    class WithURLSync extends Component {
+  var withStorageSync = Front =>
+    class WithStorageSync extends Component {
       state = {
-        searchState: qs.parse(window.location.search.slice(1)),
+        searchState: qs.parse((localStorage.getItem('query') || '').slice(1)),
       }
 
       componentDidMount() {
@@ -31,11 +31,7 @@ if (typeof window !== "undefined") {
         clearTimeout(this.debouncedSetState)
 
         this.debouncedSetState = setTimeout(() => {
-          window.history.pushState(
-            searchState,
-            null,
-            searchStateToURL(searchState)
-          )
+          localStorage.setItem('query', searchStateToURL(searchState))
         }, updateAfter)
 
         this.setState({ searchState })
@@ -55,12 +51,12 @@ if (typeof window !== "undefined") {
       }
     }
 } else {
-  var withURLSync = Front =>
-    class WithURLSync extends Component {
+  var withStorageSync = Front =>
+    class WithStorageSync extends Component {
       render() {
         return <Front />
       }
     }
 }
 
-export default withURLSync
+export default withStorageSync
