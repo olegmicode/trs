@@ -698,6 +698,8 @@ class Property extends React.Component {
                 id="contact"
                 sx={{
                   padding: "20px 0px",
+                  fontSize: "0.8rem",
+                  color: "#A29A9A"
                 }}
               >
                 {ourDisclaimer && (
