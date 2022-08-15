@@ -7,6 +7,25 @@
     "projectId": "5b1rgyjn",
     "dataset": "production"
   },
+  "__experimental_spaces": [
+    {
+      "name": "production",
+      "title": "Production",
+      "default": true,
+      "api": {
+        "projectId": "5b1rgyjn",
+        "dataset": "production"
+      }
+    },
+    {
+      "name": "staging",
+      "title": "Staging",
+      "api": {
+        "projectId": "5b1rgyjn",
+        "dataset": "staging"
+      }
+    }
+  ],
   "plugins": [
     "@sanity/base",
     "@sanity/components",
