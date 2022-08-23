@@ -167,6 +167,7 @@ class Footer extends React.Component {
                         <img
                           src={data.digettlogo.publicURL}
                           alt="Footer Logos"
+                          title="Footer Logos"
                         />
                       </a>
                     </div>

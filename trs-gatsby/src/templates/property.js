@@ -273,6 +273,7 @@ class Property extends React.Component {
                       }}
                       src={this.props.data.phone.publicURL}
                       alt="Phone"
+                      title="Phone"
                     />
                     830-249-9339
                   </a>
@@ -289,7 +290,8 @@ class Property extends React.Component {
                         width: "27px",
                       }}
                       src={this.props.data.facebook.publicURL}
-                      alt=""
+                      alt="Facebook"
+                      title="Facebook"
                     />
                   </a>
                   <a
@@ -306,7 +308,8 @@ class Property extends React.Component {
                         width: "27px",
                       }}
                       src={this.props.data.instagram.publicURL}
-                      alt=""
+                      alt="Instagram"
+                      title="Instagram"
                     />
                   </a>
                   <a
@@ -323,7 +326,8 @@ class Property extends React.Component {
                         width: "27px",
                       }}
                       src={this.props.data.youtube.publicURL}
-                      alt=""
+                      alt="Youtube"
+                      title="Youtube"
                     />
                   </a>
                   <a
@@ -340,7 +344,8 @@ class Property extends React.Component {
                         width: "27px",
                       }}
                       src={this.props.data.linkedin.publicURL}
-                      alt=""
+                      alt="LinkedIn"
+                      title="LinkedIn"
                     />
                   </a>
                 </div>

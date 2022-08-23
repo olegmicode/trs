@@ -103,7 +103,8 @@ const Menu = open => {
                     width: "27px",
                   }}
                   src={data.facebook.publicURL}
-                  alt=""
+                  alt="Facebook"
+                  title="Facebook"
                 />
               </a>
               <a
@@ -120,7 +121,8 @@ const Menu = open => {
                     width: "27px",
                   }}
                   src={data.instagram.publicURL}
-                  alt=""
+                  alt="Instagram"
+                  title="Instagram"
                 />
               </a>
               <a
@@ -137,7 +139,8 @@ const Menu = open => {
                   width: "27px",
                 }}
                 src={data.youtube.publicURL}
-                alt=""
+                alt="Youtube"
+                title="Youtube"
               />
             </a>
               <a
@@ -154,7 +157,8 @@ const Menu = open => {
                     width: "27px",
                   }}
                   src={data.linkedin.publicURL}
-                  alt=""
+                  alt="LinkedIn"
+                  title="LinkedIn"
                 />
               </a>
             </div>

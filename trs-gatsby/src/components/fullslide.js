@@ -21,6 +21,8 @@ const ReturnImage = forwardRef(({ image }, ref) => {
           objectFit: "contain"
         }}
         image={image.asset.gatsbyImageData}
+        alt="Slide Image"
+        title="Slide Image"
         objectFit="contain"
         width={800}
         aspectRatio={4 / 2}
@@ -45,6 +47,8 @@ const ReturnImage = forwardRef(({ image }, ref) => {
         }}
         image={image.childImageSharp.gatsbyImageData}
         width={600}
+        alt="Slide Image"
+        title="Slide Image"
         objectFit="contain"
         aspectRatio={4 / 2}
       />

@@ -41,6 +41,8 @@ const TeamTeaser = ({ team }) => {
             image={imageData}
             width={200}
             height={300}
+            alt="Team Photo"
+            title="Team Photo"
           />
         )}
         <h2

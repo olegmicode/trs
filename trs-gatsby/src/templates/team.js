@@ -130,6 +130,8 @@ const Team = ({ data }) => {
                   height: "auto",
                 }}
                 image={data.team.teamPhoto.asset.gatsbyImageData}
+                alt="Team Photo"
+                title="Team Photo"
               />
             </div>
           )}

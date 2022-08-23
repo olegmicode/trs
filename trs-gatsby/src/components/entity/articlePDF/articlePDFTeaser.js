@@ -24,6 +24,8 @@ const ArticlePDFTeaser = ({ article }) => {
             image={imageData}
             width={700}
             height={400}
+            alt="PDF Article"
+            title="PDF Article"
           />
         )}
       </a>

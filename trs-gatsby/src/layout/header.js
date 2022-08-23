@@ -327,6 +327,7 @@ class Header extends React.Component {
                       }}
                       src={data.logoStarDesktop.publicURL}
                       alt="Logo"
+                      title="Logo"
                     />
                     <img
                       sx={{
@@ -336,6 +337,7 @@ class Header extends React.Component {
                       }}
                       src={data.logoStarMobile.publicURL}
                       alt="Logo"
+                      title="Logo"
                     />
                   </Link>
                 </div>
@@ -374,6 +376,7 @@ class Header extends React.Component {
                         }}
                         src={data.logoTextDesktop.publicURL}
                         alt="Logo"
+                        title="Logo"
                       />
                       <img
                         sx={{
@@ -382,6 +385,7 @@ class Header extends React.Component {
                         }}
                         src={data.logoTextMobile.publicURL}
                         alt="Logo"
+                        title="Logo"
                       />
                       <div
                         sx={{
@@ -396,6 +400,7 @@ class Header extends React.Component {
                           }}
                           src={data.logoFull.publicURL}
                           alt="Logo"
+                          title="Logo"
                         />
                       </div>
                     </Link>
@@ -452,7 +457,8 @@ class Header extends React.Component {
                               width: "38px",
                             }}
                             src={data.megaphone.publicURL}
-                            alt=""
+                            alt="Mega Phone"
+                            title="Mega Phone"
                           />
                         </div>
                         <div
@@ -492,7 +498,8 @@ class Header extends React.Component {
                                   display: ["none", "none", "none", "block"],
                                 }}
                                 src={data.phone.publicURL}
-                                alt=""
+                                alt="Phone"
+                                title="Phone"
                               />
                               830-249-9339
                             </a>
@@ -519,7 +526,8 @@ class Header extends React.Component {
                                   width: "27px",
                                 }}
                                 src={data.facebook.publicURL}
-                                alt=""
+                                alt="Facebook"
+                                title="Facebook"
                               />
                             </a>
                             <a
@@ -536,7 +544,8 @@ class Header extends React.Component {
                                   width: "27px",
                                 }}
                                 src={data.instagram.publicURL}
-                                alt=""
+                                alt="Instagram"
+                                title="Instagram"
                               />
                             </a>
                             <a
@@ -553,7 +562,8 @@ class Header extends React.Component {
                                   width: "27px",
                                 }}
                                 src={data.youtube.publicURL}
-                                alt=""
+                                alt="Youtube"
+                                title="Youtube"
                               />
                             </a>
                             <a
@@ -570,7 +580,8 @@ class Header extends React.Component {
                                   width: "27px",
                                 }}
                                 src={data.linkedin.publicURL}
-                                alt=""
+                                alt="LinkedIn"
+                                title="LinkedIn"
                               />
                             </a>
                           </div>

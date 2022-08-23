@@ -15,6 +15,8 @@ const CustomImage = ({ node }) => {
   return (
     <GatsbyImage
       image={imageData}
+      alt="Custom Image"
+      title="Custom Image"
     />
   )
 }
