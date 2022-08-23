@@ -446,6 +446,13 @@ class Property extends React.Component {
                     backgroundPositionY: "center",
                     backgroundSize: "8px",
                     cursor: "pointer",
+                    "& > h2": {
+                      fontSize: "18px",
+                      fontWeight: 700,
+                      fontFamily: "Arimo, sans-serif",
+                      lineHeight: "22px",
+                      margin: 0,
+                    }
                   },
                   ".accordion__button[aria-expanded='true']": {
                     backgroundImage: `url(${this.props.data.carrotDown.publicURL})`,
@@ -472,7 +479,7 @@ class Property extends React.Component {
                 {description && (
                   <AccordionItem uuid="1">
                     <AccordionItemHeading>
-                      <AccordionItemButton>OVERVIEW</AccordionItemButton>
+                      <AccordionItemButton><h2>OVERVIEW</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -527,7 +534,7 @@ class Property extends React.Component {
                   <div>
                     <AccordionItem uuid="1">
                       <AccordionItemHeading>
-                        <AccordionItemButton>OVERVIEW</AccordionItemButton>
+                        <AccordionItemButton><h2>OVERVIEW</h2></AccordionItemButton>
                       </AccordionItemHeading>
                       <AccordionItemPanel>
                         <div>{feedDescription}</div>
@@ -575,7 +582,7 @@ class Property extends React.Component {
                 {node._rawPropertyLocation && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>LOCATION</AccordionItemButton>
+                      <AccordionItemButton><h2>LOCATION</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -589,7 +596,7 @@ class Property extends React.Component {
                 {node._rawPropertyLand && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>LAND</AccordionItemButton>
+                      <AccordionItemButton><h2>LAND</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -603,7 +610,7 @@ class Property extends React.Component {
                 {node._rawPropertyImprovements && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>IMPROVEMENTS</AccordionItemButton>
+                      <AccordionItemButton><h2>IMPROVEMENTS</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -617,7 +624,7 @@ class Property extends React.Component {
                 {node._rawPropertyWildlife && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>WILDLIFE</AccordionItemButton>
+                      <AccordionItemButton><h2>WILDLIFE</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -631,7 +638,7 @@ class Property extends React.Component {
                 {node._rawPropertyWater && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>WATER</AccordionItemButton>
+                      <AccordionItemButton><h2>WATER</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -644,7 +651,7 @@ class Property extends React.Component {
                 {node.status !== "z-sold" && node.propertyTopographicMap && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>MAP</AccordionItemButton>
+                      <AccordionItemButton><h2>MAP</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <div>
@@ -665,7 +672,7 @@ class Property extends React.Component {
                   node.propertyInteractiveLocationMap && (
                     <AccordionItem>
                       <AccordionItemHeading>
-                        <AccordionItemButton>MAP</AccordionItemButton>
+                        <AccordionItemButton><h2>MAP</h2></AccordionItemButton>
                       </AccordionItemHeading>
                       <AccordionItemPanel>
                         <div
