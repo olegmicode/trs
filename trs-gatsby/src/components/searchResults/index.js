@@ -125,7 +125,7 @@ class SearchResults extends React.Component {
   }
 
   render() {
-    const Stats = ({ nbHits }) => <h3>{nbHits} SEARCH RESULTS</h3>
+    const Stats = ({ nbHits }) => <h2>{nbHits} SEARCH RESULTS</h2>
     const CustomStats = connectStats(Stats)
 
     return (
@@ -505,7 +505,7 @@ class SearchResults extends React.Component {
               "20px 0px 0px 0px",
               "30px 0px 0px 0px",
             ],
-            h3: {
+            "h2, h3": {
               margin: ["0px 0px 0px 0px", "0px 0px 0px 0px", "0px 0px 0px 0px"],
               fontSize: ["2rem", "3rem", "50px"],
               fontFamily: "heading",
@@ -518,7 +518,7 @@ class SearchResults extends React.Component {
             {this.state.searchChange ? (
               <CustomStats />
             ) : (
-              <h3>FEATURED PROPERTIES</h3>
+              <h2>FEATURED PROPERTIES</h2>
             )}
           </Container>
         </div>

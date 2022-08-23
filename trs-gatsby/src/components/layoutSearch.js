@@ -40,6 +40,7 @@ const LayoutSearch = () => {
         },
       }}
     >
+      <h2 style={{ display: "none" }}>Search Items</h2>
       <div>
         <div
           sx={{

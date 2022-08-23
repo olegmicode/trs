@@ -79,7 +79,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                 minHeight: "110px",
               }}
             >
-              <h2
+              <h3
                 sx={{
                   color: "grayHvy",
                   fontSize: "1.25rem !important",
@@ -95,7 +95,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                 }}
               >
                 {property.address}
-              </h2>
+              </h3>
               <div
                 sx={{
                   display: "flex",
