@@ -61,6 +61,7 @@ const PropertyTeaser = ({ property, asModal }) => {
             }}
             asModal={asModal}
             to={slugPath}
+            title="Property"
             onClick={() => {}}
             sx={{
               height: "100%",

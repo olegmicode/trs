@@ -68,7 +68,7 @@ const Serializers = {
       }
 
       return (
-        <Link activeClassName="active" to={href}>
+        <Link activeClassName="active" to={href} title="internal link">
           {children}
         </Link>
       )

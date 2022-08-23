@@ -90,6 +90,7 @@ const Team = ({ data }) => {
                   textDecoration: "none",
                   padding: "10px 40px",
                 }}
+                title="Contact Us"
                 to={
                   "/contact-us?team=" +
                   data.team.teamFirstName +

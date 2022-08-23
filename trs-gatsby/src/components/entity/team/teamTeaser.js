@@ -29,6 +29,7 @@ const TeamTeaser = ({ team }) => {
           flexDirection: "column",
           alignItems: "center",
         }}
+        title={team.title}
         to={"/our-team/" + team.slug.current}
       >
         {team.teamPhoto && (

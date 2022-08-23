@@ -93,6 +93,7 @@ export default function Sitemap() {
                     <Link
                       to={"/" + regionLink(node.regionName)}
                       sx={{ color: "#484242 !important" }}
+                      title={`${node.regionName} index page`}
                     >
                       {node.regionName}
                     </Link>
@@ -117,6 +118,7 @@ export default function Sitemap() {
                     <Link
                       to={"/" + typeLink(node.propertyTypeName)}
                       sx={{ color: "#484242 !important" }}
+                      title={`${node.propertyTypeName} index page`}
                     >
                       {node.propertyTypeName}
                     </Link>
@@ -141,6 +143,7 @@ export default function Sitemap() {
                     <Link
                       to={"/" + countyLink(node.countyName)}
                       sx={{ color: "#484242 !important" }}
+                      title={`${node.countyName} index page`}
                     >
                       {node.countyName}
                     </Link>

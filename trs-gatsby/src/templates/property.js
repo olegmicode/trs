@@ -264,6 +264,7 @@ class Property extends React.Component {
                       textDecoration: "none",
                     }}
                     href="tel:830-249-9339"
+                    title="Phone Number"
                   >
                     <img
                       sx={{
@@ -281,6 +282,7 @@ class Property extends React.Component {
                     href="https://www.facebook.com/TexasRanchesForSale"
                     target="_blank"
                     rel="noopener"
+                    title="Facebook"
                   >
                     <img
                       sx={{
@@ -294,6 +296,7 @@ class Property extends React.Component {
                     href="https://www.instagram.com/texasranchesforsale/?hl=en"
                     target="_blank"
                     rel="noopener"
+                    title="Instagram"
                     sx={{
                       marginLeft: "5px",
                     }}
@@ -310,6 +313,7 @@ class Property extends React.Component {
                     href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
                     target="_blank"
                     rel="noopener"
+                    title="Youtube"
                     sx={{
                       marginLeft: "5px",
                     }}
@@ -326,6 +330,7 @@ class Property extends React.Component {
                     href="https://www.linkedin.com/company/texas-ranches-for-sale"
                     target="_blank"
                     rel="noopener"
+                    title="LinkedIn"
                     sx={{
                       marginLeft: "5px",
                     }}
@@ -416,6 +421,7 @@ class Property extends React.Component {
                       textDecoration: "none",
                     }}
                     to={`/${county.toLowerCase()}-county-ranches-for-sale`}
+                    title={`${county.toLowerCase()} county ranches for sale`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -501,6 +507,7 @@ class Property extends React.Component {
                                 "&address=" +
                                 node.propertyName
                               }
+                              title="Contact Us"
                             >
                               Contact {contacts[0].teamFirstName}
                               {" " + contacts[0].teamLastName}
@@ -543,6 +550,7 @@ class Property extends React.Component {
                                 color: "white !important",
                                 textDecoration: "none",
                               }}
+                              title="Contact Us"
                               to={
                                 "/contact-us?team=Ken" +
                                 "&lname=Hoerster" +
