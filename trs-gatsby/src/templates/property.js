@@ -264,6 +264,7 @@ class Property extends React.Component {
                       textDecoration: "none",
                     }}
                     href="tel:830-249-9339"
+                    title="Phone Number"
                   >
                     <img
                       sx={{
@@ -272,6 +273,7 @@ class Property extends React.Component {
                       }}
                       src={this.props.data.phone.publicURL}
                       alt="Phone"
+                      title="Phone"
                     />
                     830-249-9339
                   </a>
@@ -281,19 +283,22 @@ class Property extends React.Component {
                     href="https://www.facebook.com/TexasRanchesForSale"
                     target="_blank"
                     rel="noopener"
+                    title="Facebook"
                   >
                     <img
                       sx={{
                         width: "27px",
                       }}
                       src={this.props.data.facebook.publicURL}
-                      alt=""
+                      alt="Facebook"
+                      title="Facebook"
                     />
                   </a>
                   <a
                     href="https://www.instagram.com/texasranchesforsale/?hl=en"
                     target="_blank"
                     rel="noopener"
+                    title="Instagram"
                     sx={{
                       marginLeft: "5px",
                     }}
@@ -303,13 +308,15 @@ class Property extends React.Component {
                         width: "27px",
                       }}
                       src={this.props.data.instagram.publicURL}
-                      alt=""
+                      alt="Instagram"
+                      title="Instagram"
                     />
                   </a>
                   <a
                     href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
                     target="_blank"
                     rel="noopener"
+                    title="Youtube"
                     sx={{
                       marginLeft: "5px",
                     }}
@@ -319,13 +326,15 @@ class Property extends React.Component {
                         width: "27px",
                       }}
                       src={this.props.data.youtube.publicURL}
-                      alt=""
+                      alt="Youtube"
+                      title="Youtube"
                     />
                   </a>
                   <a
                     href="https://www.linkedin.com/company/texas-ranches-for-sale"
                     target="_blank"
                     rel="noopener"
+                    title="LinkedIn"
                     sx={{
                       marginLeft: "5px",
                     }}
@@ -335,7 +344,8 @@ class Property extends React.Component {
                         width: "27px",
                       }}
                       src={this.props.data.linkedin.publicURL}
-                      alt=""
+                      alt="LinkedIn"
+                      title="LinkedIn"
                     />
                   </a>
                 </div>
@@ -416,6 +426,7 @@ class Property extends React.Component {
                       textDecoration: "none",
                     }}
                     to={`/${county.toLowerCase()}-county-ranches-for-sale`}
+                    title={`${county.toLowerCase()} county ranches for sale`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -435,6 +446,13 @@ class Property extends React.Component {
                     backgroundPositionY: "center",
                     backgroundSize: "8px",
                     cursor: "pointer",
+                    "& > h2": {
+                      fontSize: "18px",
+                      fontWeight: 700,
+                      fontFamily: "Arimo, sans-serif",
+                      lineHeight: "22px",
+                      margin: 0,
+                    }
                   },
                   ".accordion__button[aria-expanded='true']": {
                     backgroundImage: `url(${this.props.data.carrotDown.publicURL})`,
@@ -461,7 +479,7 @@ class Property extends React.Component {
                 {description && (
                   <AccordionItem uuid="1">
                     <AccordionItemHeading>
-                      <AccordionItemButton>OVERVIEW</AccordionItemButton>
+                      <AccordionItemButton><h2>OVERVIEW</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -501,6 +519,7 @@ class Property extends React.Component {
                                 "&address=" +
                                 node.propertyName
                               }
+                              title="Contact Us"
                             >
                               Contact {contacts[0].teamFirstName}
                               {" " + contacts[0].teamLastName}
@@ -515,7 +534,7 @@ class Property extends React.Component {
                   <div>
                     <AccordionItem uuid="1">
                       <AccordionItemHeading>
-                        <AccordionItemButton>OVERVIEW</AccordionItemButton>
+                        <AccordionItemButton><h2>OVERVIEW</h2></AccordionItemButton>
                       </AccordionItemHeading>
                       <AccordionItemPanel>
                         <div>{feedDescription}</div>
@@ -543,6 +562,7 @@ class Property extends React.Component {
                                 color: "white !important",
                                 textDecoration: "none",
                               }}
+                              title="Contact Us"
                               to={
                                 "/contact-us?team=Ken" +
                                 "&lname=Hoerster" +
@@ -562,7 +582,7 @@ class Property extends React.Component {
                 {node._rawPropertyLocation && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>LOCATION</AccordionItemButton>
+                      <AccordionItemButton><h2>LOCATION</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -576,7 +596,7 @@ class Property extends React.Component {
                 {node._rawPropertyLand && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>LAND</AccordionItemButton>
+                      <AccordionItemButton><h2>LAND</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -590,7 +610,7 @@ class Property extends React.Component {
                 {node._rawPropertyImprovements && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>IMPROVEMENTS</AccordionItemButton>
+                      <AccordionItemButton><h2>IMPROVEMENTS</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -604,7 +624,7 @@ class Property extends React.Component {
                 {node._rawPropertyWildlife && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>WILDLIFE</AccordionItemButton>
+                      <AccordionItemButton><h2>WILDLIFE</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -618,7 +638,7 @@ class Property extends React.Component {
                 {node._rawPropertyWater && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>WATER</AccordionItemButton>
+                      <AccordionItemButton><h2>WATER</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <BlockContent
@@ -631,7 +651,7 @@ class Property extends React.Component {
                 {node.status !== "z-sold" && node.propertyTopographicMap && (
                   <AccordionItem>
                     <AccordionItemHeading>
-                      <AccordionItemButton>MAP</AccordionItemButton>
+                      <AccordionItemButton><h2>MAP</h2></AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <div>
@@ -652,7 +672,7 @@ class Property extends React.Component {
                   node.propertyInteractiveLocationMap && (
                     <AccordionItem>
                       <AccordionItemHeading>
-                        <AccordionItemButton>MAP</AccordionItemButton>
+                        <AccordionItemButton><h2>MAP</h2></AccordionItemButton>
                       </AccordionItemHeading>
                       <AccordionItemPanel>
                         <div

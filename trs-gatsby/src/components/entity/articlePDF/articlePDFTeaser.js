@@ -14,7 +14,7 @@ const ArticlePDFTeaser = ({ article }) => {
 
   return (
     <div>
-      <a href={article.pdf ? article.pdf.asset.url : ""} target="_blank" rel="noopener noreferrer">
+      <a href={article.pdf ? article.pdf.asset.url : ""} target="_blank" rel="noopener noreferrer" title="PDF Article">
         {imageData && (
           <GatsbyImage
             sx={{
@@ -24,6 +24,8 @@ const ArticlePDFTeaser = ({ article }) => {
             image={imageData}
             width={700}
             height={400}
+            alt="PDF Article"
+            title="PDF Article"
           />
         )}
       </a>

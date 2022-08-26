@@ -90,6 +90,7 @@ const Team = ({ data }) => {
                   textDecoration: "none",
                   padding: "10px 40px",
                 }}
+                title="Contact Us"
                 to={
                   "/contact-us?team=" +
                   data.team.teamFirstName +
@@ -129,6 +130,8 @@ const Team = ({ data }) => {
                   height: "auto",
                 }}
                 image={data.team.teamPhoto.asset.gatsbyImageData}
+                alt="Team Photo"
+                title="Team Photo"
               />
             </div>
           )}

@@ -20,9 +20,10 @@ export const NoImage = () => {
           <div>
             <GatsbyImage
               layout="constrained"
-              alt=""
               image={data.noimage.childImageSharp.gatsbyImageData}
               aspectRatio={20 / 13}
+              alt="No Image"
+              title="No Image"
             />
           </div>
         )

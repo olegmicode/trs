@@ -132,7 +132,7 @@ class Footer extends React.Component {
                     },
                   }}
                 >
-                  <Link to="/sitemap">Property Sitemap</Link>
+                  <Link to="/sitemap" title="SiteMap">Property Sitemap</Link>
                 </div>
                 <div
                   sx={{
@@ -162,10 +162,12 @@ class Footer extends React.Component {
                           paddingTop: "3px",
                         }}
                         href="https://www.digett.com"
+                        title="Digett"
                       >
                         <img
                           src={data.digettlogo.publicURL}
                           alt="Footer Logos"
+                          title="Footer Logos"
                         />
                       </a>
                     </div>

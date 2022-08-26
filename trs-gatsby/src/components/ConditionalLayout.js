@@ -44,6 +44,7 @@ const ConditionalLayout = ({ ...props }) => {
                   noScroll: true,
                 }}
                 className="prop-modal-close"
+                title="Modal Close"
                 sx={{
                   position: ["relative", "absolute", "absolute"],
                   top: ["40px", "5px", "5px", "5px"],

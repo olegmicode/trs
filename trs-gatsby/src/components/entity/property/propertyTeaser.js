@@ -61,6 +61,7 @@ const PropertyTeaser = ({ property, asModal }) => {
             }}
             asModal={asModal}
             to={slugPath}
+            title="Property"
             onClick={() => {}}
             sx={{
               height: "100%",
@@ -78,7 +79,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                 minHeight: "110px",
               }}
             >
-              <h2
+              <h3
                 sx={{
                   color: "grayHvy",
                   fontSize: "1.25rem !important",
@@ -94,7 +95,7 @@ const PropertyTeaser = ({ property, asModal }) => {
                 }}
               >
                 {property.address}
-              </h2>
+              </h3>
               <div
                 sx={{
                   display: "flex",
@@ -117,8 +118,9 @@ const PropertyTeaser = ({ property, asModal }) => {
                       width: "11px",
                       marginRight: "10px",
                     }}
-                    alt=""
                     image={data.mappin.childImageSharp.gatsbyImageData}
+                    alt="Map pin"
+                    title="Map pin"
                   />
                   {property.sanitycounty && property.sanitycounty.countyName}
                   {property.county && property.county}
@@ -169,6 +171,8 @@ const PropertyTeaser = ({ property, asModal }) => {
                     alt=""
                     image={property.sanityimage[0].asset.gatsbyImageData}
                     aspectRatio={20 / 13}
+                    alt="Property Image"
+                    title="Property Image"
                   />
                 )}
                 {property.image && (
@@ -177,6 +181,8 @@ const PropertyTeaser = ({ property, asModal }) => {
                     alt=""
                     image={property.image.childImageSharp.gatsbyImageData}
                     aspectRatio={20 / 13}
+                    alt="Property Image"
+                    title="Property Image"
                   />
                 )}
                 {!property.sanityimage && !property.image && <NoImage />}

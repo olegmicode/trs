@@ -9,7 +9,7 @@ const Image = ({ node }) => {
     { maxWidth: 675 },
     sanityConfig
   )
-  return <GatsbyImage image={gatsbyImageData} alt={node.alt ? node.alt : ""} />
+  return <GatsbyImage image={gatsbyImageData} alt={node.alt ? node.alt : "Image"} title={node.alt ? node.alt : "Image"} />
 }
 
 export default Image

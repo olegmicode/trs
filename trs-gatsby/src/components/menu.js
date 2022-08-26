@@ -96,19 +96,22 @@ const Menu = open => {
                 href="https://www.facebook.com/TexasRanchesForSale"
                 target="_blank"
                 rel="noreferrer"
+                title="Facebook"
               >
                 <img
                   sx={{
                     width: "27px",
                   }}
                   src={data.facebook.publicURL}
-                  alt=""
+                  alt="Facebook"
+                  title="Facebook"
                 />
               </a>
               <a
                 href="https://www.instagram.com/texasranchesforsale/?hl=en"
                 target="_blank"
                 rel="noreferrer"
+                title="Instagram"
                 sx={{
                   marginLeft: "10px",
                 }}
@@ -118,13 +121,15 @@ const Menu = open => {
                     width: "27px",
                   }}
                   src={data.instagram.publicURL}
-                  alt=""
+                  alt="Instagram"
+                  title="Instagram"
                 />
               </a>
               <a
               href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
               target="_blank"
               rel="noreferrer"
+              title="Youtube"
               sx={{
                 marginLeft: "10px",
               }}
@@ -134,13 +139,15 @@ const Menu = open => {
                   width: "27px",
                 }}
                 src={data.youtube.publicURL}
-                alt=""
+                alt="Youtube"
+                title="Youtube"
               />
             </a>
               <a
                 href="https://www.linkedin.com/company/texas-ranches-for-sale"
                 target="_blank"
                 rel="noreferrer"
+                title="LinkedIn"
                 sx={{
                   marginLeft: "10px",
                 }}
@@ -150,7 +157,8 @@ const Menu = open => {
                     width: "27px",
                   }}
                   src={data.linkedin.publicURL}
-                  alt=""
+                  alt="LinkedIn"
+                  title="LinkedIn"
                 />
               </a>
             </div>
@@ -231,6 +239,7 @@ const Menu = open => {
                     },
                   }}
                   to={"/" + menuPath(menuItem.children.document.slug.current)}
+                  title={menuItem.children.title}
                 >
                   {menuItem.children.title}
                   {menuItem.children.submenu && (
@@ -306,6 +315,7 @@ const Menu = open => {
                           },
                         }}
                         to={"/" + menuSubItem.document.slug.current}
+                        title="Menu SubItem"
                         key={index}
                       >
                         {menuSubItem.document.title}

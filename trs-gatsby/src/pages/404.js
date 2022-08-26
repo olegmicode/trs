@@ -12,7 +12,7 @@ const NotFoundPage = () => (
     <section className="error-page">
       <h1>4 0 4</h1>
       <h2>Sorry, Page Not Found</h2>
-      <p>Please <Link to="/">visit our home page</Link>, or <Link to="/contact-us">reach out to us</Link> to chat.</p>
+      <p>Please <Link to="/" title="Homepage">visit our home page</Link>, or <Link to="/contact-us" title="Contact Us">reach out to us</Link> to chat.</p>
     </section>
   </Layout>
 )

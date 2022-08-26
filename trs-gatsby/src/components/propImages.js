@@ -27,7 +27,8 @@ const ReturnImage = ({ image }) => {
         image={image.asset.gatsbyImageData}
         width={600}
         aspectRatio={4 / 2}
-        alt=""
+        alt="Gallery Image"
+        title="Gallery Image"
       />
     )
   } else if (image.video) {
@@ -42,7 +43,7 @@ const ReturnImage = ({ image }) => {
         image={image.childImageSharp.gatsbyImageData}
         width={900}
         aspectRatio={4 / 2}
-        alt=""
+        alt="Gallery Image"
       />
     )
   } else {
@@ -60,7 +61,7 @@ const ReturnMobileImage = ({ image }) => {
         image={image.asset.gatsbyImageData}
         width={600}
         aspectRatio={4 / 2}
-        alt=""
+        alt="Mobile Gallery Image"
       />
     )
   } else if (image.video) {
@@ -74,7 +75,7 @@ const ReturnMobileImage = ({ image }) => {
         }}
         image={image.childImageSharp.gatsbyImageData}
         aspectRatio={4 / 2}
-        alt=""
+        alt="Mobile Gallery Image"
       />
     )
   } else {

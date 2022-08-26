@@ -317,6 +317,7 @@ class Header extends React.Component {
                       display: "block",
                       lineHeight: "0px",
                     }}
+                    title="Homepage"
                   >
                     <img
                       sx={{
@@ -326,6 +327,7 @@ class Header extends React.Component {
                       }}
                       src={data.logoStarDesktop.publicURL}
                       alt="Logo"
+                      title="Logo"
                     />
                     <img
                       sx={{
@@ -335,6 +337,7 @@ class Header extends React.Component {
                       }}
                       src={data.logoStarMobile.publicURL}
                       alt="Logo"
+                      title="Logo"
                     />
                   </Link>
                 </div>
@@ -358,6 +361,7 @@ class Header extends React.Component {
                   >
                     <Link
                       to={"/"}
+                      title="Homepage"
                       sx={{
                         maxWidth: ["auto", "650px", "auto", "650px"],
                         width: ["100%", "50%", "100%", "50%"],
@@ -372,6 +376,7 @@ class Header extends React.Component {
                         }}
                         src={data.logoTextDesktop.publicURL}
                         alt="Logo"
+                        title="Logo"
                       />
                       <img
                         sx={{
@@ -380,6 +385,7 @@ class Header extends React.Component {
                         }}
                         src={data.logoTextMobile.publicURL}
                         alt="Logo"
+                        title="Logo"
                       />
                       <div
                         sx={{
@@ -394,6 +400,7 @@ class Header extends React.Component {
                           }}
                           src={data.logoFull.publicURL}
                           alt="Logo"
+                          title="Logo"
                         />
                       </div>
                     </Link>
@@ -450,7 +457,8 @@ class Header extends React.Component {
                               width: "38px",
                             }}
                             src={data.megaphone.publicURL}
-                            alt=""
+                            alt="Mega Phone"
+                            title="Mega Phone"
                           />
                         </div>
                         <div
@@ -481,6 +489,7 @@ class Header extends React.Component {
                                 fontWeight: "600",
                               }}
                               href="tel:830-249-9339"
+                              title="Phone Number"
                             >
                               <img
                                 sx={{
@@ -489,7 +498,8 @@ class Header extends React.Component {
                                   display: ["none", "none", "none", "block"],
                                 }}
                                 src={data.phone.publicURL}
-                                alt=""
+                                alt="Phone"
+                                title="Phone"
                               />
                               830-249-9339
                             </a>
@@ -509,19 +519,22 @@ class Header extends React.Component {
                               href="https://www.facebook.com/TexasRanchesForSale"
                               target="_blank"
                               rel="noreferrer"
+                              title="Facebook"
                             >
                               <img
                                 sx={{
                                   width: "27px",
                                 }}
                                 src={data.facebook.publicURL}
-                                alt=""
+                                alt="Facebook"
+                                title="Facebook"
                               />
                             </a>
                             <a
                               href="https://www.instagram.com/texasranchesforsale/?hl=en"
                               target="_blank"
                               rel="noreferrer"
+                              title="Instagram"
                               sx={{
                                 marginLeft: "5px",
                               }}
@@ -531,13 +544,15 @@ class Header extends React.Component {
                                   width: "27px",
                                 }}
                                 src={data.instagram.publicURL}
-                                alt=""
+                                alt="Instagram"
+                                title="Instagram"
                               />
                             </a>
                             <a
                               href="https://www.youtube.com/channel/UC0kN5l4ZuqtXHdQcI4R2ssQ"
                               target="_blank"
                               rel="noreferrer"
+                              title="Youtube"
                               sx={{
                                 marginLeft: "5px",
                               }}
@@ -547,13 +562,15 @@ class Header extends React.Component {
                                   width: "27px",
                                 }}
                                 src={data.youtube.publicURL}
-                                alt=""
+                                alt="Youtube"
+                                title="Youtube"
                               />
                             </a>
                             <a
                               href="https://www.linkedin.com/company/texas-ranches-for-sale"
                               target="_blank"
                               rel="noreferrer"
+                              title="LinkedIn"
                               sx={{
                                 marginLeft: "5px",
                               }}
@@ -563,7 +580,8 @@ class Header extends React.Component {
                                   width: "27px",
                                 }}
                                 src={data.linkedin.publicURL}
-                                alt=""
+                                alt="LinkedIn"
+                                title="LinkedIn"
                               />
                             </a>
                           </div>

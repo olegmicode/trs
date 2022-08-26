@@ -24,6 +24,8 @@ const Image = ({ image }) => {
       sx={{
         padding: "100px 60px",
       }}
+      alt="Carousel Item"
+      title="Carousel Item"
     />
   )
 };

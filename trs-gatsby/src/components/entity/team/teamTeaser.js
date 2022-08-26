@@ -29,6 +29,7 @@ const TeamTeaser = ({ team }) => {
           flexDirection: "column",
           alignItems: "center",
         }}
+        title={team.title}
         to={"/our-team/" + team.slug.current}
       >
         {team.teamPhoto && (
@@ -40,6 +41,8 @@ const TeamTeaser = ({ team }) => {
             image={imageData}
             width={200}
             height={300}
+            alt="Team Photo"
+            title="Team Photo"
           />
         )}
         <h2
