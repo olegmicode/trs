@@ -1,6 +1,6 @@
-import S from "@sanity/desk-tool/structure-builder";
-export default () =>
-  S.list() // Outermost / farthest left:  we want to create a vertical "list" pane.
+// import S from "@sanity/desk-tool/structure-builder";
+export default (S) =>
+S.list() // Outermost / farthest left:  we want to create a vertical "list" pane.
     .title("Base") // Give the pane the title of 'Content' just like it has normally.
     .items([
       // Define the items that will appear in this far-left pane.

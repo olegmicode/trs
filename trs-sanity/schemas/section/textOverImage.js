@@ -1,4 +1,3 @@
-// textOverImage.js
 export default {
   name: "textOverImage",
   type: "document",
@@ -23,10 +22,7 @@ export default {
       type: "array",
       of: [
         {
-          type: "block",
-          marks: {
-            annotations: [{ name: "color", title: "Color", type: "color" }],
-          },
+          type: "block"          
         },
         {
           type: "image",
